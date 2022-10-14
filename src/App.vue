@@ -5,15 +5,29 @@
 </template>
 
 <style>
+@import url(../src/style/flex.css);
+* {
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
 body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
 }
-ul,
+ul {
+  list-style-type: none;
+  padding-inline-start: 0px;
+}
 li {
-  list-style: none;
+  display: flex;
+  align-items: center;
+}
+a {
+  text-decoration: none;
 }
 </style>

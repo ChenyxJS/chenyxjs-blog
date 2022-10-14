@@ -1,4 +1,7 @@
 :root{
+  --warning:#E6A23C;
+  --success:#67C23A;
+  --danger:#F56C6C;
   --bg-primary: #0D1117;
   --bg-inset: #090C10;
   --bg-navbar: #161B22;
@@ -14,4 +17,5 @@
   --border: 1px solid #30363D;
   --border-color: #30363D;
   --sk-theme-color: var(--border-color)
+  --font-size-primary:20px;
 }
