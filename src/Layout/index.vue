@@ -41,11 +41,13 @@
           </section>
         </div>
       </div>
-      <div class="content"></div>
+      <div class="content">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 import topNav from "./components/topNav.vue";
 export default {
   components: {
@@ -94,7 +96,7 @@ export default {
     }
     .content {
       flex: 1;
-      background: red;
+      background: var(--bg-inset);
     }
   }
 }

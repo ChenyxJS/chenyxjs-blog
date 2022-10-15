@@ -30,4 +30,8 @@ li {
 a {
   text-decoration: none;
 }
+::-webkit-scrollbar{
+  width: 6px;
+  background: var(--text-primary);
+}
 </style>
