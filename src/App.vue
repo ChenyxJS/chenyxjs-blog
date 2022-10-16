@@ -34,4 +34,8 @@ a {
   width: 6px;
   background: var(--text-primary);
 }
+::-webkit-scrollbar-thumb{
+  border-radius: 3px;
+  background-color: var(--text-second);
+}
 </style>
