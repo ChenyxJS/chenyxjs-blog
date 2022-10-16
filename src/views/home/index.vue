@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Chenyx
+ * @Date: 2022-10-15 20:40:39
+ * @LastEditors: Chenyx
+ * @LastEditTime: 2022-10-16 21:58:50
+-->
 <template>
   <div class="home">
     <!-- 主内容区 -->
@@ -137,12 +145,15 @@ export default defineComponent({
             padding: 6px;
             border-radius: 6px;
           }
+          i:hover {
+            transition: border-color 0.3s;
+            border-color: var(--text-link);
+          }
         }
       }
     }
   }
   .asider-content {
-    background-color: #fff;
     width: 350px;
     min-height: var(--main-height);
   }

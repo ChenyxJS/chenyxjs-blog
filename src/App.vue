@@ -1,11 +1,18 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Chenyx
+ * @Date: 2022-10-12 22:48:04
+ * @LastEditors: Chenyx
+ * @LastEditTime: 2022-10-16 21:55:10
+-->
 <script setup lang="ts"></script>
-
+ 
 <template>
   <router-view></router-view>
 </template>
 
 <style>
-@import url(../src/style/flex.css);
 * {
   font-size: 14px;
   box-sizing: border-box;

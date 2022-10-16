@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Chenyx
+ * @Date: 2022-10-12 23:13:30
+ * @LastEditors: Chenyx
+ * @LastEditTime: 2022-10-17 01:25:01
+-->
 <template>
   <div class="top-nav">
     <div class="top-nav-container">
@@ -9,7 +17,9 @@
         <a href="">门户</a>
         <a href="">UX</a>
       </div>
-      <div class="nav-right"></div>
+      <div class="nav-right flex flex-ce">
+        <div class="nav-right_title">掘金前端热点 <svg-icon icon-name="hot" icon-size="16"></svg-icon></div>
+      </div>
     </div>
   </div>
 </template>
@@ -41,6 +51,7 @@
       }
       .nav-options{
         margin: 0 24px;
+        font-weight: 600;
         a{
             margin: 0 5px;
             color: #fff;
@@ -49,6 +60,12 @@
       .nav-right {
         height: 100%;
         flex: 1;
+        font-weight: 600;
+        margin-left: auto;
+        &_title{
+          width: 100%;
+          max-width: 318px;
+        }
       }
   }
 }
