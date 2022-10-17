@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-17 01:25:01
+ * @LastEditTime: 2022-10-17 02:59:24
 -->
 <template>
   <div class="top-nav">
@@ -64,7 +64,8 @@
         margin-left: auto;
         &_title{
           width: 100%;
-          max-width: 318px;
+          max-width: 350px;
+          letter-spacing: 1px;
         }
       }
   }

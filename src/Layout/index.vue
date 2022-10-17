@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-16 21:25:49
+ * @LastEditTime: 2022-10-17 15:28:26
 -->
 <template>
   <div class="Layout">
@@ -79,6 +79,7 @@ export default {
       min-height: var(--main-height);
       background: var(--bg-primary);
       padding: 0px 32px;
+
       .article-tags {
         width: 100;
         padding-bottom: 32px;

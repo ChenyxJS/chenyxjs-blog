@@ -4,148 +4,157 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:39
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-16 21:58:50
+ * @LastEditTime: 2022-10-18 00:49:52
 -->
 <template>
   <div class="home">
     <!-- 主内容区 -->
-    <div class="article-content">
-      <!-- 文章card -->
-      <div class="article-card" v-for="item in dataList" key="item.id">
-        <!-- 文章发布时间、类型 -->
-        <div class="article-card-sec">
-          <p>{{ $FormatDate(item.time) }}</p>
-          <i class="iconfont icon-a-lianjielink">{{
-            typeFilters(item.type)
-          }}</i>
-        </div>
-        <!-- 文章内容 -->
-        <div class="article-card-content">
-          <div class="article-card-content_title">{{ item.title }}</div>
-          <div class="article-card-content_content">{{ item.content }}</div>
-          <div class="article-card-content_options">
-            <i class="iconfont icon-a-fenxiangshare" style="color: #e6a23c"></i>
-            <i class="iconfont icon-a-chakaneye" style="color: #56a6ff"></i>
-            <i class="iconfont icon-a-lianjielink" style="color: #56a6ff"></i>
+    <ariticle-content/>
+    <!-- 右侧边栏 -->
+    <div class="asider-content">
+      <div class="asider-articles">
+        <div class="asider-article-card" v-for="item in dataList" key="item.id">
+          <h4>
+            <a class="asider-link" href="">{{ item.title }}</a>
+          </h4>
+          <section>{{ item.content }}</section>
+          <div class="asider-article-card_options">
+            <p class="iconfont icon-a-chakaneye" style="color: #56a6ff">
+              <span>111</span>
+            </p>
+            <p class="iconfont icon-dianzan" style="color: #e6a23c">
+              <span>111</span>
+            </p>
+            <p class="iconfont icon-a-pinglunliaotian" style="color: #56a6ff">
+              <span>111</span>
+            </p>
           </div>
         </div>
       </div>
     </div>
-    <!-- 右侧边栏 -->
-    <div class="asider-content"></div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from "vue";
+import { defineComponent, reactive, ref, onMounted } from "vue";
+import AriticleContent from "./components/AriticleContent.vue"
+import {getJuejinData} from '@/api/Juejin/index.ts'
 
 export default defineComponent({
-  name: "home",
-  setup() {
-    const data = [
-      {
-        id: 102301,
-        time: 9990023100,
-        type: 1,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content: "这是一个内容",
-      },
-      {
-        id: 100121,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content: "这是一个内容",
-      },
-      {
-        id: 100121,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content: "这是一个内容",
-      },
-      {
-        id: 101231,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content: "这是一个内容",
-      },
-      {
-        id: 10221,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content: "这是一个内容",
-      },
-      {
-        id: 1009,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content: "这是一个内容",
-      },
-    ];
-    const dataList = reactive(data);
-
-    return {
-      dataList,
-    };
-  },
-  methods: {
-    typeFilters(code: Number) {
-      return code == 1 ? "原创" : "转载";
+    name: "home",
+    component: [AriticleContent],
+    setup() {
+        onMounted(() => {
+          getJuejinData().then(res=>{
+            console.log(res)
+          })
+        });
+        const data = [
+            {
+                id: 102301,
+                time: 9990023100,
+                type: 1,
+                title: "这是一个title",
+                des: "这是一个描述",
+                content: "这是一个内容",
+            },
+            {
+                id: 100121,
+                time: 6890099800,
+                type: 2,
+                title: "这是一个title",
+                des: "这是一个描述",
+                content: "这是一个内容",
+            },
+            {
+                id: 100121,
+                time: 6890099800,
+                type: 2,
+                title: "这是一个title",
+                des: "这是一个描述",
+                content: "这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了",
+            },
+            {
+                id: 101231,
+                time: 6890099800,
+                type: 2,
+                title: "这是一个title",
+                des: "这是一个描述",
+                content: "这是一个内容",
+            },
+            {
+                id: 10221,
+                time: 6890099800,
+                type: 2,
+                title: "这是一个title",
+                des: "这是一个描述",
+                content: "这是一个内容",
+            },
+            {
+                id: 1009,
+                time: 6890099800,
+                type: 2,
+                title: "这是一个title",
+                des: "这是一个描述",
+                content: "这是一个内容",
+            },
+        ];
+        const dataList = reactive(data);
+        return {
+            dataList,
+        };
     },
-  },
+    methods: {
+        typeFilters(code: Number) {
+            return code == 1 ? "原创" : "转载";
+        },
+    },
+    components: { AriticleContent }
 });
 </script>
 
 <style lang="scss" scoped>
 .home {
   display: flex;
-  .article-content {
-    flex: 1;
-    .article-card {
-      width: 100%;
-      padding: 10px;
-      .article-card-sec {
-        color: var(--text-second);
-        p {
-          font-size: 12px;
-          display: inline-block;
-          margin-right: 6px;
-        }
-        i {
-          font-size: 12px;
-        }
-      }
-      .article-card-content {
-        border: var(--border);
-        border-radius: 6px;
-        padding: 10px;
-        &_title {
+  min-height: var(--main-height);
+  ::-webkit-scrollbar-thumb {
+    display: none;
+  }
+ 
+  .asider-content {
+    margin-left: 24px;
+    width: 350px;
+    min-height: var(--main-height);
+    .asider-articles {
+      height: calc(100vh - 60px);
+      overflow: hidden auto;
+      .asider-article-card {
+        border-bottom: var(--border);
+        margin-right: 30px;
+        padding-bottom: 16px;
+        .asider-link {
           color: #fff;
-          font-size: 18px;
-          margin-bottom: 16px;
         }
-        &_content {
+        section {
+          padding-bottom: 20px;
           color: var(--text-second);
         }
-        &_options {
-          margin-top: 24px;
-          i {
+        .asider-article-card_options {
+          p {
+            display: inline-block;
+            font-size: 14px;
+            letter-spacing: 2px;
             border: var(--border);
             margin-right: 12px;
-            padding: 6px;
+            padding: 4px 6px;
             border-radius: 6px;
+            span {
+              color: var(--text-primary);
+              font-weight: 600;
+            }
           }
-          i:hover {
+
+          p:hover {
             transition: border-color 0.3s;
             border-color: var(--text-link);
           }
@@ -153,9 +162,6 @@ export default defineComponent({
       }
     }
   }
-  .asider-content {
-    width: 350px;
-    min-height: var(--main-height);
-  }
 }
+
 </style>

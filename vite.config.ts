@@ -9,6 +9,17 @@ const srcPath = path.resolve(__dirname, "src")
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server:{
+    port: 8888,
+    open: true,
+    proxy:{
+      '/api':{
+        target:"http://localhost:8888",
+        changeOrigin:true,
+        rewrite:(path)=>path.replace(/^\/api/,'')
+      }
+    }
+  },
   plugins: [
     vue(),
     svgBuilder('./src/assets/svg/')

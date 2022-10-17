@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-16 21:55:10
+ * @LastEditTime: 2022-10-17 15:25:20
 -->
 <script setup lang="ts"></script>
  
@@ -39,7 +39,7 @@ a {
 }
 ::-webkit-scrollbar{
   width: 6px;
-  background: var(--text-primary);
+  /* background: var(--text-primary); */
 }
 ::-webkit-scrollbar-thumb{
   border-radius: 3px;
