@@ -13,6 +13,10 @@ import Layout from '@/Layout/index.vue'
 const routes = [
     {
         path: '/',
+        component:()=>import("../views/index/index.vue")
+    },
+    {
+        path: '/index',
         component: Layout,
         children: [
             {

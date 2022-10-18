@@ -14,7 +14,7 @@
 
 <style>
 * {
-  font-size: 14px;
+  /* font-size: 14px; */
   box-sizing: border-box;
 }
 
@@ -23,8 +23,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  color: var(--text-primary);
-  background-color: var(--bg-primary);
+  /* color: var(--text-primary);
+  background-color: var(--bg-primary); */
 }
 ul {
   list-style-type: none;
@@ -36,6 +36,7 @@ li {
 }
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 ::-webkit-scrollbar{
   width: 6px;

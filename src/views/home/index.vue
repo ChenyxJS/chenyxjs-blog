@@ -38,7 +38,7 @@
 <script lang="ts">
 import { defineComponent, reactive, ref, onMounted } from "vue";
 import AriticleContent from "./components/AriticleContent.vue"
-import {getJuejinData} from '@/api/Juejin/index.ts'
+import {getJuejinData} from '@/api/Juejin/index'
 
 export default defineComponent({
     name: "home",
@@ -108,6 +108,7 @@ export default defineComponent({
         typeFilters(code: Number) {
             return code == 1 ? "原创" : "转载";
         },
+       
     },
     components: { AriticleContent }
 });
