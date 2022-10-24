@@ -4,36 +4,79 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-24 02:11:17
+ * @LastEditTime: 2022-10-24 15:29:21
 -->
 <template>
   <div class="article">
-    <div class="article-content">
-      <!-- <v-md-editor
-        mode="preview"
-        :default-show-toc="true"
-        :toc-nav-position-right="true"
-        v-model="article"
-        height="100vh"
-      ></v-md-editor> -->
-      <v-md-preview :text="article"></v-md-preview>
-    </div>
-    <div class="article-nav">
-      <span>111</span>
+    <v-md-preview class="article-content" :text="article" ref="preview" />
+
+    <!-- <div  >
+    </div> -->
+    <div class="article-anchor">
+      <div
+        class="article-anchor_tag"
+        v-for="anchor in state.titles"
+        :key="anchor.lineIndex"
+        :style="{ textIndent: anchor.indent * 14 +'px'}"
+        @click="handleAnchorClick(anchor)"
+      >
+        {{ anchor.title }}
+      </div>
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { useRoute } from "vue-router";
+import { reactive, onMounted, ref, getCurrentInstance, nextTick } from "vue";
 import textMD from "@/assets/md/test.md?raw";
-export default defineComponent({
-  name: "article",
 
-  setup() {
-    let article: string = textMD;
-    return { article };
-  },
+const route = useRoute();
+interface State {
+  blog: any;
+  id: any;
+  titles: any;
+}
+const state: State = reactive({
+  blog: [],
+  id: route.query.id,
+  titles: [],
+});
+let article: string = textMD;
+
+const { proxy } = getCurrentInstance();
+const preview = ref();
+function handleAnchorClick(anchor: any) {
+  console.log(`output->anchor`, anchor);
+  const { lineIndex } = anchor;
+  const heading = preview.value.$el.querySelector(
+    `[data-v-md-line="${lineIndex}"]`
+  );
+  if (heading) {
+    preview.value.scrollToTarget({
+      target: heading,
+      scrollContainer: proxy.$refs.preview.$el,
+      top: 60,
+    });
+  }
+}
+
+onMounted(() => {
+  const anchors = proxy.$refs.preview.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
+  const titles = Array.from(anchors).filter(
+    (title: any) => !!title.innerText.trim()
+  );
+  if (!titles.length) {
+    state.titles = [];
+    return;
+  }
+  const hTags = Array.from(
+    new Set(titles.map((title: any) => title.tagName))
+  ).sort();
+  state.titles = titles.map((el: any) => ({
+    title: el.innerText,
+    lineIndex: el.getAttribute("data-v-md-line"),
+    indent: hTags.indexOf(el.tagName),
+  }));
 });
 </script>
 
@@ -51,9 +94,17 @@ export default defineComponent({
     height: 100vh;
     overflow: auto;
   }
-  &-nav {
+  &-anchor {
     min-width: 330px;
     padding: 10px;
+    &_tag {
+      color: var(--text-link);
+      cursor: pointer;
+      margin: 7px 0;
+    }
+    &_tag:hover {
+      color: var(--text-link-hover);
+    }
   }
 }
 </style>
