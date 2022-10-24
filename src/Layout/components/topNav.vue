@@ -3,8 +3,8 @@
  * @version: 
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
- * @LastEditors: Do not edit
- * @LastEditTime: 2022-10-18 22:30:24
+ * @LastEditors: Chenyx
+ * @LastEditTime: 2022-10-20 19:39:39
 -->
 <template>
   <div class="top-nav">
@@ -18,8 +18,11 @@
         <a @click="toProject">UX</a>
       </div>
       <div class="nav-right flex flex-ce">
-        <div v-if="isShowNavRight" class="nav-right_title">掘金前端热点 <svg-icon icon-name="hot" icon-size="16"></svg-icon>
+        <transition >
+          <div v-if="isShowNavRight" class="nav-right_title">掘金前端热点 <svg-icon icon-name="hot" icon-size="16"></svg-icon>
         </div>
+        </transition>
+        
       </div>
     </div>
   </div>

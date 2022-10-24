@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-17 15:25:20
+ * @LastEditTime: 2022-10-24 01:56:48
 -->
 <script setup lang="ts"></script>
  
@@ -14,7 +14,7 @@
 
 <style>
 * {
-  /* font-size: 14px; */
+  font-size: 14px;
   box-sizing: border-box;
 }
 
@@ -23,8 +23,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  /* color: var(--text-primary);
-  background-color: var(--bg-primary); */
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
 }
 ul {
   list-style-type: none;

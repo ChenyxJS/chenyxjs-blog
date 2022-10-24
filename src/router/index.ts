@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:24:53
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-16 21:26:04
+ * @LastEditTime: 2022-10-23 23:11:56
  */
 import { createRouter, createWebHashHistory } from "vue-router"
 
@@ -26,7 +26,11 @@ const routes = [
             {
                 path:'project',
                 component:()=>import("../views/project/index.vue")
-            }
+            },
+            {
+                path:'article',
+                component:()=>import("../views/article/index.vue")
+            },
         ]
     },
 ]

@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import {svgBuilder}  from "./src/utils/svgBuilder"
+import prismjs from 'vite-plugin-prismjs';
 
 
 
@@ -10,7 +11,7 @@ const srcPath = path.resolve(__dirname, "src")
 // https://vitejs.dev/config/
 export default defineConfig({
   server:{
-    port: 8088,
+    port: 8085,
     open: true,
     proxy:{
       '/api':{
@@ -22,7 +23,8 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    svgBuilder('./src/assets/svg/')
+    svgBuilder('./src/assets/svg/'),
+   
   ],
   resolve: {
     alias: {

@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:39
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-18 00:49:52
+ * @LastEditTime: 2022-10-24 01:15:38
 -->
 <template>
   <div class="home">
@@ -45,9 +45,9 @@ export default defineComponent({
     component: [AriticleContent],
     setup() {
         onMounted(() => {
-          getJuejinData().then(res=>{
-            console.log(res)
-          })
+          // getJuejinData().then(res=>{
+          //   console.log(res)
+          // })
         });
         const data = [
             {
@@ -108,7 +108,7 @@ export default defineComponent({
         typeFilters(code: Number) {
             return code == 1 ? "原创" : "转载";
         },
-       
+        
     },
     components: { AriticleContent }
 });
@@ -118,6 +118,7 @@ export default defineComponent({
 .home {
   display: flex;
   min-height: var(--main-height);
+  overflow: hidden ;
   ::-webkit-scrollbar-thumb {
     display: none;
   }
@@ -149,6 +150,7 @@ export default defineComponent({
             margin-right: 12px;
             padding: 4px 6px;
             border-radius: 6px;
+            cursor: pointer;
             span {
               color: var(--text-primary);
               font-weight: 600;

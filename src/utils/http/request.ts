@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-16 21:23:00
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-18 03:36:40
+ * @LastEditTime: 2022-10-20 19:56:41
  */
 import axios from "axios"
 import { error } from "console"
@@ -21,7 +21,7 @@ const service = axios.create({
 
 service.interceptors.request.use(
     config => {
-        // config.baseURL = "/api"
+        config.baseURL = "/api"
         return config
     },
     error => {

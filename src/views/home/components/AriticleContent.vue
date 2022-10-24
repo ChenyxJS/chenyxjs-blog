@@ -8,7 +8,7 @@
         <i class="iconfont icon-a-lianjielink">{{ typeFilters(item.type) }}</i>
       </div>
       <!-- 文章内容 -->
-      <div class="article-card-content">
+      <div class="article-card-content" @click="toArticle">
         <h1 class="article-card-content_title">{{ item.title }}</h1>
         <section class="article-card-content_content">
           {{ item.content }}
@@ -141,6 +141,9 @@ export default defineComponent({
     typeFilters(code: Number) {
       return code == 1 ? "原创" : "转载";
     },
+    toArticle() {
+      this.$router.push("/index/article");
+    },
   },
 });
 </script>
@@ -148,6 +151,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .article-content {
   flex: 1;
+  height: 100vh;
   overflow: auto;
   .article-card {
     width: 100%;
@@ -172,6 +176,7 @@ export default defineComponent({
       border: var(--border);
       border-radius: 6px;
       padding: 10px;
+      cursor: pointer;
       &_title {
         color: #fff;
         font-size: 18px;

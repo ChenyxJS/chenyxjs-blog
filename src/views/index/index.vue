@@ -32,7 +32,7 @@
                         <h2>多端开源，<br>提升更多学习交流途径</h2>
                         <p>
                             提供了PC端、移动端、响应式的开源项目，也涉及前端、后端、以及全栈和项目部署。可以在<a href="https://github.com/ChenyxJS"
-                                class="link">Github</a>、<a href="https://ChenyxJS.com" class="link">ChenyxJS
+                                class="link">Github</a>、<a @click="toHome" class="link">ChenyxJS
                                 博客</a>等途径免费获取这些项目的源代码。
                         </p>
                         <a href="https://github.com/ChenyxJS" class="btn">更多开源项目</a>
