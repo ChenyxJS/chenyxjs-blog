@@ -4,14 +4,11 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-24 15:29:21
+ * @LastEditTime: 2022-10-24 15:31:05
 -->
 <template>
   <div class="article">
     <v-md-preview class="article-content" :text="article" ref="preview" />
-
-    <!-- <div  >
-    </div> -->
     <div class="article-anchor">
       <div
         class="article-anchor_tag"
