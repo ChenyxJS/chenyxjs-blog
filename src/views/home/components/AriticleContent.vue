@@ -1,5 +1,5 @@
 <template>
-  <div class="article-content">
+  <div id="article-content" class="article-content">
     <!-- 文章card -->
     <div class="article-card" v-for="item in dataList" key="item.id">
       <!-- 文章发布时间、类型 -->
@@ -28,11 +28,12 @@ import { scrollBehavior } from "@/utils/scrollAnimations/scrollShow";
 
 export default defineComponent({
   name: "home",
-  setup() {
+  setup(props, { emit }) {
     onMounted(() => {
       const elList: HTMLCollectionOf<Element> =
         document.getElementsByClassName("article-card");
       scrollBehavior(elList);
+      getHeight();
     });
 
     const data = [
@@ -132,6 +133,14 @@ export default defineComponent({
       },
     ];
     const dataList = reactive(data);
+    function getHeight() {
+      console.log(
+        `output->getHeight()`,
+        document.getElementById("article-content").clientHeight
+      );
+      const height = document.getElementById("article-content").clientHeight;
+      emit("getHeight", height);
+    }
 
     return {
       dataList,
@@ -152,7 +161,7 @@ export default defineComponent({
 .article-content {
   flex: 1;
   height: 100vh;
-  overflow: auto;
+  overflow: scroll;
   .article-card {
     width: 100%;
     padding: 10px;

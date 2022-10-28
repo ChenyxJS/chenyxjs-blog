@@ -4,12 +4,12 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:39
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-24 01:15:38
+ * @LastEditTime: 2022-10-28 22:37:23
 -->
 <template>
-  <div class="home">
+  <div class="home" >
     <!-- 主内容区 -->
-    <ariticle-content/>
+    <ariticle-content @getHeight="setHeight" />
     <!-- 右侧边栏 -->
     <div class="asider-content">
       <div class="asider-articles">
@@ -36,81 +36,92 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, onMounted } from "vue";
-import AriticleContent from "./components/AriticleContent.vue"
-import {getJuejinData} from '@/api/Juejin/index'
+import { defineComponent, reactive, onMounted, onBeforeMount, ref } from "vue";
+import AriticleContent from "./components/AriticleContent.vue";
+// import { getJuejinData} from '@/api/Juejin/index'
 
 export default defineComponent({
-    name: "home",
-    component: [AriticleContent],
-    setup() {
-        onMounted(() => {
-          // getJuejinData().then(res=>{
-          //   console.log(res)
-          // })
-        });
-        const data = [
-            {
-                id: 102301,
-                time: 9990023100,
-                type: 1,
-                title: "这是一个title",
-                des: "这是一个描述",
-                content: "这是一个内容",
-            },
-            {
-                id: 100121,
-                time: 6890099800,
-                type: 2,
-                title: "这是一个title",
-                des: "这是一个描述",
-                content: "这是一个内容",
-            },
-            {
-                id: 100121,
-                time: 6890099800,
-                type: 2,
-                title: "这是一个title",
-                des: "这是一个描述",
-                content: "这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了",
-            },
-            {
-                id: 101231,
-                time: 6890099800,
-                type: 2,
-                title: "这是一个title",
-                des: "这是一个描述",
-                content: "这是一个内容",
-            },
-            {
-                id: 10221,
-                time: 6890099800,
-                type: 2,
-                title: "这是一个title",
-                des: "这是一个描述",
-                content: "这是一个内容",
-            },
-            {
-                id: 1009,
-                time: 6890099800,
-                type: 2,
-                title: "这是一个title",
-                des: "这是一个描述",
-                content: "这是一个内容",
-            },
-        ];
-        const dataList = reactive(data);
-        return {
-            dataList,
-        };
+  name: "home",
+  setup() {
+    onBeforeMount(() => {
+      // 获取文章列表高度
+    }),
+      onMounted(() => {
+        // getJuejinData().then(res=>{
+        //   console.log(res)
+        // })
+      });
+    const data = [
+      {
+        id: 102301,
+        time: 9990023100,
+        type: 1,
+        title: "这是一个title",
+        des: "这是一个描述",
+        content: "这是一个内容",
+      },
+      {
+        id: 100121,
+        time: 6890099800,
+        type: 2,
+        title: "这是一个title",
+        des: "这是一个描述",
+        content: "这是一个内容",
+      },
+      {
+        id: 100121,
+        time: 6890099800,
+        type: 2,
+        title: "这是一个title",
+        des: "这是一个描述",
+        content:
+          "这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了",
+      },
+      {
+        id: 101231,
+        time: 6890099800,
+        type: 2,
+        title: "这是一个title",
+        des: "这是一个描述",
+        content: "这是一个内容",
+      },
+      {
+        id: 10221,
+        time: 6890099800,
+        type: 2,
+        title: "这是一个title",
+        des: "这是一个描述",
+        content: "这是一个内容",
+      },
+      {
+        id: 1009,
+        time: 6890099800,
+        type: 2,
+        title: "这是一个title",
+        des: "这是一个描述",
+        content: "这是一个内容",
+      },
+    ];
+    var windowHeight = ref()
+    const dataList = reactive(data);
+    function setHeight(height){
+      console.log(`output->height`,height)
+      windowHeight.value = height
+    }
+
+    return {
+      dataList,
+      windowHeight,
+      setHeight
+    };
+  },
+  methods: {
+    typeFilters(code: Number) {
+      return code == 1 ? "原创" : "转载";
     },
-    methods: {
-        typeFilters(code: Number) {
-            return code == 1 ? "原创" : "转载";
-        },
-        
-    },
-    components: { AriticleContent }
+   
+  },
+  components: { AriticleContent },
 });
 </script>
 
@@ -118,11 +129,11 @@ export default defineComponent({
 .home {
   display: flex;
   min-height: var(--main-height);
-  overflow: hidden ;
+  overflow: hidden;
   ::-webkit-scrollbar-thumb {
     display: none;
   }
- 
+
   .asider-content {
     margin-left: 24px;
     width: 350px;
@@ -166,5 +177,4 @@ export default defineComponent({
     }
   }
 }
-
 </style>

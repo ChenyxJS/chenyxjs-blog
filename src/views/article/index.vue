@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-24 15:31:05
+ * @LastEditTime: 2022-10-28 21:06:48
 -->
 <template>
   <div class="article">
@@ -14,7 +14,7 @@
         class="article-anchor_tag"
         v-for="anchor in state.titles"
         :key="anchor.lineIndex"
-        :style="{ textIndent: anchor.indent * 14 +'px'}"
+        :style="{ textIndent: anchor.indent * 28 +'px'}"
         @click="handleAnchorClick(anchor)"
       >
         {{ anchor.title }}
@@ -38,6 +38,7 @@ const state: State = reactive({
   id: route.query.id,
   titles: [],
 });
+// 引入markdown文件内容
 let article: string = textMD;
 
 const { proxy } = getCurrentInstance();

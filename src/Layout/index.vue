@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-24 00:58:33
+ * @LastEditTime: 2022-10-28 22:24:06
 -->
 <template>
   <div class="Layout">
@@ -110,6 +110,7 @@ export default {
     .content {
       flex: 1;
       background: var(--bg-inset);
+      overflow: scroll;
     }
   }
 }
