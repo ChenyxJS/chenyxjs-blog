@@ -19,12 +19,6 @@
         <div class="open-source container">
             <div class="open-source-header">
                 <h1>开源项目</h1>
-                <p>
-                    <!-- <a href="https://ChenyxJS.com" class="link">https://ChenyxJS.com</a> -->
-                </p>
-                <p>
-                    <!-- <a href="https://github.com/ChenyxJS" class="link">https://github.com/ChenyxJS</a> -->
-                </p>
             </div>
             <div class="card">
                 <div class="card-body flex flex-middle flex-between">
@@ -52,9 +46,6 @@
     <div class="ux container">
         <div class="ux-header">
             <h1>交互设计</h1>
-            <p>
-                <!-- <a href="https://space.bilibili.com/312560237" class="link">https://space.bilibili.com/312560237/</a> -->
-            </p>
         </div>
         <div class="card flex">
             <div class="card-left">
