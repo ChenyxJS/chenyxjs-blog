@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-17 10:47:26
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-28 22:36:35
+ * @LastEditTime: 2022-11-04 15:05:25
  */
 /**
  * @Descripttion: 根据屏幕滚动加载动画 
@@ -33,7 +33,7 @@ function check(elList: HTMLCollectionOf<Element>) {
         // 获取该元素的top值
         const elTop = elList[i].getBoundingClientRect().top
         // 判断该元素是否在视窗中
-        if (-200 < elTop && elTop < triggerBottom) {
+        if (-triggerBottom < elTop && elTop < triggerBottom) {
             elList[i].classList.add("scrollShow")
 
         } else {

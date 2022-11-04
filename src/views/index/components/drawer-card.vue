@@ -1,3 +1,44 @@
+<template>
+  <div class="drawer-card ">
+    <div class="card-body">
+      <ul>
+        <li style="--i: 5">
+          <a href="#">html</a>
+        </li>
+        <li style="--i: 4">
+          <a href="#">css</a>
+        </li>
+        <li style="--i: 3">
+          <a href="#">vue</a>
+        </li>
+        <li style="--i: 2">
+          <a href="#">react</a>
+        </li>
+        <li style="--i: 1">
+          <a href="#">javascript</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import { controller } from "../js/index";
+
+onMounted(()=>{
+      // Drawer
+      const bannerDrawerScene = new ScrollMagic.Scene({
+      offset: 0, // start scene after scrolling for 100px
+      triggerElement: '.drawer-card'
+    })
+    bannerDrawerScene.setTween('.drawer-card', { backgroundColor: '#8c86fe' });
+    // 控制器添加场景
+  controller.addScene([bannerDrawerScene]);
+})
+</script>
+
+<style scoped>
 .drawer-card {
   display: flex;
   align-items: center;
@@ -17,7 +58,7 @@
   position: relative;
   z-index: var(--i);
   list-style-type: none;
-  transition: .5s;
+  transition: 0.5s;
   cursor: pointer;
 }
 .drawer-card li:hover {
@@ -41,7 +82,7 @@
   background-color: #2e3133;
   transform-origin: right;
   transform: skewY(45deg);
-  transition: .5s;
+  transition: 0.5s;
 }
 .drawer-card li::after {
   content: "摸我，有惊喜！";
@@ -56,7 +97,7 @@
   background-color: #3d3d3d;
   transform-origin: bottom;
   transform: skewX(45deg);
-  transition: .5s;
+  transition: 0.5s;
   color: #fff;
   letter-spacing: 1px;
 }
@@ -74,7 +115,7 @@
 }
 .drawer-card li:last-child::after {
   content: "连";
-  box-shadow: -100px 100px 20px rgba(0, 0, 0, .1);
+  box-shadow: -100px 100px 20px rgba(0, 0, 0, 0.1);
 }
 
 .drawer-card a {
@@ -83,9 +124,10 @@
   display: block;
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .drawer-card li:hover a {
   color: #fff;
 }
+</style>

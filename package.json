@@ -19,7 +19,8 @@
     "vite-plugin-prismjs": "^0.0.8",
     "vite-plugin-style-import": "1.4.1",
     "vue": "^3.2.37",
-    "vue-router": "^4.0.0-beta.13"
+    "vue-router": "^4.0.0-beta.13",
+    "vue-scrollmagic": "^1.2.0"
   },
   "devDependencies": {
     "@types/node": "^18.8.5",

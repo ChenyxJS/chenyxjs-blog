@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-28 21:07:50
+ * @LastEditTime: 2022-11-04 15:07:40
  */
 import { createApp } from 'vue'
 import './style.css'
@@ -39,6 +39,7 @@ import App from './App.vue'
 import router from "./router";
 
 import { formatDate } from "../src/utils/index";
+import Scrollmagic from 'vue-scrollmagic'
 
 import SvgIcon from "@/components/SvgIcon.vue";
 
@@ -46,6 +47,7 @@ const app = createApp(App)
 // 注册全局方法
 app.config.globalProperties.$FormatDate = formatDate
 app.use(VMdPreview)
+// app.use(Scrollmagic)
 app.component('svg-icon',SvgIcon)
 app.use(router)
 app.mount('#app')

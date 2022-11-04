@@ -23,7 +23,6 @@ export default defineConfig({
   plugins: [
     vue(),
     svgBuilder('./src/assets/svg/'),
-   
   ],
   resolve: {
     alias: {

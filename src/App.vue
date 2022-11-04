@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-24 01:56:48
+ * @LastEditTime: 2022-11-04 19:55:02
 -->
 <script setup lang="ts"></script>
  
@@ -13,17 +13,13 @@
 </template>
 
 <style>
-* {
-  font-size: 14px;
-  box-sizing: border-box;
-}
+
 
 body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-  color: var(--text-primary);
   background-color: var(--bg-primary);
 }
 ul {
