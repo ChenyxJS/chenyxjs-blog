@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-28 22:24:06
+ * @LastEditTime: 2022-11-04 22:11:14
 -->
 <template>
   <div class="Layout">
@@ -50,7 +50,7 @@
         </div>
       </div>
       <div class="content">
-        <transition  name="fade" mode="out-in" appear>
+        <transition name="fade" mode="out-in" appear>
           <keep-alive>
             <router-view></router-view>
           </keep-alive>
@@ -74,10 +74,11 @@ export default {
   flex-direction: column;
   width: 100%;
   height: 100vh;
- overflow: hidden;
+  overflow: hidden;
   .container {
     display: flex;
     flex: 1;
+    color: var(--text-navbar);
     .slider {
       width: 350px;
       min-height: var(--main-height);

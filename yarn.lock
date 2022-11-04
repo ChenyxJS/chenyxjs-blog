@@ -150,7 +150,7 @@
     "chalk" "^2.0.0"
     "js-tokens" "^4.0.0"
 
-"@babel/parser@^7.16.4", "@babel/parser@^7.18.10", "@babel/parser@^7.18.4", "@babel/parser@^7.19.6":
+"@babel/parser@^7.16.4", "@babel/parser@^7.18.10", "@babel/parser@^7.19.6":
   "integrity" "sha512-h1IUp81s2JYJ3mRkdxJgs4UvmSsRvDrx5ICSJbPvtWYv5i1nTBGcBpnog+89rAFMwvvru6E5NUHdBe01UeSzYA=="
   "resolved" "https://registry.npmmirror.com/@babel/parser/-/parser-7.19.6.tgz"
   "version" "7.19.6"
@@ -406,15 +406,6 @@
     "estree-walker" "^2.0.2"
     "magic-string" "^0.25.7"
     "postcss" "^8.1.10"
-    "source-map" "^0.6.1"
-
-"@vue/compiler-sfc@2.7.13":
-  "integrity" "sha512-zzu2rLRZlgIU+OT3Atbr7Y6PG+LW4wVQpPfNRrGDH3dM9PsrcVfa+1pKb8bW467bGM3aDOvAnsYLWVpYIv3GRg=="
-  "resolved" "https://registry.npmmirror.com/@vue/compiler-sfc/-/compiler-sfc-2.7.13.tgz"
-  "version" "2.7.13"
-  dependencies:
-    "@babel/parser" "^7.18.4"
-    "postcss" "^8.4.14"
     "source-map" "^0.6.1"
 
 "@vue/compiler-ssr@3.2.40":
@@ -864,11 +855,6 @@
   "integrity" "sha512-Z1PhmomIfypOpoMjRQB70jfvy/wxT50qW08YXO5lMIJkrdq4yOTR+AW7FqutScmB9NkLwxo+jU+kZLbofZZq/w=="
   "resolved" "https://registry.npmmirror.com/csstype/-/csstype-2.6.21.tgz"
   "version" "2.6.21"
-
-"csstype@^3.1.0":
-  "integrity" "sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw=="
-  "resolved" "https://registry.npmmirror.com/csstype/-/csstype-3.1.1.tgz"
-  "version" "3.1.1"
 
 "d3-array@^1.1.1", "d3-array@^1.2.0", "d3-array@1":
   "integrity" "sha512-KHW6M86R+FUPYGb3R5XiYjXPq7VzwxZ22buHhAEVG5ztoEcZZMLov530mmccaqA1GghZArjQV46fuc8kUqhhHw=="
@@ -1765,11 +1751,6 @@
     "section-matter" "^1.0.0"
     "strip-bom-string" "^1.0.0"
 
-"gsap@^2.1.3":
-  "integrity" "sha512-8RFASCqi2FOCBuv7X4o7M6bLdy+1hbR0azg+MG7zz+EVsI+OmJblYsTk0GEepQd2Jg/ItMPiVTibF7r3EVxjZQ=="
-  "resolved" "https://registry.npmmirror.com/gsap/-/gsap-2.1.3.tgz"
-  "version" "2.1.3"
-
 "has-flag@^3.0.0":
   "integrity" "sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw=="
   "resolved" "https://registry.npmmirror.com/has-flag/-/has-flag-3.0.0.tgz"
@@ -2468,7 +2449,7 @@
   "resolved" "https://registry.npmmirror.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz"
   "version" "0.1.1"
 
-"postcss@^8.1.10", "postcss@^8.4.14", "postcss@^8.4.16":
+"postcss@^8.1.10", "postcss@^8.4.16":
   "integrity" "sha512-UNxNOLQydcOFi41yHNMcKRZ39NeXlr8AxGuZJsdub8vIb12fHzcq37DTU/QtbI6WLxNg2gF9Z+8qtRwTj1UI1Q=="
   "resolved" "https://registry.npmmirror.com/postcss/-/postcss-8.4.17.tgz"
   "version" "8.4.17"
@@ -2590,11 +2571,6 @@
     "chokidar" ">=3.0.0 <4.0.0"
     "immutable" "^4.0.0"
     "source-map-js" ">=0.6.2 <2.0.0"
-
-"scrollmagic@^2.0.7":
-  "integrity" "sha512-UYXEGBPVLziovXl3FjHGkY9c4UXKUKopIdXwWR2JapWxCo0U345wYegi7rcsv5vHf/ktc1bSNWy4QRFiV+Yccw=="
-  "resolved" "https://registry.npmmirror.com/scrollmagic/-/scrollmagic-2.0.8.tgz"
-  "version" "2.0.8"
 
 "section-matter@^1.0.0":
   "integrity" "sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA=="
@@ -2950,15 +2926,6 @@
   "resolved" "https://registry.npmmirror.com/vue-router/-/vue-router-4.0.0-beta.13.tgz"
   "version" "4.0.0-beta.13"
 
-"vue-scrollmagic@^1.2.0":
-  "integrity" "sha512-4n+c35mHzEJeNdPShhXFVE9CY0e0318deAQtIF09Dglj4NKcYJXThTKic3gMMLCtyPwEj3derHlGg2Nsquzaaw=="
-  "resolved" "https://registry.npmmirror.com/vue-scrollmagic/-/vue-scrollmagic-1.2.0.tgz"
-  "version" "1.2.0"
-  dependencies:
-    "gsap" "^2.1.3"
-    "scrollmagic" "^2.0.7"
-    "vue" "^2.6.10"
-
 "vue-tsc@^0.40.4":
   "integrity" "sha512-xzuN3g5PnKfJcNrLv4+mAjteMd5wLm5fRhW0034OfNJZY4WhB07vhngea/XeGn7wNYt16r7syonzvW/54dcNiA=="
   "resolved" "https://registry.npmmirror.com/vue-tsc/-/vue-tsc-0.40.13.tgz"
@@ -2966,14 +2933,6 @@
   dependencies:
     "@volar/vue-language-core" "0.40.13"
     "@volar/vue-typescript" "0.40.13"
-
-"vue@^2.6.10":
-  "integrity" "sha512-QnM6ULTNnPmn71eUO+4hdjfBIA3H0GLsBnchnI/kS678tjI45GOUZhXd0oP/gX9isikXz1PAzSnkPspp9EUNfQ=="
-  "resolved" "https://registry.npmmirror.com/vue/-/vue-2.7.13.tgz"
-  "version" "2.7.13"
-  dependencies:
-    "@vue/compiler-sfc" "2.7.13"
-    "csstype" "^3.1.0"
 
 "vue@^3.0.0", "vue@^3.2.25", "vue@^3.2.37", "vue@3.2.40":
   "integrity" "sha512-1mGHulzUbl2Nk3pfvI5aXYYyJUs1nm4kyvuz38u4xlQkLUn1i2R7nDbI4TufECmY8v1qNBHYy62bCaM+3cHP2A=="

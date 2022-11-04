@@ -163,7 +163,6 @@ export default defineComponent({
   height: 100vh;
   overflow: scroll;
   .article-card {
-    width: 100%;
     padding: 10px;
     opacity: 0;
     transform: translateY(100px);
@@ -192,6 +191,7 @@ export default defineComponent({
         margin-bottom: 16px;
       }
       &_content {
+        font-size: 14px;
         color: var(--text-second);
       }
       &_options {

@@ -4,10 +4,10 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:39
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-28 22:37:23
+ * @LastEditTime: 2022-11-04 22:13:24
 -->
 <template>
-  <div class="home" >
+  <div class="home">
     <!-- 主内容区 -->
     <ariticle-content @getHeight="setHeight" />
     <!-- 右侧边栏 -->
@@ -102,24 +102,23 @@ export default defineComponent({
         content: "这是一个内容",
       },
     ];
-    var windowHeight = ref()
+    var windowHeight = ref();
     const dataList = reactive(data);
-    function setHeight(height){
-      console.log(`output->height`,height)
-      windowHeight.value = height
+    function setHeight(height) {
+      console.log(`output->height`, height);
+      windowHeight.value = height;
     }
 
     return {
       dataList,
       windowHeight,
-      setHeight
+      setHeight,
     };
   },
   methods: {
     typeFilters(code: Number) {
       return code == 1 ? "原创" : "转载";
     },
-   
   },
   components: { AriticleContent },
 });
@@ -151,6 +150,7 @@ export default defineComponent({
         section {
           padding-bottom: 20px;
           color: var(--text-second);
+          font-size: 14px;
         }
         .asider-article-card_options {
           p {
