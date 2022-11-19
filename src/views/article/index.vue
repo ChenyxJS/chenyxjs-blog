@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-28 21:06:48
+ * @LastEditTime: 2022-11-10 12:56:27
 -->
 <template>
   <div class="article">
@@ -12,9 +12,9 @@
     <div class="article-anchor">
       <div
         class="article-anchor_tag"
-        v-for="anchor in state.titles"
+        v-for="anchor in articleInfo.titles"
         :key="anchor.lineIndex"
-        :style="{ textIndent: anchor.indent * 28 +'px'}"
+        :style="{ textIndent: anchor.indent * 28 + 'px' }"
         @click="handleAnchorClick(anchor)"
       >
         {{ anchor.title }}
@@ -22,59 +22,77 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
+<script lang="ts">
 import { useRoute } from "vue-router";
-import { reactive, onMounted, ref, getCurrentInstance, nextTick } from "vue";
+import {
+  reactive,
+  onMounted,
+  ref,
+  getCurrentInstance,
+  defineComponent,
+} from "vue";
 import textMD from "@/assets/md/test.md?raw";
 
-const route = useRoute();
-interface State {
+interface ArticleInfo {
   blog: any;
   id: any;
   titles: any;
 }
-const state: State = reactive({
-  blog: [],
-  id: route.query.id,
-  titles: [],
-});
-// 引入markdown文件内容
-let article: string = textMD;
 
-const { proxy } = getCurrentInstance();
-const preview = ref();
-function handleAnchorClick(anchor: any) {
-  console.log(`output->anchor`, anchor);
-  const { lineIndex } = anchor;
-  const heading = preview.value.$el.querySelector(
-    `[data-v-md-line="${lineIndex}"]`
-  );
-  if (heading) {
-    preview.value.scrollToTarget({
-      target: heading,
-      scrollContainer: proxy.$refs.preview.$el,
-      top: 60,
+export default defineComponent({
+  setup() {
+    const { proxy } = getCurrentInstance();
+
+    onMounted(() => {
+    const previewDom: any = proxy.$refs.preview;
+      const anchors = previewDom.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
+      const titles = Array.from(anchors).filter(
+        (title: any) => !!title.innerText.trim()
+      );
+      if (!titles.length) {
+        articleInfo.titles = [];
+        return;
+      }
+      const hTags = Array.from(
+        new Set(titles.map((title: any) => title.tagName))
+      ).sort();
+      articleInfo.titles = titles.map((el: any) => ({
+        title: el.innerText,
+        lineIndex: el.getAttribute("data-v-md-line"),
+        indent: hTags.indexOf(el.tagName),
+      }));
     });
-  }
-}
+    const route = useRoute();
+    const articleInfo: ArticleInfo = reactive({
+      blog: [],
+      id: route.query.id,
+      titles: [],
+    });
+    // 引入markdown文件内容
+    let article: string = textMD;
+    const handleAnchorClick: any = ref();
+    handleAnchorClick.value = (anchor: any) => {
+      console.log(`output->anchor`, anchor);
+      const { lineIndex } = anchor;
+      const previewDom: any = proxy.$refs.preview;
+      const heading = previewDom.$el.querySelector(
+        `[data-v-md-line="${lineIndex}"]`
+      );
+      if (heading) {
+        previewDom.scrollToTarget({
+          target: heading,
+          scrollContainer: previewDom.$el,
+          top: 60,
+        });
+      }
+    };
 
-onMounted(() => {
-  const anchors = proxy.$refs.preview.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
-  const titles = Array.from(anchors).filter(
-    (title: any) => !!title.innerText.trim()
-  );
-  if (!titles.length) {
-    state.titles = [];
-    return;
-  }
-  const hTags = Array.from(
-    new Set(titles.map((title: any) => title.tagName))
-  ).sort();
-  state.titles = titles.map((el: any) => ({
-    title: el.innerText,
-    lineIndex: el.getAttribute("data-v-md-line"),
-    indent: hTags.indexOf(el.tagName),
-  }));
+    return {
+      handleAnchorClick,
+      article,
+      articleInfo,
+    };
+  },
 });
 </script>
 

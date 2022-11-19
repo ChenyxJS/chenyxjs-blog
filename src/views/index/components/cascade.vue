@@ -24,7 +24,7 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* 层叠 */
 .cascade {
   width: 280px;
@@ -68,5 +68,20 @@ onMounted(() => {
 .cascade-active .cascade-inner {
   background: rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 45px #aee5ed;
+}
+@media (max-width: 768px) {
+  .cascade {
+    width: 100%;
+    .cascade-inner {
+      width: 140px;
+      height: 250px;
+      top: calc(50% - 70px);
+      left: calc(50% - 125px);
+      img {
+        width: 140px;
+        height: 250px;
+      }
+    }
+  }
 }
 </style>

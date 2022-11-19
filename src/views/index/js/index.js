@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-11-04 15:59:29
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-11-04 21:56:51
+ * @LastEditTime: 2022-11-17 13:42:37
  */
 export const controller = new ScrollMagic.Controller()
 
@@ -37,7 +37,8 @@ export function scrollMagicController() {
     bannerCardScene.setTween(".banner .card", {
       ...bannerSceneOptions,
       backgroundColor: "white",
-      right: "25%",
+      right: "30%",
+      fontSize: 14
     });
   
     // Banner Content
@@ -113,3 +114,4 @@ export function scrollMagicController() {
     ]);
   }
  
+

@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-11-04 22:49:53
+ * @LastEditTime: 2022-11-05 21:11:47
 -->
 <template>
   <div class="top-nav">
@@ -28,7 +28,8 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import { useRouter } from "vue-router";
 export default defineComponent({
   name: "topNav",
   directives: {
@@ -50,14 +51,24 @@ export default defineComponent({
       return this.$route.path == "/index/home" ? true : false;
     },
   },
-  methods: {
-    toHome() {
-      this.$router.push("/index/home");
-    },
-    toProject() {
-      this.$router.push("/index/project");
-    },
+  setup(){
+     // 实例化路由对象
+     const router = useRouter()
+    // 初始化跳转方法
+    const toHome = ref()
+    toHome.value = ()=> {
+      router.push("/index/home");
+    }
+    const toProject = ref()
+    toProject.value = ()=> {
+      router.push("/index/project");
+    }
+    return{
+      toHome,
+      toProject
+    }
   },
+
 });
 </script>
 

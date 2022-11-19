@@ -4,12 +4,12 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:39
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-11-04 22:13:24
+ * @LastEditTime: 2022-11-05 22:22:44
 -->
 <template>
   <div class="home">
     <!-- 主内容区 -->
-    <ariticle-content @getHeight="setHeight" />
+    <ariticle-content />
     <!-- 右侧边栏 -->
     <div class="asider-content">
       <div class="asider-articles">
@@ -36,21 +36,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, onMounted, onBeforeMount, ref } from "vue";
+import { defineComponent, reactive, ref } from "vue";
 import AriticleContent from "./components/AriticleContent.vue";
-// import { getJuejinData} from '@/api/Juejin/index'
 
 export default defineComponent({
   name: "home",
   setup() {
-    onBeforeMount(() => {
-      // 获取文章列表高度
-    }),
-      onMounted(() => {
-        // getJuejinData().then(res=>{
-        //   console.log(res)
-        // })
-      });
+  
     const data = [
       {
         id: 102301,
@@ -102,17 +94,11 @@ export default defineComponent({
         content: "这是一个内容",
       },
     ];
-    var windowHeight = ref();
     const dataList = reactive(data);
-    function setHeight(height) {
-      console.log(`output->height`, height);
-      windowHeight.value = height;
-    }
+    
 
     return {
       dataList,
-      windowHeight,
-      setHeight,
     };
   },
   methods: {

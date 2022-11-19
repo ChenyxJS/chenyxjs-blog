@@ -4,7 +4,7 @@
     <div class="article-card" v-for="item in dataList" key="item.id">
       <!-- 文章发布时间、类型 -->
       <div class="article-card-sec">
-        <p>{{ $FormatDate(item.time) }}</p>
+        <!-- <p>{{ $FormatDate(item.time) }}</p> -->
         <i class="iconfont icon-a-lianjielink">{{ typeFilters(item.type) }}</i>
       </div>
       <!-- 文章内容 -->
@@ -24,18 +24,26 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive, ref, onMounted } from "vue";
-import { scrollBehavior } from "@/utils/scrollAnimations/scrollShow";
+import { useRouter } from "vue-router";
+import { scrollBehavior } from "../../../utils/scrollAnimations/scrollShow";
 
 export default defineComponent({
   name: "home",
-  setup(props, { emit }) {
+  setup() {
     onMounted(() => {
       const elList: HTMLCollectionOf<Element> =
         document.getElementsByClassName("article-card");
       scrollBehavior(elList);
-      getHeight();
     });
 
+    // 实例化路由对象
+    const router = useRouter()
+    // 初始化跳转方法
+    const toArticle = ref()
+    toArticle.value = ()=> {
+      router.push("/index/article");
+    }
+    
     const data = [
       {
         id: 102301,
@@ -133,26 +141,18 @@ export default defineComponent({
       },
     ];
     const dataList = reactive(data);
-    function getHeight() {
-      console.log(
-        `output->getHeight()`,
-        document.getElementById("article-content").clientHeight
-      );
-      const height = document.getElementById("article-content").clientHeight;
-      emit("getHeight", height);
-    }
+
 
     return {
       dataList,
+      toArticle
     };
   },
   methods: {
     typeFilters(code: Number) {
       return code == 1 ? "原创" : "转载";
     },
-    toArticle() {
-      this.$router.push("/index/article");
-    },
+   
   },
 });
 </script>

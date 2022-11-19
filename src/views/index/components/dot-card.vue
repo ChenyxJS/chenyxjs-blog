@@ -49,8 +49,8 @@ onMounted(() => {
   // 控制器添加场景
   controller.addScene([dotScene]);
 
-  const dotBox = document.querySelector(".dot-box");
-  dotBox.addEventListener("mouseenter", function (e) {
+  const dotBox:any = document.querySelector(".dot-box");
+  dotBox.addEventListener("mouseenter", function (e:Event) {
     e.stopPropagation();
     // 给dotBox添加或移除active样式
     dotBox.classList.toggle("active");

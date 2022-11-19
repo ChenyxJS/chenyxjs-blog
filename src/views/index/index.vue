@@ -36,7 +36,7 @@
           <div class="card-pc-view">
             <img
               class="open-source-pc-img"
-              src="/index/images/car/pc.png"
+              src="../../assets/images/pc.png"
               alt=""
             />
           </div>
@@ -121,8 +121,9 @@
 import drawerCard from "./components/drawer-card.vue";
 import dotCard from "./components/dot-card.vue";
 import cascade from "./components/cascade.vue";
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { scrollMagicController } from "./js/index";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   components: {
@@ -135,19 +136,20 @@ export default defineComponent({
       // 定义控制器
       scrollMagicController();
     });
-
-    return {};
+    // 实例化路由对象
+    const router = useRouter();
+    // 初始化跳转方法
+    const toHome = ref();
+    toHome.value = () => {
+      router.push("/index/home");
+    };
+    return { toHome };
   },
-  methods: {
-    toHome() {
-      this.$router.push("/index/home");
-    },
-  },
+  methods: {},
 });
 </script>
 
 <style lang="scss" scoped>
-
 * {
   padding: 0;
   margin: 0;
@@ -240,7 +242,6 @@ li {
       font-weight: bolder;
       letter-spacing: 6px;
       width: 50%;
-
       position: absolute;
       top: 50%;
       right: 50%;
@@ -295,7 +296,8 @@ li {
       }
       .card-right {
         width: 60%;
-        background: url(../../assets/images/home-bg.png) center top / 165% no-repeat fixed;
+        background: url(../../assets/images/home-bg.png) center top / 165%
+          no-repeat fixed;
       }
     }
     .card-group {
@@ -318,6 +320,63 @@ li {
       font-size: 32px;
       font-weight: 600;
       letter-spacing: 2px;
+    }
+  }
+}
+
+// 移动端适配
+@media (max-width: 768px) {
+  // banner
+  .banner.is-dark .container {
+    padding: 20px;
+    .card {
+      min-height: 200px;
+      font-size: 20px;
+      .details {
+        font-size: 14px;
+      }
+    }
+  }
+  // panel
+  .panel {
+    .ux-card {
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        .card-right {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+    .project-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .card-group {
+      display: flex !important;
+      flex-direction: column;
+
+      .item{
+        width: 100%;
+        height: 450px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  // footer
+  .footer .container {
+    justify-content: center;
+    .footer-item:first-child {
+      display: none;
+    }
+    .footer-item:nth-child(3) {
+      display: none;
+    }
+    .footer-item:last-child {
+      display: none;
     }
   }
 }

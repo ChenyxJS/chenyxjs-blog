@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-17 10:47:26
  * @LastEditors: Chenyx
- * @LastEditTime: 2022-11-04 15:05:25
+ * @LastEditTime: 2022-11-05 22:47:45
  */
 /**
  * @Descripttion: 根据屏幕滚动加载动画 
@@ -16,7 +16,6 @@ export function scrollBehavior(elList: HTMLCollectionOf<Element>) {
     // 监听scroll事件
     document.getElementById('article-content').addEventListener("scroll", () => {
         check(elList)
-        console.log(`output->1`,1)
     })
 }
 /**
