@@ -4,14 +4,16 @@
     <div class="article-card" v-for="item in dataList" key="item.id">
       <!-- 文章发布时间、类型 -->
       <div class="article-card-sec">
-        <!-- <p>{{ $FormatDate(item.time) }}</p> -->
-        <i class="iconfont icon-a-lianjielink">{{ typeFilters(item.type) }}</i>
+        <p>{{ $FormatDate(item.articleCreateTime) }}</p>
+        <i class="iconfont icon-a-lianjielink">{{
+          typeFilters(item.articleType)
+        }}</i>
       </div>
       <!-- 文章内容 -->
       <div class="article-card-content" @click="toArticle">
-        <h1 class="article-card-content_title">{{ item.title }}</h1>
+        <h1 class="article-card-content_title">{{ item.articleTitle }}</h1>
         <section class="article-card-content_content">
-          {{ item.content }}
+          {{ item.articleTitle }}
         </section>
         <div class="article-card-content_options">
           <i class="iconfont icon-a-fenxiangshare" style="color: #e6a23c"></i>
@@ -22,145 +24,64 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, reactive, ref, onMounted } from "vue";
+<script setup lang="ts">
+import { getArticleList } from "@/api/article";
+import { ref, onMounted, onUpdated,watch } from "vue";
 import { useRouter } from "vue-router";
 import { scrollBehavior } from "../../../utils/scrollAnimations/scrollShow";
 
-export default defineComponent({
-  name: "home",
-  setup() {
-    onMounted(() => {
-      const elList: HTMLCollectionOf<Element> =
-        document.getElementsByClassName("article-card");
-      scrollBehavior(elList);
-    });
+import { useCategoryStore } from "@/store/modules/category";
+import { ArticleQuery } from "@/api/article/types";
 
-    // 实例化路由对象
-    const router = useRouter()
-    // 初始化跳转方法
-    const toArticle = ref()
-    toArticle.value = ()=> {
-      router.push("/index/article");
-    }
-    
-    const data = [
-      {
-        id: 102301,
-        time: 9990023100,
-        type: 1,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content: "这是一个内容",
-      },
-      {
-        id: 100121,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content: "这是一个内容",
-      },
-      {
-        id: 100121,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content:
-          "这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了",
-      },
-      {
-        id: 1002321,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content:
-          "这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了",
-      },
-      {
-        id: 1990121,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content:
-          "这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了",
-      },
-      {
-        id: 1990222121,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content:
-          "这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了",
-      },
-      {
-        id: 199012142,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content:
-          "这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了",
-      },
-      {
-        id: 1992121,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content:
-          "这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了这是一个内容,这是一个很长很长的内容，还有很多字没有打出来，后面还有一千万个字，懒得全部打出来了",
-      },
-      {
-        id: 101231,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content: "这是一个内容",
-      },
-      {
-        id: 10221,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content: "这是一个内容",
-      },
-      {
-        id: 1009,
-        time: 6890099800,
-        type: 2,
-        title: "这是一个title",
-        des: "这是一个描述",
-        content: "这是一个内容",
-      },
-    ];
-    const dataList = reactive(data);
-
-
-    return {
-      dataList,
-      toArticle
-    };
+const categoryStore = useCategoryStore();
+const articleQuery: ArticleQuery = {
+  article_type: Number(categoryStore.getNowCategory()),
+  pageNum: 1,
+  pageSize: 0,
+};
+watch(
+  categoryStore.getNowCategory(),
+  (newVar,oldVar)=>{
+    console.log('更新了');
+    getList()
   },
-  methods: {
-    typeFilters(code: Number) {
-      return code == 1 ? "原创" : "转载";
-    },
-   
-  },
+  {deep:true}
+)
+
+onMounted(() => {
+  getList()
+  onUpdated(() => {
+    const elList: HTMLCollectionOf<Element> =
+      document.getElementsByClassName("article-card");
+    scrollBehavior(elList);
+  });
 });
+function getList(){
+  getArticleList(articleQuery).then((res: any) => {
+    if (res.success) {
+      dataList.value = res.root;
+    }
+  });
+}
+
+// 实例化路由对象
+const router = useRouter();
+// 初始化跳转方法
+const toArticle = ref();
+toArticle.value = () => {
+  router.push("/index/article");
+};
+
+const dataList = ref();
+function typeFilters(code: Number) {
+  return code == 1 ? "原创" : "转载";
+}
 </script>
 
 <style lang="scss" scoped>
 .article-content {
   flex: 1;
-  height: 100vh;
+  height: calc(100vh - 40px);
   overflow: scroll;
   .article-card {
     padding: 10px;

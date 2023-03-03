@@ -3,10 +3,11 @@
  * @version: 
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
- * @LastEditors: Chenyx
- * @LastEditTime: 2022-11-04 22:08:58
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2022-12-29 12:47:18
  */
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import './style.css'
 import "./assets/iconfont/iconfont.css";
 import '@/style/flex.scss'
@@ -41,11 +42,14 @@ import router from "./router";
 import { formatDate } from "../src/utils/index";
 
 import SvgIcon from "@/components/SvgIcon.vue";
+const pinia = createPinia()
 
 const app = createApp(App)
+
 // 注册全局方法
 app.config.globalProperties.$FormatDate = formatDate
 app.use(VMdPreview)
 app.component('svg-icon',SvgIcon)
 app.use(router)
+app.use(pinia)
 app.mount('#app')

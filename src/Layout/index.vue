@@ -3,8 +3,8 @@
  * @version: 
  * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
- * @LastEditors: Chenyx
- * @LastEditTime: 2022-11-04 22:11:14
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2023-03-03 15:18:14
 -->
 <template>
   <div class="Layout">
@@ -14,25 +14,16 @@
       <div class="slider">
         <!-- 标签分类 -->
         <ul class="article-tags">
-          <li class="article-tags-item">
-            <i class="iconfont icon-a-biaoqianlabel is-active"></i>
-            <a href="">全部</a>
-          </li>
-          <li class="article-tags-item">
-            <i class="iconfont icon-a-biaoqianlabel info"></i>
-            <a href="">前端</a>
-          </li>
-          <li class="article-tags-item">
-            <i class="iconfont icon-a-biaoqianlabel info"></i>
-            <a href="">前端资源</a>
-          </li>
-          <li class="article-tags-item">
-            <i class="iconfont icon-a-biaoqianlabel info"></i>
-            <a href="">git</a>
-          </li>
-          <li class="article-tags-item">
-            <i class="iconfont icon-a-biaoqianlabel info"></i>
-            <a href="">其他</a>
+          <li
+            @click="change(item.id)"
+            v-for="item in state.store.getCategory()"
+            class="article-tags-item"
+          >
+            <i
+              class="iconfont icon-a-biaoqianlabel"
+              :class="[item.active ? 'is-active' : '']"
+            ></i>
+            <a>{{ item.name }}</a>
           </li>
         </ul>
         <!-- 最新动态 -->
@@ -59,13 +50,28 @@
     </div>
   </div>
 </template>
-<script lang="ts">
+<script setup lang="ts">
+import { useCategoryStore } from "@/store/modules/category";
 import topNav from "./components/topNav.vue";
-export default {
-  components: {
-    topNav,
-  },
-};
+import { useRouter,useRoute } from "vue-router";
+import { reactive } from "vue";
+
+components: {
+  topNav;
+}
+const state = reactive({
+  router: useRouter(),
+  route:useRoute(),
+  store: useCategoryStore(),
+});
+
+function toHomePage() {
+  state.router.push({ path: "/index/home", replace: true });
+}
+function change(id: number) {
+  state.store.changeCategory(id);
+  toHomePage();
+}
 </script>
 
 <style lang="scss" scoped>
@@ -86,7 +92,6 @@ export default {
       padding: 0px 32px;
 
       .article-tags {
-        width: 100;
         padding-bottom: 32px;
         border-bottom: var(--border);
         .article-tags-item {

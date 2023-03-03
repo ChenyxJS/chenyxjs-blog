@@ -3,12 +3,10 @@
  * @version: 
  * @Author: Chenyx
  * @Date: 2022-10-16 21:23:00
- * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-20 19:56:41
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2023-03-02 20:21:37
  */
 import axios from "axios"
-import { error } from "console"
-import { config } from "process"
 import Qs from "qs"
 const service = axios.create({
     withCredentials: true,

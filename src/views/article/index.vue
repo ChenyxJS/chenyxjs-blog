@@ -3,8 +3,8 @@
  * @version: 
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
- * @LastEditors: Chenyx
- * @LastEditTime: 2022-11-10 12:56:27
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2023-03-02 23:18:35
 -->
 <template>
   <div class="article">
@@ -30,8 +30,10 @@ import {
   ref,
   getCurrentInstance,
   defineComponent,
+  watch,
 } from "vue";
 import textMD from "@/assets/md/test.md?raw";
+import { getArticleByUrl } from "@/api/article/index";
 
 interface ArticleInfo {
   blog: any;
@@ -42,10 +44,24 @@ interface ArticleInfo {
 export default defineComponent({
   setup() {
     const { proxy } = getCurrentInstance();
-
+    const article = ref(textMD);
+    getArticleByUrl().then((res) => {
+      // article.value = res;
+    });
     onMounted(() => {
-    const previewDom: any = proxy.$refs.preview;
+      renderAnchors()
+    });
+    watch(
+      article,
+      (val, oldVal) => {
+        renderAnchors();
+      },
+      { deep: true }
+    );
+    function renderAnchors() {
+      const previewDom: any = proxy.$refs.preview;
       const anchors = previewDom.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
+      console.log(anchors);
       const titles = Array.from(anchors).filter(
         (title: any) => !!title.innerText.trim()
       );
@@ -61,15 +77,15 @@ export default defineComponent({
         lineIndex: el.getAttribute("data-v-md-line"),
         indent: hTags.indexOf(el.tagName),
       }));
-    });
+    }
+
     const route = useRoute();
     const articleInfo: ArticleInfo = reactive({
       blog: [],
       id: route.query.id,
       titles: [],
     });
-    // 引入markdown文件内容
-    let article: string = textMD;
+
     const handleAnchorClick: any = ref();
     handleAnchorClick.value = (anchor: any) => {
       console.log(`output->anchor`, anchor);
