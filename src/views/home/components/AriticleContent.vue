@@ -26,7 +26,7 @@
 </template>
 <script setup lang="ts">
 import { getArticleList } from "@/api/article";
-import { ref, onMounted, onUpdated,watch } from "vue";
+import { ref, onMounted, onUpdated, watch } from "vue";
 import { useRouter } from "vue-router";
 import { scrollBehavior } from "../../../utils/scrollAnimations/scrollShow";
 
@@ -35,32 +35,37 @@ import { ArticleQuery } from "@/api/article/types";
 
 const categoryStore = useCategoryStore();
 const articleQuery: ArticleQuery = {
-  article_type: Number(categoryStore.getNowCategory()),
+  articleType: categoryStore.getNowCategory().value,
   pageNum: 1,
   pageSize: 0,
 };
+let dataList = ref([]);
+
 watch(
   categoryStore.getNowCategory(),
-  (newVar,oldVar)=>{
-    console.log('更新了');
-    getList()
+  (newVar, oldVar) => {
+    articleQuery.articleType = newVar;
+    getList();
   },
-  {deep:true}
-)
+  { deep: true }
+);
 
 onMounted(() => {
-  getList()
+  getList();
   onUpdated(() => {
     const elList: HTMLCollectionOf<Element> =
       document.getElementsByClassName("article-card");
     scrollBehavior(elList);
   });
 });
-function getList(){
+function getList() {
   getArticleList(articleQuery).then((res: any) => {
     if (res.success) {
-      dataList.value = res.root;
+      dataList.value = res.root || [];
+    }else{
+      dataList.value = [];
     }
+    console.log(dataList.value);
   });
 }
 
@@ -72,7 +77,6 @@ toArticle.value = () => {
   router.push("/index/article");
 };
 
-const dataList = ref();
 function typeFilters(code: Number) {
   return code == 1 ? "原创" : "转载";
 }
