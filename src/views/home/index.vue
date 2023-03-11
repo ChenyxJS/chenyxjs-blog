@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:39
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-07 19:22:20
+ * @LastEditTime: 2023-03-11 17:07:50
 -->
 <template>
   <div class="home">
@@ -163,4 +163,9 @@ export default defineComponent({
     }
   }
 }
+@media screen and (max-width:576px){
+  .asider-content {
+    display: none;
+  }
+} 
 </style>

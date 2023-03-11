@@ -4,14 +4,12 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2022-12-29 12:47:18
+ * @LastEditTime: 2023-03-09 18:09:23
  */
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import './style.css'
+import '@/style/index.scss'
 import "./assets/iconfont/iconfont.css";
-import '@/style/flex.scss'
-import '@/style/scrollShow.scss'
 // 引入v-md-editor组件
 import VMdPreview from '@kangc/v-md-editor/lib/preview';
 import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
@@ -26,7 +24,7 @@ import Prism from 'prismjs';
 
 VMdPreview.use(vuepressTheme, {
     Prism,
-    extend(md) {
+    extend() {
       // md为 markdown-it 实例，可以在此处进行修改配置,并使用 plugin 进行语法扩展
       // md.set(option).use(plugin);
     },

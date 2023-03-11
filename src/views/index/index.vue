@@ -141,7 +141,7 @@ export default defineComponent({
     // 初始化跳转方法
     const toHome = ref();
     toHome.value = () => {
-      router.push("/index/home");
+      router.push("/blog/home");
     };
     return { toHome };
   },

@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-02 23:18:35
+ * @LastEditTime: 2023-03-11 17:02:59
 -->
 <template>
   <div class="article">
@@ -12,7 +12,7 @@
     <div class="article-anchor">
       <div
         class="article-anchor_tag"
-        v-for="anchor in articleInfo.titles"
+        v-for="anchor in data.anchorList"
         :key="anchor.lineIndex"
         :style="{ textIndent: anchor.indent * 28 + 'px' }"
         @click="handleAnchorClick(anchor)"
@@ -23,93 +23,99 @@
   </div>
 </template>
 <script lang="ts">
-import { useRoute } from "vue-router";
-import {
-  reactive,
-  onMounted,
-  ref,
-  getCurrentInstance,
-  defineComponent,
-  watch,
-} from "vue";
-import textMD from "@/assets/md/test.md?raw";
-import { getArticleByUrl } from "@/api/article/index";
+ export default{
+  name: "article"
+ }
+</script>
+<script setup lang="ts">
 
-interface ArticleInfo {
-  blog: any;
-  id: any;
-  titles: any;
+import { useRoute } from "vue-router";
+import { reactive, ref, getCurrentInstance, onUpdated, onMounted } from "vue";
+import { getArticleByUrl } from "@/api/article/index";
+import axios from "axios";
+
+// data
+interface Anchor {
+  title: string;
+  lineIndex: number;
+  indent: number;
+}
+interface Data {
+  anchorList: Anchor[];
+}
+let data: Data = reactive({
+  anchorList: [],
+});
+let article = ref();
+const { proxy } = getCurrentInstance();
+const route = useRoute();
+// 获取文章内容
+const url: string = String(route.query.articleUrl);
+// request()
+
+// hook
+onMounted(() => {
+  getData(url);
+});
+onUpdated(() => {
+  renderAnchors();
+});
+
+// function
+function request() {
+  axios
+    .get(
+      "http://rqqc5vc9c.hd-bkt.clouddn.com/Vue3%E6%9E%84%E5%BB%BACesium%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89.md"
+    )
+    .then((response) => {
+      article.value = response;
+    });
 }
 
-export default defineComponent({
-  setup() {
-    const { proxy } = getCurrentInstance();
-    const article = ref(textMD);
-    getArticleByUrl().then((res) => {
-      // article.value = res;
-    });
-    onMounted(() => {
-      renderAnchors()
-    });
-    watch(
-      article,
-      (val, oldVal) => {
-        renderAnchors();
-      },
-      { deep: true }
-    );
-    function renderAnchors() {
-      const previewDom: any = proxy.$refs.preview;
-      const anchors = previewDom.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
-      console.log(anchors);
-      const titles = Array.from(anchors).filter(
-        (title: any) => !!title.innerText.trim()
-      );
-      if (!titles.length) {
-        articleInfo.titles = [];
-        return;
-      }
-      const hTags = Array.from(
-        new Set(titles.map((title: any) => title.tagName))
-      ).sort();
-      articleInfo.titles = titles.map((el: any) => ({
-        title: el.innerText,
-        lineIndex: el.getAttribute("data-v-md-line"),
-        indent: hTags.indexOf(el.tagName),
-      }));
-    }
+// 获取markdown
+function getData(url: string) {
+  console.log(url);
+  getArticleByUrl(url).then((res) => {
+    article.value = res;
+  });
+}
 
-    const route = useRoute();
-    const articleInfo: ArticleInfo = reactive({
-      blog: [],
-      id: route.query.id,
-      titles: [],
+// 渲染目录
+function renderAnchors() {
+  const previewDom: any = proxy.$refs.preview;
+  const anchors = previewDom.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
+  const titles = Array.from(anchors).filter(
+    (title: any) => !!title.innerText.trim()
+  );
+  if (!titles.length) {
+    data.anchorList = [];
+    return;
+  }
+  const hTags = Array.from(
+    new Set(titles.map((title: any) => title.tagName))
+  ).sort();
+  data.anchorList = titles.map((el: any) => ({
+    title: el.innerText,
+    lineIndex: el.getAttribute("data-v-md-line"),
+    indent: hTags.indexOf(el.tagName),
+  }));
+}
+
+// 目录点击跳转
+function handleAnchorClick(anchor: Anchor) {
+  const { lineIndex } = anchor;
+  const previewDom: any = proxy.$refs.preview;
+  const heading = previewDom.$el.querySelector(
+    `[data-v-md-line="${lineIndex}"]`
+  );
+  if (heading) {
+    previewDom.scrollToTarget({
+      target: heading,
+      scrollContainer: previewDom.$el,
+      top: 60,
     });
-
-    const handleAnchorClick: any = ref();
-    handleAnchorClick.value = (anchor: any) => {
-      console.log(`output->anchor`, anchor);
-      const { lineIndex } = anchor;
-      const previewDom: any = proxy.$refs.preview;
-      const heading = previewDom.$el.querySelector(
-        `[data-v-md-line="${lineIndex}"]`
-      );
-      if (heading) {
-        previewDom.scrollToTarget({
-          target: heading,
-          scrollContainer: previewDom.$el,
-          top: 60,
-        });
-      }
-    };
-
-    return {
-      handleAnchorClick,
-      article,
-      articleInfo,
-    };
-  },
-});
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -123,7 +129,6 @@ export default defineComponent({
   &-content {
     flex: 1;
     padding-bottom: 60px;
-    height: 100vh;
     overflow: auto;
   }
   &-anchor {
@@ -139,4 +144,9 @@ export default defineComponent({
     }
   }
 }
+@media screen and (max-width:576px){
+  .article-anchor {
+    display: none;
+  }
+} 
 </style>

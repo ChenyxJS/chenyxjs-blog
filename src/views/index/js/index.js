@@ -3,8 +3,8 @@
  * @version: 
  * @Author: Chenyx
  * @Date: 2022-11-04 15:59:29
- * @LastEditors: Chenyx
- * @LastEditTime: 2022-11-17 13:42:37
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2023-03-09 18:17:27
  */
 export const controller = new ScrollMagic.Controller()
 
