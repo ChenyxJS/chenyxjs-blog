@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-11 17:13:31
+ * @LastEditTime: 2023-03-13 17:58:11
 -->
 <template>
   <div class="top-nav">
@@ -16,7 +16,7 @@
         ></search-input>
       </div>
       <div class="nav-options">
-        <a href="">门户</a>
+        <a href="/">门户</a>
         <a @click="toHome">总览</a>
         <a @click="toProject">UX</a>
       </div>

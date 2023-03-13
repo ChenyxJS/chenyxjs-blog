@@ -354,6 +354,12 @@ li {
     .project-card {
       display: flex;
       flex-direction: column;
+      .card-body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
     }
     .card-group {
       display: flex !important;

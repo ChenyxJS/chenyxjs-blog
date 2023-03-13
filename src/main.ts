@@ -4,17 +4,18 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-09 18:09:23
+ * @LastEditTime: 2023-03-13 10:32:26
  */
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import '@/style/index.scss'
 import "./assets/iconfont/iconfont.css";
 // 引入v-md-editor组件
 import VMdPreview from '@kangc/v-md-editor/lib/preview';
 import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
 import '@kangc/v-md-editor/lib/style/base-editor.css';
 import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
+import '@/style/index.scss'
+
 
 
 

@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-12 20:53:48
+ * @LastEditTime: 2023-03-13 11:04:32
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { defineConfig } from "vite";
@@ -39,7 +39,7 @@ export default defineConfig({
     terserOptions: {
       compress: {
         // warnings: false,
-        drop_console: true, //打包时删除console
+        drop_console: false, //打包时删除console
         drop_debugger: true, //打包时删除 debugger
         pure_funcs: ["console.log"],
       },
