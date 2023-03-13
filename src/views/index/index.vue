@@ -10,7 +10,7 @@
         </section>
         <div class="card">
           ChenyxJS
-          <p class="details">乘风破浪，愿归来时和出发一样，不改初见模样</p>
+          <p class="details">少年曾有惑，走马平生消尽处，见万事如流</p>
         </div>
       </div>
     </div>

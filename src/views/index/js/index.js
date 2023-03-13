@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-11-04 15:59:29
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-09 18:17:27
+ * @LastEditTime: 2023-03-12 21:46:30
  */
 export const controller = new ScrollMagic.Controller()
 
@@ -38,7 +38,7 @@ export function scrollMagicController() {
       ...bannerSceneOptions,
       backgroundColor: "white",
       right: "30%",
-      fontSize: 14
+      fontSize: 40
     });
   
     // Banner Content
@@ -59,24 +59,24 @@ export function scrollMagicController() {
   
     // Cat Car
     const mpImages = [
-      './assets/images/mp1.png',
-      './assets/images/mp3.png',
-      './assets/images/mp2.png',
-      './assets/images/mp4.png',
-      './assets/images/mp5.png',
-      './assets/images/mp6.png',
-      './assets/images/mp7.png',
-      './assets/images/mp8.png',
-      './assets/images/mp9.png',
-      './assets/images/mp10.png',
+      './images/mp1.png',
+      './images/mp3.png',
+      './images/mp2.png',
+      './images/mp4.png',
+      './images/mp5.png',
+      './images/mp6.png',
+      './images/mp7.png',
+      './images/mp8.png',
+      './images/mp9.png',
+      './images/mp10.png',
     ]
     openSourceTween(mpImages, '.open-source-img')
     // Pc
     const pcImages = [
-      './assets/images/pc1.png',
-      './assets/images/pc2.png',
-      './assets/images/pc3.png',
-      './assets/images/pc4.png',
+      './images/pc1.png',
+      './images/pc2.png',
+      './images/pc3.png',
+      './images/pc4.png',
     ]
     openSourceTween(pcImages, '.open-source-pc-img')
   

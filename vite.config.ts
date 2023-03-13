@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-03 13:55:01
+ * @LastEditTime: 2023-03-12 20:53:48
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { defineConfig } from "vite";
@@ -32,7 +32,7 @@ export default defineConfig({
     },
   },
   build: {
-    assetsDir: "./static",
+    assetsDir: "./assets",
     chunkSizeWarningLimit: 500,
     minify: "terser",
     cssCodeSplit: true, // 如果设置为false，整个项目中的所有 CSS 将被提取到一个 CSS 文件中
@@ -50,9 +50,9 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        chunkFileNames: "asstes/js/[name]-[hash].js",
-        entryFileNames: "asstes/js/[name]-[hash].js",
-        assetFileNames: "asstes/[ext]/[name]-[hash].[ext]",
+        chunkFileNames: "assets/js/[name]-[hash].js",
+        entryFileNames: "assets/js/[name]-[hash].js",
+        assetFileNames: "assets/[ext]/[name]-[hash].[ext]",
         manualChunks: (id) => {
           // 使用函数形式时，每个解析的模块 id 都会传递给函数。
           // 如果返回字符串，则模块及其所有依赖项将添加到具有给定名称的手动块中。
