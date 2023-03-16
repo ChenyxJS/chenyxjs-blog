@@ -2,13 +2,15 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-13 11:04:32
+ * @LastEditTime: 2023-03-14 14:38:15
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
 import { svgBuilder } from "./src/utils/svgBuilder";
+import postCssPxToRem from "postcss-pxtorem"
+
 
 const srcPath = path.resolve(__dirname, "src");
 
@@ -31,6 +33,16 @@ export default defineConfig({
       "@": srcPath,
     },
   },
+  // css:{
+  //   postcss: {
+  //     plugins: [
+  //       postCssPxToRem({
+  //         rootValue: 132, // 1rem的大小
+  //         propList: ['*'], // 需要转换的属性，这里选择全部都进行转换
+  //       })
+  //     ]
+  //   }
+  // },
   build: {
     assetsDir: "./assets",
     chunkSizeWarningLimit: 500,
@@ -69,3 +81,5 @@ export default defineConfig({
     },
   },
 });
+
+

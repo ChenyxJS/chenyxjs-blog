@@ -3,18 +3,18 @@
  * @version: 
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
- * @LastEditors: Chenyx
- * @LastEditTime: 2022-11-04 19:55:02
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2023-03-14 14:30:24
 -->
-<script setup lang="ts"></script>
- 
+<script setup lang="ts">
+
+</script>
+
 <template>
   <router-view></router-view>
 </template>
 
 <style>
-
-
 body {
   width: 100%;
   height: 100%;
@@ -34,11 +34,11 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 6px;
   /* background: var(--text-primary); */
 }
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   border-radius: 3px;
   background-color: var(--text-second);
 }

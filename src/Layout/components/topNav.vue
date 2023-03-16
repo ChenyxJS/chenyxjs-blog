@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-13 17:58:11
+ * @LastEditTime: 2023-03-14 10:12:21
 -->
 <template>
   <div class="top-nav">
@@ -18,7 +18,7 @@
       <div class="nav-options">
         <a href="/">门户</a>
         <a @click="toHome">总览</a>
-        <a @click="toProject">UX</a>
+        <!-- <a @click="toProject">UX</a> -->
       </div>
       <div class="nav-right flex flex-ce">
         <transition>
