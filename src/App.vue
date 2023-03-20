@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-14 14:30:24
+ * @LastEditTime: 2023-03-20 20:48:16
 -->
 <script setup lang="ts">
 
@@ -21,6 +21,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--bg-primary);
+  font-size: 14px;
 }
 ul {
   list-style-type: none;

@@ -150,7 +150,7 @@
     "chalk" "^2.0.0"
     "js-tokens" "^4.0.0"
 
-"@babel/parser@^7.16.4", "@babel/parser@^7.18.10", "@babel/parser@^7.19.6":
+"@babel/parser@^7.16.4", "@babel/parser@^7.18.10", "@babel/parser@^7.18.4", "@babel/parser@^7.19.6":
   "integrity" "sha512-h1IUp81s2JYJ3mRkdxJgs4UvmSsRvDrx5ICSJbPvtWYv5i1nTBGcBpnog+89rAFMwvvru6E5NUHdBe01UeSzYA=="
   "resolved" "https://registry.npmmirror.com/@babel/parser/-/parser-7.19.6.tgz"
   "version" "7.19.6"
@@ -200,6 +200,13 @@
   "integrity" "sha512-GcIY79elgB+azP74j8vqkiXz8xLFfIzbQJdlwOPisgbKT00tviJQuEghOXSMVxJ00HoYJbGswr4kcllUc4xCcg=="
   "resolved" "https://registry.npmmirror.com/@braintree/sanitize-url/-/sanitize-url-3.1.0.tgz"
   "version" "3.1.0"
+
+"@iktakahiro/markdown-it-katex@^4.0.1":
+  "integrity" "sha512-kGFooO7fIOgY34PSG8ZNVsUlKhhNoqhzW2kq94TNGa8COzh73PO4KsEoPOsQVG1mEAe8tg7GqG0FoVao0aMHaw=="
+  "resolved" "https://registry.npmmirror.com/@iktakahiro/markdown-it-katex/-/markdown-it-katex-4.0.1.tgz"
+  "version" "4.0.1"
+  dependencies:
+    "katex" "^0.12.0"
 
 "@jridgewell/gen-mapping@^0.1.0":
   "integrity" "sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w=="
@@ -334,6 +341,24 @@
   "resolved" "https://registry.npmmirror.com/@types/json-schema/-/json-schema-7.0.11.tgz"
   "version" "7.0.11"
 
+"@types/linkify-it@*":
+  "integrity" "sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA=="
+  "resolved" "https://registry.npmmirror.com/@types/linkify-it/-/linkify-it-3.0.2.tgz"
+  "version" "3.0.2"
+
+"@types/markdown-it@*":
+  "integrity" "sha512-GKMHFfv3458yYy+v/N8gjufHO6MSZKCOXpZc5GXIWWy8uldwfmPn98vp81gZ5f9SVw8YYBctgfJ22a2d7AOMeQ=="
+  "resolved" "https://registry.npmmirror.com/@types/markdown-it/-/markdown-it-12.2.3.tgz"
+  "version" "12.2.3"
+  dependencies:
+    "@types/linkify-it" "*"
+    "@types/mdurl" "*"
+
+"@types/mdurl@*":
+  "integrity" "sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA=="
+  "resolved" "https://registry.npmmirror.com/@types/mdurl/-/mdurl-1.0.2.tgz"
+  "version" "1.0.2"
+
 "@types/minimatch@*":
   "integrity" "sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA=="
   "resolved" "https://registry.npmmirror.com/@types/minimatch/-/minimatch-5.1.2.tgz"
@@ -454,6 +479,15 @@
     "estree-walker" "^2.0.2"
     "magic-string" "^0.25.7"
     "postcss" "^8.1.10"
+    "source-map" "^0.6.1"
+
+"@vue/compiler-sfc@2.7.14":
+  "integrity" "sha512-aNmNHyLPsw+sVvlQFQ2/8sjNuLtK54TC6cuKnVzAY93ks4ZBrvwQSnkkIh7bsbNhum5hJBS00wSDipQ937f5DA=="
+  "resolved" "https://registry.npmmirror.com/@vue/compiler-sfc/-/compiler-sfc-2.7.14.tgz"
+  "version" "2.7.14"
+  dependencies:
+    "@babel/parser" "^7.18.4"
+    "postcss" "^8.4.14"
     "source-map" "^0.6.1"
 
 "@vue/compiler-ssr@3.2.40":
@@ -777,6 +811,11 @@
   "resolved" "https://registry.npmmirror.com/array-unique/-/array-unique-0.3.2.tgz"
   "version" "0.3.2"
 
+"asciimath-to-latex@^0.3.2":
+  "integrity" "sha512-+80CDzm6nXdtsYwUdxBOLo7FA6ZO5CfRyYHgqLpUZgavPYqodXHamOQuLZJksV+4CUteJs1h7cBaF63d2qa97Q=="
+  "resolved" "https://registry.npmmirror.com/asciimath-to-latex/-/asciimath-to-latex-0.3.2.tgz"
+  "version" "0.3.2"
+
 "assign-symbols@^1.0.0":
   "integrity" "sha512-Q+JC7Whu8HhmTdBph/Tq59IoRtoy6KAm5zzPv00WdujX82lbAL8K7WVjne7vdCsAmbF4AYaDOPyO3k0kl8qIrw=="
   "resolved" "https://registry.npmmirror.com/assign-symbols/-/assign-symbols-1.0.0.tgz"
@@ -987,6 +1026,11 @@
     "isobject" "^3.0.0"
     "static-extend" "^0.1.1"
 
+"clone@^2.1.0":
+  "integrity" "sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w=="
+  "resolved" "https://registry.npmmirror.com/clone/-/clone-2.1.2.tgz"
+  "version" "2.1.2"
+
 "codemirror@^5.61.1":
   "integrity" "sha512-19Jox5sAKpusTDgqgKB5dawPpQcY+ipQK7xoEI+MVucEF9qqFaXpeqY1KaoyGBso/wHQoDa4HMMxMjdsS3Zzzw=="
   "resolved" "https://registry.npmmirror.com/codemirror/-/codemirror-5.65.9.tgz"
@@ -1018,6 +1062,11 @@
   "version" "1.0.8"
   dependencies:
     "delayed-stream" "~1.0.0"
+
+"commander@^2.19.0":
+  "integrity" "sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ=="
+  "resolved" "https://registry.npmmirror.com/commander/-/commander-2.20.3.tgz"
+  "version" "2.20.3"
 
 "commander@^2.20.0":
   "integrity" "sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ=="
@@ -1100,6 +1149,11 @@
   "integrity" "sha512-Z1PhmomIfypOpoMjRQB70jfvy/wxT50qW08YXO5lMIJkrdq4yOTR+AW7FqutScmB9NkLwxo+jU+kZLbofZZq/w=="
   "resolved" "https://registry.npmmirror.com/csstype/-/csstype-2.6.21.tgz"
   "version" "2.6.21"
+
+"csstype@^3.1.0":
+  "integrity" "sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw=="
+  "resolved" "https://registry.npmmirror.com/csstype/-/csstype-3.1.1.tgz"
+  "version" "3.1.1"
 
 "d3-array@^1.1.1", "d3-array@^1.2.0", "d3-array@1":
   "integrity" "sha512-KHW6M86R+FUPYGb3R5XiYjXPq7VzwxZ22buHhAEVG5ztoEcZZMLov530mmccaqA1GghZArjQV46fuc8kUqhhHw=="
@@ -1696,6 +1750,14 @@
     "no-case" "^3.0.4"
     "tslib" "^2.0.3"
 
+"echarts@^5.1.0":
+  "integrity" "sha512-9ltS3M2JB0w2EhcYjCdmtrJ+6haZcW6acBolMGIuf01Hql1yrIV01L1aRj7jsaaIULJslEP9Z3vKlEmnJaWJVQ=="
+  "resolved" "https://registry.npmmirror.com/echarts/-/echarts-5.4.1.tgz"
+  "version" "5.4.1"
+  dependencies:
+    "tslib" "2.3.0"
+    "zrender" "5.4.1"
+
 "electron-to-chromium@^1.4.251":
   "integrity" "sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA=="
   "resolved" "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.4.284.tgz"
@@ -1814,6 +1876,11 @@
   "resolved" "https://registry.npmmirror.com/estree-walker/-/estree-walker-2.0.2.tgz"
   "version" "2.0.2"
 
+"eve-raphael@0.5.0":
+  "integrity" "sha512-jrxnPsCGqng1UZuEp9DecX/AuSyAszATSjf4oEcRxvfxa1Oux4KkIPKBAAWWnpdwfARtr+Q0o9aPYWjsROD7ug=="
+  "resolved" "https://registry.npmmirror.com/eve-raphael/-/eve-raphael-0.5.0.tgz"
+  "version" "0.5.0"
+
 "events@^3.2.0":
   "integrity" "sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q=="
   "resolved" "https://registry.npmmirror.com/events/-/events-3.3.0.tgz"
@@ -1900,10 +1967,22 @@
   dependencies:
     "to-regex-range" "^5.0.1"
 
+"flowchart.js@^1.15.0":
+  "integrity" "sha512-zphTaxdyqvHHu+8Cdf6HvamhArXpq9SyNe1zQ61maCIfTenaj3cMvjS1e/0gfPj7QTLTx3HroSzVqDXpL8naoQ=="
+  "resolved" "https://registry.npmmirror.com/flowchart.js/-/flowchart.js-1.17.1.tgz"
+  "version" "1.17.1"
+  dependencies:
+    "raphael" "2.3.0"
+
 "follow-redirects@^1.15.0":
   "integrity" "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA=="
   "resolved" "https://registry.npmmirror.com/follow-redirects/-/follow-redirects-1.15.2.tgz"
   "version" "1.15.2"
+
+"font-awesome-icon-chars@^2.6.0":
+  "integrity" "sha512-AIPi+GRxTn2e2MhIVfKcO/HhDdbqZZEiWOojyqVyU6lUEU7sCYaMJlEYG4dvhLBss6JKcjsV5R8RIAEMOvG8NQ=="
+  "resolved" "https://registry.npmmirror.com/font-awesome-icon-chars/-/font-awesome-icon-chars-2.6.0.tgz"
+  "version" "2.6.0"
 
 "for-in@^1.0.2":
   "integrity" "sha512-7EwmXrOjyL+ChxMhmG5lnW9MPt1aIeZEwKhQzoBUdTV0N3zuwWDZYVJatDvZ2OyzPUvdIAZDsCetk3coyMfcnQ=="
@@ -1977,6 +2056,11 @@
   "integrity" "sha512-Ln0UQDlxH1BapMu3GPtf7CuYNwRZf2gwCuPqbyG6pB8WfmFpzqcy4xtAaAMUhnNqjMKTiCPZG2oMT3YSx8U2NA=="
   "resolved" "https://registry.npmmirror.com/get-value/-/get-value-2.0.6.tgz"
   "version" "2.0.6"
+
+"github-markdown-css@^4.0.0":
+  "integrity" "sha512-mH0bcIKv4XAN0mQVokfTdKo2OD5K8WJE9+lbMdM32/q0Ie5tXgVN/2o+zvToRMxSTUuiTRcLg5hzkFfOyBYreg=="
+  "resolved" "https://registry.npmmirror.com/github-markdown-css/-/github-markdown-css-4.0.0.tgz"
+  "version" "4.0.0"
 
 "glob-parent@^3.1.0":
   "integrity" "sha512-E8Ak/2+dZY6fnzlR7+ueWvhsH1SjHr4jjss4YS/h4py44jY9MhK/VFdaZJAWDz6BbL21KeteKxFSFpq8OS5gVA=="
@@ -2127,7 +2211,7 @@
   "resolved" "https://registry.npmmirror.com/highlight.js/-/highlight.js-10.7.3.tgz"
   "version" "10.7.3"
 
-"highlight.js@^11.6.0":
+"highlight.js@^11.3.1", "highlight.js@^11.6.0":
   "integrity" "sha512-ig1eqDzJaB0pqEvlPVIpSSyMaO92bH1N2rJpLMN/nX396wTpDA4Eq0uK+7I/2XG17pFaaKE0kjV/XPeGt7Evjw=="
   "resolved" "https://registry.npmmirror.com/highlight.js/-/highlight.js-11.6.0.tgz"
   "version" "11.6.0"
@@ -2397,12 +2481,26 @@
   optionalDependencies:
     "graceful-fs" "^4.1.6"
 
+"katex@^0.12.0":
+  "integrity" "sha512-y+8btoc/CK70XqcHqjxiGWBOeIL8upbS0peTPXTvgrh21n1RiWWcIpSWM+4uXq+IAgNh9YYQWdc7LVDPDAEEAg=="
+  "resolved" "https://registry.npmmirror.com/katex/-/katex-0.12.0.tgz"
+  "version" "0.12.0"
+  dependencies:
+    "commander" "^2.19.0"
+
 "katex@^0.13.11":
   "integrity" "sha512-jZxYuKCma3VS5UuxOx/rFV1QyGSl3Uy/i0kTJF3HgQ5xMinCQVF8Zd4bMY/9aI9b9A2pjIBOsjSSm68ykTAr8w=="
   "resolved" "https://registry.npmmirror.com/katex/-/katex-0.13.24.tgz"
   "version" "0.13.24"
   dependencies:
     "commander" "^8.0.0"
+
+"katex@^0.9.0-alpha2":
+  "integrity" "sha512-lp3x90LT1tDZBW2tjLheJ98wmRMRjUHwk4QpaswT9bhqoQZ+XA4cPcjcQBxgOQNwaOSt6ZeL/a6GKQ1of3LFxQ=="
+  "resolved" "https://registry.npmmirror.com/katex/-/katex-0.9.0.tgz"
+  "version" "0.9.0"
+  dependencies:
+    "match-at" "^0.1.1"
 
 "khroma@^1.4.1":
   "integrity" "sha512-+GmxKvmiRuCcUYDgR7g5Ngo0JEDeOsGdNONdU2zsiBQaK4z19Y2NvXqfEDE0ZiIrg45GTZyAnPLVsLZZACYm3Q=="
@@ -2469,6 +2567,11 @@
   "resolved" "https://registry.npmmirror.com/loader-runner/-/loader-runner-4.3.0.tgz"
   "version" "4.3.0"
 
+"lodash.flow@^3.5.0":
+  "integrity" "sha512-ff3BX/tSioo+XojX4MOsOMhJw0nZoUEF011LX8g8d3gvjVbxd89cCio4BCXronjxcTUIJUoqKEUA+n4CqvvRPw=="
+  "resolved" "https://registry.npmmirror.com/lodash.flow/-/lodash.flow-3.5.0.tgz"
+  "version" "3.5.0"
+
 "lodash@^4.17.15":
   "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
   "resolved" "https://registry.npmmirror.com/lodash/-/lodash-4.17.21.tgz"
@@ -2512,10 +2615,20 @@
   dependencies:
     "object-visit" "^1.0.0"
 
+"markdown-it-abbr@^1.0.4":
+  "integrity" "sha512-ZeA4Z4SaBbYysZap5iZcxKmlPL6bYA8grqhzJIHB1ikn7njnzaP8uwbtuXc4YXD5LicI4/2Xmc0VwmSiFV04gg=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-abbr/-/markdown-it-abbr-1.0.4.tgz"
+  "version" "1.0.4"
+
 "markdown-it-anchor@^5.0.2":
   "integrity" "sha512-/V1MnLL/rgJ3jkMWo84UR+K+jF1cxNG1a+KwqeXqTIJ+jtA8aWSHuigx8lTzauiIjBDbwF3NcWQMotd0Dm39jA=="
   "resolved" "https://registry.npmmirror.com/markdown-it-anchor/-/markdown-it-anchor-5.3.0.tgz"
   "version" "5.3.0"
+
+"markdown-it-anchor@^8.4.1":
+  "integrity" "sha512-FlCHFwNnutLgVTflOYHPW2pPcl2AACqVzExlkGQNsi4CJgqOHN7YTgDd4LuhgN1BFO3TS0vLAruV1Td6dwWPJA=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-anchor/-/markdown-it-anchor-8.6.7.tgz"
+  "version" "8.6.7"
 
 "markdown-it-attrs@^4.0.0":
   "integrity" "sha512-53Zfv8PTb6rlVFDlD106xcZHKBSsRZKJ2IW/rTxEJBEVbVaoxaNsmRkG0HXfbHl2SK8kaxZ2QKqdthWy/QBwmA=="
@@ -2534,17 +2647,133 @@
   "resolved" "https://registry.npmmirror.com/markdown-it-container/-/markdown-it-container-3.0.0.tgz"
   "version" "3.0.0"
 
+"markdown-it-deflist@^2.1.0":
+  "integrity" "sha512-3OuqoRUlSxJiuQYu0cWTLHNhhq2xtoSFqsZK8plANg91+RJQU1ziQ6lA2LzmFAEes18uPBsHZpcX6We5l76Nzg=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-deflist/-/markdown-it-deflist-2.1.0.tgz"
+  "version" "2.1.0"
+
 "markdown-it-emoji@^1.4.0":
   "integrity" "sha512-QCz3Hkd+r5gDYtS2xsFXmBYrgw6KuWcJZLCEkdfAuwzZbShCmCfta+hwAMq4NX/4xPzkSHduMKgMkkPUJxSXNg=="
   "resolved" "https://registry.npmmirror.com/markdown-it-emoji/-/markdown-it-emoji-1.4.0.tgz"
   "version" "1.4.0"
+
+"markdown-it-emoji@^2.0.0":
+  "integrity" "sha512-zLftSaNrKuYl0kR5zm4gxXjHaOI3FAOEaloKmRA5hijmJZvSjmxcokOLlzycb/HXlUFWzXqpIEoyEMCE4i9MvQ=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-emoji/-/markdown-it-emoji-2.0.2.tgz"
+  "version" "2.0.2"
+
+"markdown-it-footnote@^3.0.2", "markdown-it-footnote@^3.0.3":
+  "integrity" "sha512-YZMSuCGVZAjzKMn+xqIco9d1cLGxbELHZ9do/TSYVzraooV8ypsppKNmUJ0fVH5ljkCInQAtFpm8Rb3eXSrt5w=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-footnote/-/markdown-it-footnote-3.0.3.tgz"
+  "version" "3.0.3"
+
+"markdown-it-github-toc@^3.2.4":
+  "integrity" "sha512-2zgUxrvD3vw90eBtOodU5D47rLF6STtrzlZhct2bFeJpEtmXIEpmFyGkuZmfzVc5NYKB+cbrp3GjHyPCTXBjwQ=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-github-toc/-/markdown-it-github-toc-3.2.4.tgz"
+  "version" "3.2.4"
+  dependencies:
+    "uslug" "^1.0.4"
+
+"markdown-it-highlightjs@^3.6.0":
+  "integrity" "sha512-ex+Lq3cVkprh0GpGwFyc53A/rqY6GGzopPCG1xMsf8Ya3XtGC8Uw9tChN1rWbpyDae7tBBhVHVcMM29h4Btamw=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-highlightjs/-/markdown-it-highlightjs-3.6.0.tgz"
+  "version" "3.6.0"
+  dependencies:
+    "highlight.js" "^11.3.1"
+    "lodash.flow" "^3.5.0"
+
+"markdown-it-ins@^3.0.1":
+  "integrity" "sha512-32SSfZqSzqyAmmQ4SHvhxbFqSzPDqsZgMHDwxqPzp+v+t8RsmqsBZRG+RfRQskJko9PfKC2/oxyOs4Yg/CfiRw=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-ins/-/markdown-it-ins-3.0.1.tgz"
+  "version" "3.0.1"
+
+"markdown-it-latex@^0.2.0":
+  "integrity" "sha512-vCaS6Dws9faA8lZel7Slfa1IYEnbYOjHzian/tDBulONBS+f9vRkFfQ4S0eFnTGtDTTXqE7zAnoezkv18b9IIA=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-latex/-/markdown-it-latex-0.2.0.tgz"
+  "version" "0.2.0"
+  dependencies:
+    "asciimath-to-latex" "^0.3.2"
+    "katex" "^0.9.0-alpha2"
+
+"markdown-it-mark@^3.0.1":
+  "integrity" "sha512-HyxjAu6BRsdt6Xcv6TKVQnkz/E70TdGXEFHRYBGLncRE9lBFwDNLVtFojKxjJWgJ+5XxUwLaHXy+2sGBbDn+4A=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-mark/-/markdown-it-mark-3.0.1.tgz"
+  "version" "3.0.1"
+
+"markdown-it-regex@^0.2.0":
+  "integrity" "sha512-111UnMGJSt37gy+DlgcpQNwEfS2jvscOFSztzGhuXUHk7K1J5eAEj6C3jifmKb0cWtTuxdpHgIt4PyGQ+DtDjw=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-regex/-/markdown-it-regex-0.2.0.tgz"
+  "version" "0.2.0"
+
+"markdown-it-source-map@^0.1.1":
+  "integrity" "sha512-q4+ij82K/0C6O8rw/NnWogcgp3AeQykZZ5954yyxY8pcX8Rago8uAS7e+4Ogd6rERf/tDAen73KwT+Sb7dP/6w=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-source-map/-/markdown-it-source-map-0.1.1.tgz"
+  "version" "0.1.1"
+
+"markdown-it-sub@^1.0.0":
+  "integrity" "sha512-z2Rm/LzEE1wzwTSDrI+FlPEveAAbgdAdPhdWarq/ZGJrGW/uCQbKAnhoCsE4hAbc3SEym26+W2z/VQB0cQiA9Q=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-sub/-/markdown-it-sub-1.0.0.tgz"
+  "version" "1.0.0"
+
+"markdown-it-sup@^1.0.0":
+  "integrity" "sha512-E32m0nV9iyhRR7CrhnzL5msqic7rL1juWre6TQNxsnApg7Uf+F97JOKxUijg5YwXz86lZ0mqfOnutoryyNdntQ=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-sup/-/markdown-it-sup-1.0.0.tgz"
+  "version" "1.0.0"
 
 "markdown-it-table-of-contents@^0.4.0":
   "integrity" "sha512-TAIHTHPwa9+ltKvKPWulm/beozQU41Ab+FIefRaQV1NRnpzwcV9QOe6wXQS5WLivm5Q/nlo0rl6laGkMDZE7Gw=="
   "resolved" "https://registry.npmmirror.com/markdown-it-table-of-contents/-/markdown-it-table-of-contents-0.4.4.tgz"
   "version" "0.4.4"
 
-"markdown-it@*", "markdown-it@^12.3.2", "markdown-it@>= 9.0.0", "markdown-it@>=5.0.0":
+"markdown-it-task-lists@^2.1.1":
+  "integrity" "sha512-TxFAc76Jnhb2OUu+n3yz9RMu4CwGfaT788br6HhEDlvWfdeJcLUsxk1Hgw2yJio0OXsxv7pyIPmvECY7bMbluA=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-task-lists/-/markdown-it-task-lists-2.1.1.tgz"
+  "version" "2.1.1"
+
+"markdown-it-toc-and-anchor@^4.2.0":
+  "integrity" "sha512-DusSbKtg8CwZ92ztN7bOojDpP4h0+w7BVOPuA3PHDIaabMsERYpwsazLYSP/UlKedoQjOz21mwlai36TQ04EpA=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-toc-and-anchor/-/markdown-it-toc-and-anchor-4.2.0.tgz"
+  "version" "4.2.0"
+  dependencies:
+    "clone" "^2.1.0"
+    "uslug" "^1.0.4"
+
+"markdown-it-toc-done-right@^4.2.0":
+  "integrity" "sha512-UB/IbzjWazwTlNAX0pvWNlJS8NKsOQ4syrXZQ/C72j+jirrsjVRT627lCaylrKJFBQWfRsPmIVQie8x38DEhAQ=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-toc-done-right/-/markdown-it-toc-done-right-4.2.0.tgz"
+  "version" "4.2.0"
+
+"markdown-it-vue@^1.1.7":
+  "integrity" "sha512-cVEemQC4LLVe8YLr6+eFGqATvC87uNhi9pliw5ZLn0LkiSB3XsmNQW69lMDI5EcbAeheFysOlJNoG0eYMuYQYA=="
+  "resolved" "https://registry.npmmirror.com/markdown-it-vue/-/markdown-it-vue-1.1.7.tgz"
+  "version" "1.1.7"
+  dependencies:
+    "@iktakahiro/markdown-it-katex" "^4.0.1"
+    "echarts" "^5.1.0"
+    "flowchart.js" "^1.15.0"
+    "font-awesome-icon-chars" "^2.6.0"
+    "github-markdown-css" "^4.0.0"
+    "highlight.js" "^10.7.2"
+    "markdown-it" "^12.0.6"
+    "markdown-it-abbr" "^1.0.4"
+    "markdown-it-container" "^3.0.0"
+    "markdown-it-deflist" "^2.1.0"
+    "markdown-it-emoji" "^2.0.0"
+    "markdown-it-footnote" "^3.0.2"
+    "markdown-it-github-toc" "^3.2.4"
+    "markdown-it-ins" "^3.0.1"
+    "markdown-it-latex" "^0.2.0"
+    "markdown-it-mark" "^3.0.1"
+    "markdown-it-regex" "^0.2.0"
+    "markdown-it-source-map" "^0.1.1"
+    "markdown-it-sub" "^1.0.0"
+    "markdown-it-sup" "^1.0.0"
+    "markdown-it-task-lists" "^2.1.1"
+    "markdown-it-toc-and-anchor" "^4.2.0"
+    "mermaid" "^8.9.2"
+    "vue" "^2.6.12"
+
+"markdown-it@*", "markdown-it@^12.0.6", "markdown-it@^12.3.2", "markdown-it@>= 9.0.0", "markdown-it@>=5.0.0":
   "integrity" "sha512-TchMembfxfNVpHkbtriWltGWc+m3xszaRD0CZup7GFFhzIgQqxIfn3eGj1yZpfuflzPvfkt611B2Q/Bsk1YnGg=="
   "resolved" "https://registry.npmmirror.com/markdown-it/-/markdown-it-12.3.2.tgz"
   "version" "12.3.2"
@@ -2566,6 +2795,11 @@
     "mdurl" "^1.0.1"
     "uc.micro" "^1.0.5"
 
+"match-at@^0.1.1":
+  "integrity" "sha512-h4Yd392z9mST+dzc+yjuybOGFNOZjmXIPKWjxBd1Bb23r4SmDOsk2NYCU2BMUBGbSpZqwVsZYNq26QS3xfaT3Q=="
+  "resolved" "https://registry.npmmirror.com/match-at/-/match-at-0.1.1.tgz"
+  "version" "0.1.1"
+
 "mdurl@^1.0.1":
   "integrity" "sha512-/sKlQJCBYVY9Ers9hqzKou4H6V5UWc/M59TH2dvkt+84itfnq7uFOMLpOiOS4ujvHP4etln18fmIxA5R5fll0g=="
   "resolved" "https://registry.npmmirror.com/mdurl/-/mdurl-1.0.1.tgz"
@@ -2581,7 +2815,7 @@
   "resolved" "https://registry.npmmirror.com/merge2/-/merge2-1.4.1.tgz"
   "version" "1.4.1"
 
-"mermaid@^8.10.1":
+"mermaid@^8.10.1", "mermaid@^8.9.2":
   "integrity" "sha512-ITSHjwVaby1Li738sxhF48sLTxcNyUAoWfoqyztL1f7J6JOLpHOuQPNLBb6lxGPUA0u7xP9IRULgvod0dKu35A=="
   "resolved" "https://registry.npmmirror.com/mermaid/-/mermaid-8.14.0.tgz"
   "version" "8.14.0"
@@ -2870,7 +3104,7 @@
   "resolved" "https://registry.npmmirror.com/postcss-pxtorem/-/postcss-pxtorem-6.0.0.tgz"
   "version" "6.0.0"
 
-"postcss@^7.0.0 || ^8.0.1", "postcss@^8.0.0", "postcss@^8.1.10", "postcss@^8.4.16":
+"postcss@^7.0.0 || ^8.0.1", "postcss@^8.0.0", "postcss@^8.1.10", "postcss@^8.4.14", "postcss@^8.4.16":
   "integrity" "sha512-UNxNOLQydcOFi41yHNMcKRZ39NeXlr8AxGuZJsdub8vIb12fHzcq37DTU/QtbI6WLxNg2gF9Z+8qtRwTj1UI1Q=="
   "resolved" "https://registry.npmmirror.com/postcss/-/postcss-8.4.17.tgz"
   "version" "8.4.17"
@@ -2912,6 +3146,13 @@
   "version" "2.1.0"
   dependencies:
     "safe-buffer" "^5.1.0"
+
+"raphael@2.3.0":
+  "integrity" "sha512-w2yIenZAQnp257XUWGni4bLMVxpUpcIl7qgxEgDIXtmSypYtlNxfXWpOBxs7LBTps5sDwhRnrToJrMUrivqNTQ=="
+  "resolved" "https://registry.npmmirror.com/raphael/-/raphael-2.3.0.tgz"
+  "version" "2.3.0"
+  dependencies:
+    "eve-raphael" "0.5.0"
 
 "readdirp@~3.6.0":
   "integrity" "sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA=="
@@ -3298,6 +3539,11 @@
   "resolved" "https://registry.npmmirror.com/tslib/-/tslib-2.4.0.tgz"
   "version" "2.4.0"
 
+"tslib@2.3.0":
+  "integrity" "sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg=="
+  "resolved" "https://registry.npmmirror.com/tslib/-/tslib-2.3.0.tgz"
+  "version" "2.3.0"
+
 "typescript@*", "typescript@^4.6.4", "typescript@>=4.4.4":
   "integrity" "sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ=="
   "resolved" "https://registry.npmmirror.com/typescript/-/typescript-4.8.4.tgz"
@@ -3327,6 +3573,11 @@
   "integrity" "sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ=="
   "resolved" "https://registry.npmmirror.com/universalify/-/universalify-2.0.0.tgz"
   "version" "2.0.0"
+
+"unorm@>= 1.0.0":
+  "integrity" "sha512-b2/KCUlYZUeA7JFUuRJZPUtr4gZvBh7tavtv4fvk4+KV9pfGiR6CQAQAWl49ZpR3ts2dk4FYkP7EIgDJoiOLDA=="
+  "resolved" "https://registry.npmmirror.com/unorm/-/unorm-1.6.0.tgz"
+  "version" "1.6.0"
 
 "unset-value@^1.0.0":
   "integrity" "sha512-PcA2tsuGSF9cnySLHTLSh2qrQiJ70mn+r+Glzxv2TWZblxsxCC52BDlZoPCsz7STd9pN7EZetkWZBAvk4cgZdQ=="
@@ -3379,6 +3630,13 @@
   "integrity" "sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ=="
   "resolved" "https://registry.npmmirror.com/use/-/use-3.1.1.tgz"
   "version" "3.1.1"
+
+"uslug@^1.0.4":
+  "integrity" "sha512-Jrbpp/NS3TvIGNjfJT1sn3/BCeykoxR8GbNYW5lF6fUscLkbXFwj1b7m4DvIkHm8k3Qr6Co68lbTmoZTMGk/ow=="
+  "resolved" "https://registry.npmmirror.com/uslug/-/uslug-1.0.4.tgz"
+  "version" "1.0.4"
+  dependencies:
+    "unorm" ">= 1.0.0"
 
 "util@^0.10.3":
   "integrity" "sha512-0Pm9hTQ3se5ll1XihRic3FDIku70C+iHUdT/W926rSgHV5QgXsYbKZN8MSC3tJtSkhuROzvsQjAaFENRXr+19A=="
@@ -3446,6 +3704,14 @@
     "@volar/vue-language-core" "0.40.13"
     "@volar/vue-typescript" "0.40.13"
 
+"vue@^2.6.12":
+  "integrity" "sha512-b2qkFyOM0kwqWFuQmgd4o+uHGU7T+2z3T+WQp8UBjADfEv2n4FEMffzBmCKNP0IGzOEEfYjvtcC62xaSKeQDrQ=="
+  "resolved" "https://registry.npmmirror.com/vue/-/vue-2.7.14.tgz"
+  "version" "2.7.14"
+  dependencies:
+    "@vue/compiler-sfc" "2.7.14"
+    "csstype" "^3.1.0"
+
 "vue@^2.6.14 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.25", "vue@^3.2.37", "vue@3.2.40":
   "integrity" "sha512-1mGHulzUbl2Nk3pfvI5aXYYyJUs1nm4kyvuz38u4xlQkLUn1i2R7nDbI4TufECmY8v1qNBHYy62bCaM+3cHP2A=="
   "resolved" "https://registry.npmmirror.com/vue/-/vue-3.2.40.tgz"
@@ -3456,6 +3722,25 @@
     "@vue/runtime-dom" "3.2.40"
     "@vue/server-renderer" "3.2.40"
     "@vue/shared" "3.2.40"
+
+"vue3-markdown-it@^1.0.10":
+  "integrity" "sha512-mTvHu0zl7jrh7ojgaZ+tTpCLiS4CVg4bTgTu4KGhw/cRRY5YgIG8QgFAPu6kCzSW6Znc9a52Beb6hFvF4hSMkQ=="
+  "resolved" "https://registry.npmmirror.com/vue3-markdown-it/-/vue3-markdown-it-1.0.10.tgz"
+  "version" "1.0.10"
+  dependencies:
+    "markdown-it" "^12.3.2"
+    "markdown-it-abbr" "^1.0.4"
+    "markdown-it-anchor" "^8.4.1"
+    "markdown-it-deflist" "^2.1.0"
+    "markdown-it-emoji" "^2.0.0"
+    "markdown-it-footnote" "^3.0.3"
+    "markdown-it-highlightjs" "^3.6.0"
+    "markdown-it-ins" "^3.0.1"
+    "markdown-it-mark" "^3.0.1"
+    "markdown-it-sub" "^1.0.0"
+    "markdown-it-sup" "^1.0.0"
+    "markdown-it-task-lists" "^2.1.1"
+    "markdown-it-toc-done-right" "^4.2.0"
 
 "watchpack@^2.4.0":
   "integrity" "sha512-Lcvm7MGST/4fup+ifyKi2hjyIAwcdI4HRgtvTpIUxBRhB+RFtUh8XtDOxUfctVCnhVi+QQj49i91OyvzkJl6cg=="
@@ -3530,3 +3815,10 @@
   "integrity" "sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg=="
   "resolved" "https://registry.npmmirror.com/yaml/-/yaml-1.10.2.tgz"
   "version" "1.10.2"
+
+"zrender@5.4.1":
+  "integrity" "sha512-M4Z05BHWtajY2241EmMPHglDQAJ1UyHQcYsxDNzD9XLSkPDqMq4bB28v9Pb4mvHnVQ0GxyTklZ/69xCFP6RXBA=="
+  "resolved" "https://registry.npmmirror.com/zrender/-/zrender-5.4.1.tgz"
+  "version" "5.4.1"
+  dependencies:
+    "tslib" "2.3.0"

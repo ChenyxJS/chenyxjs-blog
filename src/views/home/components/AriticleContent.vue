@@ -172,7 +172,7 @@ function initLoding() {
       cursor: pointer;
       &_title {
         color: #fff;
-        font-size: 18px;
+        font-size: 16px;
         margin-bottom: 16px;
       }
       &_content {
