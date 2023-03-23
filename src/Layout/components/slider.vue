@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-09 17:55:18
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-20 22:37:07
+ * @LastEditTime: 2023-03-23 15:57:47
  * @FilePath: /chenyxjs-blog/src/Layout/components/slider.vue
 -->
 <template>
@@ -27,11 +27,10 @@
   </div>
   <!-- Copyright -->
   <div class="copyright">
-    <h4></h4>
     <section>
       <p>作者：Chenyx</p>
-      <a  href="https://beian.miit.gov.cn/" target="_blank">工信部备案号：桂ICP备2023002009号-1 </a>
-      <p>© 2023-2026 chenyx.site 版权所有</p>
+      <a  href="https://beian.miit.gov.cn/" target="_blank">ICP备案号：桂ICP备2023002009号-1 </a>
+      <p>© 2023 chenyx.site 版权所有</p>
     </section>
   </div>
 </template>
@@ -73,10 +72,5 @@ function change(id: number) {
   padding-bottom: 32px;
   border-bottom: var(--border);
 }
-.copyright{
-  a{
-    color: #fff;
-    display: block;
-  }
-}
+
 </style>

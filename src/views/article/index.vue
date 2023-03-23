@@ -4,11 +4,13 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-21 01:08:26
+ * @LastEditTime: 2023-03-23 23:22:34
 -->
 <template>
   <div class="article">
-    <markdown-it class="am-article-content" :plugins='plugins' :source="article" ref="preview" />
+    <div class="article-content" ref="container">
+      <v-md-preview v-if="article"  :text="article" ref="preview" />
+    </div>
     <div class="article-anchor">
       <div
         class="article-anchor_tag"
@@ -28,14 +30,11 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { useRoute } from "vue-router";
 import { reactive, ref, getCurrentInstance, onUpdated, onMounted } from "vue";
-import { getArticleByUrl } from "@/api/article/index";
-import axios from "axios";
+import { getArticleById } from "@/api/article"; 
 
-import MarkdownIt from 'vue3-markdown-it'
-import 'highlight.js/styles/monokai.css'
-
+// 将marked 引入
+import md from "@/assets/md/2.md?raw";
 
 // data
 interface Anchor {
@@ -49,44 +48,16 @@ interface Data {
 let data: Data = reactive({
   anchorList: [],
 });
-let article = ref();
+
 const { proxy } = getCurrentInstance();
-const route = useRoute();
-// 获取文章内容
-const url: string = String(route.query.articleUrl);
-
-
+let article = ref(md);
 // hook
-onMounted(() => {
-  getData(url);
-});
+onMounted(() => {});
 onUpdated(() => {
   renderAnchors();
 });
 
 // function
-function request() {
-  axios
-    .get(
-      "http://file.chenyx.site/markdown/Typora%2BPicGo%E5%AE%9E%E7%8E%B0%E5%85%8D%E8%B4%B9%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD.md"
-      ,{headers: {
-          'X-Requested-With': 'XMLHttpRequest',
-          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        }}
-    )
-    .then((response) => {
-      article.value = response.data;
-    });
-}
-
-// 获取markdown
-function getData(url: string) {
-  // getArticleByUrl(url).then((res) => {
-  //   article.value = res;
-  // });
-  request()
-}
-
 // 渲染目录
 function renderAnchors() {
   const previewDom: any = proxy.$refs.preview;
@@ -110,9 +81,9 @@ function renderAnchors() {
 
 // 目录点击跳转
 function handleAnchorClick(anchor: Anchor) {
-  console.log('点击了',anchor);
   const { lineIndex } = anchor;
   const previewDom: any = proxy.$refs.preview;
+  // const Dom: any = proxy.$refs.container;
   const heading = previewDom.$el.querySelector(
     `[data-v-md-line="${lineIndex}"]`
   );
@@ -134,10 +105,11 @@ function handleAnchorClick(anchor: Anchor) {
   padding-bottom: 30px;
   background-color: var(--bg-primary);
   display: flex;
-  .am-article-content {
+  .article-content {
     flex: 1;
-    padding-bottom: 60px;
-    overflow: auto;
+    overflow: scroll;
+    display: flex;
+    justify-content: center;
   }
   &-anchor {
     min-width: 330px;
@@ -152,7 +124,7 @@ function handleAnchorClick(anchor: Anchor) {
     }
   }
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 1100px) {
   .article-anchor {
     display: none;
   }

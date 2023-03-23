@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-02 20:33:52
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-11 13:42:15
+ * @LastEditTime: 2023-03-23 20:49:09
  * @FilePath: /chenyxjs-blog/src/store/modules/category.ts
  */
 import { defineStore, } from "pinia";
@@ -29,7 +29,7 @@ export const useCategoryStore = defineStore("category", () => {
       if (item.id === id) {
         item.active = true;
         nowCategory.value = id;
-        router.push({ path: "/blog/home" });
+        router.push({ path: "/home" });
       } else {
         item.active = false;
       }

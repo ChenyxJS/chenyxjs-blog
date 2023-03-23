@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-14 10:12:21
+ * @LastEditTime: 2023-03-23 22:39:32
 -->
 <template>
   <div class="top-nav">
@@ -15,17 +15,27 @@
           :value="searchValue"
         ></search-input>
       </div>
-      <div class="nav-options">
+      <div v-show="!appStore.deviceStatus.isMobile" class="nav-options">
         <a href="/">门户</a>
         <a @click="toHome">总览</a>
         <!-- <a @click="toProject">UX</a> -->
       </div>
       <div class="nav-right flex flex-ce">
-        <transition>
-          <div v-if="isShowNavRight" class="nav-right_title">
-            掘金前端热点 <svg-icon icon-name="hot" icon-size="16"></svg-icon>
-          </div>
-        </transition>
+        <div
+          v-if="isShowNavRight && !appStore.deviceStatus.isMobile"
+          class="nav-right_title"
+        >
+          掘金前端热点 <svg-icon icon-name="hot" icon-size="16"></svg-icon>
+        </div>
+        <div v-show="appStore.deviceStatus.isMobile" class="menu-btn">
+          <menu-btn :is-open="isOpenMenu" @click="openMenu"></menu-btn>
+          <Transition mode="out-in">
+            <menu-panel
+              :is-open="isOpenMenu"
+              @close-menu="closeMenu"
+            ></menu-panel>
+          </Transition>
+        </div>
       </div>
     </div>
   </div>
@@ -35,34 +45,44 @@ import { computed, provide, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import router from "@/router";
 import SearchInput from "@/components/SearchInput.vue";
-import {useKeyWordsStore} from "@/store/modules/keywords"
-import {debounce} from "@/utils/index"
+import MenuBtn from "@/components/MenuBtn.vue";
+import MenuPanel from "@/components/MenuPanel.vue";
+import { useKeyWordsStore } from "@/store/modules/keywords";
+import { useAppStroe } from "@/store/modules/app";
+import { debounce } from "@/utils/index";
 
+const appStore = useAppStroe();
 let searchValue = ref("");
-provide('searchValue', searchValue)
+let isOpenMenu = ref(false);
+provide("searchValue", searchValue);
 
 watch(searchValue, (newVal, oldVal) => {
-  debounce(changeKeywords,2000,true)
+  debounce(changeKeywords, 2000, true);
 });
-function changeKeywords(){
-  useKeyWordsStore().changeKeywords(searchValue.value)
-}
 
 // 实例化路由对象
 const route = useRoute();
-// 初始化跳转方法
-const toHome = ref();
-toHome.value = () => {
-  router.push("/blog/home");
-};
-const toProject = ref();
-toProject.value = () => {
-  router.push("/blog/project");
-};
+
 // 在博客首页时才显示右边的Nav
 const isShowNavRight = computed(() => {
-  return route.path == "/blog/home" ? true : false;
+  return route.path == "/home" ? true : false;
 });
+
+function toHome() {
+  router.push("/home");
+}
+function toProject() {
+  router.push("/project");
+}
+function openMenu() {
+  isOpenMenu.value = !isOpenMenu.value;
+}
+function closeMenu() {
+  isOpenMenu.value = false;
+}
+function changeKeywords() {
+  useKeyWordsStore().changeKeywords(searchValue.value);
+}
 </script>
 
 <style lang="scss" scoped>
@@ -109,10 +129,7 @@ const isShowNavRight = computed(() => {
     }
   }
 }
-
-@media screen and (max-width:576px){
-  .nav-right {
-    display: none;
-  }
-} 
+.menu-btn {
+  margin-right: 10px;
+}
 </style>

@@ -10,12 +10,12 @@ export interface Article {
   articleTitle: string;
   articleContent: string;
   articleStatus: number;
-  articleType: number;
+  articleType: string;
   articleUrl: string;
   articleCreateTime: string;
 }
 
 export interface ArticleQuery extends PageQuery {
   keywords: string;
-  articleType: number;
+  articleType: string;
 }
