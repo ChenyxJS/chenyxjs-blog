@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-18 00:34:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-23 23:23:51
+ * @LastEditTime: 2023-03-23 23:43:11
  */
 import request from "@/utils/request";
 import { ArticleQuery } from "./types";
@@ -20,8 +20,7 @@ export function getArticleList(data?: ArticleQuery) {
 export function getArticleById(id:number) {
   // 去除字符串中的
   return request({
-    url: "/web/article",
+    url: "/web/article/"+id,
     method: "GET",
-    params: {id: id},
   });
 }

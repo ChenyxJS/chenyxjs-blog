@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-23 22:09:53
+ * @LastEditTime: 2023-03-24 19:10:43
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { defineConfig } from "vite";
@@ -21,8 +21,8 @@ export default defineConfig({
     open: true,
     proxy: {
       "/api": {
-        target: "http://localhost:8080",
-        // target: "http://www.chenyx.site:8080",
+        // target: "http://localhost:8080",
+        target: "http://www.chenyx.site:8080",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
@@ -34,16 +34,16 @@ export default defineConfig({
       "@": srcPath,
     },
   },
-  // css:{
-  //   postcss: {
-  //     plugins: [
-  //       postCssPxToRem({
-  //         rootValue: 75, // 1rem的大小
-  //         propList: ["font"], // 需要转换的属性，这里选择全部都进行转换
-  //       })
-  //     ]
-  //   }
-  // },
+  css:{
+    postcss: {
+      plugins: [
+        postCssPxToRem({
+          rootValue: 75, // 1rem的大小
+          propList: ['fort-size'], // 需要转换的属性，这里选择全部都进行转换
+        })
+      ]
+    }
+  },
   build: {
     assetsDir: "./assets",
     chunkSizeWarningLimit: 500,

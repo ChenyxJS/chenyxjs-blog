@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-23 22:39:32
+ * @LastEditTime: 2023-03-24 18:39:49
 -->
 <template>
   <div class="top-nav">
@@ -100,7 +100,7 @@ function changeKeywords() {
 
     .nav-left {
       height: 100%;
-      width: 318px;
+      width: 294px;
       margin-left: 20px;
       display: flex;
       justify-content: flex-start;
@@ -108,7 +108,6 @@ function changeKeywords() {
     }
 
     .nav-options {
-      margin: 0 24px;
       font-weight: 600;
       a {
         margin: 0 5px;

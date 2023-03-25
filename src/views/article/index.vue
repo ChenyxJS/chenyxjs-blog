@@ -4,12 +4,12 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-23 23:22:34
+ * @LastEditTime: 2023-03-24 19:14:32
 -->
 <template>
   <div class="article">
     <div class="article-content" ref="container">
-      <v-md-preview v-if="article"  :text="article" ref="preview" />
+      <v-md-preview style="overflow: scroll;" v-if="article" :text="article" ref="preview" />
     </div>
     <div class="article-anchor">
       <div
@@ -31,10 +31,9 @@ export default {
 </script>
 <script setup lang="ts">
 import { reactive, ref, getCurrentInstance, onUpdated, onMounted } from "vue";
-import { getArticleById } from "@/api/article"; 
+import { useRoute } from "vue-router";
 
-// 将marked 引入
-import md from "@/assets/md/2.md?raw";
+import { getArticleById } from "@/api/article";
 
 // data
 interface Anchor {
@@ -48,16 +47,26 @@ interface Data {
 let data: Data = reactive({
   anchorList: [],
 });
+const route = useRoute()
 
 const { proxy } = getCurrentInstance();
-let article = ref(md);
+let article = ref('');
 // hook
-onMounted(() => {});
+onMounted(() => {
+  getArticle()
+});
 onUpdated(() => {
   renderAnchors();
 });
 
 // function
+
+function getArticle() {
+  getArticleById(Number(route.query.id)).then((res) => {
+    article.value = res.object
+  });
+}
+
 // 渲染目录
 function renderAnchors() {
   const previewDom: any = proxy.$refs.preview;
@@ -87,6 +96,7 @@ function handleAnchorClick(anchor: Anchor) {
   const heading = previewDom.$el.querySelector(
     `[data-v-md-line="${lineIndex}"]`
   );
+  console.log(heading);
   if (heading) {
     previewDom.scrollToTarget({
       target: heading,
@@ -101,7 +111,7 @@ function handleAnchorClick(anchor: Anchor) {
 .article {
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow: scroll;
   padding-bottom: 30px;
   background-color: var(--bg-primary);
   display: flex;

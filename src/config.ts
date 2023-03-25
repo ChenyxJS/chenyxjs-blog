@@ -1,10 +1,18 @@
 /*
  * @Author: chenyx
  * @Date: 2022-10-18 22:03:29
- * @LastEditors: Chenyx
- * @LastEditTime: 2022-10-27 12:26:59
- * @FilePath: \chenyxjs\src\config.ts
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2023-03-24 18:29:44
+ * @FilePath: /chenyxjs-blog/src/config.ts
  */
+
+export const webBaseInfo = {
+    title:'见万事如流',
+    Author: 'Chenyx',
+    // 备案信息
+    ICP:'桂ICP备 2023002009号-1',
+    NS:''
+}
 
 
 /**

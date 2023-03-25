@@ -17,6 +17,7 @@ body {
   a {
     text-decoration: none;
     cursor: pointer;
+    color: inherit;
   }
   ::-webkit-scrollbar {
     width: 0;

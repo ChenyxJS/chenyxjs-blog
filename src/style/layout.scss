@@ -22,7 +22,7 @@
   color: var(--text-navbar);
   .slider-layout {
     width: 250px;
-    min-width: 200px;
+    min-width: 250px;
     min-height: var(--main-height);
     background: var(--bg-primary);
     padding: 0px 32px;
@@ -30,6 +30,7 @@
   .content-layout {
     flex: 1;
     background: var(--bg-inset);
+    overflow: scroll;
   }
 }
 
@@ -42,10 +43,3 @@
   color: var(--warning);
 }
 
-.copyright {
-  color: #fff;
-  a {
-    color: #fff;
-    display: block;
-  }
-}

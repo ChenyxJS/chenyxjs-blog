@@ -17,7 +17,7 @@
       <div class="article-card-content" @click="toArticle(item)">
         <h1 class="article-card-content_title">{{ item.articleTitle }}</h1>
         <section class="article-card-content_content">
-          {{ item.articleTitle }}
+          {{ item.articleDesc }}
         </section>
         <div class="article-card-content_options">
           <i class="iconfont icon-a-fenxiangshare" style="color: #e6a23c"></i>
@@ -114,6 +114,9 @@ const router = useRouter();
 function toArticle(article: Article) {
   router.push({
     path: "/article",
+    query:{
+      id: article.articleId,
+    }
   });
 }
 
