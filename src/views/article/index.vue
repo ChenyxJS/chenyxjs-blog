@@ -4,11 +4,13 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-14 14:58:34
+ * @LastEditTime: 2023-03-24 19:14:32
 -->
 <template>
   <div class="article">
-    <v-md-preview class="am-article-content" :text="article" ref="preview" />
+    <div class="article-content" ref="container">
+      <v-md-preview style="overflow: scroll;" v-if="article" :text="article" ref="preview" />
+    </div>
     <div class="article-anchor">
       <div
         class="article-anchor_tag"
@@ -28,10 +30,10 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { useRoute } from "vue-router";
 import { reactive, ref, getCurrentInstance, onUpdated, onMounted } from "vue";
-import { getArticleByUrl } from "@/api/article/index";
-import axios from "axios";
+import { useRoute } from "vue-router";
+
+import { getArticleById } from "@/api/article";
 
 // data
 interface Anchor {
@@ -45,41 +47,24 @@ interface Data {
 let data: Data = reactive({
   anchorList: [],
 });
-let article = ref();
-const { proxy } = getCurrentInstance();
-const route = useRoute();
-// 获取文章内容
-const url: string = String(route.query.articleUrl);
+const route = useRoute()
 
+const { proxy } = getCurrentInstance();
+let article = ref('');
 // hook
 onMounted(() => {
-  getData(url);
+  getArticle()
 });
 onUpdated(() => {
   renderAnchors();
 });
 
 // function
-function request() {
-  axios
-    .get(
-      "http://rqqc5vc9c.hd-bkt.clouddn.com/Vue3%E6%9E%84%E5%BB%BACesium%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89.md"
-      ,{headers: {
-          'X-Requested-With': 'XMLHttpRequest',
-          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        }}
-    )
-    .then((response) => {
-      article.value = response.data;
-    });
-}
 
-// 获取markdown
-function getData(url: string) {
-  // getArticleByUrl(url).then((res) => {
-  //   article.value = res;
-  // });
-  request()
+function getArticle() {
+  getArticleById(Number(route.query.id)).then((res) => {
+    article.value = res.object
+  });
 }
 
 // 渲染目录
@@ -107,9 +92,11 @@ function renderAnchors() {
 function handleAnchorClick(anchor: Anchor) {
   const { lineIndex } = anchor;
   const previewDom: any = proxy.$refs.preview;
+  // const Dom: any = proxy.$refs.container;
   const heading = previewDom.$el.querySelector(
     `[data-v-md-line="${lineIndex}"]`
   );
+  console.log(heading);
   if (heading) {
     previewDom.scrollToTarget({
       target: heading,
@@ -124,14 +111,15 @@ function handleAnchorClick(anchor: Anchor) {
 .article {
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow: scroll;
   padding-bottom: 30px;
   background-color: var(--bg-primary);
   display: flex;
-  .am-article-content {
+  .article-content {
     flex: 1;
-    padding-bottom: 60px;
-    overflow: auto;
+    overflow: scroll;
+    display: flex;
+    justify-content: center;
   }
   &-anchor {
     min-width: 330px;
@@ -146,7 +134,7 @@ function handleAnchorClick(anchor: Anchor) {
     }
   }
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 1100px) {
   .article-anchor {
     display: none;
   }

@@ -4,15 +4,16 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-14 12:35:11
+ * @LastEditTime: 2023-03-23 22:31:22
 -->
 <template>
   <div class="Layout">
-    <!-- 导航栏 -->
-    <top-nav />
-    <div class="container">
+    <div class="top-layout">
+      <top-nav />
+    </div>
+    <div class="container-layout">
       <!-- 侧边栏 -->
-      <div  class="slider-layout">
+      <div v-show="!appStore.deviceStatus.isMobile"  class="slider-layout">
         <slider v-if="isShowSlider" />
         <more-slider v-else></more-slider>
       </div>
@@ -21,27 +22,29 @@
         <content />
       </div>
     </div>
+    <div class="footer-layout">
+      <footer-panel></footer-panel>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 import topNav from "./components/topNav.vue";
 import content from "./components/content.vue";
 import slider from "./components/slider.vue";
-import moreSlider from './components/moreSlider.vue'
+import footerPanel from "./components/footer.vue";
+import moreSlider from "./components/moreSlider.vue";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
-const route = useRoute()
+import {useAppStroe} from "@/store/modules/app"
 
-let isShowSlider = computed(()=>{
-  return route.path == "/blog/home" ? true : false;
-})
+const route = useRoute();
+const appStore = useAppStroe()
 
+let isShowSlider = computed(() => {
+  return route.path == "/home" ? true : false;
+});
 </script>
 
 <style lang="scss" scoped>
-@media screen and (max-width:576px){
-  .slider-layout {
-    display: none;
-  }
-} 
+
 </style>

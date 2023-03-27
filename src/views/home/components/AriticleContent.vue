@@ -17,7 +17,7 @@
       <div class="article-card-content" @click="toArticle(item)">
         <h1 class="article-card-content_title">{{ item.articleTitle }}</h1>
         <section class="article-card-content_content">
-          {{ item.articleTitle }}
+          {{ item.articleDesc }}
         </section>
         <div class="article-card-content_options">
           <i class="iconfont icon-a-fenxiangshare" style="color: #e6a23c"></i>
@@ -31,12 +31,14 @@
       <div id="loding"></div>
     </div>
   </div>
+  <el-backtop :right="100" :bottom="100" />
+
 </template>
 
 <script setup lang="ts">
 import lottie from "lottie-web";
 import lottieDataJson from "@/assets/lottie/NoData/data.json";
-import {storeToRefs} from "pinia"
+import { storeToRefs } from "pinia";
 import { getArticleList } from "@/api/article";
 import { reactive, ref, onMounted, onUpdated, watch } from "vue";
 import { useRouter } from "vue-router";
@@ -47,10 +49,10 @@ import { ArticleQuery, Article } from "@/api/article/types";
 
 const categoryStore = useCategoryStore();
 const keywordsStore = useKeyWordsStore();
-const {keywords} = storeToRefs(keywordsStore)
+const { keywords } = storeToRefs(keywordsStore);
 const articleQuery: ArticleQuery = {
   keywords: keywordsStore.keywords,
-  articleType: categoryStore.getNowCategory().value,
+  articleType: "",
   pageNum: 1,
   pageSize: 0,
 };
@@ -65,7 +67,7 @@ let showLoading = ref(false);
 watch(
   categoryStore.getNowCategory(),
   (newVar, oldVar) => {
-    articleQuery.articleType = newVar;
+    // articleQuery.articleType = newVar;
     getList();
   },
   { deep: true }
@@ -77,7 +79,7 @@ watch(
     getList();
   },
   { deep: true }
-)
+);
 watch(
   data,
   (newVar, oldVar) => {
@@ -111,15 +113,15 @@ const router = useRouter();
 // 初始化跳转方法
 function toArticle(article: Article) {
   router.push({
-    path: "/blog/article",
-    query: {
-      articleUrl: article.articleUrl || "",
-    },
+    path: "/article",
+    query:{
+      id: article.articleId,
+    }
   });
 }
 
-function typeFilters(code: Number) {
-  return code == 1 ? "原创" : "转载";
+function typeFilters(code: string) {
+  return code == "origin" ? "原创" : "转载";
 }
 
 function initLoding() {
@@ -172,7 +174,7 @@ function initLoding() {
       cursor: pointer;
       &_title {
         color: #fff;
-        font-size: 18px;
+        font-size: 16px;
         margin-bottom: 16px;
       }
       &_content {

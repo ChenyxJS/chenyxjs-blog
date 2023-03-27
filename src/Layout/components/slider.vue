@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-09 17:55:18
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-11 11:16:29
+ * @LastEditTime: 2023-03-24 18:37:05
  * @FilePath: /chenyxjs-blog/src/Layout/components/slider.vue
 -->
 <template>
@@ -23,27 +23,31 @@
   <!-- 最新动态 -->
   <div class="recent-activity">
     <h4>最近动态</h4>
-    <section>Vite3.0 + Vue3 + Typescript 版本的 Blog 上线了!</section>
+    <section>Vue3 + Vite3.0 + Typescript 版本的 Blog 上线了!</section>
   </div>
   <!-- Copyright -->
   <div class="copyright">
     <h4>Copyright</h4>
     <section>
       <p>作者：Chenyx</p>
-      <p>www.chenyxjs.site 版权所有©2023</p>
+      <p>
+        <a href="https://beian.miit.gov.cn/" target="_blank">{{ ICP }} </a>
+      </p>
+      <p>© 2023 chenyx.site 版权所有</p>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import {useCategoryStore} from "@/store/modules/category";
+import { webBaseInfo } from "@/config";
+import { useCategoryStore } from "@/store/modules/category";
 
+const { ICP, NS } = webBaseInfo;
 
 const state = reactive({
   store: useCategoryStore(),
 });
-
 
 function change(id: number) {
   state.store.changeCategory(id);
@@ -71,5 +75,10 @@ function change(id: number) {
 .recent-activity {
   padding-bottom: 32px;
   border-bottom: var(--border);
+}
+.copyright section,
+.recent-activity section {
+  color: var(--text-second);
+  font-size: 14px;
 }
 </style>

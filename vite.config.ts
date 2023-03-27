@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-14 14:38:15
+ * @LastEditTime: 2023-03-26 15:39:04
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { defineConfig } from "vite";
@@ -14,16 +14,20 @@ import postCssPxToRem from "postcss-pxtorem"
 
 const srcPath = path.resolve(__dirname, "src");
 
-// https://vitejs.dev/config/
 export default defineConfig({
   server: {
     port: 8085,
     open: true,
     proxy: {
-      "/api": {
+      "/prod-api": {
+        target: "http://www.chenyx.site:8080",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/prod-api/, ""),
+      },
+      "/dev-api": {
         target: "http://localhost:8080",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
+        rewrite: (path) => path.replace(/^\/dev-api/, ""),
       },
     },
   },
@@ -33,16 +37,16 @@ export default defineConfig({
       "@": srcPath,
     },
   },
-  // css:{
-  //   postcss: {
-  //     plugins: [
-  //       postCssPxToRem({
-  //         rootValue: 132, // 1rem的大小
-  //         propList: ['*'], // 需要转换的属性，这里选择全部都进行转换
-  //       })
-  //     ]
-  //   }
-  // },
+  css:{
+    postcss: {
+      plugins: [
+        postCssPxToRem({
+          rootValue: 75, // 1rem的大小
+          propList: ['fort-size'], // 需要转换的属性，这里选择全部都进行转换
+        })
+      ]
+    }
+  },
   build: {
     assetsDir: "./assets",
     chunkSizeWarningLimit: 500,

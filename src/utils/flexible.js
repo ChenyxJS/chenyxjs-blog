@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-11-30 01:25:44
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-14 14:27:09
+ * @LastEditTime: 2023-03-20 21:32:57
  * @FilePath: /chenyxjs-blog/src/utils/flexible.js
  */
 (function(win, lib) {
@@ -119,13 +119,13 @@
   );
 
   if (doc.readyState === "complete") {
-    doc.body.style.fontSize = 12 * dpr + "px";
+    doc.body.style.fontSize = 14 * dpr + "px";
    
   } else {
     doc.addEventListener(
       "DOMContentLoaded",
       function(e) {
-        doc.body.style.fontSize = 12 * dpr + "px";
+        doc.body.style.fontSize = 14 * dpr + "px";
       },
       false
     );

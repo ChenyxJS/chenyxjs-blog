@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:24:53
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-13 11:12:42
+ * @LastEditTime: 2023-03-26 15:36:37
  */
 import {
   createRouter,
@@ -17,11 +17,8 @@ import Layout from "@/Layout/index.vue";
 const routes = [
   {
     path: "/",
-    component: () => import("../views/index/index.vue"),
-  },
-  {
-    path: "/blog",
     component: Layout,
+    redirect: '/home',
     children: [
       {
         path: "home",
@@ -42,8 +39,6 @@ const routes = [
   },
 ];
 // 开发环境使用hash 生产环境使用web
-// const history =
-//   process.env.NODE_ENV == "prod" ? createWebHistory() : createWebHashHistory();
 const history =
   process.env.NODE_ENV == "prod"
   ? createWebHashHistory()
@@ -52,11 +47,6 @@ const router = createRouter({
   history,
   routes,
 });
-  console.log("当前环境==>",process.env.NODE_ENV);
-// export const router = createRouter({
-//   history: history,
 
-//   routes: routes,
-// });
 
 export default router;
