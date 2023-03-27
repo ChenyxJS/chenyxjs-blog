@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-09 17:55:18
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-24 18:37:05
+ * @LastEditTime: 2023-03-27 16:50:35
  * @FilePath: /chenyxjs-blog/src/Layout/components/slider.vue
 -->
 <template>
@@ -23,7 +23,8 @@
   <!-- 最新动态 -->
   <div class="recent-activity">
     <h4>最近动态</h4>
-    <section>Vue3 + Vite3.0 + Typescript 版本的 Blog 上线了!</section>
+    <!-- <section>Vue3 + Vite3.0 + Typescript 版本的 Blog 上线了!</section> -->
+    <section>Jenkins持续集成、持续部署（CI/CD）</section>
   </div>
   <!-- Copyright -->
   <div class="copyright">
