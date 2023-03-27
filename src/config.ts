@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-10-18 22:03:29
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-24 18:29:44
+ * @LastEditTime: 2023-03-26 15:31:55
  * @FilePath: /chenyxjs-blog/src/config.ts
  */
 
@@ -21,8 +21,8 @@ export const webBaseInfo = {
  */
 function getMyWebSitePath(){
     const MyWebSitePath:object = {
-        blog:"https://www.chenyxjs.com",
-        github:"https://github.com/ChenyxJS"
+        blog:"http://www.chenyxjs.site",
+        github:"http://github.com/ChenyxJS"
     }
     return MyWebSitePath
 }

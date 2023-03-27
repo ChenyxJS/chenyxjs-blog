@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-24 19:10:43
+ * @LastEditTime: 2023-03-26 15:39:04
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { defineConfig } from "vite";
@@ -14,17 +14,20 @@ import postCssPxToRem from "postcss-pxtorem"
 
 const srcPath = path.resolve(__dirname, "src");
 
-// https://vitejs.dev/config/
 export default defineConfig({
   server: {
     port: 8085,
     open: true,
     proxy: {
-      "/api": {
-        // target: "http://localhost:8080",
+      "/prod-api": {
         target: "http://www.chenyx.site:8080",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
+        rewrite: (path) => path.replace(/^\/prod-api/, ""),
+      },
+      "/dev-api": {
+        target: "http://localhost:8080",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/dev-api/, ""),
       },
     },
   },
