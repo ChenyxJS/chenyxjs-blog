@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-23 22:31:22
+ * @LastEditTime: 2023-03-28 00:59:41
 -->
 <template>
   <div class="Layout">
@@ -18,11 +18,11 @@
         <more-slider v-else></more-slider>
       </div>
       <!-- main -->
-      <div class="content-layout">
+      <div  class="content-layout">
         <content />
       </div>
     </div>
-    <div class="footer-layout">
+    <div  v-if="!isShowSlider" class="footer-layout">
       <footer-panel></footer-panel>
     </div>
   </div>
