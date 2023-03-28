@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-02 20:33:52
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-28 21:15:35
+ * @LastEditTime: 2023-03-29 00:27:26
  * @FilePath: /chenyxjs-blog/src/store/modules/category.ts
  */
 import { defineStore } from "pinia";
@@ -46,7 +46,12 @@ export const useCategoryStore = defineStore("category", () => {
       limit: 0,
     }).then(({ data }) => {
       if (data.success) {
-        category.push(...generateCategory(data.root));
+        generateCategory(data.root).forEach((temp) => {
+          const c:category|undefined = category.find((item) => item.id === temp.id);
+          if (!c) {
+            category.push(temp);
+          }
+        });
       } else {
         category = [
           {
