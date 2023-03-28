@@ -8,7 +8,7 @@
     >
       <!-- 文章发布时间、类型 -->
       <div class="article-card-sec">
-        <p>{{ $FormatDate(item.articleCreateTime) }}</p>
+        <p>{{ formatDate(item.articleCreateTime) }}</p>
         <i class="iconfont icon-a-lianjielink">{{
           typeFilters(item.articleType)
         }}</i>
@@ -36,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+import {formatDate} from '@/utils'
 import lottie from "lottie-web";
 import lottieDataJson from "@/assets/lottie/NoData/data.json";
 import { storeToRefs } from "pinia";

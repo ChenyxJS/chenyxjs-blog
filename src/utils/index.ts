@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-16 00:50:35
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-11 14:06:01
+ * @LastEditTime: 2023-03-28 14:38:30
  */
 
 /**
@@ -14,7 +14,7 @@
  * @param {String} format
  * @return {*}
  */
-export function formatDate(num: string, format: string) {
+export function formatDate(num: string, format?: string) {
   format = format || "YYYY-mm-dd HH:MM:SS"; //第一个参数不填时，使用默认格式
   let ret, date, renum;
   // 处理时间戳，js一般获取的时间戳是13位，PHP一般是10位,根据实际情况做判断处理
@@ -23,7 +23,7 @@ export function formatDate(num: string, format: string) {
   } else {
     date = new Date(parseInt(num));
   }
-  const opt = {
+  const opt: any = {
     Y: date.getFullYear().toString(), // 年
     m: (date.getMonth() + 1).toString(), // 月
     d: date.getDate().toString(), // 日
@@ -50,7 +50,7 @@ export function formatDate(num: string, format: string) {
  */
 export const debounce = (func, time, immediate) => {
   let timer;
-  const cxt = this
+  const cxt = this;
   const rtn = (...params) => {
     clearTimeout(timer);
     if (immediate) {
