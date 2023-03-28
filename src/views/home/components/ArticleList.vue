@@ -32,16 +32,14 @@
     </div>
   </div>
   <el-backtop :right="100" :bottom="100" />
-
 </template>
 
 <script setup lang="ts">
-import {formatDate} from '@/utils'
+import { formatDate } from "@/utils";
 import lottie from "lottie-web";
 import lottieDataJson from "@/assets/lottie/NoData/data.json";
-import { storeToRefs } from "pinia";
 import { getArticleList } from "@/api/article";
-import { reactive, ref, onMounted, onUpdated, watch } from "vue";
+import { reactive, onMounted, onUpdated, watch, computed } from "vue";
 import { useRouter } from "vue-router";
 import { scrollBehavior } from "@/utils/scrollAnimations/scrollShow";
 import { useCategoryStore } from "@/store/modules/category";
@@ -50,41 +48,36 @@ import { ArticleQuery, Article } from "@/api/article/types";
 
 const categoryStore = useCategoryStore();
 const keywordsStore = useKeyWordsStore();
-const { keywords } = storeToRefs(keywordsStore);
-const articleQuery: ArticleQuery = {
+const articleQuery = {
   keywords: keywordsStore.keywords,
-  articleType: "",
+  articleTagId: 0,
   page: 1,
   limit: 0,
-};
+} as ArticleQuery;
 
 const state = reactive({
   articleList: [] as Array<Article>,
 });
-let showLoading = ref(false);
 
 watch(
-  categoryStore.getNowCategory(),
+  () => categoryStore.nowCategory,
   (newVar, oldVar) => {
+    articleQuery.articleTagId = newVar;
     getList();
   },
   { deep: true }
 );
 watch(
-  keywords,
+  () => keywordsStore.keywords,
   (newVar, oldVar) => {
     articleQuery.keywords = newVar;
     getList();
-  },
-  { deep: true }
+  }
 );
-watch(
-  state.articleList,
-  (newVar, oldVar) => {
-    showLoading.value = newVar.length == 0 ? true : false;
-  },
-  { deep: true }
-);
+
+let showLoading = computed(() => {
+  return state.articleList.length == 0 ? true : false;
+});
 
 onMounted(() => {
   initLoding();
@@ -97,7 +90,7 @@ onMounted(() => {
 });
 
 function getList() {
-  getArticleList(articleQuery).then(({data}) => {
+  getArticleList(articleQuery).then(({ data }) => {
     if (data.success) {
       state.articleList = data.root || [];
     } else {
@@ -112,9 +105,9 @@ const router = useRouter();
 function toArticle(article: Article) {
   router.push({
     path: "/article",
-    query:{
+    query: {
       id: article.articleId,
-    }
+    },
   });
 }
 

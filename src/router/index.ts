@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:24:53
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-26 15:36:37
+ * @LastEditTime: 2023-03-28 15:24:11
  */
 import {
   createRouter,
@@ -18,7 +18,7 @@ const routes = [
   {
     path: "/",
     component: Layout,
-    redirect: '/home',
+    redirect: "/home",
     children: [
       {
         path: "home",
@@ -40,13 +40,13 @@ const routes = [
 ];
 // 开发环境使用hash 生产环境使用web
 const history =
-  process.env.NODE_ENV == "prod"
-  ? createWebHashHistory()
-    : createWebHistory();
+  import.meta.env.MODE === "production"
+    ? createWebHistory()
+    : createWebHashHistory();
+
 const router = createRouter({
   history,
   routes,
 });
-
 
 export default router;

@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-16 21:23:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-28 13:45:02
+ * @LastEditTime: 2023-03-28 15:01:30
  */
 import axios from "axios"
 import Qs from "qs"
@@ -20,8 +20,6 @@ const service = axios.create({
 
 service.interceptors.request.use(
     config => {
-        console.log(import.meta.env.VITE_APP_BASE_API);
-        config.baseURL = import.meta.env.VITE_APP_BASE_API
         return config
     },
     error => {

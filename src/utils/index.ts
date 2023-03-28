@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-16 00:50:35
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-28 14:38:30
+ * @LastEditTime: 2023-03-28 16:02:59
  */
 
 /**
@@ -43,47 +43,36 @@ export function formatDate(num: string, format?: string) {
 }
 
 /**
- * 防抖函数
- * @param func 用户传入的防抖函数
- * @param wait 等待的时间
- * @param immediate 是否立即执行
+ * @description: 防抖函数
+ * @param {Function} callback
+ * @param {number} wait
+ * @return {*}
  */
-export const debounce = (func, time, immediate) => {
-  let timer;
-  const cxt = this;
-  const rtn = (...params) => {
-    clearTimeout(timer);
-    if (immediate) {
-      let callNow = !timer;
-      timer = setTimeout(() => {
-        timer = null;
-      }, time);
-      if (callNow) func.apply(cxt, params);
-    } else {
-      timer = setTimeout(() => {
-        func.apply(cxt, params);
-      }, time);
-    }
+export function debounce(callback: Function, wait: number = 400) {
+  let timer: NodeJS.Timeout | null = null;
+  return function (...args: Array<any>) {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      callback(...args);
+    }, wait);
   };
-  return rtn;
-};
+}
 
 /**
  * @description: 节流函数
- * @param {*} func
- * @param {*} wait
- * @param {*} options
+ * @param {Function} callback
+ * @param {number} wait
  * @return {*}
  */
-// export function throttle(func, wait, options) {
-//   let context, args, result;
-//   let timeout = null;
-//   let previous = 0;
-//   if (!options) options = {};
-//   const later = function () {
-//     previous = options.leading === false ? 0 : +new Date();
-//     timeout = null;
-//     result = func.apply(context, args);
-//     if (!timeout) context = args = null;
-//   };
-// }
+export function throttle(callback: Function, wait: number) {
+  let flag = false;
+  return function () {
+    const args = arguments;
+    if (flag) return;
+    flag = true;
+    setTimeout(() => {
+      callback(...args);
+      flag = false;
+    }, wait);
+  };
+}

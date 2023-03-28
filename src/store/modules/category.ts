@@ -2,25 +2,61 @@
  * @Author: chenyx
  * @Date: 2023-03-02 20:33:52
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-23 20:49:09
+ * @LastEditTime: 2023-03-28 21:15:35
  * @FilePath: /chenyxjs-blog/src/store/modules/category.ts
  */
-import { defineStore, } from "pinia";
-import { categories } from "@/utils/base-data";
-import { category } from "@/interface/category";
+import { defineStore } from "pinia";
 import { reactive, ref, Ref } from "vue";
 import router from "@/router";
+import { getTagList } from "@/api/tag";
+import { Tag } from "@/api/tag/types";
 
+export interface category {
+  id: number;
+  name: string;
+  active: boolean;
+}
+
+function generateCategory(tags: Tag[]): category[] {
+  let list: category[] = [];
+  tags.forEach((tag) =>
+    list.push({
+      id: tag.tagId,
+      name: tag.tagName,
+      active: false,
+    })
+  );
+  console.log(list);
+  return list;
+}
 
 export const useCategoryStore = defineStore("category", () => {
   const nowCategory: Ref<number> = ref(0);
-  const category: category[] = reactive(categories);
+  let category: category[] = reactive([
+    {
+      id: 0,
+      name: "全部",
+      active: true,
+    },
+  ]);
 
-  function getNowCategory(): Ref<number> {
-    return nowCategory;
-  }
   function getCategory() {
-    return category;
+    getTagList({
+      page: 1,
+      limit: 0,
+    }).then(({ data }) => {
+      if (data.success) {
+        category.push(...generateCategory(data.root));
+      } else {
+        category = [
+          {
+            id: 0,
+            name: "全部",
+            active: true,
+          },
+        ];
+      }
+    });
   }
 
   function changeCategory(id: number) {
@@ -36,7 +72,8 @@ export const useCategoryStore = defineStore("category", () => {
     });
   }
   return {
-    getNowCategory,
+    category,
+    nowCategory,
     changeCategory,
     getCategory,
   };

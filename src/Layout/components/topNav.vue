@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-24 18:39:49
+ * @LastEditTime: 2023-03-28 16:40:26
 -->
 <template>
   <div class="top-nav">
@@ -55,9 +55,10 @@ const appStore = useAppStroe();
 let searchValue = ref("");
 let isOpenMenu = ref(false);
 provide("searchValue", searchValue);
+const change = debounce(changeKeywords, 600);
 
 watch(searchValue, (newVal, oldVal) => {
-  debounce(changeKeywords, 2000, true);
+  change()
 });
 
 // 实例化路由对象

@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-23 17:54:43
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-23 19:54:22
+ * @LastEditTime: 2023-03-28 21:07:59
  * @FilePath: /chenyxjs-blog/src/components/MenuBtn.vue
 -->
 <template>
@@ -24,36 +24,40 @@ const props = defineProps({
 });
 
 // 获取bar
-let bar1: HTMLElement;
-let bar2: HTMLElement;
-let bar3: HTMLElement;
+let bar1: HTMLElement | null;
+let bar2: HTMLElement | null;
+let bar3: HTMLElement | null;
 
 watch(
   () => props.isOpen,
   (newVal, oldVal) => {
     if (newVal) {
-      bar1.classList.remove("bar1-active");
-      bar2.classList.remove("bar2-active");
-      bar3.classList.remove("bar3-active");
-      bar1.classList.add("bar1-reverse");
-      bar2.classList.add("bar2-reverse");
-      bar3.classList.add("bar3-reverse");
+      if (bar1 && bar2 && bar3) {
+        bar1.classList.remove("bar1-active");
+        bar2.classList.remove("bar2-active");
+        bar3.classList.remove("bar3-active");
+        bar1.classList.add("bar1-reverse");
+        bar2.classList.add("bar2-reverse");
+        bar3.classList.add("bar3-reverse");
+      }
     } else {
-      bar1.classList.add("bar1-active");
-      bar2.classList.add("bar2-active");
-      bar3.classList.add("bar3-active");
-      bar1.classList.remove("bar1-reverse");
-      bar2.classList.remove("bar2-reverse");
-      bar3.classList.remove("bar3-reverse");
+      if (bar1 && bar2 && bar3) {
+        bar1.classList.add("bar1-active");
+        bar2.classList.add("bar2-active");
+        bar3.classList.add("bar3-active");
+        bar1.classList.remove("bar1-reverse");
+        bar2.classList.remove("bar2-reverse");
+        bar3.classList.remove("bar3-reverse");
+      }
     }
   }
 );
 
 onMounted(() => {
   // 获取bar
-  bar1 = document.getElementById("bar1") || new HTMLElement();
-  bar2 = document.getElementById("bar2") || new HTMLElement();
-  bar3 = document.getElementById("bar3") || new HTMLElement();
+  bar1 = document.getElementById("bar1");
+  bar2 = document.getElementById("bar2");
+  bar3 = document.getElementById("bar3");
 });
 </script>
 
@@ -67,23 +71,23 @@ onMounted(() => {
   box-shadow: 0 4px 2px rgba(0, 0, 0, 0.2);
 }
 .bar1-reverse {
-  animation: change1-rev .6s ease-in-out forwards;
+  animation: change1-rev 0.6s ease-in-out forwards;
 }
 .bar2-reverse {
-  animation: change2-rev .6s ease-in-out forwards;
+  animation: change2-rev 0.6s ease-in-out forwards;
 }
 .bar3-reverse {
-  animation: change3-rev .6s ease-in-out forwards;
+  animation: change3-rev 0.6s ease-in-out forwards;
 }
 
 .bar1-active {
-  animation: change1 .6s ease-in-out forwards;
+  animation: change1 0.6s ease-in-out forwards;
 }
 .bar2-active {
-  animation: change2 .6s ease-in-out forwards;
+  animation: change2 0.6s ease-in-out forwards;
 }
 .bar3-active {
-  animation: change3 .6s ease-in-out forwards;
+  animation: change3 0.6s ease-in-out forwards;
 }
 
 @keyframes change1 {

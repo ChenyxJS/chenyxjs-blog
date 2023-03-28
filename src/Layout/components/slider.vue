@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-09 17:55:18
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-28 14:16:25
+ * @LastEditTime: 2023-03-28 21:10:17
  * @FilePath: /chenyxjs-blog/src/Layout/components/slider.vue
 -->
 <template>
@@ -10,7 +10,7 @@
   <ul class="article-tags">
     <li
       @click="change(item.id)"
-      v-for="item in state.store.getCategory()"
+      v-for="item in state.store.category"
       class="article-tags-item"
     >
       <i
@@ -40,15 +40,18 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { onMounted, reactive } from "vue";
 import { webBaseInfo } from "@/config";
 import { useCategoryStore } from "@/store/modules/category";
 
 const { ICP, NS } = webBaseInfo;
-
 const state = reactive({
   store: useCategoryStore(),
 });
+
+onMounted(() => {
+  state.store.getCategory()
+})
 
 function change(id: number) {
   state.store.changeCategory(id);

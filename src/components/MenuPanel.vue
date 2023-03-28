@@ -2,27 +2,31 @@
  * @Author: chenyx
  * @Date: 2023-03-23 18:18:52
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-23 22:35:14
+ * @LastEditTime: 2023-03-28 22:14:55
  * @FilePath: /chenyxjs-blog/src/components/MenuPanel.vue
 -->
 <template>
   <div v-show="isOpen" class="menu">
-    <div class="menu-item">Portal 门户</div>
-    <div class="menu-item" @click="toHome()">Overview 总览</div>
-    <div class="menu-item_children">All 全部</div>
-    <div class="menu-item_children">Front 前端</div>
-    <div class="menu-item_children">Git</div>
-    <!-- <div class="menu-item_children">Other</div> -->
-    <!-- <div class="menu-item_children">Resources 资源</div> -->
-    <!-- <div class="menu-item" @click="toProject()">Project</div> -->
+    <div class="menu-item">门户</div>
+    <div class="menu-item" @click="toHome()">总览</div>
+    <div
+      v-for="item in store.category"
+      :key="item.id"
+      @click="store.changeCategory(item.id)"
+      class="menu-item_children"
+    >
+      {{ item.name }}
+    </div>
     <div class="menu-item">Github</div>
   </div>
 </template>
 
 <script setup lang="ts">
 import router from "@/router";
+import { useCategoryStore } from "@/store/modules/category";
 
-const emit = defineEmits(['closeMenu'])
+const store = useCategoryStore();
+const emit = defineEmits(["closeMenu"]);
 const props = defineProps({
   isOpen: {
     type: Boolean,
@@ -32,13 +36,13 @@ const props = defineProps({
 
 function toHome() {
   router.push("/home");
-  closeMenu()
+  closeMenu();
 }
 function toProject() {
   router.push("/project");
 }
-function closeMenu(){
-    emit('closeMenu')
+function closeMenu() {
+  emit("closeMenu");
 }
 </script>
 
