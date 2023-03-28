@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-23 18:18:52
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-28 22:14:55
+ * @LastEditTime: 2023-03-29 00:43:16
  * @FilePath: /chenyxjs-blog/src/components/MenuPanel.vue
 -->
 <template>
@@ -17,7 +17,9 @@
     >
       {{ item.name }}
     </div>
-    <div class="menu-item">Github</div>
+    <div class="menu-item" >
+      <a href="https://github.com/ChenyxJS">GitHub</a>
+    </div>
   </div>
 </template>
 
