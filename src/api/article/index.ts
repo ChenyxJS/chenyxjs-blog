@@ -4,12 +4,13 @@
  * @Author: Chenyx
  * @Date: 2022-10-18 00:34:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-23 23:43:11
+ * @LastEditTime: 2023-03-28 12:47:14
  */
 import request from "@/utils/request";
-import { ArticleQuery } from "./types";
+import { AxiosPromise } from "axios";
+import { Article, ArticleQuery } from "./types";
 
-export function getArticleList(data?: ArticleQuery) {
+export function getArticleList(data?: ArticleQuery):AxiosPromise<PageResult<Article>> {
   return request({
     url: "/web/article/all",
     method: "GET",

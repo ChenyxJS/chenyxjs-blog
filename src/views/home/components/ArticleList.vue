@@ -3,7 +3,7 @@
     <!-- 文章card -->
     <div
       class="article-card"
-      v-for="item in data.articleList"
+      v-for="item in state.articleList"
       :key="item.articleId"
     >
       <!-- 文章发布时间、类型 -->
@@ -53,21 +53,18 @@ const { keywords } = storeToRefs(keywordsStore);
 const articleQuery: ArticleQuery = {
   keywords: keywordsStore.keywords,
   articleType: "",
-  pageNum: 1,
-  pageSize: 0,
+  page: 1,
+  limit: 0,
 };
-interface Data {
-  articleList: Article[];
-}
-let data: Data = reactive({
-  articleList: [],
+
+const state = reactive({
+  articleList: [] as Array<Article>,
 });
 let showLoading = ref(false);
 
 watch(
   categoryStore.getNowCategory(),
   (newVar, oldVar) => {
-    // articleQuery.articleType = newVar;
     getList();
   },
   { deep: true }
@@ -81,9 +78,9 @@ watch(
   { deep: true }
 );
 watch(
-  data,
+  state.articleList,
   (newVar, oldVar) => {
-    showLoading.value = newVar.articleList.length == 0 ? true : false;
+    showLoading.value = newVar.length == 0 ? true : false;
   },
   { deep: true }
 );
@@ -99,11 +96,11 @@ onMounted(() => {
 });
 
 function getList() {
-  getArticleList(articleQuery).then((res: any) => {
-    if (res.success) {
-      data.articleList = res.root || [];
+  getArticleList(articleQuery).then(({data}) => {
+    if (data.success) {
+      state.articleList = data.root || [];
     } else {
-      data.articleList = [];
+      state.articleList = [];
     }
   });
 }

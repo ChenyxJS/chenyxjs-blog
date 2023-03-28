@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import AriticleContent from "./components/AriticleContent.vue";
+import AriticleContent from "./components/ArticleList.vue";
 import RightListPanel from "./components/RightListPanel.vue";
 import { useAppStroe } from "@/store/modules/app";
 

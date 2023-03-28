@@ -1,4 +1,0 @@
-ENV = 'prod'
-
-# base api
-VUE_APP_BASE_API = "/prod-api"
