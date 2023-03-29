@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-28 16:40:26
+ * @LastEditTime: 2023-03-29 00:56:20
 -->
 <template>
   <div class="top-nav">
@@ -16,7 +16,7 @@
         ></search-input>
       </div>
       <div v-show="!appStore.deviceStatus.isMobile" class="nav-options">
-        <a href="/">门户</a>
+        <a @click="toHome">门户</a>
         <a @click="toHome">总览</a>
         <!-- <a @click="toProject">UX</a> -->
       </div>

@@ -4,17 +4,17 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-24 19:14:32
+ * @LastEditTime: 2023-03-29 11:27:13
 -->
 <template>
   <div class="article">
-    <div class="article-content" ref="container">
+    <div class="article-content">
       <v-md-preview style="overflow: scroll;" v-if="article" :text="article" ref="preview" />
     </div>
     <div class="article-anchor">
       <div
         class="article-anchor_tag"
-        v-for="anchor in data.anchorList"
+        v-for="anchor in state.anchorList"
         :key="anchor.lineIndex"
         :style="{ textIndent: anchor.indent * 28 + 'px' }"
         @click="handleAnchorClick(anchor)"
@@ -30,7 +30,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { reactive, ref, getCurrentInstance, onUpdated, onMounted } from "vue";
+import { reactive, ref, getCurrentInstance, onUpdated, onMounted, ComponentInternalInstance } from "vue";
 import { useRoute } from "vue-router";
 
 import { getArticleById } from "@/api/article";
@@ -41,15 +41,13 @@ interface Anchor {
   lineIndex: number;
   indent: number;
 }
-interface Data {
-  anchorList: Anchor[];
-}
-let data: Data = reactive({
-  anchorList: [],
+
+const state = reactive({
+  anchorList: [] as Anchor[]
 });
 const route = useRoute()
 
-const { proxy } = getCurrentInstance();
+const { proxy } = getCurrentInstance() as ComponentInternalInstance;
 let article = ref('');
 // hook
 onMounted(() => {
@@ -62,26 +60,28 @@ onUpdated(() => {
 // function
 
 function getArticle() {
-  getArticleById(Number(route.query.id)).then((res) => {
-    article.value = res.object
+  getArticleById(Number(route.query.id)).then(({data}) => {
+    if(data.success){
+      article.value = data.object
+    }
   });
 }
 
 // 渲染目录
 function renderAnchors() {
-  const previewDom: any = proxy.$refs.preview;
+  const previewDom: any = proxy?.$refs.preview;
   const anchors = previewDom.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
   const titles = Array.from(anchors).filter(
     (title: any) => !!title.innerText.trim()
   );
   if (!titles.length) {
-    data.anchorList = [];
+    state.anchorList = [];
     return;
   }
   const hTags = Array.from(
     new Set(titles.map((title: any) => title.tagName))
   ).sort();
-  data.anchorList = titles.map((el: any) => ({
+  state.anchorList = titles.map((el: any) => ({
     title: el.innerText,
     lineIndex: el.getAttribute("data-v-md-line"),
     indent: hTags.indexOf(el.tagName),
@@ -91,8 +91,7 @@ function renderAnchors() {
 // 目录点击跳转
 function handleAnchorClick(anchor: Anchor) {
   const { lineIndex } = anchor;
-  const previewDom: any = proxy.$refs.preview;
-  // const Dom: any = proxy.$refs.container;
+  const previewDom: any = proxy?.$refs.preview;
   const heading = previewDom.$el.querySelector(
     `[data-v-md-line="${lineIndex}"]`
   );
