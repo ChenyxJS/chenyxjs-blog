@@ -2,33 +2,67 @@
  * @Author: chenyx
  * @Date: 2023-03-23 17:02:55
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-23 17:08:09
+ * @LastEditTime: 2023-03-30 14:26:11
  * @FilePath: /chenyxjs-blog/src/views/home/components/RightListPanel.vue
 -->
 <template>
   <div class="asider-articles">
-    <div class="asider-article-card" v-for="item in dataList" key="item.id">
-      <h4>
-        <a class="asider-link" href="">{{ item.title }}</a>
-      </h4>
-      <section>{{ item.content }}</section>
-      <div class="asider-article-card_options">
-        <p class="iconfont icon-a-chakaneye" style="color: #56a6ff">
-          <span>111</span>
-        </p>
-        <p class="iconfont icon-dianzan" style="color: #e6a23c">
-          <span>111</span>
-        </p>
-        <p class="iconfont icon-a-pinglunliaotian" style="color: #56a6ff">
-          <span>111</span>
-        </p>
-      </div>
-    </div>
+    <!-- <skeleton v-for="item in dataList" :key="item.id"></skeleton> -->
+    <el-skeleton
+      style="width: 100%;"
+      :loading="state.loading"
+      animated
+      :throttle="0"
+    >
+      <template #template>
+        <div
+          class="asider-article-card"
+          v-for="item in dataList"
+          :key="item.id"
+        >
+          <el-skeleton-item  style="width: 50%;margin-top: 20px;" variant="h3"></el-skeleton-item>
+          <el-skeleton-item style="height: 35px;" variant="text"></el-skeleton-item>
+          <div class="asider-article-card_options">
+            <el-skeleton-item class="btn" style="width: 40px;height: 20px;" variant="button"></el-skeleton-item>
+            <el-skeleton-item class="btn" style="width: 40px;height: 20px;" variant="button"></el-skeleton-item>
+            <el-skeleton-item class="btn" style="width: 40px;height: 20px;" variant="button"></el-skeleton-item>
+          </div>
+        </div>
+      </template>
+      <template #default>
+        <div
+          class="asider-article-card"
+          v-for="item in dataList"
+          :key="item.id"
+        >
+          <h4>
+            <a class="asider-link" href="">{{ item.title }}</a>
+          </h4>
+          <section>{{ item.content }}</section>
+          <div class="asider-article-card_options">
+            <p  class="iconfont icon-a-chakaneye btn" style="color: #56a6ff">
+              <span>111</span>
+            </p>
+            <p class="iconfont icon-dianzan btn" style="color: #e6a23c">
+              <span>111</span>
+            </p>
+            <p class="iconfont icon-a-pinglunliaotian btn" style="color: #56a6ff">
+              <span>111</span>
+            </p>
+          </div>
+        </div>
+      </template>
+    </el-skeleton>
   </div>
 </template>
 
 <script setup lang="ts">
 import { reactive } from "vue";
+import Skeleton from "@/components/Skeleton.vue";
+
+const state = reactive({
+  loading: true,
+});
 const data = [
   {
     id: 102301,
@@ -83,7 +117,7 @@ const data = [
 const dataList = reactive(data);
 </script>
 
-<style lang="scss" scoped> 
+<style lang="scss" scoped>
 .asider-articles {
   width: 300px;
   min-width: 300px;
@@ -103,7 +137,7 @@ const dataList = reactive(data);
       font-size: 14px;
     }
     .asider-article-card_options {
-      p {
+      .btn {
         display: inline-block;
         font-size: 14px;
         letter-spacing: 2px;
@@ -118,7 +152,7 @@ const dataList = reactive(data);
         }
       }
 
-      p:hover {
+      .btn:hover {
         transition: border-color 0.3s;
         border-color: var(--text-link);
       }

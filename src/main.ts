@@ -4,10 +4,11 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-30 12:50:33
+ * @LastEditTime: 2023-03-30 14:21:01
  */
 import { createApp } from "vue";
 import { createPinia } from "pinia";
+import 'element-plus/theme-chalk/dark/css-vars.css'
 // 引入v-md-editor组件
 import VMdPreview from "@kangc/v-md-editor/lib/preview";
 import vuepressTheme from "@kangc/v-md-editor/lib/theme/vuepress.js";

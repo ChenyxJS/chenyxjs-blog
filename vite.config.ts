@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-30 13:25:47
+ * @LastEditTime: 2023-03-30 13:56:57
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -10,6 +10,9 @@ import vue from "@vitejs/plugin-vue";
 import path from "path";
 import { svgBuilder } from "./src/utils/svgBuilder";
 import {prismjsPlugin} from "vite-plugin-prismjs";
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import postCssPxToRem from "postcss-pxtorem";
 const srcPath = path.resolve(__dirname, "src");
 
@@ -36,6 +39,12 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       svgBuilder("./src/assets/svg/"),
       prismjsPlugin({
         languages: 'all',
+      }),
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
       }),
     ],
     resolve: {
