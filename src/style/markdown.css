@@ -485,6 +485,8 @@
 @media (max-width: 419px) {
   .vuepress-markdown-body {
     max-width: 100%;
+    /* 移动端底部安全距离 */
+    padding-bottom: 120px;
   }
   .vuepress-markdown-body h1 {
     font-size: 30.4px;
