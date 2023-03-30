@@ -6,21 +6,23 @@
  * @FilePath: /chenyxjs-blog/src/components/MenuPanel.vue
 -->
 <template>
-  <div v-show="isOpen" class="menu">
-    <div class="menu-item">门户</div>
-    <div class="menu-item" @click="toHome()">总览</div>
-    <div
-      v-for="item in store.category"
-      :key="item.id"
-      @click="store.changeCategory(item.id)"
-      class="menu-item_children"
-    >
-      {{ item.name }}
+  <el-collapse-transition>
+    <div v-show="isOpen" class="menu">
+      <div class="menu-item">门户</div>
+      <div class="menu-item" @click="toHome()">总览</div>
+      <div
+        v-for="item in store.category"
+        :key="item.id"
+        @click="store.changeCategory(item.id), closeMenu()"
+        class="menu-item_children"
+      >
+        {{ item.name }}
+      </div>
+      <div class="menu-item">
+        <a href="https://github.com/ChenyxJS">GitHub</a>
+      </div>
     </div>
-    <div class="menu-item" >
-      <a href="https://github.com/ChenyxJS">GitHub</a>
-    </div>
-  </div>
+  </el-collapse-transition>
 </template>
 
 <script setup lang="ts">
@@ -53,7 +55,6 @@ function closeMenu() {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
   width: 120px;
   position: absolute;
   top: 65px;

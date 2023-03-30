@@ -4,16 +4,25 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-29 00:56:20
+ * @LastEditTime: 2023-03-30 22:04:15
 -->
 <template>
   <div class="top-nav">
     <div class="top-nav-container">
       <div class="nav-left">
         <search-input
+          class="input"
           placeholder="keywords"
           :value="searchValue"
+          @open="openSearchPanel"
+          @close="closeSearchPanel"
         ></search-input>
+        <SearchPanel
+          v-if="!appStore.deviceStatus.isMobile"
+          :is-show="isShowSearchPanel"
+          @search="changeKeywords"
+          class="panel"
+        ></SearchPanel>
       </div>
       <div v-show="!appStore.deviceStatus.isMobile" class="nav-options">
         <a @click="toHome">门户</a>
@@ -29,12 +38,10 @@
         </div>
         <div v-show="appStore.deviceStatus.isMobile" class="menu-btn">
           <menu-btn :is-open="isOpenMenu" @click="openMenu"></menu-btn>
-          <Transition mode="out-in">
-            <menu-panel
-              :is-open="isOpenMenu"
-              @close-menu="closeMenu"
-            ></menu-panel>
-          </Transition>
+          <menu-panel
+            :is-open="isOpenMenu"
+            @close-menu="closeMenu"
+          ></menu-panel>
         </div>
       </div>
     </div>
@@ -45,21 +52,28 @@ import { computed, provide, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import router from "@/router";
 import SearchInput from "@/components/SearchInput.vue";
+import SearchPanel from "@/components/SearchPanel.vue";
 import MenuBtn from "@/components/MenuBtn.vue";
 import MenuPanel from "@/components/MenuPanel.vue";
-import { useKeyWordsStore } from "@/store/modules/keywords";
+import { useHeaderSearchStroe } from "@/store/modules/headerSearch";
 import { useAppStroe } from "@/store/modules/app";
 import { debounce } from "@/utils/index";
 
 const appStore = useAppStroe();
-let searchValue = ref("");
+const headerSearchStore = useHeaderSearchStroe();
+let searchValue = ref(headerSearchStore.keywords);
 let isOpenMenu = ref(false);
-provide("searchValue", searchValue);
-const change = debounce(changeKeywords, 600);
+let isShowSearchPanel = ref(false);
 
-watch(searchValue, (newVal, oldVal) => {
-  change()
-});
+provide("searchValue", searchValue);
+const change = debounce(headerSearchStore.changeKeywords, 1000);
+
+watch(
+  searchValue,
+  (newVal, oldVal) => {
+    change(newVal);
+  }
+);
 
 // 实例化路由对象
 const route = useRoute();
@@ -81,8 +95,16 @@ function openMenu() {
 function closeMenu() {
   isOpenMenu.value = false;
 }
-function changeKeywords() {
-  useKeyWordsStore().changeKeywords(searchValue.value);
+function changeKeywords(keywords: string) {
+  console.log("change keywords: " + keywords);
+  searchValue.value = keywords;
+}
+
+function openSearchPanel() {
+  isShowSearchPanel.value = true;
+}
+function closeSearchPanel() {
+  isShowSearchPanel.value = false;
 }
 </script>
 
@@ -106,6 +128,14 @@ function changeKeywords() {
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      .input {
+        position: relative;
+      }
+      .panel {
+        position: absolute;
+        top: 50px;
+        left: 20px;
+      }
     }
 
     .nav-options {

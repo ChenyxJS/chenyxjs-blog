@@ -43,14 +43,14 @@ import { reactive, onMounted, onUpdated, watch, computed } from "vue";
 import { useRouter } from "vue-router";
 import { scrollBehavior } from "@/utils/scrollAnimations/scrollShow";
 import { useCategoryStore } from "@/store/modules/category";
-import { useKeyWordsStore } from "@/store/modules/keywords";
+import { useHeaderSearchStroe } from "@/store/modules/headerSearch";
 import { ArticleQuery, Article } from "@/api/article/types";
 import { OrderType } from "@/utils/globalEnum";
 
 const categoryStore = useCategoryStore();
-const keywordsStore = useKeyWordsStore();
+const headerSearchStore = useHeaderSearchStroe();
 const articleQuery = {
-  keywords: keywordsStore.keywords,
+  keywords: headerSearchStore.keywords,
   articleTagId: 0,
   page: 1,
   limit: 0,
@@ -71,7 +71,7 @@ watch(
   { deep: true }
 );
 watch(
-  () => keywordsStore.keywords,
+  () => headerSearchStore.keywords,
   (newVar, oldVar) => {
     articleQuery.keywords = newVar;
     getList();
@@ -145,6 +145,7 @@ function initLoding() {
   }
   .article-card {
     padding: 10px;
+    min-width: 200px;
     opacity: 0;
     transform: translateY(100px);
     transition: opacity 0.6s cubic-bezier(0.5, 0, 0, 1) 0.2s,

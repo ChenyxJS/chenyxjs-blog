@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-30 16:42:54
+ * @LastEditTime: 2023-03-30 17:38:29
 -->
 <template>
   <div class="article">
@@ -44,9 +44,10 @@ import {
   reactive,
   ref,
   getCurrentInstance,
-  onUpdated,
+  nextTick,
   onMounted,
   ComponentInternalInstance,
+  watch,
 } from "vue";
 import { ElMessage } from "element-plus";
 import { useRoute } from "vue-router";
@@ -73,9 +74,6 @@ let article = ref("");
 onMounted(() => {
   getArticle();
 });
-onUpdated(() => {
-  if (!state.loading) renderAnchors();
-});
 
 // function
 function getArticle() {
@@ -85,6 +83,7 @@ function getArticle() {
       if (data.success) {
         article.value = data.object;
         state.loading = false;
+        renderAnchors();
       } else {
         ElMessage.error("文章写的太好，被偷了");
       }
@@ -98,7 +97,10 @@ function getArticle() {
 }
 
 // 渲染目录
-function renderAnchors() {
+async function renderAnchors() {
+  // markdown更新完成后渲染目录
+  await nextTick();
+  
   const previewDom: any = proxy?.$refs.preview;
   const anchors = previewDom.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
   const titles = Array.from(anchors).filter(

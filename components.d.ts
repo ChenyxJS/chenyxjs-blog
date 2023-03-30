@@ -10,6 +10,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ElBacktop: typeof import('element-plus/es')['ElBacktop']
+    ElCollapseTransition: typeof import('element-plus/es')['ElCollapseTransition']
     ElSkeleton: typeof import('element-plus/es')['ElSkeleton']
     ElSkeletonItem: typeof import('element-plus/es')['ElSkeletonItem']
     MenuBtn: typeof import('./src/components/MenuBtn.vue')['default']
@@ -17,6 +18,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchInput: typeof import('./src/components/SearchInput.vue')['default']
+    SearchPanel: typeof import('./src/components/SearchPanel.vue')['default']
     Skeleton: typeof import('./src/components/Skeleton.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon.vue')['default']
     ThreeBallLoading: typeof import('./src/components/Loading/ThreeBallLoading.vue')['default']

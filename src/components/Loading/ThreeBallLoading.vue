@@ -1,3 +1,11 @@
+<!--
+ * @Author: chenyx
+ * @Date: 2023-03-30 15:27:30
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2023-03-30 17:16:13
+ * @FilePath: /chenyxjs-blog/src/components/Loading/ThreeBallLoading.vue
+-->
+
 <template>
   <div class="wrapper">
     <div class="circle"></div>
@@ -14,7 +22,7 @@
 <style scoped>
 .wrapper {
   width: 200px;
-  height: 60px;
+  height: 60px; 
   position: relative;
   z-index: 1;
 }
