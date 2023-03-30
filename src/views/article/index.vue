@@ -4,24 +4,34 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-29 11:27:13
+ * @LastEditTime: 2023-03-30 16:42:54
 -->
 <template>
   <div class="article">
-    <div class="article-content">
-      <v-md-preview style="overflow: scroll;" v-if="article" :text="article" ref="preview" />
+    <div v-if="state.loading" class="loading flex flex-cc">
+      <ThreeBallLoading></ThreeBallLoading>
     </div>
-    <div class="article-anchor">
-      <div
-        class="article-anchor_tag"
-        v-for="anchor in state.anchorList"
-        :key="anchor.lineIndex"
-        :style="{ textIndent: anchor.indent * 28 + 'px' }"
-        @click="handleAnchorClick(anchor)"
-      >
-        {{ anchor.title }}
+    <template v-else>
+      <div class="article-content">
+        <v-md-preview
+          style="overflow: scroll"
+          v-if="article"
+          :text="article"
+          ref="preview"
+        />
       </div>
-    </div>
+      <div class="article-anchor">
+        <div
+          class="article-anchor_tag"
+          v-for="anchor in state.anchorList"
+          :key="anchor.lineIndex"
+          :style="{ textIndent: anchor.indent * 28 + 'px' }"
+          @click="handleAnchorClick(anchor)"
+        >
+          {{ anchor.title }}
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 <script lang="ts">
@@ -30,9 +40,17 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { reactive, ref, getCurrentInstance, onUpdated, onMounted, ComponentInternalInstance } from "vue";
+import {
+  reactive,
+  ref,
+  getCurrentInstance,
+  onUpdated,
+  onMounted,
+  ComponentInternalInstance,
+} from "vue";
+import { ElMessage } from "element-plus";
 import { useRoute } from "vue-router";
-
+import ThreeBallLoading from "@/components/Loading/ThreeBallLoading.vue";
 import { getArticleById } from "@/api/article";
 
 // data
@@ -43,28 +61,40 @@ interface Anchor {
 }
 
 const state = reactive({
-  anchorList: [] as Anchor[]
+  anchorList: [] as Anchor[],
+  loading: false,
 });
-const route = useRoute()
+const route = useRoute();
 
 const { proxy } = getCurrentInstance() as ComponentInternalInstance;
-let article = ref('');
+let article = ref("");
+
 // hook
 onMounted(() => {
-  getArticle()
+  getArticle();
 });
 onUpdated(() => {
-  renderAnchors();
+  if (!state.loading) renderAnchors();
 });
 
 // function
-
 function getArticle() {
-  getArticleById(Number(route.query.id)).then(({data}) => {
-    if(data.success){
-      article.value = data.object
-    }
-  });
+  state.loading = true;
+  getArticleById(Number(route.query.id))
+    .then(({ data }) => {
+      if (data.success) {
+        article.value = data.object;
+        state.loading = false;
+      } else {
+        ElMessage.error("文章写的太好，被偷了");
+      }
+    })
+    .catch((err) => {
+      ElMessage.error("文章写的太好，被偷了");
+    })
+    .finally(() => {
+      state.loading = false;
+    });
 }
 
 // 渲染目录
@@ -107,6 +137,9 @@ function handleAnchorClick(anchor: Anchor) {
 </script>
 
 <style lang="scss" scoped>
+.loading {
+  width: 100%;
+}
 .article {
   width: 100%;
   height: 100vh;

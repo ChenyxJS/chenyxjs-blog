@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-02 20:33:52
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-29 00:27:26
+ * @LastEditTime: 2023-03-30 15:43:26
  * @FilePath: /chenyxjs-blog/src/store/modules/category.ts
  */
 import { defineStore } from "pinia";
@@ -26,7 +26,6 @@ function generateCategory(tags: Tag[]): category[] {
       active: false,
     })
   );
-  console.log(list);
   return list;
 }
 
@@ -44,10 +43,12 @@ export const useCategoryStore = defineStore("category", () => {
     getTagList({
       page: 1,
       limit: 0,
-    }).then(({ data }) => {
+    } as PageQuery).then(({ data }) => {
       if (data.success) {
         generateCategory(data.root).forEach((temp) => {
-          const c:category|undefined = category.find((item) => item.id === temp.id);
+          const c: category | undefined = category.find(
+            (item) => item.id === temp.id
+          );
           if (!c) {
             category.push(temp);
           }

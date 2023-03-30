@@ -19,5 +19,6 @@ declare module '@vue/runtime-core' {
     SearchInput: typeof import('./src/components/SearchInput.vue')['default']
     Skeleton: typeof import('./src/components/Skeleton.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon.vue')['default']
+    ThreeBallLoading: typeof import('./src/components/Loading/ThreeBallLoading.vue')['default']
   }
 }
