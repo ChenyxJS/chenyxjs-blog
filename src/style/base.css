@@ -6,14 +6,7 @@ body {
     background-color: var(--bg-primary);
     font-size: 14px;
   }
-  ul {
-    list-style-type: none;
-    padding-inline-start: 0px;
-  }
-  li {
-    display: flex;
-    align-items: center;
-  }
+
   a {
     text-decoration: none;
     cursor: pointer;

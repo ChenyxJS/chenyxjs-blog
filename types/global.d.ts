@@ -2,9 +2,10 @@
  * @Author: chenyx
  * @Date: 2023-03-02 21:24:28
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-28 13:08:35
+ * @LastEditTime: 2023-03-30 12:39:12
  * @FilePath: /chenyxjs-blog/types/global.d.ts
  */
+
 declare global {
   interface BaseApiResult {
     // 请求是否成功
@@ -19,10 +20,13 @@ declare global {
     object?: any;
   }
 
-  
   interface PageQuery {
     page: number;
     limit: number;
+    // 排序列
+    orderItem: string;
+    // 排序类型
+    orderType: OrderType;
   }
 
   interface PageResult<T> extends BaseApiResult {
@@ -42,4 +46,5 @@ declare global {
     children?: OptionType[];
   };
 }
+
 export {};

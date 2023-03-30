@@ -44,3 +44,11 @@
   color: var(--warning);
 }
 
+.slider-layout ul {
+  list-style-type: none;
+  padding-inline-start: 0px;
+}
+.slider-layout li {
+  display: flex;
+  align-items: center;
+}

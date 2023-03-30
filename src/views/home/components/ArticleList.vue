@@ -45,6 +45,7 @@ import { scrollBehavior } from "@/utils/scrollAnimations/scrollShow";
 import { useCategoryStore } from "@/store/modules/category";
 import { useKeyWordsStore } from "@/store/modules/keywords";
 import { ArticleQuery, Article } from "@/api/article/types";
+import { OrderType } from "@/utils/globalEnum";
 
 const categoryStore = useCategoryStore();
 const keywordsStore = useKeyWordsStore();
@@ -53,6 +54,8 @@ const articleQuery = {
   articleTagId: 0,
   page: 1,
   limit: 0,
+  orderItem:'article_create_time',
+  orderType:OrderType.desc
 } as ArticleQuery;
 
 const state = reactive({

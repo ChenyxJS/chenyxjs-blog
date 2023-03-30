@@ -2,13 +2,14 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-28 15:55:17
+ * @LastEditTime: 2023-03-30 13:25:47
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
 import { svgBuilder } from "./src/utils/svgBuilder";
+import {prismjsPlugin} from "vite-plugin-prismjs";
 import postCssPxToRem from "postcss-pxtorem";
 const srcPath = path.resolve(__dirname, "src");
 
@@ -24,12 +25,19 @@ export default ({ mode }: ConfigEnv): UserConfig => {
           // 线上API地址
           // target: 'http://www.chenyx.site:8080',
           // 本地API地址
-          target: 'http://localhost:8080',
-          rewrite: (path) => path.replace(new RegExp('^' + env.VITE_APP_BASE_API), ''),
+          target: "http://localhost:8080",
+          rewrite: (path) =>
+            path.replace(new RegExp("^" + env.VITE_APP_BASE_API), ""),
         },
       },
     },
-    plugins: [vue(), svgBuilder("./src/assets/svg/")],
+    plugins: [
+      vue(),
+      svgBuilder("./src/assets/svg/"),
+      prismjsPlugin({
+        languages: 'all',
+      }),
+    ],
     resolve: {
       alias: {
         "@": srcPath,
