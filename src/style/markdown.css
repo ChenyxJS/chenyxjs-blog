@@ -323,6 +323,8 @@
 @media (max-width: 419px) {
   .vuepress-markdown-body:not(.custom) {
     padding: 24px;
+     /* 移动端底部安全距离 */
+     padding-bottom: 120px;
   }
 }
 .vuepress-markdown-body .table-of-contents .badge {
