@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-01 01:20:38
+ * @LastEditTime: 2023-04-01 02:22:46
 -->
 <template>
   <div class="top-nav">
@@ -59,6 +59,8 @@ import { useHeaderSearchStroe } from "@/store/modules/headerSearch";
 import { useAppStroe } from "@/store/modules/app";
 import { debounce } from "@/utils/index";
 import { ElMessage } from "element-plus";
+import { useMenu } from "@/hooks/menu-hooks";
+
 
 const appStore = useAppStroe();
 const headerSearchStore = useHeaderSearchStroe();
@@ -79,21 +81,15 @@ watch(
 // 实例化路由对象
 const route = useRoute();
 
+// Menu Hooks
+const { toHome, toPortal, toProject } = useMenu();
+
+
 // 在博客首页时才显示右边的Nav
 const isShowNavRight = computed(() => {
   return route.path == "/home" ? true : false;
 });
 
-function toPortal(){
-  ElMessage.warning('模块正在调试中，敬请期待...')
-}
-function toHome() {
-  router.push("/home");
-}
-function toProject() {
-  // router.push("/project");
-  ElMessage.warning('模块正在调试中，敬请期待...')
-}
 function openMenu() {
   isOpenMenu.value = !isOpenMenu.value;
 }
