@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-01 01:14:05
+ * @LastEditTime: 2023-04-01 01:20:38
 -->
 <template>
   <div class="top-nav">
@@ -25,7 +25,7 @@
         ></SearchPanel>
       </div>
       <div v-show="!appStore.deviceStatus.isMobile" class="nav-options">
-        <a @click="toHome">门户</a>
+        <a @click="toPortal">门户</a>
         <a @click="toHome">总览</a>
         <a @click="toProject">项目</a>
       </div>
@@ -84,9 +84,11 @@ const isShowNavRight = computed(() => {
   return route.path == "/home" ? true : false;
 });
 
-function toHome() {
+function toPortal(){
   ElMessage.warning('模块正在调试中，敬请期待...')
-  // router.push("/home");
+}
+function toHome() {
+  router.push("/home");
 }
 function toProject() {
   // router.push("/project");
