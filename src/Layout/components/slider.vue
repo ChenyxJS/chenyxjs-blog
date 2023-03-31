@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { onMounted, reactive } from "vue";
 import { webBaseInfo } from "@/config";
 import { useCategoryStore } from "@/store/modules/category";
 
@@ -49,6 +49,7 @@ const state = reactive({
   store: useCategoryStore(),
 });
 state.store.getCategory();
+
 
 function change(id: number) {
   state.store.changeCategory(id);

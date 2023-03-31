@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-23 17:02:55
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-30 14:26:11
+ * @LastEditTime: 2023-03-31 17:53:09
  * @FilePath: /chenyxjs-blog/src/views/home/components/RightListPanel.vue
 -->
 <template>
@@ -121,7 +121,7 @@ const dataList = reactive(data);
 .asider-articles {
   width: 300px;
   min-width: 300px;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 62px);
   overflow: hidden auto;
   .asider-article-card {
     width: 100%;

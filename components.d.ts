@@ -11,6 +11,8 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ElBacktop: typeof import('element-plus/es')['ElBacktop']
     ElCollapseTransition: typeof import('element-plus/es')['ElCollapseTransition']
+    ElIco: typeof import('element-plus/es')['ElIco']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
     ElSkeleton: typeof import('element-plus/es')['ElSkeleton']
     ElSkeletonItem: typeof import('element-plus/es')['ElSkeletonItem']
     MenuBtn: typeof import('./src/components/MenuBtn.vue')['default']

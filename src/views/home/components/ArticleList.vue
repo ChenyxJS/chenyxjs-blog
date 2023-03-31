@@ -54,8 +54,8 @@ const articleQuery = {
   articleTagId: 0,
   page: 1,
   limit: 0,
-  orderItem:'article_create_time',
-  orderType:OrderType.desc
+  orderItem: "article_create_time",
+  orderType: OrderType.desc,
 } as ArticleQuery;
 
 const state = reactive({
@@ -133,8 +133,8 @@ function initLoding() {
 <style lang="scss" scoped>
 .article-content {
   flex: 1;
-  height: calc(100vh - 40px);
-  overflow: scroll;
+  height: calc(100vh - 62px);
+  overflow: hidden scroll;
   .loding {
     width: 100%;
     height: 100%;
@@ -175,6 +175,12 @@ function initLoding() {
       &_content {
         font-size: 14px;
         color: var(--text-second);
+        word-break: break-all;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3; /* 这里是超出几行省略 */
       }
       &_options {
         margin-top: 24px;

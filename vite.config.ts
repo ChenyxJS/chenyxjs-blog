@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-30 16:20:01
+ * @LastEditTime: 2023-03-31 12:15:01
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -13,6 +13,7 @@ import { prismjsPlugin } from "vite-plugin-prismjs";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
+import vueSetupExtend from "vite-plugin-vue-setup-extend";
 
 import postCssPxToRem from "postcss-pxtorem";
 const srcPath = path.resolve(__dirname, "src");
@@ -27,9 +28,9 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       proxy: {
         [env.VITE_APP_BASE_API]: {
           // 线上API地址
-          // target: 'http://www.chenyx.site:8080',
+          target: 'http://www.chenyx.site:8080',
           // 本地API地址
-          target: "http://localhost:8080",
+          // target: "http://localhost:8080",
           rewrite: (path) =>
             path.replace(new RegExp("^" + env.VITE_APP_BASE_API), ""),
         },
@@ -47,6 +48,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       Components({
         resolvers: [ElementPlusResolver()],
       }),
+      vueSetupExtend(),
     ],
     resolve: {
       alias: {
