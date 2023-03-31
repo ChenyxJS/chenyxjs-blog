@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-31 18:27:46
+ * @LastEditTime: 2023-04-01 00:51:38
 -->
 <template>
   <div class="article">
@@ -14,7 +14,7 @@
     <template v-else>
       <div class="article-content">
         <v-md-preview
-          style="overflow: hidden scroll"
+          style="overflow: hidden scroll;width: 100%;"
           v-if="state.article"
           :text="state.article"
           ref="preview"

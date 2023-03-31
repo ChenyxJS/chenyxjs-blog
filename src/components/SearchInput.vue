@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-11 10:07:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-30 20:08:49
+ * @LastEditTime: 2023-03-31 23:00:05
  * @FilePath: /chenyxjs-blog/src/components/SearchInput.vue
 -->
 <template>
@@ -59,7 +59,6 @@ const vFocus = {
 .active {
   border: 1px solid #009dff;
   width: 100%;
-  border-radius: 6px 6px 0 0;
   transition: 0.5s ease;
 }
 </style>

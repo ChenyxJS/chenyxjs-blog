@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-31 21:52:58
+ * @LastEditTime: 2023-03-31 22:28:50
 -->
 <template>
   <div class="top-nav">
@@ -88,7 +88,8 @@ function toHome() {
   router.push("/home");
 }
 function toProject() {
-  ElMessage.warning('模块正在调试中，敬请期待...')
+  router.push("/project");
+  // ElMessage.warning('模块正在调试中，敬请期待...')
 }
 function openMenu() {
   isOpenMenu.value = !isOpenMenu.value;

@@ -4,38 +4,53 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-13 20:22:51
+ * @LastEditTime: 2023-03-31 23:55:23
 -->
 <template>
-  <div class="project">
-    <div class="project-list">
-      <div class="title">project</div>
-      <ProjectCard></ProjectCard>
-    </div>
-    <div class="project-list">
-      <div class="title">100days</div>
-      <ProjectCard></ProjectCard>
+  <div class="project flex flex-cc">
+    <div class="wrapper">
+      <div class="card-groups">
+        <div
+          class="card-group"
+          v-for="(item, index) in state.items"
+          :key="index"
+        > 
+          <a>
+            <img class="img" src="@/assets/images/home-bg.png" />
+          </a>
+          <div class="text">
+            <div>{{ item.name }}</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import ProjectCard from "./components/ProjectCard.vue";
-import day1 from "./components/day1.vue";
-import day2 from "./components/day2.vue";
 const state = reactive({
   items: [
+    {
+      name: "这是一个很不错的项目",
+      desc: "day1",
+      img: "https://100dayscss.com/codepen/13-2.jpg",
+    },
     {
       name: "day1",
       desc: "day1",
       img: "https://100dayscss.com/codepen/13-2.jpg",
     },
-    // {
-    //   name: "day2",
-    //   desc: "",
-    //   img: "https://100dayscss.com/codepen/13-2.jpg",
-    // },
+    {
+      name: "day1",
+      desc: "day1",
+      img: "https://100dayscss.com/codepen/13-2.jpg",
+    },
+    {
+      name: "day1",
+      desc: "day1",
+      img: "https://100dayscss.com/codepen/13-2.jpg",
+    },
   ],
 });
 </script>
@@ -43,32 +58,33 @@ const state = reactive({
 <style lang="scss" scoped>
 .project {
   width: 100%;
-  height: 100%;
-  display: block;
+  height: calc(100vh - 62px);
+  overflow: hidden;
 }
-.project-list {
+.wrapper {
+  margin: auto;
+  width: 90%;
+  height: calc(100% - 60px);
+  background-color: #242424;
+  border-radius: 16px;
+}
+.card-groups {
+  padding: 20px;
   display: flex;
-  position: relative;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 50%;
-  padding-top: 15px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-
-.title {
-  position: absolute;
-  font-size: 20px;
-  top: 10px;
-  left: 20px;
-  line-height: 24px;
-}
-.title::before {
-  content: "";
-  position: absolute;
-  left: -10px;
-  height: 30px;
-  border: 2px solid #fff;
-  border-radius: 4px;
+.card-group {
+  width: calc(30% - 13px);
+  .img {
+    width: 100%;
+    border-radius: 14px;
+  }
+  .text {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0 3px;
+    cursor: pointer;
+  }
 }
 </style>
