@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-30 22:04:15
+ * @LastEditTime: 2023-03-31 21:52:58
 -->
 <template>
   <div class="top-nav">
@@ -27,7 +27,7 @@
       <div v-show="!appStore.deviceStatus.isMobile" class="nav-options">
         <a @click="toHome">门户</a>
         <a @click="toHome">总览</a>
-        <!-- <a @click="toProject">UX</a> -->
+        <a @click="toProject">项目</a>
       </div>
       <div class="nav-right flex flex-ce">
         <div
@@ -58,6 +58,7 @@ import MenuPanel from "@/components/MenuPanel.vue";
 import { useHeaderSearchStroe } from "@/store/modules/headerSearch";
 import { useAppStroe } from "@/store/modules/app";
 import { debounce } from "@/utils/index";
+import { ElMessage } from "element-plus";
 
 const appStore = useAppStroe();
 const headerSearchStore = useHeaderSearchStroe();
@@ -87,7 +88,7 @@ function toHome() {
   router.push("/home");
 }
 function toProject() {
-  router.push("/project");
+  ElMessage.warning('模块正在调试中，敬请期待...')
 }
 function openMenu() {
   isOpenMenu.value = !isOpenMenu.value;

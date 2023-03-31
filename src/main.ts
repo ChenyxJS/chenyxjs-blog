@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-31 18:17:16
+ * @LastEditTime: 2023-03-31 19:41:28
  */
 import { createApp } from "vue";
 import { createPinia } from "pinia";
@@ -47,10 +47,6 @@ import SvgIcon from "@/components/SvgIcon.vue";
 const pinia = createPinia();
 
 const app = createApp(App);
-// import * as ElementPlusIconsVue from "@element-plus/icons-vue";
-// for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-//   app.component(key, component);
-// }
 
 // 注册全局方法
 app.config.globalProperties.$FormatDate = formatDate;
