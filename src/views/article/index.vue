@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-31 17:58:44
+ * @LastEditTime: 2023-03-31 18:27:46
 -->
 <template>
   <div class="article">
@@ -23,8 +23,9 @@
       <div id="article-anchor" class="article-anchor">
         <span>
           <el-icon style="vertical-align: top" :size="18">
-            <Notebook />
+            <i-ep-notebook></i-ep-notebook>
           </el-icon>
+          
           <span style="font-size: 16px; line-height: 16px">目录</span>
         </span>
         <div

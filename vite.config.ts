@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-31 12:15:01
+ * @LastEditTime: 2023-03-31 18:25:50
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -10,6 +10,8 @@ import vue from "@vitejs/plugin-vue";
 import path from "path";
 import { svgBuilder } from "./src/utils/svgBuilder";
 import { prismjsPlugin } from "vite-plugin-prismjs";
+import Icons from "unplugin-icons/vite";
+import IconsResolver from "unplugin-icons/resolver";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
@@ -28,7 +30,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       proxy: {
         [env.VITE_APP_BASE_API]: {
           // 线上API地址
-          target: 'http://www.chenyx.site:8080',
+          target: "http://www.chenyx.site:8080",
           // 本地API地址
           // target: "http://localhost:8080",
           rewrite: (path) =>
@@ -46,7 +48,16 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         resolvers: [ElementPlusResolver()],
       }),
       Components({
-        resolvers: [ElementPlusResolver()],
+        resolvers: [
+          ElementPlusResolver(), 
+          // 自动注册图标组件
+          IconsResolver({
+            enabledCollections: ["ep"],
+          }),
+        ],
+      }),
+      Icons({
+        autoInstall: true,
       }),
       vueSetupExtend(),
     ],
