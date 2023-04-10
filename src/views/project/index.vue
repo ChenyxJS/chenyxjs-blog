@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-31 23:55:23
+ * @LastEditTime: 2023-04-11 00:58:55
 -->
 <template>
   <div class="project flex flex-cc">
@@ -16,7 +16,7 @@
           :key="index"
         > 
           <a>
-            <img class="img" src="@/assets/images/home-bg.png" />
+            <!-- <img class="img" src="@/assets/images/home-bg.png" /> -->
           </a>
           <div class="text">
             <div>{{ item.name }}</div>
