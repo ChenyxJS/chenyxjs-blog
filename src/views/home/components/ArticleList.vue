@@ -39,9 +39,9 @@ import { formatDate } from "@/utils";
 import lottie from "lottie-web";
 import lottieDataJson from "@/assets/lottie/NoData/data.json";
 import { getArticleList } from "@/api/article";
-import { reactive, onMounted, onUpdated, watch, computed } from "vue";
+import { reactive, onMounted, onUpdated, watch, computed, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
-import { scrollBehavior } from "@/utils/scrollAnimations/scrollShow";
+import { scrollBehavior } from "@/utils/scrollShow"
 import { useCategoryStore } from "@/store/modules/category";
 import { useHeaderSearchStroe } from "@/store/modules/headerSearch";
 import { ArticleQuery, Article } from "@/api/article/types";
@@ -91,6 +91,9 @@ onMounted(() => {
     scrollBehavior(elList);
   });
 });
+onUnmounted(()=>{
+  
+})
 
 function getList() {
   getArticleList(articleQuery).then(({ data }) => {

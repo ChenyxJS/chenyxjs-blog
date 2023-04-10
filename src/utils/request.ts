@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-16 21:23:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-28 15:01:30
+ * @LastEditTime: 2023-04-10 23:49:33
  */
 import axios from "axios"
 import Qs from "qs"
@@ -29,8 +29,6 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
     response => {
-        // const res = response.data
-        // if(res)
         return response
     },
     error => {

@@ -2,11 +2,11 @@
  * @Author: chenyx
  * @Date: 2023-03-30 19:23:57
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-30 22:59:22
+ * @LastEditTime: 2023-04-10 23:40:16
  * @FilePath: /chenyxjs-blog/src/store/modules/headerSearch.ts
  */
 import { defineStore } from "pinia";
-import { h, Ref, ref } from "vue";
+import { Ref, ref } from "vue";
 import router from "@/router";
 
 export interface SearchKey {
