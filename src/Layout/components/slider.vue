@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-09 17:55:18
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-29 10:28:02
+ * @LastEditTime: 2023-04-01 16:26:31
  * @FilePath: /chenyxjs-blog/src/Layout/components/slider.vue
 -->
 <template>
@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive } from "vue";
+import { reactive } from "vue";
 import { webBaseInfo } from "@/config";
 import { useCategoryStore } from "@/store/modules/category";
 
@@ -49,7 +49,6 @@ const state = reactive({
   store: useCategoryStore(),
 });
 state.store.getCategory();
-
 
 function change(id: number) {
   state.store.changeCategory(id);

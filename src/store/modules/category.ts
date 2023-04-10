@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-02 20:33:52
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-30 15:43:26
+ * @LastEditTime: 2023-04-01 16:26:16
  * @FilePath: /chenyxjs-blog/src/store/modules/category.ts
  */
 import { defineStore } from "pinia";
@@ -11,14 +11,14 @@ import router from "@/router";
 import { getTagList } from "@/api/tag";
 import { Tag } from "@/api/tag/types";
 
-export interface category {
+export interface Category {
   id: number;
   name: string;
   active: boolean;
 }
 
-function generateCategory(tags: Tag[]): category[] {
-  let list: category[] = [];
+function generateCategory(tags: Tag[]): Category[] {
+  let list: Category[] = [];
   tags.forEach((tag) =>
     list.push({
       id: tag.tagId,
@@ -31,7 +31,7 @@ function generateCategory(tags: Tag[]): category[] {
 
 export const useCategoryStore = defineStore("category", () => {
   const nowCategory: Ref<number> = ref(0);
-  let category: category[] = reactive([
+  let category: Category[] = reactive([
     {
       id: 0,
       name: "全部",
@@ -46,7 +46,7 @@ export const useCategoryStore = defineStore("category", () => {
     } as PageQuery).then(({ data }) => {
       if (data.success) {
         generateCategory(data.root).forEach((temp) => {
-          const c: category | undefined = category.find(
+          const c: Category | undefined = category.find(
             (item) => item.id === temp.id
           );
           if (!c) {
