@@ -4,9 +4,10 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:24:53
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-28 15:24:11
+ * @LastEditTime: 2023-04-11 10:18:09
  */
 import {
+  RouteRecordRaw,
   createRouter,
   createWebHashHistory,
   createWebHistory,
@@ -24,11 +25,17 @@ const routes = [
         path: "home",
         name: "home",
         component: () => import("../views/home/index.vue"),
+        meta:{
+          title:'见万事如流'
+        }
       },
       {
         path: "project",
         name: "project",
         component: () => import("../views/project/index.vue"),
+        meta:{
+          title:'项目'
+        }
       },
       {
         path: "article",
@@ -37,7 +44,7 @@ const routes = [
       },
     ],
   },
-];
+] as RouteRecordRaw[];
 // 开发环境使用hash 生产环境使用web
 const history =
   import.meta.env.MODE === "production"

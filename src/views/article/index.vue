@@ -4,10 +4,10 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-01 00:51:38
+ * @LastEditTime: 2023-04-11 12:03:19
 -->
 <template>
-  <div class="article">
+  <div class="article" v-wechat-title="$route.meta.title=state.article.articleTitle">
     <div v-if="state.loading" class="loading flex flex-cc">
       <ThreeBallLoading></ThreeBallLoading>
     </div>
@@ -55,6 +55,7 @@ import { ElMessage, ElIcon } from "element-plus";
 import { useRoute } from "vue-router";
 import ThreeBallLoading from "@/components/Loading/ThreeBallLoading.vue";
 import { getArticleById } from "@/api/article";
+import { Article } from "@/api/article/types";
 // data
 interface Anchor {
   title: string;
@@ -66,13 +67,14 @@ interface Anchor {
 const state = reactive({
   anchorList: [] as Anchor[],
   loading: false,
-  article: "",
+  articleContent: "",
+  article:{} as Article
 });
 const route = useRoute();
 
 const { proxy } = getCurrentInstance() as ComponentInternalInstance;
 let previewDom: any;
-// hook
+
 onMounted(() => {
   getArticle();
 });
@@ -83,7 +85,8 @@ function getArticle() {
   getArticleById(Number(route.query.id))
     .then(({ data }) => {
       if (data.success) {
-        state.article = data.object;
+        state.articleContent = data.object.content;
+        state.article = data.object.article;
         state.loading = false;
         renderAnchors();
       } else {

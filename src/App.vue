@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-23 17:32:19
+ * @LastEditTime: 2023-04-11 10:45:28
 -->
 <script setup lang="ts">
 import { useAppStroe } from "@/store/modules/app";
@@ -20,7 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <router-view></router-view>
+  <router-view v-wechat-title="$route.meta.title"></router-view>
 </template>
 
 <style></style>

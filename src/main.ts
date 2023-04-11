@@ -4,10 +4,12 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-31 19:41:28
+ * @LastEditTime: 2023-04-11 10:44:03
  */
 import { createApp } from "vue";
 import { createPinia } from "pinia";
+import '@/permission'
+
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import 'element-plus/dist/index.css'
 // 引入v-md-editor组件
@@ -40,17 +42,15 @@ VMdPreview.use(createEmojiPlugin());
 
 import App from "./App.vue";
 import router from "./router";
-
-import { formatDate } from "../src/utils/index";
-
 import SvgIcon from "@/components/SvgIcon.vue";
+import VueWechatTitle from 'vue-wechat-title'
 const pinia = createPinia();
 
 const app = createApp(App);
 
 // 注册全局方法
-app.config.globalProperties.$FormatDate = formatDate;
 app.use(VMdPreview);
+app.use(VueWechatTitle);
 app.component("svg-icon", SvgIcon);
 app.use(router);
 app.use(pinia);

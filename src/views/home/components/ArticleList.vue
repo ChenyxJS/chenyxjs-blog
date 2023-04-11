@@ -91,9 +91,6 @@ onMounted(() => {
     scrollBehavior(elList);
   });
 });
-onUnmounted(()=>{
-  
-})
 
 function getList() {
   getArticleList(articleQuery).then(({ data }) => {
@@ -114,6 +111,9 @@ function toArticle(article: Article) {
     query: {
       id: article.articleId,
     },
+  }).then(()=>{
+  // window.document.title = article.articleTitle;
+  // console.log(window.document.title);
   });
 }
 

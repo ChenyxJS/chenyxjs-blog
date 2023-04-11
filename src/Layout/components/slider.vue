@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-09 17:55:18
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 09:20:27
+ * @LastEditTime: 2023-04-11 11:09:55
  * @FilePath: /chenyxjs-blog/src/Layout/components/slider.vue
 -->
 <template>
@@ -36,7 +36,7 @@
       </p>
       <p>
         <img src="../../assets/images/beian.png" style="float:left; margin-right: 5px;"/>
-        <a href="https://beian.miit.gov.cn/" target="_blank">{{ NS }} </a>
+        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=45020302000255" target="_blank">{{ NS }} </a>
       </p>
       <p>© 2023 chenyx.site 版权所有</p>
     </section>
