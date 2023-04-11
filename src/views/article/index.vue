@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 12:03:19
+ * @LastEditTime: 2023-04-11 12:07:13
 -->
 <template>
   <div class="article" v-wechat-title="$route.meta.title=state.article.articleTitle">
@@ -15,8 +15,8 @@
       <div class="article-content">
         <v-md-preview
           style="overflow: hidden scroll;width: 100%;"
-          v-if="state.article"
-          :text="state.article"
+          v-if="state.articleContent"
+          :text="state.articleContent"
           ref="preview"
         />
       </div>
