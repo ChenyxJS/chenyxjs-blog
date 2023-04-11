@@ -4,17 +4,20 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 12:07:13
+ * @LastEditTime: 2023-04-11 15:45:38
 -->
 <template>
-  <div class="article" v-wechat-title="$route.meta.title=state.article.articleTitle">
+  <div
+    class="article"
+    v-wechat-title="($route.meta.title = state.article.articleTitle)"
+  >
     <div v-if="state.loading" class="loading flex flex-cc">
       <ThreeBallLoading></ThreeBallLoading>
     </div>
     <template v-else>
       <div class="article-content">
         <v-md-preview
-          style="overflow: hidden scroll;width: 100%;"
+          style="overflow: hidden scroll; width: 100%"
           v-if="state.articleContent"
           :text="state.articleContent"
           ref="preview"
@@ -25,7 +28,7 @@
           <el-icon style="vertical-align: top" :size="18">
             <i-ep-notebook></i-ep-notebook>
           </el-icon>
-          
+
           <span style="font-size: 16px; line-height: 16px">目录</span>
         </span>
         <div
@@ -68,7 +71,7 @@ const state = reactive({
   anchorList: [] as Anchor[],
   loading: false,
   articleContent: "",
-  article:{} as Article
+  article: {} as Article,
 });
 const route = useRoute();
 
@@ -76,29 +79,58 @@ const { proxy } = getCurrentInstance() as ComponentInternalInstance;
 let previewDom: any;
 
 onMounted(() => {
-  getArticle();
+  loading();
 });
 
 // function
-function getArticle() {
-  state.loading = true;
-  getArticleById(Number(route.query.id))
-    .then(({ data }) => {
-      if (data.success) {
-        state.articleContent = data.object.content;
-        state.article = data.object.article;
-        state.loading = false;
-        renderAnchors();
-      } else {
-        ElMessage.error("文章写的太好，被偷了");
-      }
+function loading() {
+  const rejectPromise = (rejectTime: number): Promise<unknown> => {
+    // 指定时间后返回状态失败的promise
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject(new Error(`在${rejectTime}ms后返回失败Promise`));
+      }, rejectTime);
+    });
+  };
+
+  const reolvePromise = (reolveTime: number): Promise<unknown> => {
+    // 指定时间后返回状态成功的promise
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(`在${reolveTime}ms后返回成功Promise`);
+      }, reolveTime);
+    });
+  };
+  const axiosRequest = getArticleById(Number(route.query.id)); // 记录请求的状态
+  Promise.race([axiosRequest, rejectPromise(300)])
+    .then((res:any) => {
+      // 成功意味着请求在固定时间内返回
+      handleData(res.data)
     })
     .catch((err) => {
-      ElMessage.error("文章写的太好，被偷了");
-    })
-    .finally(() => {
-      state.loading = false;
+      // 超时，整体变成onrejected，展示loading
+      state.loading = true;
+      Promise.all([axiosRequest, reolvePromise(1500)])
+      .then((res) => {
+        handleData(res[0].data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => {
+        state.loading = false
+      })
     });
+}
+
+function handleData(data: BaseApiResult) {
+  if (data.success) {
+    state.articleContent = data.object.content;
+    state.article = data.object.article;
+    renderAnchors();
+  } else {
+    ElMessage.error("文章写的太好，被偷了");
+  }
 }
 
 // 渲染目录

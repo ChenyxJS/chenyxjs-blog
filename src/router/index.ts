@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:24:53
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 10:18:09
+ * @LastEditTime: 2023-04-11 18:42:28
  */
 import {
   RouteRecordRaw,
@@ -25,6 +25,14 @@ const routes = [
         path: "home",
         name: "home",
         component: () => import("../views/home/index.vue"),
+        meta:{
+          title:'见万事如流'
+        }
+      },
+      {
+        path: "blog",
+        name: "blog",
+        component: () => import("../views/blog/index.vue"),
         meta:{
           title:'见万事如流'
         }

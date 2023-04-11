@@ -112,8 +112,7 @@ function toArticle(article: Article) {
       id: article.articleId,
     },
   }).then(()=>{
-  // window.document.title = article.articleTitle;
-  // console.log(window.document.title);
+  window.document.title = article.articleTitle;
   });
 }
 

@@ -2,12 +2,11 @@
  * @Author: chenyx
  * @Date: 2023-03-23 17:02:55
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-31 17:53:09
+ * @LastEditTime: 2023-04-11 12:33:23
  * @FilePath: /chenyxjs-blog/src/views/home/components/RightListPanel.vue
 -->
 <template>
   <div class="asider-articles">
-    <!-- <skeleton v-for="item in dataList" :key="item.id"></skeleton> -->
     <el-skeleton
       style="width: 100%;"
       :loading="state.loading"
@@ -58,7 +57,6 @@
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import Skeleton from "@/components/Skeleton.vue";
 
 const state = reactive({
   loading: true,

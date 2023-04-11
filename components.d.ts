@@ -9,6 +9,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Copyright: typeof import('./src/components/Copyright.vue')['default']
     ElBacktop: typeof import('element-plus/es')['ElBacktop']
     ElCollapseTransition: typeof import('element-plus/es')['ElCollapseTransition']
     ElIco: typeof import('element-plus/es')['ElIco']
@@ -20,6 +21,7 @@ declare module '@vue/runtime-core' {
     IEpNotebook: typeof import('~icons/ep/notebook')['default']
     MenuBtn: typeof import('./src/components/MenuBtn.vue')['default']
     MenuPanel: typeof import('./src/components/MenuPanel.vue')['default']
+    ProfileCard: typeof import('./src/components/ProfileCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchInput: typeof import('./src/components/SearchInput.vue')['default']

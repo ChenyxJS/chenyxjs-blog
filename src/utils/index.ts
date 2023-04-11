@@ -4,8 +4,11 @@
  * @Author: Chenyx
  * @Date: 2022-10-16 00:50:35
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-28 16:02:59
+ * @LastEditTime: 2023-04-11 14:33:03
  */
+
+import { AxiosPromise } from "axios";
+import { Ref } from "vue";
 
 /**
  * @Descripttion: 格式化时间
@@ -75,4 +78,53 @@ export function throttle(callback: Function, wait: number) {
       flag = false;
     }, wait);
   };
+}
+
+export function loading(
+  apiFun: Function,
+  args: any,
+  loadingRef: any
+): void {
+
+  const rejectPromise = (rejectTime: number): Promise<unknown> => {
+    // 指定时间后返回状态失败的promise
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject(new Error(`在${rejectTime}ms后返回失败Promise`));
+      }, rejectTime);
+    });
+  };
+
+  const reolvePromise = (reolveTime: number): Promise<unknown> => {
+    // 指定时间后返回状态成功的promise
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(`在${reolveTime}ms后返回成功Promise`);
+      }, reolveTime);
+    });
+  };
+
+  const axiosRequest = apiFun(args); // 记录请求的状态
+
+  Promise.race([axiosRequest, rejectPromise(300)])
+    .then((res) => {
+      // 成功意味着请求在固定时间内返回
+      console.log(res);
+    })
+    .catch((err) => {
+      // 超时，整体变成onrejected，展示loading
+      loadingRef = true;
+      console.log(err.message);
+      Promise.all([axiosRequest, reolvePromise(1500)])
+        .then((res) => {
+          // Promise.all执行结果返回的数组顺序是按传入顺序决定的
+          console.log(res[0]);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          loadingRef = false;
+        });
+    });
 }

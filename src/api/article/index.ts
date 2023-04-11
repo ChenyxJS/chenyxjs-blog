@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-18 00:34:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-28 12:47:14
+ * @LastEditTime: 2023-04-11 15:47:07
  */
 import request from "@/utils/request";
 import { AxiosPromise } from "axios";
@@ -19,7 +19,6 @@ export function getArticleList(data?: ArticleQuery):AxiosPromise<PageResult<Arti
 }
 
 export function getArticleById(id:number) {
-  // 去除字符串中的
   return request({
     url: "/web/article/"+id,
     method: "GET",

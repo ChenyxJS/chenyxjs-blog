@@ -2,8 +2,8 @@
  * @Author: chenyx
  * @Date: 2023-03-09 17:55:18
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 11:09:55
- * @FilePath: /chenyxjs-blog/src/Layout/components/slider.vue
+ * @LastEditTime: 2023-04-11 18:58:41
+ * @FilePath: /chenyxjs-blog/src/Layout/components/BlogSlider.vue
 -->
 <template>
   <!-- 标签分类 -->
@@ -20,35 +20,15 @@
       <a>{{ item.name }}</a>
     </li>
   </ul>
-  <!-- 最新动态 -->
-  <div class="recent-activity">
-    <h4>最近动态</h4>
-    <section>Vue3 + Vite3.0 + Typescript 版本的 Blog 上线了!</section>
-    <!-- <section>Jenkins持续集成、持续部署（CI/CD）</section> -->
-  </div>
+
   <!-- Copyright -->
-  <div class="copyright">
-    <h4>Copyright</h4>
-    <section>
-      <p>作者：Chenyx</p>
-      <p>
-        <a href="https://beian.miit.gov.cn/" target="_blank">{{ ICP }} </a>
-      </p>
-      <p>
-        <img src="../../assets/images/beian.png" style="float:left; margin-right: 5px;"/>
-        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=45020302000255" target="_blank">{{ NS }} </a>
-      </p>
-      <p>© 2023 chenyx.site 版权所有</p>
-    </section>
-  </div>
+  <copyright></copyright>
 </template>
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import { webBaseInfo } from "@/config";
 import { useCategoryStore } from "@/store/modules/category";
 
-const { ICP, NS } = webBaseInfo;
 const state = reactive({
   store: useCategoryStore(),
 });
