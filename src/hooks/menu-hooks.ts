@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-01 02:15:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 18:37:48
+ * @LastEditTime: 2023-04-14 01:12:11
  * @FilePath: /chenyxjs-blog/src/hooks/menu-hooks.ts
  */
 import router from "@/router";
@@ -18,6 +18,9 @@ export function useMenu() {
   function toBlog() {
     router.push("/blog");
   }
+  function toWallpaper() {
+    router.push("/wallpaper");
+  }
   function toProject() {
     ElMessage.warning("模块正在调试中，敬请期待...");
     // router.push("/project");
@@ -26,6 +29,7 @@ export function useMenu() {
     toHome,
     toProject,
     toPortal,
-    toBlog
+    toBlog,
+    toWallpaper
   };
 }

@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:24:53
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 18:42:28
+ * @LastEditTime: 2023-04-14 01:10:11
  */
 import {
   RouteRecordRaw,
@@ -26,7 +26,7 @@ const routes = [
         name: "home",
         component: () => import("../views/home/index.vue"),
         meta:{
-          title:'见万事如流'
+          title:'首页'
         }
       },
       {
@@ -34,7 +34,15 @@ const routes = [
         name: "blog",
         component: () => import("../views/blog/index.vue"),
         meta:{
-          title:'见万事如流'
+          title:'博客'
+        }
+      },
+      {
+        path: "wallpaper",
+        name: "wallpaper",
+        component: () => import("../views/wallpaper/index.vue"),
+        meta:{
+          title:'壁纸'
         }
       },
       {

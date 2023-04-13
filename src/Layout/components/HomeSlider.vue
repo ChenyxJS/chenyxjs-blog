@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-09 17:55:18
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 20:00:18
+ * @LastEditTime: 2023-04-12 04:05:26
  * @FilePath: /chenyxjs-blog/src/Layout/components/HomeSlider.vue
 -->
 <template>
@@ -14,7 +14,6 @@
   <div class="slider-item recent-activity">
     <h4>最近动态</h4>
     <section>Vue3 + Vite3.0 + Typescript 版本的 Blog 上线了!</section>
-    <!-- <section>Jenkins持续集成、持续部署（CI/CD）</section> -->
   </div>
   <!-- Copyright -->
   <copyright></copyright>
@@ -31,5 +30,8 @@
 .profile-card {
   margin-top: 20px;
 }
-
+.recent-activity {
+  padding-bottom: 32px;
+  border-bottom: var(--border);
+}
 </style>

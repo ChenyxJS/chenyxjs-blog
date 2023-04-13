@@ -80,6 +80,13 @@ export function throttle(callback: Function, wait: number) {
   };
 }
 
+// 格式化歌曲播放时间
+export function handleFormatDuration(duration: number):string {
+  const mins = Math.floor(duration / 60) < 10 ? `0${Math.floor(duration / 60)}` : Math.floor(duration / 60)
+  const sec = Math.floor(duration % 60) < 10 ? `0${Math.floor(duration % 60)}` : Math.floor(duration % 60)
+  return `${mins}:${sec}`
+}
+
 export function loading(
   apiFun: Function,
   args: any,

@@ -39,7 +39,7 @@ import { formatDate } from "@/utils";
 import lottie from "lottie-web";
 import lottieDataJson from "@/assets/lottie/NoData/data.json";
 import { getArticleList } from "@/api/article";
-import { reactive, onMounted, onUpdated, watch, computed, onUnmounted } from "vue";
+import { reactive, onMounted, onUpdated, watch, computed } from "vue";
 import { useRouter } from "vue-router";
 import { scrollBehavior } from "@/utils/scrollShow"
 import { useCategoryStore } from "@/store/modules/category";

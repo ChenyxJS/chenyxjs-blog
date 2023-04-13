@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-30 19:23:57
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-10 23:40:16
+ * @LastEditTime: 2023-04-12 12:44:12
  * @FilePath: /chenyxjs-blog/src/store/modules/headerSearch.ts
  */
 import { defineStore } from "pinia";
@@ -62,7 +62,7 @@ export const useHeaderSearchStroe = defineStore("headerSearch", {
       }
       this.changeLocalHistory();
       this.keywords = keywords;
-      router.push({ path: "/home" });
+      router.push({ path: "/blog" });
     },
     changeLocalHistory() {
       let history_search_str = "";

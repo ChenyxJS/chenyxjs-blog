@@ -4,14 +4,14 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 10:44:03
+ * @LastEditTime: 2023-04-13 20:57:52
  */
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-import '@/permission'
+import "@/permission";
 
-import 'element-plus/theme-chalk/dark/css-vars.css'
-import 'element-plus/dist/index.css'
+import "element-plus/theme-chalk/dark/css-vars.css";
+import "element-plus/dist/index.css";
 // 引入v-md-editor组件
 import VMdPreview from "@kangc/v-md-editor/lib/preview";
 import vuepressTheme from "@kangc/v-md-editor/lib/theme/vuepress.js";
@@ -34,7 +34,7 @@ import "amfe-flexible/index.js";
 import Prism from "prismjs";
 
 VMdPreview.use(vuepressTheme, {
-    Prism,
+  Prism,
 });
 VMdPreview.use(createLineNumbertPlugin());
 VMdPreview.use(createCopyCodePlugin());
@@ -43,7 +43,8 @@ VMdPreview.use(createEmojiPlugin());
 import App from "./App.vue";
 import router from "./router";
 import SvgIcon from "@/components/SvgIcon.vue";
-import VueWechatTitle from 'vue-wechat-title'
+import VueWechatTitle from "vue-wechat-title";
+import vLazy from "./utils/Directive/v-lazy";
 const pinia = createPinia();
 
 const app = createApp(App);
@@ -54,4 +55,5 @@ app.use(VueWechatTitle);
 app.component("svg-icon", SvgIcon);
 app.use(router);
 app.use(pinia);
+app.use(vLazy);
 app.mount("#app");

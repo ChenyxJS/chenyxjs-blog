@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 18:43:54
+ * @LastEditTime: 2023-04-14 01:11:22
 -->
 <template>
   <div class="top-nav">
@@ -28,6 +28,7 @@
         <a @click="toPortal">门户</a>
         <a @click="toHome">首页</a>
         <a @click="toBlog">博客</a>
+        <a @click="toWallpaper">壁纸</a>
         <a @click="toProject">项目</a>
         <a @click="toProject">个人简历</a>
       </div>
@@ -78,7 +79,7 @@ watch(searchValue, (newVal, oldVal) => {
 const route = useRoute();
 
 // Menu Hooks
-const { toHome, toPortal, toProject, toBlog } = useMenu();
+const { toHome, toPortal, toProject, toBlog, toWallpaper } = useMenu();
 
 // 在博客首页时才显示右边的Nav
 const isShowNavRight = computed(() => {

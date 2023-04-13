@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 18:54:40
+ * @LastEditTime: 2023-04-14 01:26:54
 -->
 <template>
   <div class="Layout">
@@ -14,8 +14,8 @@
     <div class="container-layout">
       <!-- 侧边栏 -->
       <div v-show="!appStore.deviceStatus.isMobile" class="slider-layout">
-        <blog-slider v-if="isShowSlider" />
-        <home-slider v-else />
+        <home-slider v-if="isShowSlider" />
+        <blog-slider v-else />
       </div>
       <!-- main -->
       <div class="content-layout">
@@ -41,7 +41,7 @@ const route = useRoute();
 const appStore = useAppStroe();
 
 let isShowSlider = computed(() => {
-  return route.path == "/blog" ? true : false;
+  return route.path === "/home"||route.path === "/wallpaper" ? true : false;
 });
 </script>
 

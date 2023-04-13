@@ -6,6 +6,41 @@
   "description": "ChenyxJS-Blog个人博客网站",
   "glyphs": [
     {
+      "icon_id": "12387163",
+      "name": "音乐",
+      "font_class": "yinle",
+      "unicode": "e90e",
+      "unicode_decimal": 59662
+    },
+    {
+      "icon_id": "1106061",
+      "name": "下一首",
+      "font_class": "xiayishou",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "1106168",
+      "name": "上一首",
+      "font_class": "shangyishou",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "2674483",
+      "name": "暂停",
+      "font_class": "zanting",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "2674474",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
       "icon_id": "1381385",
       "name": "github",
       "font_class": "github",
