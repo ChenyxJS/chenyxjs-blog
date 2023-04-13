@@ -4,7 +4,7 @@
     <div class="progress">
       <img
         :class="['cover', state.isPlaying ? 'cover-play' : '']"
-        src="../assets/images/Jay.jpg"
+        src="@/assets/images/Jay.jpg"
       />
       <el-progress
         type="circle"
