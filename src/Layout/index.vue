@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-14 01:26:54
+ * @LastEditTime: 2023-04-14 18:27:16
 -->
 <template>
   <div class="Layout">
@@ -28,7 +28,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import topNav from "./components/topNav.vue";
+import TopNav from "./components/TopNav.vue";
 import content from "./components/content.vue";
 import BlogSlider from "./components/BlogSlider.vue";
 import footerPanel from "./components/footer.vue";

@@ -9,7 +9,9 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    BaseIcon: typeof import('./src/components/BaseIcon.vue')['default']
     Copyright: typeof import('./src/components/Copyright.vue')['default']
+    CtaButton: typeof import('./src/components/CtaButton.vue')['default']
     ElBacktop: typeof import('element-plus/es')['ElBacktop']
     ElCollapseTransition: typeof import('element-plus/es')['ElCollapseTransition']
     ElIco: typeof import('element-plus/es')['ElIco']
@@ -33,5 +35,8 @@ declare module '@vue/runtime-core' {
     Skeleton: typeof import('./src/components/Skeleton.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon.vue')['default']
     ThreeBallLoading: typeof import('./src/components/Loading/ThreeBallLoading.vue')['default']
+    ThreeTesla: typeof import('./src/components/ThreeTesla.vue')['default']
+    TypewriterText: typeof import('./src/components/TypewriterText.vue')['default']
+    WallpaperSwiper: typeof import('./src/components/WallpaperSwiper.vue')['default']
   }
 }

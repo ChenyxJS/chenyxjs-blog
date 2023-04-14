@@ -2,13 +2,13 @@
  * @Author: chenyx
  * @Date: 2023-04-12 12:57:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-13 23:43:51
+ * @LastEditTime: 2023-04-14 13:05:19
  * @FilePath: /chenyxjs-blog/src/components/PersonCard.vue
 -->
 <template>
   <div class="card">
     <button @click="changeCard">
-      <i class="iconfont icon-a-gerenzhongxinrenxing"></i>
+      <i class="iconfont icon-a-gerenzhongxinrenxing" style="color:#409EFF"></i>
     </button>
     <div class="profileimage">
       <div class="img-warpper">

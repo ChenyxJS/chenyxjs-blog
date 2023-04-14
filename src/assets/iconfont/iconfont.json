@@ -6,11 +6,11 @@
   "description": "ChenyxJS-Blog个人博客网站",
   "glyphs": [
     {
-      "icon_id": "12387163",
-      "name": "音乐",
-      "font_class": "yinle",
-      "unicode": "e90e",
-      "unicode_decimal": 59662
+      "icon_id": "18170227",
+      "name": "音乐,音频,音符",
+      "font_class": "music-full",
+      "unicode": "e98e",
+      "unicode_decimal": 59790
     },
     {
       "icon_id": "1106061",

@@ -2,15 +2,48 @@
  * @Author: chenyx
  * @Date: 2023-04-01 02:15:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-14 01:12:11
+ * @LastEditTime: 2023-04-14 12:48:46
  * @FilePath: /chenyxjs-blog/src/hooks/menu-hooks.ts
  */
 import router from "@/router";
 import { ElMessage } from "element-plus";
 
 export function useMenu() {
+  const menu = [
+    {
+      index: 0,
+      title: "门户",
+      path: "",
+      fun: toPortal,
+    },
+    {
+      index: 1,
+      title: "首页",
+      path: "/home",
+      fun: toHome,
+    },
+    {
+      index: 2,
+      title: "博客",
+      path: "/blog",
+      fun: toBlog,
+    },
+    {
+      index: 3,
+      title: "壁纸",
+      path: "/wallpaper",
+      fun: toWallpaper,
+    },
+    {
+      index: 4,
+      title: "项目",
+      path: "/project",
+      fun: toProject,
+    },
+  ];
+
   function toPortal() {
-    window.open('http://www.chenyx.site/static/index.html','_blank')
+    window.open("http://www.chenyx.site/static/index.html", "_blank");
   }
   function toHome() {
     router.push("/home");
@@ -26,10 +59,11 @@ export function useMenu() {
     // router.push("/project");
   }
   return {
+    menu,
     toHome,
     toProject,
     toPortal,
     toBlog,
-    toWallpaper
+    toWallpaper,
   };
 }
