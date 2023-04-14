@@ -6,7 +6,7 @@
  * @FilePath: /chenyxjs-blog/src/components/TypewriterText.vue
 -->
 <script setup lang="ts">
-import { computed } from '@vue/reactivity';
+import { computed } from 'vue';
 
 const props = defineProps({
   text: {
