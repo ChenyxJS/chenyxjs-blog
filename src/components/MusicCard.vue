@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <button @click="changeCard"><i class="iconfont icon-yinle"></i></button>
+    <button @click="changeCard"><i class="iconfont icon-music-full" style="color:#409EFF"></i></button>
     <div class="progress">
       <img
         :class="['cover', state.isPlaying ? 'cover-play' : '']"

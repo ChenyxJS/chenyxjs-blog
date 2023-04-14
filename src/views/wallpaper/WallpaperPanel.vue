@@ -35,7 +35,6 @@ function download(url: string) {
 </script>
 <template>
   <div class="wallpaper-panel">
-    <!-- <img class="pc-img" src="@/assets/images/pc.png" /> -->
     <div
       v-for="(item, index) in state.wallpaperList"
       :key="index"
@@ -118,8 +117,5 @@ function download(url: string) {
 }
 .wallpaper:hover::after {
   opacity: 1;
-}
-.pc-img {
-  width: 90%;
 }
 </style>

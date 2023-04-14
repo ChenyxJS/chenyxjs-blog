@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-13 20:56:36
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-13 20:57:12
+ * @LastEditTime: 2023-04-14 16:57:07
  * @FilePath: /chenyxjs-blog/src/utils/Directive/v-lazy.ts
  */
 // 引入默认/出错时显示的图片
@@ -21,7 +21,9 @@ const defineDirective = (app: any) => {
         // true；进入可视区域，false：未进入可视区域
         if (isIntersecting) {
           // 1、给图片的src属性赋值图片的地址
-          el.src = bindings.value
+          if(el.src!==bindings.value){
+            el.src = bindings.value
+          }
           // 2、取消图片的监听，默认是会一直监听的，如果不取消。就会一直执行
           oberver.unobserve(el)
           // 3、加载的图片失败了，显示默认的图片地址

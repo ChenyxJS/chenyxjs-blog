@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-14 01:11:22
+ * @LastEditTime: 2023-04-14 12:55:43
 -->
 <template>
   <div class="top-nav">
@@ -25,12 +25,10 @@
         ></SearchPanel>
       </div>
       <div v-show="!appStore.deviceStatus.isMobile" class="nav-options">
-        <a @click="toPortal">门户</a>
-        <a @click="toHome">首页</a>
-        <a @click="toBlog">博客</a>
-        <a @click="toWallpaper">壁纸</a>
-        <a @click="toProject">项目</a>
-        <a @click="toProject">个人简历</a>
+        <a v-for="item in menu" :key="item.index" @click="item.fun"
+          >{{ item.title }}
+        </a>
+        <div class="indicator" :style="{ left: `${nowNavIndex * 38}px` }"></div>
       </div>
       <div class="nav-right flex flex-ce">
         <div
@@ -67,9 +65,8 @@ const headerSearchStore = useHeaderSearchStroe();
 let searchValue = ref(headerSearchStore.keywords);
 let isOpenMenu = ref(false);
 let isShowSearchPanel = ref(false);
-
-provide("searchValue", searchValue);
 const change = debounce(headerSearchStore.changeKeywords, 1000);
+provide("searchValue", searchValue);
 
 watch(searchValue, (newVal, oldVal) => {
   change(newVal);
@@ -79,27 +76,40 @@ watch(searchValue, (newVal, oldVal) => {
 const route = useRoute();
 
 // Menu Hooks
-const { toHome, toPortal, toProject, toBlog, toWallpaper } = useMenu();
+const { menu } = useMenu();
 
 // 在博客首页时才显示右边的Nav
 const isShowNavRight = computed(() => {
   return route.path == "/blog" ? true : false;
 });
 
+// 获取当前Nav下标
+const nowNavIndex = computed(() => {
+  const item = menu.find((item) => {
+    return item.path === route.path;
+  });
+  if (item) {
+    return item.index;
+  }
+  return 1;
+});
+
 function openMenu() {
   isOpenMenu.value = !isOpenMenu.value;
 }
+
 function closeMenu() {
   isOpenMenu.value = false;
 }
+
 function changeKeywords(keywords: string) {
-  console.log("change keywords: " + keywords);
   searchValue.value = keywords;
 }
 
 function openSearchPanel() {
   isShowSearchPanel.value = true;
 }
+
 function closeSearchPanel() {
   isShowSearchPanel.value = false;
 }
@@ -136,10 +146,21 @@ function closeSearchPanel() {
     }
 
     .nav-options {
+      position: relative;
       font-weight: 600;
       a {
         margin: 0 5px;
         color: #fff;
+      }
+      .indicator {
+        position: absolute;
+        bottom: -21px;
+        left: 38px;
+        width: 32px;
+        height: 0;
+        border: 2px solid #409EFF;
+        border-radius: 4px;
+        transition: all 0.5s ease;
       }
     }
 
