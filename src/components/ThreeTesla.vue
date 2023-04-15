@@ -76,6 +76,8 @@ const setScene = () => {
   scene = new Scene();
   renderer = new WebGLRenderer();
   renderer.setSize(innerWidth / 3, innerHeight/2);
+  // 设置背景颜色
+  renderer.setClearColor(0xffffff,0);
   document.querySelector(".boxs").appendChild(renderer.domElement);
 };
 
