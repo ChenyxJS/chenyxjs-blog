@@ -2,14 +2,20 @@
  * @Author: chenyx
  * @Date: 2023-03-23 18:18:52
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-01 02:19:55
+ * @LastEditTime: 2023-04-16 23:42:14
  * @FilePath: /chenyxjs-blog/src/components/MenuPanel.vue
 -->
 <template>
   <el-collapse-transition>
     <div v-show="isOpen" class="menu">
-      <div class="menu-item" @click="toPortal">门户</div>
-      <div class="menu-item" @click="toHome, closeMenu()">总览</div>
+      <div
+        v-for="item in menu"
+        :key="item.index"
+        class="menu-item"
+        @click="item.fun(), closeMenu()"
+      >
+        {{ item.title }}
+      </div>
       <div
         v-for="item in store.category"
         :key="item.id"
@@ -17,10 +23,6 @@
         class="menu-item_children"
       >
         {{ item.name }}
-      </div>
-      <div class="menu-item" @click="toProject">项目</div>
-      <div class="menu-item">
-        <a href="https://github.com/ChenyxJS">GitHub</a>
       </div>
     </div>
   </el-collapse-transition>
@@ -39,7 +41,7 @@ const props = defineProps({
   },
 });
 
-const { toHome, toPortal, toProject } = useMenu();
+const { menu} = useMenu();
 
 function closeMenu() {
   emit("closeMenu");

@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-14 12:55:43
+ * @LastEditTime: 2023-04-16 17:37:34
 -->
 <template>
   <div class="top-nav">
@@ -95,7 +95,11 @@ const nowNavIndex = computed(() => {
 });
 
 function openMenu() {
-  isOpenMenu.value = !isOpenMenu.value;
+  if (!isOpenMenu.value) {
+    isOpenMenu.value = true;
+  } else {
+    isOpenMenu.value = false;
+  }
 }
 
 function closeMenu() {
@@ -158,7 +162,7 @@ function closeSearchPanel() {
         left: 38px;
         width: 32px;
         height: 0;
-        border: 2px solid #409EFF;
+        border: 2px solid #409eff;
         border-radius: 4px;
         transition: all 0.5s ease;
       }

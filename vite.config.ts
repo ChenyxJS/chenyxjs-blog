@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-31 18:25:50
+ * @LastEditTime: 2023-04-15 18:09:49
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -69,10 +69,10 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     css: {
       postcss: {
         plugins: [
-          postCssPxToRem({
-            rootValue: 75, // 1rem的大小
-            propList: ["fort-size"], // 需要转换的属性，这里选择全部都进行转换
-          }),
+          // postCssPxToRem({
+          //   rootValue: 192, // 1rem的大小
+          //   propList: ["font", "font-size", "line-height", "letter-spacing"], // 需要转换的属性，这里选择全部都进行转换
+          // }),
         ],
       },
     },

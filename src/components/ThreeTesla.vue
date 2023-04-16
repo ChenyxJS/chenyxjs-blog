@@ -1,11 +1,11 @@
 <template>
-  <div class="boxs">
-    <div class="maskLoading" v-if="isLoading">
+  <div class="boxs flex flex-cc">
+    <!-- <div class="maskLoading" v-if="isLoading">
       <div class="loading">
         <div :style="{ width: loadingWidth + '%' }"></div>
       </div>
       <div style="padding-left: 10px">{{ parseInt(loadingWidth) }}%</div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -75,9 +75,9 @@ const setLight = () => {
 const setScene = () => {
   scene = new Scene();
   renderer = new WebGLRenderer();
-  renderer.setSize(innerWidth / 3, innerHeight/2);
+  renderer.setSize(innerWidth / 2, innerHeight / 1.5);
   // 设置背景颜色
-  renderer.setClearColor(0xffffff,0);
+  renderer.setClearColor(0xffffff, 0);
   document.querySelector(".boxs").appendChild(renderer.domElement);
 };
 
@@ -172,6 +172,10 @@ onMounted(init);
 </script>
 
 <style scoped>
+.boxs {
+  width: 100%;
+  height: 100%;
+}
 .maskLoading {
   background: #000;
   position: fixed;
@@ -203,30 +207,11 @@ onMounted(init);
   transition-timing-function: ease-in;
 }
 
-canvas {
-  width: 100%;
-  height: 100%;
-  margin: auto;
-}
-
 .mask {
   color: #fff;
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-}
-
-.flex {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px;
-}
-
-.flex div {
-  width: 10px;
-  height: 10px;
-  margin: 5px;
-  cursor: pointer;
 }
 </style>

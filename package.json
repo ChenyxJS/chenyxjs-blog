@@ -29,7 +29,8 @@
     "three": "^0.151.3",
     "vue": "^3.2.37",
     "vue-router": "^4.0.0-beta.13",
-    "vue-wechat-title": "^2.0.7"
+    "vue-wechat-title": "^2.0.7",
+    "vue3typed": "^0.1.5"
   },
   "devDependencies": {
     "@iconify-json/ep": "^1.1.10",

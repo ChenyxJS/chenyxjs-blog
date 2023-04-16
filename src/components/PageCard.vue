@@ -1,3 +1,10 @@
+<!--
+ * @Author: chenyx
+ * @Date: 2023-04-15 00:50:47
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2023-04-16 17:14:39
+ * @FilePath: /chenyxjs-blog/src/components/PageCard.vue
+-->
 <template>
   <div class="cards">
     <div class="card" id="c1"></div>
@@ -9,6 +16,7 @@
 <script setup lang="ts">
 defineProps({
   title: String,
+  url:String
 });
 </script>
 
@@ -31,15 +39,21 @@ defineProps({
 
 #c1 {
   background-color: #fff;
+  border-radius: 6px;
+
 }
 
 #c2 {
   background-color: #fff;
+  border-radius: 6px;
+
 }
 
 #c3 {
+  border-radius: 6px;
   position: relative;
-  background: mediumturquoise;
+  background-image: url('@/assets/images/book-bg.png');
+  background-size: 100% 100%;
   display: flex;
   align-items: center;
   justify-content: center;

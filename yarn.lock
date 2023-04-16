@@ -1247,6 +1247,11 @@
   dependencies:
     "toggle-selection" "^1.0.6"
 
+"core-js@^3.6.5":
+  "integrity" "sha512-ZNS5nbiSwDTq4hFosEDqm65izl2CWmLz0hARJMyNQBgkUZMIF51cQiMvIQKA6hvuaeWxQDP3hEedM1JZIgTldQ=="
+  "resolved" "https://registry.npmmirror.com/core-js/-/core-js-3.30.1.tgz"
+  "version" "3.30.1"
+
 "cosmiconfig@^7.0.0":
   "integrity" "sha512-AdmX6xUzdNASswsFtmwSt7Vj8po9IuqXm0UXz7QKPuEUmPB4XyjGfaAr2PSuELMwkRMVH1EpIkX5bTZGRB3eCA=="
   "resolved" "https://registry.npmmirror.com/cosmiconfig/-/cosmiconfig-7.1.0.tgz"
@@ -3777,6 +3782,11 @@
   "resolved" "https://registry.npmmirror.com/tslib/-/tslib-2.4.0.tgz"
   "version" "2.4.0"
 
+"typed.js@^2.0.12":
+  "integrity" "sha512-kQNtvm6+dEcUc5sdskEgV17rsdvimQNsDRHnp8PasBY85dYqVoo4TCanakSkfherMN+lZEko5ccMMKJpuR42Fw=="
+  "resolved" "https://registry.npmmirror.com/typed.js/-/typed.js-2.0.15.tgz"
+  "version" "2.0.15"
+
 "typescript@*", "typescript@^4.6.4", "typescript@>=4.4.4":
   "integrity" "sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ=="
   "resolved" "https://registry.npmmirror.com/typescript/-/typescript-4.8.4.tgz"
@@ -4013,7 +4023,7 @@
   "resolved" "https://registry.npmmirror.com/vue-wechat-title/-/vue-wechat-title-2.0.7.tgz"
   "version" "2.0.7"
 
-"vue@^2.6.14 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.37", "vue@2 || 3", "vue@3.2.40":
+"vue@^2.6.14 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.1.4", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.37", "vue@2 || 3", "vue@3.2.40":
   "integrity" "sha512-1mGHulzUbl2Nk3pfvI5aXYYyJUs1nm4kyvuz38u4xlQkLUn1i2R7nDbI4TufECmY8v1qNBHYy62bCaM+3cHP2A=="
   "resolved" "https://registry.npmmirror.com/vue/-/vue-3.2.40.tgz"
   "version" "3.2.40"
@@ -4023,6 +4033,15 @@
     "@vue/runtime-dom" "3.2.40"
     "@vue/server-renderer" "3.2.40"
     "@vue/shared" "3.2.40"
+
+"vue3typed@^0.1.5":
+  "integrity" "sha512-hJ20Nvuze8uYlAwJj9Q3vCYxQ03ePvyvLIl01XdhIQzyuP0eqPd9n7/9w872LE1skRVC/n4l/YTAnSmymImtpw=="
+  "resolved" "https://registry.npmmirror.com/vue3typed/-/vue3typed-0.1.5.tgz"
+  "version" "0.1.5"
+  dependencies:
+    "core-js" "^3.6.5"
+    "typed.js" "^2.0.12"
+    "vue" "^3.1.4"
 
 "watchpack@^2.4.0":
   "integrity" "sha512-Lcvm7MGST/4fup+ifyKi2hjyIAwcdI4HRgtvTpIUxBRhB+RFtUh8XtDOxUfctVCnhVi+QQj49i91OyvzkJl6cg=="

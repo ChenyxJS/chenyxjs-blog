@@ -2,9 +2,7 @@
 import { computed, reactive } from "vue";
 import BaseIcon from "./BaseIcon.vue";
 import { ElMessage } from "element-plus";
-import { useMenu } from "@/hooks/menu-hooks";
 
-const { toWallpaper } = useMenu();
 const state = reactive({
   wallpaperList: [
     "http://file.chenyx.site/wallpaper/2_15488489005292.mp4",
@@ -42,7 +40,7 @@ function pre() {
         class="button pre-button"
         icon-name="icon-a-shangyiyehoutui"
         color="#fff"
-        :size="60"
+        size="4vw"
       ></base-icon>
       <div class="swiper-container">
         <img class="pc-img" src="@/assets/images/pc.png" />
@@ -64,17 +62,16 @@ function pre() {
         class="button next-button"
         icon-name="icon-a-xiayiyeqianjin"
         color="#fff"
-        :size="60"
+        size="4vw"
       ></base-icon>
     </div>
-    <cta-button
-      style="margin-top: 20px"
-      @click="toWallpaper"
-      text="More Wallpaper"
-    ></cta-button>
+
   </div>
 </template>
 <style lang="scss" scoped>
+.container {
+  width: 100%;
+}
 .wallpaper-swiper {
   width: 100%;
   align-items: center;
@@ -132,8 +129,8 @@ function pre() {
   width: 100%;
 }
 .button {
-  width: 60px;
-  height: 60px;
+  width: 4vw;
+  height: 4vw;
   border-radius: 50%;
   background-color: rgba(#8b949e, 0.3);
   transition: all 0.5s ease;

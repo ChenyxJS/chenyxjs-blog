@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 15:45:38
+ * @LastEditTime: 2023-04-16 02:08:53
 -->
 <template>
   <div
@@ -53,6 +53,7 @@ import {
   nextTick,
   onMounted,
   ComponentInternalInstance,
+  onUpdated,
 } from "vue";
 import { ElMessage, ElIcon } from "element-plus";
 import { useRoute } from "vue-router";
@@ -81,6 +82,9 @@ let previewDom: any;
 onMounted(() => {
   loading();
 });
+// onUpdated(() => {
+//   // if (!state.loading) renderAnchors();
+// });
 
 // function
 function loading() {
@@ -103,23 +107,24 @@ function loading() {
   };
   const axiosRequest = getArticleById(Number(route.query.id)); // 记录请求的状态
   Promise.race([axiosRequest, rejectPromise(300)])
-    .then((res:any) => {
+    .then((res: any) => {
       // 成功意味着请求在固定时间内返回
-      handleData(res.data)
+      handleData(res.data);
     })
     .catch((err) => {
       // 超时，整体变成onrejected，展示loading
       state.loading = true;
       Promise.all([axiosRequest, reolvePromise(1500)])
-      .then((res) => {
-        handleData(res[0].data)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-      .finally(() => {
-        state.loading = false
-      })
+        .then((res) => {
+          handleData(res[0].data);
+          renderAnchors();
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          state.loading = false;
+        });
     });
 }
 

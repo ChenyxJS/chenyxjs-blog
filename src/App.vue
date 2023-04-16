@@ -9,6 +9,10 @@
 <script setup lang="ts">
 import { useAppStroe } from "@/store/modules/app";
 import { onMounted } from "vue";
+import { useCategoryStore } from "@/store/modules/category";
+
+const store = useCategoryStore()
+store.getCategory();
 const appStore = useAppStroe();
 onMounted(() => {
   window.onresize = () => {

@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-13 20:57:52
+ * @LastEditTime: 2023-04-16 19:52:15
  */
 import { createApp } from "vue";
 import { createPinia } from "pinia";
@@ -45,6 +45,7 @@ import router from "./router";
 import SvgIcon from "@/components/SvgIcon.vue";
 import VueWechatTitle from "vue-wechat-title";
 import vLazy from "./utils/Directive/v-lazy";
+import vuetyped from 'vue3typed'
 const pinia = createPinia();
 
 const app = createApp(App);
@@ -56,4 +57,5 @@ app.component("svg-icon", SvgIcon);
 app.use(router);
 app.use(pinia);
 app.use(vLazy);
+app.use(vuetyped);
 app.mount("#app");
