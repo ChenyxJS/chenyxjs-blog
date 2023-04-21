@@ -183,8 +183,7 @@ function initLoding() {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3; /* 这里是超出几行省略 */
-      }
-      &_options {
+      }      &_options {
         margin-top: 24px;
         i {
           border: var(--border);
