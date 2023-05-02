@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-13 23:09:10
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 18:44:46
+ * @LastEditTime: 2023-04-26 11:48:22
  * @FilePath: /chenyxjs-blog/src/permission.ts
  */
 import router from "@/router";
@@ -13,13 +13,12 @@ import "nprogress/nprogress.css";
 const whiteList = ["/login"];
 
 router.beforeEach(async (to, from, next) => {
-  // 每次跳转前修改网站title
-  // if (to.meta.title !== undefined) {
-  //   window.document.title = to.meta.title;
-  // }
-  next();
-
-
+  // 判断是否存在该路由
+  if (to.name && router.hasRoute(to.name)) {
+    next();
+  } else {
+    next("/404");
+  }
 });
 
 router.afterEach(() => {});

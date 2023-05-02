@@ -116,7 +116,6 @@
         const currentColor = new Color(colorAry[index])
         scene.traverse(child => {
             if (child.isMesh) {
-                console.log(child.name)
                 if (child.name.includes('door_')) {
                     child.material.color.set(currentColor)
                 }
@@ -137,7 +136,6 @@
                             isLoading.value = false
                         }, 1000)
                     }
-                    console.log((loaded / total * 100) + '% loaded')
                 },
                 (err) => {
                     reject(err)

@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-11 18:41:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-17 00:35:41
+ * @LastEditTime: 2023-05-02 11:58:15
  * @FilePath: /chenyxjs-blog/src/views/home/index.vue
 -->
 <script setup lang="ts">
@@ -116,7 +116,7 @@ const appStore = useAppStroe();
   align-items: flex-start;
   .content {
     margin-top: 15%;
-    max-width: 46%;
+    max-width: 100%;
     padding-left: 70px;
     h1 {
       font-size: 56px;
@@ -139,6 +139,7 @@ const appStore = useAppStroe();
     }
     p {
       font-size: 16px;
+      width: 60%;
     }
   }
 }

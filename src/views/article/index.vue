@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-16 02:08:53
+ * @LastEditTime: 2023-05-02 12:02:48
 -->
 <template>
   <div
@@ -53,7 +53,6 @@ import {
   nextTick,
   onMounted,
   ComponentInternalInstance,
-  onUpdated,
 } from "vue";
 import { ElMessage, ElIcon } from "element-plus";
 import { useRoute } from "vue-router";
@@ -82,9 +81,6 @@ let previewDom: any;
 onMounted(() => {
   loading();
 });
-// onUpdated(() => {
-//   // if (!state.loading) renderAnchors();
-// });
 
 // function
 function loading() {
@@ -123,6 +119,7 @@ function loading() {
           console.log(err);
         })
         .finally(() => {
+          renderAnchors();
           state.loading = false;
         });
     });

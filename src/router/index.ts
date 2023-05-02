@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:24:53
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-14 22:27:51
+ * @LastEditTime: 2023-04-26 11:44:27
  */
 import {
   RouteRecordRaw,
@@ -17,6 +17,11 @@ import Layout from "@/Layout/index.vue";
 
 const routes = [
   {
+    path: "/404",
+    name:'404',
+    component: () => import("../views/error-page/404.vue"),
+  },
+  {
     path: "/",
     component: Layout,
     redirect: "/home",
@@ -25,33 +30,33 @@ const routes = [
         path: "home",
         name: "home",
         component: () => import("../views/home/index.vue"),
-        meta:{
-          title:'首页'
-        }
+        meta: {
+          title: "首页",
+        },
       },
       {
         path: "blog",
         name: "blog",
         component: () => import("../views/blog/index.vue"),
-        meta:{
-          title:'博客'
-        }
+        meta: {
+          title: "博客",
+        },
       },
       {
         path: "wallpaper",
         name: "wallpaper",
         component: () => import("../views/wallpaper/index.vue"),
-        meta:{
-          title:'壁纸'
-        }
+        meta: {
+          title: "壁纸",
+        },
       },
       {
         path: "project",
         name: "project",
         component: () => import("../views/project/index.vue"),
-        meta:{
-          title:'项目'
-        }
+        meta: {
+          title: "项目",
+        },
       },
       {
         path: "article",

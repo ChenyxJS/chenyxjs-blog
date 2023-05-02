@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
     Copyright: typeof import('./src/components/Copyright.vue')['default']
     CtaButton: typeof import('./src/components/CtaButton.vue')['default']
     ElBacktop: typeof import('element-plus/es')['ElBacktop']
+    ElButton: typeof import('element-plus/es')['ElButton']
     ElCollapseTransition: typeof import('element-plus/es')['ElCollapseTransition']
     ElDivider: typeof import('element-plus/es')['ElDivider']
     ElProgress: typeof import('element-plus/es')['ElProgress']
