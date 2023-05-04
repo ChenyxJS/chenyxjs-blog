@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-16 17:37:34
+ * @LastEditTime: 2023-05-02 13:08:27
 -->
 <template>
   <div class="top-nav">
@@ -68,7 +68,7 @@ let isShowSearchPanel = ref(false);
 const change = debounce(headerSearchStore.changeKeywords, 1000);
 provide("searchValue", searchValue);
 
-watch(searchValue, (newVal, oldVal) => {
+watch(searchValue, (newVal) => {
   change(newVal);
 });
 

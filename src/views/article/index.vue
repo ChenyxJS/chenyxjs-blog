@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-02 12:02:48
+ * @LastEditTime: 2023-05-04 14:30:36
 -->
 <template>
   <div
@@ -53,6 +53,9 @@ import {
   nextTick,
   onMounted,
   ComponentInternalInstance,
+  watchEffect,
+  warn,
+  watch,
 } from "vue";
 import { ElMessage, ElIcon } from "element-plus";
 import { useRoute } from "vue-router";
@@ -81,6 +84,15 @@ let previewDom: any;
 onMounted(() => {
   loading();
 });
+// 文章内容改变时渲染目录
+watch(
+  () => state.articleContent,
+  (newVal) => {
+    if (newVal !== "") {
+      renderAnchors();
+    }
+  }
+);
 
 // function
 function loading() {
@@ -113,13 +125,11 @@ function loading() {
       Promise.all([axiosRequest, reolvePromise(1500)])
         .then((res) => {
           handleData(res[0].data);
-          renderAnchors();
         })
         .catch((err) => {
           console.log(err);
         })
         .finally(() => {
-          renderAnchors();
           state.loading = false;
         });
     });
@@ -129,7 +139,6 @@ function handleData(data: BaseApiResult) {
   if (data.success) {
     state.articleContent = data.object.content;
     state.article = data.object.article;
-    renderAnchors();
   } else {
     ElMessage.error("文章写的太好，被偷了");
   }
@@ -138,28 +147,28 @@ function handleData(data: BaseApiResult) {
 // 渲染目录
 async function renderAnchors() {
   // markdown更新完成后渲染目录
-  await nextTick();
-
-  previewDom = proxy?.$refs.preview;
-  const anchors = previewDom.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
-  const titles = Array.from(anchors).filter(
-    (title: any) => !!title.innerText.trim()
-  );
-  if (!titles.length) {
-    state.anchorList = [];
-    return;
-  }
-  const hTags = Array.from(
-    new Set(titles.map((title: any) => title.tagName))
-  ).sort();
-  state.anchorList = titles.map((el: any) => ({
-    title: el.innerText,
-    lineIndex: el.getAttribute("data-v-md-line"),
-    indent: hTags.indexOf(el.tagName),
-    offsetTop: el.offsetTop,
-  }));
-  // 添加滚动监听
-  scrollListener();
+  nextTick(() => {
+    previewDom = proxy?.$refs.preview;
+    const anchors = previewDom.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
+    const titles = Array.from(anchors).filter(
+      (title: any) => !!title.innerText.trim()
+    );
+    if (!titles.length) {
+      state.anchorList = [];
+      return;
+    }
+    const hTags = Array.from(
+      new Set(titles.map((title: any) => title.tagName))
+    ).sort();
+    state.anchorList = titles.map((el: any) => ({
+      title: el.innerText,
+      lineIndex: el.getAttribute("data-v-md-line"),
+      indent: hTags.indexOf(el.tagName),
+      offsetTop: el.offsetTop,
+    }));
+    // 添加滚动监听
+    scrollListener();
+  });
 }
 
 // 目录点击跳转

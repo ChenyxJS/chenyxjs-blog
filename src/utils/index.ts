@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-16 00:50:35
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 14:33:03
+ * @LastEditTime: 2023-05-04 12:17:28
  */
 
 import { AxiosPromise } from "axios";
@@ -81,18 +81,19 @@ export function throttle(callback: Function, wait: number) {
 }
 
 // 格式化歌曲播放时间
-export function handleFormatDuration(duration: number):string {
-  const mins = Math.floor(duration / 60) < 10 ? `0${Math.floor(duration / 60)}` : Math.floor(duration / 60)
-  const sec = Math.floor(duration % 60) < 10 ? `0${Math.floor(duration % 60)}` : Math.floor(duration % 60)
-  return `${mins}:${sec}`
+export function handleFormatDuration(duration: number): string {
+  const mins =
+    Math.floor(duration / 60) < 10
+      ? `0${Math.floor(duration / 60)}`
+      : Math.floor(duration / 60);
+  const sec =
+    Math.floor(duration % 60) < 10
+      ? `0${Math.floor(duration % 60)}`
+      : Math.floor(duration % 60);
+  return `${mins}:${sec}`;
 }
 
-export function loading(
-  apiFun: Function,
-  args: any,
-  loadingRef: any
-): void {
-
+export function loading(apiFun: Function, args: any, loadingRef: any): void {
   const rejectPromise = (rejectTime: number): Promise<unknown> => {
     // 指定时间后返回状态失败的promise
     return new Promise((resolve, reject) => {

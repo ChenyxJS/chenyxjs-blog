@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-15 18:09:49
+ * @LastEditTime: 2023-05-04 00:57:38
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -16,7 +16,6 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import vueSetupExtend from "vite-plugin-vue-setup-extend";
-
 import postCssPxToRem from "postcss-pxtorem";
 const srcPath = path.resolve(__dirname, "src");
 
@@ -30,9 +29,9 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       proxy: {
         [env.VITE_APP_BASE_API]: {
           // 线上API地址
-          target: "http://www.chenyx.site:8080",
+          // target: "http://www.chenyx.site:8080",
           // 本地API地址
-          // target: "http://localhost:8080",
+          target: "http://localhost:8080",
           rewrite: (path) =>
             path.replace(new RegExp("^" + env.VITE_APP_BASE_API), ""),
         },

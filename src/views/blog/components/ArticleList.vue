@@ -16,13 +16,37 @@
       <!-- 文章内容 -->
       <div class="article-card-content" @click="toArticle(item)">
         <h1 class="article-card-content_title">{{ item.articleTitle }}</h1>
+        <div class="article-card-content_tags">
+          <div class="tag">前端</div>
+          <div class="tag">前端</div>
+          <div class="tag">gitee</div>
+          <div class="tag">前端</div>
+          <div class="tag">前端</div>
+        </div>
         <section class="article-card-content_content">
           {{ item.articleDesc }}
         </section>
         <div class="article-card-content_options">
-          <i class="iconfont icon-a-fenxiangshare" style="color: #e6a23c"></i>
-          <i class="iconfont icon-a-chakaneye" style="color: #56a6ff"></i>
-          <i class="iconfont icon-a-lianjielink" style="color: #56a6ff"></i>
+          <p class="btn">
+            <i class="iconfont icon-a-chakaneye" style="color: #56a6ff"> </i>
+            <span style="margin-left: 5px; font-size: 12px">
+              {{ item.articleLooks || 0 }}
+            </span>
+          </p>
+          <p v-download="item.articleUrl"  @click.stop class="btn">
+            <i class="iconfont icon-a-lianjielink" style="color: #56a6ff"> </i>
+            <!-- <span style="margin-left: 5px; font-size: 12px">
+                {{ item.articleLikes }}
+              </span> -->
+          </p>
+          <!-- <p class="btn">
+            <i class="iconfont icon-a-fenxiangshare" style="color: #56a6ff">
+              <span style="margin-left: 5px; font-size: 12px">
+                {{ item.articleLikes }}
+              </span>
+            </i>
+          </p> -->
+          <!-- <i class="iconfont icon-a-fenxiangshare" style="color: #e6a23c"></i> -->
         </div>
       </div>
     </div>
@@ -41,7 +65,7 @@ import lottieDataJson from "@/assets/lottie/NoData/data.json";
 import { getArticleList } from "@/api/article";
 import { reactive, onMounted, onUpdated, watch, computed } from "vue";
 import { useRouter } from "vue-router";
-import { scrollBehavior } from "@/utils/scrollShow"
+import { scrollBehavior } from "@/utils/scrollShow";
 import { useCategoryStore } from "@/store/modules/category";
 import { useHeaderSearchStroe } from "@/store/modules/headerSearch";
 import { ArticleQuery, Article } from "@/api/article/types";
@@ -64,7 +88,7 @@ const state = reactive({
 
 watch(
   () => categoryStore.nowCategory,
-  (newVar, oldVar) => {
+  (newVar) => {
     articleQuery.articleTagId = newVar;
     getList();
   },
@@ -72,7 +96,7 @@ watch(
 );
 watch(
   () => headerSearchStore.keywords,
-  (newVar, oldVar) => {
+  (newVar) => {
     articleQuery.keywords = newVar;
     getList();
   }
@@ -106,14 +130,16 @@ function getList() {
 const router = useRouter();
 // 初始化跳转方法
 function toArticle(article: Article) {
-  router.push({
-    path: "/article",
-    query: {
-      id: article.articleId,
-    },
-  }).then(()=>{
-  window.document.title = article.articleTitle;
-  });
+  router
+    .push({
+      path: "/article",
+      query: {
+        id: article.articleId,
+      },
+    })
+    .then(() => {
+      window.document.title = article.articleTitle;
+    });
 }
 
 function typeFilters(code: string) {
@@ -172,7 +198,18 @@ function initLoding() {
       &_title {
         color: #fff;
         font-size: 16px;
+      }
+      &_tags {
         margin-bottom: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        .tag {
+          font-size: 10px;
+          border: var(--border);
+          margin-right: 12px;
+          padding: 0 6px;
+          border-radius: 6px;
+        }
       }
       &_content {
         font-size: 14px;
@@ -183,15 +220,20 @@ function initLoding() {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3; /* 这里是超出几行省略 */
-      }      &_options {
+      }
+      &_options {
         margin-top: 24px;
-        i {
+        display: flex;
+        .btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           border: var(--border);
           margin-right: 12px;
           padding: 6px;
           border-radius: 6px;
         }
-        i:hover {
+        .btn:hover {
           transition: border-color 0.3s;
           border-color: var(--text-link);
         }
