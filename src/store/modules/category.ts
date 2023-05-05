@@ -64,6 +64,7 @@ export const useCategoryStore = defineStore("category", () => {
       }
     });
   }
+  
 
   function changeCategory(id: number) {
     // 改变选择分类后跳转到文章列表页面，并请求对应的文章列表
@@ -71,10 +72,10 @@ export const useCategoryStore = defineStore("category", () => {
       if (item.id === id) {
         item.active = true;
         nowCategory.value = id;
-        router.push({ path: "/blog" });
       } else {
         item.active = false;
       }
+      router.push({ path: "/blog" });
     });
   }
   return {

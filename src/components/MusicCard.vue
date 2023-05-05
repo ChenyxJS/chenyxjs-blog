@@ -1,6 +1,8 @@
 <template>
   <div class="card">
-    <button @click="changeCard"><i class="iconfont icon-music-full" style="color:#409EFF"></i></button>
+    <button @click="changeCard">
+      <i class="iconfont icon-music-full" style="color: #409eff"></i>
+    </button>
     <div class="progress">
       <img
         :class="['cover', state.isPlaying ? 'cover-play' : '']"
@@ -69,8 +71,10 @@ const state = reactive({
 });
 
 function getDuration() {
-  state.duration = handleFormatDuration(singeBox.value.duration);
-  state.currentTime = handleFormatDuration(singeBox.value.currentTime);
+  if (singeBox.value) {
+    state.duration = handleFormatDuration(singeBox.value.duration);
+    state.currentTime = handleFormatDuration(singeBox.value.currentTime);
+  }
 }
 function durationchange() {
   state.duration = handleFormatDuration(singeBox.value.duration);

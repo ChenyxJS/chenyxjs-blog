@@ -1,6 +1,6 @@
 <template>
   <div id="article-content" class="article-content">
-    <!-- 文章card -->
+    <!-- article_card_list start -->
     <div
       class="article-card"
       v-for="item in state.articleList"
@@ -17,11 +17,13 @@
       <div class="article-card-content" @click="toArticle(item)">
         <h1 class="article-card-content_title">{{ item.articleTitle }}</h1>
         <div class="article-card-content_tags">
-          <div class="tag">前端</div>
-          <div class="tag">前端</div>
-          <div class="tag">gitee</div>
-          <div class="tag">前端</div>
-          <div class="tag">前端</div>
+          <div v-for="tag in getArticleTags(item)" :key="tag" class="tag">
+            {{
+              categoryStore.category.find((item) => {
+                return item.id == tag;
+              })?.name
+            }}
+          </div>
         </div>
         <section class="article-card-content_content">
           {{ item.articleDesc }}
@@ -33,26 +35,21 @@
               {{ item.articleLooks || 0 }}
             </span>
           </p>
-          <p v-download="item.articleUrl"  @click.stop class="btn">
+          <p v-download="item.articleUrl" @click.stop class="btn">
             <i class="iconfont icon-a-lianjielink" style="color: #56a6ff"> </i>
-            <!-- <span style="margin-left: 5px; font-size: 12px">
-                {{ item.articleLikes }}
-              </span> -->
+            <span style="margin-left: 5px; font-size: 12px"> Download </span>
           </p>
-          <!-- <p class="btn">
-            <i class="iconfont icon-a-fenxiangshare" style="color: #56a6ff">
-              <span style="margin-left: 5px; font-size: 12px">
-                {{ item.articleLikes }}
-              </span>
-            </i>
-          </p> -->
-          <!-- <i class="iconfont icon-a-fenxiangshare" style="color: #e6a23c"></i> -->
         </div>
       </div>
     </div>
-    <!-- loding -->
-    <div v-show="showLoading" class="loding">
-      <div id="loding"></div>
+    <!-- article_card_list end -->
+    <!-- loading start -->
+    <div v-show="state.showLoading" class="lottie loading">
+      <div id="loading"></div>
+    </div>
+    <!-- loading end -->
+    <div v-show="!state.showLoading && showNoData" class="lottie">
+      <div id="no-data"></div>
     </div>
   </div>
   <el-backtop :right="100" :bottom="100" />
@@ -61,7 +58,8 @@
 <script setup lang="ts">
 import { formatDate } from "@/utils";
 import lottie from "lottie-web";
-import lottieDataJson from "@/assets/lottie/NoData/data.json";
+import lottieNoDataJson from "@/assets/lottie/no-data/no-data.json";
+import lottieLoadingJson from "@/assets/lottie/loading/loading.json";
 import { getArticleList } from "@/api/article";
 import { reactive, onMounted, onUpdated, watch, computed } from "vue";
 import { useRouter } from "vue-router";
@@ -75,7 +73,7 @@ const categoryStore = useCategoryStore();
 const headerSearchStore = useHeaderSearchStroe();
 const articleQuery = {
   keywords: headerSearchStore.keywords,
-  articleTagId: 0,
+  articleTagIds: "0",
   page: 1,
   limit: 0,
   orderItem: "article_create_time",
@@ -84,16 +82,24 @@ const articleQuery = {
 
 const state = reactive({
   articleList: [] as Array<Article>,
+  showLoading: false,
 });
 
+// 标签选择改变时，触发搜索
 watch(
   () => categoryStore.nowCategory,
   (newVar) => {
-    articleQuery.articleTagId = newVar;
+    if (String(newVar) === "0") {
+      articleQuery.articleTagIds = String(newVar);
+    } else {
+      articleQuery.articleTagIds = "/" + newVar + "/";
+    }
     getList();
   },
   { deep: true }
 );
+
+// 搜索关键词改变时，触发搜索
 watch(
   () => headerSearchStore.keywords,
   (newVar) => {
@@ -102,12 +108,12 @@ watch(
   }
 );
 
-let showLoading = computed(() => {
+let showNoData = computed(() => {
   return state.articleList.length == 0 ? true : false;
 });
 
 onMounted(() => {
-  initLoding();
+  initLottie();
   getList();
   onUpdated(() => {
     const elList: HTMLCollectionOf<Element> =
@@ -117,13 +123,18 @@ onMounted(() => {
 });
 
 function getList() {
-  getArticleList(articleQuery).then(({ data }) => {
-    if (data.success) {
-      state.articleList = data.root || [];
-    } else {
-      state.articleList = [];
-    }
-  });
+  state.showLoading = true;
+  getArticleList(articleQuery)
+    .then(({ data }) => {
+      if (data.success) {
+        state.articleList = data.root || [];
+      } else {
+        state.articleList = [];
+      }
+    })
+    .finally(() => {
+      state.showLoading = false;
+    });
 }
 
 // 实例化路由对象
@@ -146,14 +157,33 @@ function typeFilters(code: string) {
   return code == "origin" ? "原创" : "转载";
 }
 
-function initLoding() {
-  const icon = document.getElementById("loding") || new HTMLElement();
+function getArticleTags(article: Article) {
+  return article.articleTagIds
+    .split("/")
+    .map((tagId: string) => {
+      return Number(tagId);
+    })
+    .filter((num: number) => {
+      return num;
+    });
+}
+
+function initLottie() {
+  const loading = document.getElementById("loading") || new HTMLElement();
+  const noData = document.getElementById("no-data") || new HTMLElement();
   lottie.loadAnimation({
-    container: icon, // 包含动画的dom元素
+    container: noData, // 包含动画的dom元素
     renderer: "svg", // 渲染出来的是什么格式
     loop: true, // 循环播放
     autoplay: true, // 自动播放
-    animationData: lottieDataJson, // 动画json的路径
+    animationData: lottieNoDataJson, // 动画json的路径
+  });
+  lottie.loadAnimation({
+    container: loading, // 包含动画的dom元素
+    renderer: "svg", // 渲染出来的是什么格式
+    loop: true, // 循环播放
+    autoplay: true, // 自动播放
+    animationData: lottieLoadingJson, // 动画json的路径
   });
 }
 </script>
@@ -163,13 +193,19 @@ function initLoding() {
   flex: 1;
   height: calc(100vh - 62px);
   overflow: hidden scroll;
-  .loding {
+  .lottie {
     width: 100%;
     height: 100%;
-    z-index: 9999;
+    z-index: 998;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
   }
   .article-card {
     padding: 10px;
@@ -222,7 +258,6 @@ function initLoding() {
         -webkit-line-clamp: 3; /* 这里是超出几行省略 */
       }
       &_options {
-        margin-top: 24px;
         display: flex;
         .btn {
           display: flex;

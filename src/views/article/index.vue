@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-04 14:30:36
+ * @LastEditTime: 2023-05-05 17:30:49
 -->
 <template>
   <div
@@ -28,7 +28,6 @@
           <el-icon style="vertical-align: top" :size="18">
             <i-ep-notebook></i-ep-notebook>
           </el-icon>
-
           <span style="font-size: 16px; line-height: 16px">目录</span>
         </span>
         <div
@@ -53,9 +52,9 @@ import {
   nextTick,
   onMounted,
   ComponentInternalInstance,
+  ref,
   watchEffect,
-  warn,
-  watch,
+  onUnmounted,
 } from "vue";
 import { ElMessage, ElIcon } from "element-plus";
 import { useRoute } from "vue-router";
@@ -79,20 +78,23 @@ const state = reactive({
 const route = useRoute();
 
 const { proxy } = getCurrentInstance() as ComponentInternalInstance;
-let previewDom: any;
+let previewDom: any = ref();
 
 onMounted(() => {
   loading();
 });
+onUnmounted(() => {
+  // 清除依赖收集
+  stop();
+});
+
 // 文章内容改变时渲染目录
-watch(
-  () => state.articleContent,
-  (newVal) => {
-    if (newVal !== "") {
+const stop = watchEffect(() => {
+  if (state.articleContent)
+    setTimeout(() => {
       renderAnchors();
-    }
-  }
-);
+    }, 300);
+});
 
 // function
 function loading() {
@@ -113,6 +115,7 @@ function loading() {
       }, reolveTime);
     });
   };
+
   const axiosRequest = getArticleById(Number(route.query.id)); // 记录请求的状态
   Promise.race([axiosRequest, rejectPromise(300)])
     .then((res: any) => {
@@ -149,6 +152,7 @@ async function renderAnchors() {
   // markdown更新完成后渲染目录
   nextTick(() => {
     previewDom = proxy?.$refs.preview;
+    if (!previewDom) return;
     const anchors = previewDom.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
     const titles = Array.from(anchors).filter(
       (title: any) => !!title.innerText.trim()

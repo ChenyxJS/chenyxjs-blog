@@ -29,9 +29,9 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       proxy: {
         [env.VITE_APP_BASE_API]: {
           // 线上API地址
-          // target: "http://www.chenyx.site:8080",
+          target: "http://www.chenyx.site:8080",
           // 本地API地址
-          target: "http://localhost:8080",
+          // target: "http://localhost:8080",
           rewrite: (path) =>
             path.replace(new RegExp("^" + env.VITE_APP_BASE_API), ""),
         },
