@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-01 02:15:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-21 20:24:08
+ * @LastEditTime: 2023-05-08 01:42:25
  * @FilePath: /chenyxjs-blog/src/hooks/menu-hooks.ts
  */
 import router from "@/router";
@@ -40,10 +40,19 @@ export function useMenu() {
       path: "/project",
       fun: toProject,
     },
+    {
+      index: 5,
+      title: "手绘板",
+      path: "/Excalidraw",
+      fun: toExcalidraw,
+    },
   ];
 
   function toPortal() {
     window.open("http://www.chenyx.site/static/index.html", "_blank");
+  }
+  function toExcalidraw() {
+    window.open("http://excalidraw.chenyx.site/", "_blank");
   }
   function toHome() {
     router.push("/home");
