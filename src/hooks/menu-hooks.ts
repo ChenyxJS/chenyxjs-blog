@@ -72,8 +72,8 @@ export function useMenu() {
     // router.push("/wallpaper");
   }
   function toProject() {
-    ElMessage.warning("模块正在调试中，敬请期待...");
-    // router.push("/project");
+    // ElMessage.warning("模块正在调试中，敬请期待...");
+    router.push("/project");
   }
   function toLinks(){
     router.push("/links");
