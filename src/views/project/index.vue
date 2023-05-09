@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 00:58:55
+ * @LastEditTime: 2023-05-09 17:59:36
 -->
 <template>
   <div class="project flex flex-cc">
@@ -60,6 +60,7 @@ const state = reactive({
   width: 100%;
   height: calc(100vh - 62px);
   overflow: hidden;
+  background: #1f242d;
 }
 .wrapper {
   margin: auto;

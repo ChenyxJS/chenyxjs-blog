@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-02 13:08:27
+ * @LastEditTime: 2023-05-09 18:09:49
 -->
 <template>
   <div class="top-nav">
@@ -85,6 +85,8 @@ const isShowNavRight = computed(() => {
 
 // 获取当前Nav下标
 const nowNavIndex = computed(() => {
+  // 若当前实在文章页直接返回blog标签的下标
+  if (route.path == "/article") return 2;
   const item = menu.find((item) => {
     return item.path === route.path;
   });

@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-01 02:15:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-08 01:42:25
+ * @LastEditTime: 2023-05-09 18:05:36
  * @FilePath: /chenyxjs-blog/src/hooks/menu-hooks.ts
  */
 import router from "@/router";
@@ -42,10 +42,17 @@ export function useMenu() {
     },
     {
       index: 5,
+      title: "链接",
+      path: "/links",
+      fun: toLinks,
+    },
+    {
+      index: 6,
       title: "手绘板",
       path: "/Excalidraw",
       fun: toExcalidraw,
     },
+   
   ];
 
   function toPortal() {
@@ -67,6 +74,9 @@ export function useMenu() {
   function toProject() {
     ElMessage.warning("模块正在调试中，敬请期待...");
     // router.push("/project");
+  }
+  function toLinks(){
+    router.push("/links");
   }
   return {
     menu,

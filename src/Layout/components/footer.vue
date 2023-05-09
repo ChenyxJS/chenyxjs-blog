@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-23 15:48:01
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-24 18:30:29
+ * @LastEditTime: 2023-05-09 20:20:42
  * @FilePath: /chenyxjs-blog/src/Layout/components/footer.vue
 -->
 <template>
@@ -11,14 +11,20 @@
     class="footer copyright"
     :class="{ footer_columm: appStore.deviceStatus.isMobile }"
   >
-    <!-- <a href="https://www.beian.gov.cn/" target="_blank">
-      <img style="vertical-align: middle;" src="@/assets/images/beian.png" />
-      <span>{{NS}}</span>
-    </a> -->
+    <a
+      href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=45020302000255"
+      target="_blank"
+    >
+      <img
+        src="@/assets/images/beian.png"
+        style="float: left; margin-right: 5px;width: 14px;"
+      />
+      <span>{{ NS }}</span>
+    </a>
     <p>
       <a href="https://beian.miit.gov.cn/" target="_blank">{{ ICP }} </a>
     </p>
-    <p>© 2023 chenyx.site 版权所有</p>
+    <p>© 2022 - 2023 Chenyx 版权所有</p>
   </div>
 </template>
 
@@ -39,6 +45,7 @@ const { ICP, NS } = webBaseInfo;
   align-items: center;
   background: var(--bg-primary);
   color: #fff;
+  font-size: 12px;
 }
 .footer p {
   margin: 0;

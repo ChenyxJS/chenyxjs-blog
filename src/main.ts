@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-05 17:42:21
+ * @LastEditTime: 2023-05-09 17:23:35
  */
 import { Directive, createApp } from "vue";
 import { createPinia } from "pinia";
@@ -15,7 +15,6 @@ import "element-plus/dist/index.css";
 // 引入v-md-editor组件
 import VMdPreview from "@kangc/v-md-editor/lib/preview";
 import vuepressTheme from "@kangc/v-md-editor/lib/theme/vuepress.js";
-import "@/style/markdown.css";
 // 显示代码行数
 import createLineNumbertPlugin from "@kangc/v-md-editor/lib/plugins/line-number/index";
 // 复制按钮

@@ -402,6 +402,13 @@
 .vuepress-markdown-body h6 {
   font-weight: 600;
   line-height: 1.25;
+  position: relative;
+  &:hover::before{
+    content: '#';
+    position: absolute;
+    right: 100%;
+    color: #3eaf7c;
+  }
 }
 .vuepress-markdown-body h1 {
   margin: 0.67em 0;

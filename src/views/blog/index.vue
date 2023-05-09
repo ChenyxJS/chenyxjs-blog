@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:39
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-11 18:51:25
+ * @LastEditTime: 2023-05-09 19:05:36
 -->
 <template>
   <div class="blog">
@@ -30,6 +30,8 @@ const appStore = useAppStroe();
   display: flex;
   min-height: var(--main-height);
   overflow: hidden;
+  // background: #1f242d;
+
   ::-webkit-scrollbar-thumb {
     display: none;
   }

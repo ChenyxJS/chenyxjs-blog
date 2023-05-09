@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:24:53
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-26 11:44:27
+ * @LastEditTime: 2023-05-09 18:05:04
  */
 import {
   RouteRecordRaw,
@@ -56,6 +56,14 @@ const routes = [
         component: () => import("../views/project/index.vue"),
         meta: {
           title: "项目",
+        },
+      },
+      {
+        path: "links",
+        name: "links",
+        component: () => import("../views/links/index.vue"),
+        meta: {
+          title: "链接",
         },
       },
       {
