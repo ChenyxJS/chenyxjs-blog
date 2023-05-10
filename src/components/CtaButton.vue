@@ -2,21 +2,22 @@
  * @Author: chenyx
  * @Date: 2023-04-14 20:27:05
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-14 20:28:11
+ * @LastEditTime: 2023-05-10 14:05:26
  * @FilePath: /chenyxjs-blog/src/components/CtaButton.vue
 -->
 
 <script setup lang="ts">
-    const props = defineProps({
-        text:{
-            type:String,
-            default:'Button'
-        }
-    })
+import BaseIcon from "./BaseIcon.vue";
+const props = defineProps({
+  text: {
+    type: String,
+    default: "Button",
+  },
+});
 </script>
 <template>
   <button class="cta">
-    <span>{{text}}</span>
+    <span>{{ text }}</span>
     <base-icon
       class="svg"
       icon-name="icon-a-xiayiyeqianjin"

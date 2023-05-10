@@ -2,10 +2,11 @@
  * @Author: chenyx
  * @Date: 2023-04-13 19:32:11
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-17 00:36:21
+ * @LastEditTime: 2023-05-10 14:00:42
  * @FilePath: /chenyxjs-blog/src/views/home/ArticlePanel.vue
 -->
 <script setup lang="ts">
+import PageCard from "@/components/PageCard.vue";
 import { getArticleList } from "@/api/article";
 import { Article, ArticleQuery } from "@/api/article/types";
 import { OrderType } from "@/utils/globalEnum";
@@ -24,7 +25,7 @@ getNewArticles();
 function getNewArticles() {
   getArticleList({
     keywords: "",
-    articleTagId: 0,
+    articleTagIds: "0",
     page: 1,
     limit: 4,
     orderItem: "article_create_time",
@@ -63,7 +64,6 @@ function toArticle(article: Article) {
         :title="item.articleTitle"
       ></page-card>
     </div>
-   
   </div>
 </template>
 

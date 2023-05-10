@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-04 00:57:38
+ * @LastEditTime: 2023-05-10 15:46:40
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -10,13 +10,17 @@ import vue from "@vitejs/plugin-vue";
 import path from "path";
 import { svgBuilder } from "./src/utils/svgBuilder";
 import { prismjsPlugin } from "vite-plugin-prismjs";
+//打包体积可视化
+import { visualizer } from 'rollup-plugin-visualizer';
+// cdn插件
+import { autoComplete, Plugin as importToCDN } from "vite-plugin-cdn-import";
+
 import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import vueSetupExtend from "vite-plugin-vue-setup-extend";
-import postCssPxToRem from "postcss-pxtorem";
 const srcPath = path.resolve(__dirname, "src");
 
 export default ({ mode }: ConfigEnv): UserConfig => {
@@ -39,6 +43,28 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     },
     plugins: [
       vue(),
+      // 打包体积可视化面板
+      visualizer({ open: true }),
+      importToCDN({
+        modules: [
+		      {
+		        name:"vue",
+		        var:"Vue",
+		        path:"https://unpkg.com/vue@3.2.37"
+		      },
+          {
+            name: 'vue-demi',//安装vue-demi并导入 因为pinia中有用vue依赖中的vue-demi
+            var: 'VueDemi',
+            path: 'lib/index.iife.min.js'
+          },
+		      {
+		        name:"element-plus",
+		        var:"ElementPlus",
+		        path:"https://unpkg.com/element-plus@2.3.1",
+		        css:"https://unpkg.com/element-plus/dist/index.css"
+		      }
+		    ]
+      }),
       svgBuilder("./src/assets/svg/"),
       prismjsPlugin({
         languages: "all",

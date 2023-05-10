@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:24:53
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-09 18:05:04
+ * @LastEditTime: 2023-05-10 13:56:44
  */
 import {
   RouteRecordRaw,
@@ -70,11 +70,6 @@ const routes = [
         path: "article",
         name: "article",
         component: () => import("../views/article/index.vue"),
-      },
-      {
-        path: "three",
-        name: "three",
-        component: () => import("../views/three/index.vue"),
       },
     ],
   },

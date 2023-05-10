@@ -13,7 +13,7 @@
     "lib": ["ESNext", "DOM"],
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": ["src/*"], 
     },
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true /* 允许默认导入 */,

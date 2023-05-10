@@ -13,6 +13,8 @@
 </template>
 
 <script setup lang="ts">
+import PersonCard from "./PersonCard.vue";
+import MusicCard from "./MusicCard.vue";
 import { reactive } from "vue";
 
 const state = reactive({

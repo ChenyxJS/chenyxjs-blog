@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-09 17:55:18
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-16 23:50:22
+ * @LastEditTime: 2023-05-10 13:58:43
  * @FilePath: /chenyxjs-blog/src/Layout/components/BlogSlider.vue
 -->
 <template>
@@ -26,6 +26,7 @@
 </template>
 
 <script setup lang="ts">
+import Copyright from "@/components/Copyright.vue";
 import { useCategoryStore } from "@/store/modules/category";
 
 const store = useCategoryStore()

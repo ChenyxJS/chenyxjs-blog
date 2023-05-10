@@ -2,13 +2,14 @@
  * @Author: chenyx
  * @Date: 2023-04-11 18:41:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-02 11:58:15
+ * @LastEditTime: 2023-05-10 14:03:22
  * @FilePath: /chenyxjs-blog/src/views/home/index.vue
 -->
 <script setup lang="ts">
 import WallpaperSwiper from "@/components/WallpaperSwiper.vue";
 import ThreeTesla from "@/components/ThreeTesla.vue";
 import ArticlePanel from "./ArticlePanel.vue";
+import CtaButton from "@/components/CtaButton.vue";
 import { useAppStroe } from "@/store/modules/app";
 import { useMenu } from "@/hooks/menu-hooks";
 

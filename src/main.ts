@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-09 17:23:35
+ * @LastEditTime: 2023-05-10 15:38:30
  */
 import { Directive, createApp } from "vue";
 import { createPinia } from "pinia";
@@ -53,6 +53,10 @@ import * as directive from '@/directive';
 Object.keys(directive).forEach(key => {
   app.directive(key, (directive as { [key: string]: Directive })[key]);
 });
+
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+app.use(ElementPlus)
 
 // 注册全局方法
 app.use(VMdPreview);

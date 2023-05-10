@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-09 18:12:28
+ * @LastEditTime: 2023-05-10 13:58:00
 -->
 <template>
   <div class="Layout">
@@ -29,10 +29,10 @@
 </template>
 <script setup lang="ts">
 import TopNav from "./components/TopNav.vue";
-import content from "./components/content.vue";
+import Content from "./components/content.vue";
 import BlogSlider from "./components/BlogSlider.vue";
-import footerPanel from "./components/footer.vue";
 import HomeSlider from "./components/HomeSlider.vue";
+import FooterPanel from "./components/footer.vue";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
 import { useAppStroe } from "@/store/modules/app";
