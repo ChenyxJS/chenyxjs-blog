@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-13 23:38:54
+ * @LastEditTime: 2023-05-14 04:07:24
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -11,10 +11,9 @@ import path from "path";
 import { svgBuilder } from "./src/utils/svgBuilder";
 import { prismjsPlugin } from "vite-plugin-prismjs";
 //打包体积可视化
-import { visualizer } from 'rollup-plugin-visualizer';
+import { visualizer } from "rollup-plugin-visualizer";
 // cdn插件
 import { autoComplete, Plugin as importToCDN } from "vite-plugin-cdn-import";
-
 
 import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
@@ -47,14 +46,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       // 打包体积可视化面板
       visualizer({ open: true }),
       importToCDN({
-        modules: [
-		      {
-		        name:"element-plus",
-		        var:"ElementPlus",
-		        path:"https://unpkg.com/element-plus@2.3.1",
-		        css:"https://unpkg.com/element-plus/dist/index.css"
-		      }
-		    ]
+        modules: [],
       }),
       svgBuilder("./src/assets/svg/"),
       prismjsPlugin({
@@ -65,7 +57,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       }),
       Components({
         resolvers: [
-          ElementPlusResolver(), 
+          ElementPlusResolver(),
           // 自动注册图标组件
           IconsResolver({
             enabledCollections: ["ep"],
