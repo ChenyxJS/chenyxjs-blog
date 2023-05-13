@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-05 17:30:49
+ * @LastEditTime: 2023-05-12 23:38:17
 -->
 <template>
   <div
@@ -93,7 +93,7 @@ const stop = watchEffect(() => {
   if (state.articleContent)
     setTimeout(() => {
       renderAnchors();
-    }, 300);
+    }, 200);
 });
 
 // function

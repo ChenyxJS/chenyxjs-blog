@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-10 15:46:40
+ * @LastEditTime: 2023-05-13 23:38:54
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -14,6 +14,7 @@ import { prismjsPlugin } from "vite-plugin-prismjs";
 import { visualizer } from 'rollup-plugin-visualizer';
 // cdn插件
 import { autoComplete, Plugin as importToCDN } from "vite-plugin-cdn-import";
+
 
 import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
@@ -47,16 +48,6 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       visualizer({ open: true }),
       importToCDN({
         modules: [
-		      {
-		        name:"vue",
-		        var:"Vue",
-		        path:"https://unpkg.com/vue@3.2.37"
-		      },
-          {
-            name: 'vue-demi',//安装vue-demi并导入 因为pinia中有用vue依赖中的vue-demi
-            var: 'VueDemi',
-            path: 'lib/index.iife.min.js'
-          },
 		      {
 		        name:"element-plus",
 		        var:"ElementPlus",
