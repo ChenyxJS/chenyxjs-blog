@@ -2236,6 +2236,11 @@
   "resolved" "https://registry.npmmirror.com/get-value/-/get-value-2.0.6.tgz"
   "version" "2.0.6"
 
+"git-clone@^0.2.0":
+  "integrity" "sha512-1UAkEPIFbyjHaddljUKvPhhLRnrKaImT71T7rdvSvWLXw95nLdhdi6Qmlx0KOWoV1qqvHGLq5lMLJEZM0JXk8A=="
+  "resolved" "https://registry.npmmirror.com/git-clone/-/git-clone-0.2.0.tgz"
+  "version" "0.2.0"
+
 "glob-parent@^3.1.0":
   "integrity" "sha512-E8Ak/2+dZY6fnzlR7+ueWvhsH1SjHr4jjss4YS/h4py44jY9MhK/VFdaZJAWDz6BbL21KeteKxFSFpq8OS5gVA=="
   "resolved" "https://registry.npmmirror.com/glob-parent/-/glob-parent-3.1.0.tgz"
@@ -4001,9 +4006,9 @@
     "fsevents" "~2.3.2"
 
 "vue-demi@*":
-  "integrity" "sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A=="
-  "resolved" "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.13.11.tgz"
-  "version" "0.13.11"
+  "integrity" "sha512-rt+yuCtXvscYot9SQQj3WKZJVSriPNqVkpVBNEHPzSgBv7QIYzsS410VqVgvx8f9AAPgjg+XPKvmV3vOqqkJQQ=="
+  "resolved" "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.14.1.tgz"
+  "version" "0.14.1"
 
 "vue-router@^4.0.0-beta.13":
   "integrity" "sha512-dYv9qpHPaojQlfujViiTkPkf1Bf5RCFzkCkdVFc1cENzWJYAGJanpIHiyjyKoM4u7IDFBZMItci+U4ieaEWA8A=="

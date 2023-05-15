@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-14 04:07:24
+ * @LastEditTime: 2023-05-15 14:58:40
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -10,10 +10,7 @@ import vue from "@vitejs/plugin-vue";
 import path from "path";
 import { svgBuilder } from "./src/utils/svgBuilder";
 import { prismjsPlugin } from "vite-plugin-prismjs";
-//打包体积可视化
-import { visualizer } from "rollup-plugin-visualizer";
-// cdn插件
-import { autoComplete, Plugin as importToCDN } from "vite-plugin-cdn-import";
+
 
 import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
@@ -43,11 +40,6 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     },
     plugins: [
       vue(),
-      // 打包体积可视化面板
-      visualizer({ open: true }),
-      importToCDN({
-        modules: [],
-      }),
       svgBuilder("./src/assets/svg/"),
       prismjsPlugin({
         languages: "all",
@@ -88,6 +80,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       assetsDir: "./assets",
       chunkSizeWarningLimit: 500,
       minify: "terser",
+      sourcemap: false,
       cssCodeSplit: true, // 如果设置为false，整个项目中的所有 CSS 将被提取到一个 CSS 文件中
       terserOptions: {
         compress: {
