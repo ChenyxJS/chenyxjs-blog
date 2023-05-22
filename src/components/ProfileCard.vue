@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-11 19:59:43
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-12 13:29:36
+ * @LastEditTime: 2023-05-16 09:56:03
  * @FilePath: /chenyxjs-blog/src/components/ProfileCard.vue
 -->
 <template>
@@ -44,7 +44,6 @@ function changeCard() {
 .card-front,
 .card-back {
   position: absolute;
-  // TODO 卡片翻转兼容问题处理
   backface-visibility: hidden;
   -webkit-transform-style: preserve-3d; /*设置内嵌的元素在 3D 空间如何呈现：保留 3D*/
   -webkit-backface-visibility: hidden; /*(设置进行转换的元素的背面在面对用户时是否可见：隐藏)*/
