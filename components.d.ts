@@ -32,7 +32,6 @@ declare module '@vue/runtime-core' {
     Skeleton: typeof import('./src/components/Skeleton.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon.vue')['default']
     ThreeBallLoading: typeof import('./src/components/Loading/ThreeBallLoading.vue')['default']
-    ThreeTesla: typeof import('./src/components/ThreeTesla.vue')['default']
     TypewriterText: typeof import('./src/components/TypewriterText.vue')['default']
     WallpaperSwiper: typeof import('./src/components/WallpaperSwiper.vue')['default']
   }
