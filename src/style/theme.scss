@@ -1,0 +1,9 @@
+// 主题样式
+html[data-light] {
+    background-color: #fff;
+    color: #18181d;
+}
+html[data-dark] {
+    background-color: #18181d;
+    color: #fff;
+}
