@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-06 15:24:09
+ * @LastEditTime: 2023-06-06 15:55:10
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -43,7 +43,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
             vue(),
             svgBuilder("./src/assets/svg/"),
             prismjsPlugin({
-                languages: "all",
+                languages: ['json','bash','javascript','css','typescript'],
             }),
             AutoImport({
                 resolvers: [ElementPlusResolver()],

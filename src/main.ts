@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-15 14:57:59
+ * @LastEditTime: 2023-06-06 15:47:57
  */
 import { Directive, createApp } from "vue";
 import { createPinia } from "pinia";
@@ -33,7 +33,7 @@ import "@/style/index.scss";
 import Prism from "prismjs";
 
 VMdPreview.use(vuepressTheme, {
-  Prism,
+    Prism,
 });
 VMdPreview.use(createLineNumbertPlugin());
 VMdPreview.use(createCopyCodePlugin());
@@ -43,15 +43,15 @@ import App from "./App.vue";
 import router from "./router";
 import SvgIcon from "@/components/SvgIcon.vue";
 import VueWechatTitle from "vue-wechat-title";
-import vuetyped from 'vue3typed'
+import vuetyped from "vue3typed";
 const pinia = createPinia();
 
 const app = createApp(App);
 
 // 自定义指令
-import * as directive from '@/directive';
-Object.keys(directive).forEach(key => {
-  app.directive(key, (directive as { [key: string]: Directive })[key]);
+import * as directive from "@/directive";
+Object.keys(directive).forEach((key) => {
+    app.directive(key, (directive as { [key: string]: Directive })[key]);
 });
 
 // 注册全局方法
