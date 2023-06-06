@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-06 15:55:10
+ * @LastEditTime: 2023-06-06 16:34:49
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -16,6 +16,8 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import vueSetupExtend from "vite-plugin-vue-setup-extend";
+import viteImagemin from "vite-plugin-imagemin";
+
 const srcPath = path.resolve(__dirname, "src");
 
 export default ({ mode }: ConfigEnv): UserConfig => {
@@ -43,7 +45,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
             vue(),
             svgBuilder("./src/assets/svg/"),
             prismjsPlugin({
-                languages: ['json','bash','javascript','css','typescript'],
+                languages: ["json", "bash", "javascript", "css", "typescript"],
             }),
             AutoImport({
                 resolvers: [ElementPlusResolver()],
@@ -61,6 +63,33 @@ export default ({ mode }: ConfigEnv): UserConfig => {
                 autoInstall: true,
             }),
             vueSetupExtend(),
+            viteImagemin({
+                gifsicle: {
+                    optimizationLevel: 7,
+                    interlaced: false,
+                },
+                optipng: {
+                    optimizationLevel: 7,
+                },
+                mozjpeg: {
+                    quality: 20,
+                },
+                pngquant: {
+                    quality: [0.8, 0.9],
+                    speed: 4,
+                },
+                svgo: {
+                    plugins: [
+                        {
+                            name: "removeViewBox",
+                        },
+                        {
+                            name: "removeEmptyAttrs",
+                            active: false,
+                        },
+                    ],
+                },
+            }),
         ],
         resolve: {
             alias: {
