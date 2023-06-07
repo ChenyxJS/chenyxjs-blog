@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-08 03:29:27
+ * @LastEditTime: 2023-06-08 03:48:08
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -14,8 +14,6 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import vueSetupExtend from "vite-plugin-vue-setup-extend";
-// import viteImagemin from "vite-plugin-imagemin";
-import externalGlobals from "rollup-plugin-external-globals";
 
 const srcPath = path.resolve(__dirname, "src");
 
@@ -53,33 +51,6 @@ export default ({ mode }: ConfigEnv): UserConfig => {
                 resolvers: [ElementPlusResolver()],
             }),
             vueSetupExtend(),
-            // viteImagemin({
-            //     gifsicle: {
-            //         optimizationLevel: 7,
-            //         interlaced: false,
-            //     },
-            //     optipng: {
-            //         optimizationLevel: 7,
-            //     },
-            //     mozjpeg: {
-            //         quality: 20,
-            //     },
-            //     pngquant: {
-            //         quality: [0.8, 0.9],
-            //         speed: 4,
-            //     },
-            //     svgo: {
-            //         plugins: [
-            //             {
-            //                 name: "removeViewBox",
-            //             },
-            //             {
-            //                 name: "removeEmptyAttrs",
-            //                 active: false,
-            //             },
-            //         ],
-            //     },
-            // }),
         ],
         resolve: {
             alias: {
@@ -105,12 +76,6 @@ export default ({ mode }: ConfigEnv): UserConfig => {
                 },
             },
             rollupOptions: {
-                external: ["element-plus"],
-                plugins: [
-                    externalGlobals({
-                        "element-plus": "ElementPlus",
-                    }),
-                ],
                 output: {
                     chunkFileNames: "assets/js/[name]-[hash].js",
                     entryFileNames: "assets/js/[name]-[hash].js",
