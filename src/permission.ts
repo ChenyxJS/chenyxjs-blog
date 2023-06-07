@@ -2,12 +2,10 @@
  * @Author: chenyx
  * @Date: 2023-03-13 23:09:10
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-08 01:09:30
+ * @LastEditTime: 2023-06-08 03:31:43
  * @FilePath: /chenyxjs-blog/src/permission.ts
  */
 import router from "@/router";
-
-import "nprogress/nprogress.css";
 
 // 白名单路由
 const whiteList = ["/login"];
