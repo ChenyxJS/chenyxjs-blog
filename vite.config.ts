@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-08 02:18:40
+ * @LastEditTime: 2023-06-08 03:01:03
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -15,6 +15,7 @@ import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import vueSetupExtend from "vite-plugin-vue-setup-extend";
 import viteImagemin from "vite-plugin-imagemin";
+import importToCDN from "vite-plugin-cdn-import";
 
 const srcPath = path.resolve(__dirname, "src");
 
@@ -42,6 +43,16 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         plugins: [
             vue(),
             svgBuilder("./src/assets/svg/"),
+            importToCDN({
+                modules: [
+                    {
+                        name: "element-plus",
+                        var: "ElementPlus",
+                        path: "https://unpkg.com/element-plus@2.3.1",
+                        css: "https://unpkg.com/element-plus/dist/index.css",
+                    },
+                ],
+            }),
             prismjsPlugin({
                 languages: ["json", "bash", "javascript", "css", "typescript"],
             }),
