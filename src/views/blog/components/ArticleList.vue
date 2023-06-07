@@ -70,14 +70,13 @@
         </div>
         <!-- no-data end -->
     </div>
-    <el-backtop :right="100" :bottom="100" />
 </template>
 
 <script setup lang="ts">
 import { formatDate } from "@/utils";
 import lottie, { AnimationItem } from "lottie-web";
 import lottieNoDataJson from "@/assets/lottie/no-data/no-data.json";
-import lottieLoadingJson from "@/assets/lottie/loading/loading.json";
+// import lottieLoadingJson from "@/assets/lottie/loading/loading.json";
 import { getArticleList } from "@/api/article";
 import { reactive, onMounted, onUpdated, watch, computed } from "vue";
 import { useRouter } from "vue-router";
@@ -132,7 +131,7 @@ let showNoData = computed(() => {
 });
 
 onMounted(() => {
-    initLoadingLottie();
+    // initLoadingLottie();
     getList();
     onUpdated(() => {
         const elList: HTMLCollectionOf<Element> =
@@ -152,7 +151,7 @@ function getList() {
             }
         })
         .finally(() => {
-            if (state.articleList) {
+            if (state.articleList.length === 0) {
                 initNoDataLottie();
             }
             state.showLoading = false;
@@ -190,16 +189,16 @@ function getArticleTags(article: Article) {
         });
 }
 
-function initLoadingLottie() {
-    const loading = document.getElementById("loading") || new HTMLElement();
-    state.loadingLottie = lottie.loadAnimation({
-        container: loading, // 包含动画的dom元素
-        renderer: "svg", // 渲染出来的是什么格式
-        loop: true, // 循环播放
-        autoplay: true, // 自动播放
-        animationData: lottieLoadingJson, // 动画json的路径
-    });
-}
+// function initLoadingLottie() {
+//     const loading = document.getElementById("loading") || new HTMLElement();
+//     state.loadingLottie = lottie.loadAnimation({
+//         container: loading, // 包含动画的dom元素
+//         renderer: "svg", // 渲染出来的是什么格式
+//         loop: true, // 循环播放
+//         autoplay: true, // 自动播放
+//         animationData: lottieLoadingJson, // 动画json的路径
+//     });
+// }
 
 function initNoDataLottie() {
     const noData = document.getElementById("no-data") || new HTMLElement();
