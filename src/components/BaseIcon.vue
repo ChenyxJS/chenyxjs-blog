@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-14 13:45:02
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-14 13:45:07
+ * @LastEditTime: 2023-06-08 02:12:02
  * @FilePath: /chenyxjs-blog/src/components/BaseIcon.vue
 -->
 <script setup lang="ts">
@@ -26,4 +26,3 @@ const state = reactive({
 <template>
     <i :class="['iconfont', iconName]" :style="state.iconStyle"></i>
 </template>
-<style></style>

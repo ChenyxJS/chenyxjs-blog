@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-07 14:45:06
+ * @LastEditTime: 2023-06-08 02:19:44
  */
 import { Directive, createApp } from "vue";
 import { createPinia } from "pinia";
@@ -26,9 +26,6 @@ import "@kangc/v-md-editor/lib/plugins/emoji/emoji.css";
 
 import "./assets/iconfont/iconfont.css";
 import "@/style/index.scss";
-// 移动端适配
-// import "@/utils/flexible";
-// import "amfe-flexible/index.js";
 
 import Prism from "prismjs";
 

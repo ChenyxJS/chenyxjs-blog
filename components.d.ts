@@ -18,7 +18,6 @@ declare module '@vue/runtime-core' {
     ElProgress: typeof import('element-plus/es')['ElProgress']
     ElSkeleton: typeof import('element-plus/es')['ElSkeleton']
     ElSkeletonItem: typeof import('element-plus/es')['ElSkeletonItem']
-    IEpNotebook: typeof import('~icons/ep/notebook')['default']
     MenuBtn: typeof import('./src/components/MenuBtn.vue')['default']
     MenuPanel: typeof import('./src/components/MenuPanel.vue')['default']
     MusicCard: typeof import('./src/components/MusicCard.vue')['default']

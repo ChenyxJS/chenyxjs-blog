@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-06 16:34:49
+ * @LastEditTime: 2023-06-08 02:18:40
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -10,8 +10,6 @@ import vue from "@vitejs/plugin-vue";
 import path from "path";
 import { svgBuilder } from "./src/utils/svgBuilder";
 import { prismjsPlugin } from "vite-plugin-prismjs";
-import Icons from "unplugin-icons/vite";
-import IconsResolver from "unplugin-icons/resolver";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
@@ -51,16 +49,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
                 resolvers: [ElementPlusResolver()],
             }),
             Components({
-                resolvers: [
-                    ElementPlusResolver(),
-                    // 自动注册图标组件
-                    IconsResolver({
-                        enabledCollections: ["ep"],
-                    }),
-                ],
-            }),
-            Icons({
-                autoInstall: true,
+                resolvers: [ElementPlusResolver()],
             }),
             vueSetupExtend(),
             viteImagemin({
@@ -96,19 +85,9 @@ export default ({ mode }: ConfigEnv): UserConfig => {
                 "@": srcPath,
             },
         },
-        css: {
-            postcss: {
-                plugins: [
-                    // postCssPxToRem({
-                    //   rootValue: 192, // 1rem的大小
-                    //   propList: ["font", "font-size", "line-height", "letter-spacing"], // 需要转换的属性，这里选择全部都进行转换
-                    // }),
-                ],
-            },
-        },
         build: {
             assetsDir: "./assets",
-            chunkSizeWarningLimit: 1000,
+            chunkSizeWarningLimit: 500,
             minify: "terser",
             sourcemap: false,
             cssCodeSplit: true, // 如果设置为false，整个项目中的所有 CSS 将被提取到一个 CSS 文件中
