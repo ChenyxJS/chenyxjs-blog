@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:24:53
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-08 02:54:14
+ * @LastEditTime: 2023-06-08 03:57:16
  */
 import {
     RouteRecordRaw,
@@ -50,22 +50,22 @@ const routes = [
             //       title: "壁纸",
             //     },
             //   },
-            {
-                path: "project",
-                name: "project",
-                component: () => import("../views/project/index.vue"),
-                meta: {
-                    title: "项目",
-                },
-            },
-            {
-                path: "links",
-                name: "links",
-                component: () => import("../views/links/index.vue"),
-                meta: {
-                    title: "链接",
-                },
-            },
+            // {
+            //     path: "project",
+            //     name: "project",
+            //     component: () => import("../views/project/index.vue"),
+            //     meta: {
+            //         title: "项目",
+            //     },
+            // },
+            // {
+            //     path: "links",
+            //     name: "links",
+            //     component: () => import("../views/links/index.vue"),
+            //     meta: {
+            //         title: "链接",
+            //     },
+            // },
             {
                 path: "article",
                 name: "article",

@@ -2,11 +2,11 @@
  * @Author: chenyx
  * @Date: 2023-04-11 18:41:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-08 03:52:44
+ * @LastEditTime: 2023-06-08 03:56:39
  * @FilePath: /chenyxjs-blog/src/views/home/index.vue
 -->
 <script setup lang="ts">
-// import WallpaperSwiper from "@/components/WallpaperSwiper.vue";
+import WallpaperSwiper from "@/components/WallpaperSwiper.vue";
 import ArticlePanel from "./ArticlePanel.vue";
 import CtaButton from "@/components/CtaButton.vue";
 import { useAppStroe } from "@/store/modules/app";
@@ -51,13 +51,13 @@ const appStore = useAppStroe();
                 ></cta-button>
             </div>
         </div> -->
-        <div class="panel" style="height: auto">
+        <!-- <div class="panel" style="height: auto">
             <div class="title"><span>Blog</span></div>
             <article-panel></article-panel>
             <div class="more flex flex-cc">
                 <cta-button @click="toBlog" text="More Blog"></cta-button>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
