@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-11 18:41:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-06 15:07:51
+ * @LastEditTime: 2023-06-08 01:09:01
  * @FilePath: /chenyxjs-blog/src/views/home/index.vue
 -->
 <script setup lang="ts">
@@ -38,9 +38,7 @@ const appStore = useAppStroe();
                         <div class="typing"></div>
                     </vuetyped>
                 </h3>
-                <p>
-
-                </p>
+                <p></p>
             </div>
         </div>
         <div class="panel">
