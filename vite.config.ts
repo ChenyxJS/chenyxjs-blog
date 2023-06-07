@@ -108,7 +108,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         },
         build: {
             assetsDir: "./assets",
-            chunkSizeWarningLimit: 500,
+            chunkSizeWarningLimit: 1000,
             minify: "terser",
             sourcemap: false,
             cssCodeSplit: true, // 如果设置为false，整个项目中的所有 CSS 将被提取到一个 CSS 文件中
