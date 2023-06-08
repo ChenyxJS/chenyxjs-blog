@@ -41,7 +41,7 @@ const appStore = useAppStroe();
                 <p></p>
             </div>
         </div>
-        <!-- <div class="panel">
+        <div class="panel">
             <div class="title"><span>Wallpaper</span></div>
             <wallpaper-swiper class="wallpaper-swiper"></wallpaper-swiper>
             <div class="more flex flex-cc">
@@ -50,14 +50,14 @@ const appStore = useAppStroe();
                     text="More Wallpaper"
                 ></cta-button>
             </div>
-        </div> -->
-        <!-- <div class="panel" style="height: auto">
+        </div>
+        <div class="panel" style="height: auto">
             <div class="title"><span>Blog</span></div>
             <article-panel></article-panel>
             <div class="more flex flex-cc">
                 <cta-button @click="toBlog" text="More Blog"></cta-button>
             </div>
-        </div> -->
+        </div>
     </div>
 </template>
 
