@@ -4,45 +4,72 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-10 13:58:00
+ * @LastEditTime: 2023-06-15 21:36:38
 -->
 <template>
     <div class="Layout">
-        <div class="top-layout">
-            <top-nav />
-        </div>
-        <div class="container-layout">
-            <!-- 侧边栏 -->
-            <div v-show="!appStore.deviceStatus.isMobile" class="slider-layout">
-                <blog-slider v-if="isShowBlogSlider" />
-                <home-slider v-else />
+        <Notification />
+        <div v-show="state.showTopNav" class="top-layout">
+            <div class="top-panel">
+                <div style="opacity: 0" />
+                <nav-panel />
+                <div style="opacity: 0" />
             </div>
-            <!-- main -->
+        </div>
+        <div class="main-layout">
+            <div v-show="!appStore.deviceStatus.isMobile" class="slider-layout">
+                <blog-sidebar v-if="isShowBlogSidebar" />
+                <home-sidebar v-else />
+            </div>
             <div class="content-layout">
                 <content />
             </div>
         </div>
         <div v-if="appStore.deviceStatus.isMobile" class="footer-layout">
-            <footer-panel></footer-panel>
+            <footer-panel />
         </div>
     </div>
 </template>
 <script setup lang="ts">
-import TopNav from "./components/topNav.vue";
-import Content from "./components/content.vue";
-import BlogSlider from "./components/BlogSlider.vue";
-import HomeSlider from "./components/HomeSlider.vue";
-import FooterPanel from "./components/footer.vue";
+import NavPanel from "@/components/NavPanel.vue";
+import TopNav from "./components/TopNav.vue";
+import Content from "./components/Content.vue";
+import BlogSidebar from "./components/BlogSidebar.vue";
+import HomeSidebar from "./components/HomeSidebar.vue";
+import FooterPanel from "./components/Footer.vue";
 import { useRoute } from "vue-router";
-import { computed } from "vue";
+import { computed, onMounted, reactive, watch } from "vue";
 import { useAppStroe } from "@/store/modules/app";
+import Notification from "@/components/Notification/Notification.vue";
 
 const route = useRoute();
 const appStore = useAppStroe();
+const state = reactive({
+    top: 0,
+    showTopNav: true,
+});
 
-let isShowBlogSlider = computed(() => {
+onMounted(() => {
+    window.addEventListener("scroll", () => {
+        state.top =
+            document.documentElement.scrollTop || document.body.scrollTop;
+    });
+});
+
+watch(
+    () => state.top,
+    (newVal, oldVal) => {
+        if (newVal > 62) {
+            if (newVal > oldVal) {
+                state.showTopNav = false;
+            } else {
+                state.showTopNav = true;
+            }
+        }
+    }
+);
+
+const isShowBlogSidebar = computed(() => {
     return route.path === "/blog" || route.path === "/article" ? true : false;
 });
 </script>
-
-<style lang="scss" scoped></style>

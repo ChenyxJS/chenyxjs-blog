@@ -2,13 +2,18 @@
  * @Author: chenyx
  * @Date: 2023-04-01 02:15:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-06 15:02:51
+ * @LastEditTime: 2023-06-15 16:33:08
  * @FilePath: /chenyxjs-blog/src/hooks/menu-hooks.ts
  */
+import { useNotification } from "@/components/Notification/useNotification";
 import router from "@/router";
-import { ElMessage } from "element-plus";
+import { inject, onMounted, reactive } from "vue";
 
-export function useMenu() {
+export const useMenu = () => {
+    let Notice: any = reactive({});
+    onMounted(() => {
+        Notice = inject("Notice");
+    });
     const menu = [
         {
             index: 0,
@@ -46,12 +51,12 @@ export function useMenu() {
             path: "/links",
             fun: toLinks,
         },
-        {
-            index: 6,
-            title: "手绘板",
-            path: "/Excalidraw",
-            fun: toExcalidraw,
-        },
+        // {
+        //     index: 6,
+        //     title: "手绘板",
+        //     path: "/Excalidraw",
+        //     fun: toExcalidraw,
+        // },
     ];
 
     function toPortal() {
@@ -67,9 +72,9 @@ export function useMenu() {
         router.push("/blog");
     }
     function toWallpaper() {
-        ElMessage.warning({
-            message: "模块正在调试中，敬请期待...",
-            duration: 1000,
+        Notice.notification({
+            text: "模块正在调试中，敬请期待...",
+            isAutoClose: true,
         });
         // router.push("/wallpaper");
     }
@@ -88,4 +93,4 @@ export function useMenu() {
         toBlog,
         toWallpaper,
     };
-}
+};

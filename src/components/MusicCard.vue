@@ -1,7 +1,10 @@
 <template>
     <div class="card">
         <button @click="changeCard">
-            <i class="iconfont icon-music-full" style="color: #409eff"></i>
+            <i
+                class="iconfont icon-weibiaoti--"
+                style="color: #409eff; cursor: pointer"
+            ></i>
         </button>
         <div class="progress">
             <img
@@ -30,17 +33,17 @@
             </div>
 
             <div class="controls">
-                <i class="iconfont icon-shangyishou"></i>
+                <i class="iconfont icon-shangyishou_huaban"></i>
                 <i
                     @click="openClick"
                     style="font-size: 24px"
                     class="iconfont"
                     :class="[
                         'iconfont',
-                        state.isPlaying ? 'icon-zanting' : 'icon-bofang',
+                        state.isPlaying ? 'icon-zanting' : 'icon-zantingbofang',
                     ]"
                 ></i>
-                <i class="iconfont icon-xiayishou"></i>
+                <i class="iconfont icon-xiayishou_huaban"></i>
             </div>
             <audio
                 style="height: 35px; display: none"
@@ -105,12 +108,11 @@ function changeCard() {
     flex-direction: column;
     align-items: center;
     width: 230px;
-    height: 280px;
+    // height: 280px;
     border-radius: 2em;
     padding: 10px;
     margin-top: 20px;
-    background-color: #191919;
-    box-shadow: 5px 5px 30px rgb(4, 4, 4), -5px -5px 30px rgb(57, 57, 57);
+    box-shadow: 0 0 0 2px #1f1f23;
 }
 .progress {
     margin-top: 20px;
@@ -150,18 +152,18 @@ function changeCard() {
 }
 
 .socialbar {
-    background-color: #191919;
     border-radius: 3em;
     width: 90%;
-    padding: 14px;
+    padding: 5px 14px;
     color: white;
-    box-shadow: 3px 3px 15px rgb(0, 0, 0), -3px -3px 15px rgb(58, 58, 58);
     display: flex;
     justify-content: space-around;
+    background-color: #191919;
+    box-shadow: 0 0 0 2px #1f1f23;
 }
 .socialbar .controls {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 5px;
     display: flex;
     justify-content: space-around;
     align-items: center;

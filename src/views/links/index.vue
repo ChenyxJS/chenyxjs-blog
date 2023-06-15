@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-09 21:10:19
+ * @LastEditTime: 2023-06-14 09:46:40
 -->
 <template>
     <div class="links flex flex-column flex-sc">
@@ -143,7 +143,8 @@ img {
     height: 100%;
     overflow: scroll;
     overflow-x: hidden;
-    background: #1f242d;
+    margin-bottom: 30px;
+    /* background: #1f242d; */
 }
 .link-section {
     width: 60%;
@@ -172,7 +173,7 @@ img {
     cursor: pointer;
 }
 .link-item .content {
-    border: 1px solid #3c4a5f;
+    box-shadow: 0 0 0 2px #303034;
     border-radius: 10px;
     padding: 13px 30px 13px 20px;
     overflow: hidden;
@@ -183,7 +184,6 @@ img {
     -ms-transition: all ease 0.3s;
 }
 .link-item .content:hover {
-    border: 1px solid transparent;
     box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.6);
     transform: translateY(-3px);
     -webkit-transform: translate(0px, -3px);

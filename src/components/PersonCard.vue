@@ -2,15 +2,15 @@
  * @Author: chenyx
  * @Date: 2023-04-12 12:57:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-06 15:21:04
+ * @LastEditTime: 2023-06-13 15:31:48
  * @FilePath: /chenyxjs-blog/src/components/PersonCard.vue
 -->
 <template>
     <div class="card">
         <button @click="changeCard">
             <i
-                class="iconfont icon-a-gerenzhongxinrenxing"
-                style="color: #409eff"
+                class="iconfont icon-chengyuan"
+                style="color: #409eff;cursor: pointer;"
             ></i>
         </button>
         <div class="profileimage">
@@ -96,22 +96,23 @@ function changeCard() {
     flex-direction: column;
     align-items: center;
     width: 230px;
-    height: 280px;
+    // height: 280px;
     border-radius: 2em;
     padding: 10px;
     margin-top: 20px;
-    background-color: #191919;
-    box-shadow: 5px 5px 30px rgb(4, 4, 4), -5px -5px 30px rgb(57, 57, 57);
+    box-shadow: 0 0 0 2px #1f1f23;
+
 }
 
 .profileimage {
     position: relative;
-    background-color: #fff;
     border: none;
     margin-top: 20px;
     border-radius: 50%;
     width: 100px;
     height: 100px;
+    box-shadow: 0 0 0 2px #3a3a3f;
+
     .img-warpper {
         width: 100px;
         height: 100px;
@@ -186,13 +187,12 @@ function changeCard() {
     border-radius: 3em;
     width: 90%;
     padding: 14px;
-    color: white;
-    box-shadow: 3px 3px 15px rgb(0, 0, 0), -3px -3px 15px rgb(58, 58, 58);
+    box-shadow: 0 0 0 2px #1f1f23;
     display: flex;
     justify-content: space-around;
 }
 
-.card a {
+.socialbar a {
     transition: 0.4s;
     color: white;
     width: 24px;
@@ -201,11 +201,12 @@ function changeCard() {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 0 0 2px #1f1f23;
     i {
         font-size: 24px;
     }
 }
-.card a:hover {
+.socialbar a:hover {
     transform: translateY(-5px);
     background-color: #fff;
 }

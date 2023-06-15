@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-11 19:59:43
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-16 09:56:03
+ * @LastEditTime: 2023-06-13 15:23:48
  * @FilePath: /chenyxjs-blog/src/components/ProfileCard.vue
 -->
 <template>
@@ -15,14 +15,23 @@
 <script setup lang="ts">
 import PersonCard from "./PersonCard.vue";
 import MusicCard from "./MusicCard.vue";
-import { reactive } from "vue";
+import { onMounted, reactive } from "vue";
 
 const state = reactive({
     isBack: false,
+    isAuto: true,
+});
+
+onMounted(() => {
+    setInterval(() => {
+        if (state.isAuto) {
+            state.isBack = !state.isBack;
+        }
+    }, 10000);
 });
 
 function changeCard() {
-    state.isBack = !state.isBack;
+    (state.isAuto = false), (state.isBack = !state.isBack);
 }
 </script>
 

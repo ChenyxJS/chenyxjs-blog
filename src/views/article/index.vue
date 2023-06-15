@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-12 23:38:17
+ * @LastEditTime: 2023-06-15 16:21:45
 -->
 <template>
     <div
@@ -25,9 +25,7 @@
             </div>
             <div id="article-anchor" class="article-anchor">
                 <span>
-                    <el-icon style="vertical-align: top" :size="18">
-                        <i-ep-notebook></i-ep-notebook>
-                    </el-icon>
+                    <i class="iconfont icon-kuaijie"></i>
                     <span style="font-size: 16px; line-height: 16px">目录</span>
                 </span>
                 <div
@@ -55,8 +53,8 @@ import {
     ref,
     watchEffect,
     onUnmounted,
+inject,
 } from "vue";
-import { ElMessage, ElIcon } from "element-plus";
 import { useRoute } from "vue-router";
 import ThreeBallLoading from "@/components/Loading/ThreeBallLoading.vue";
 import { getArticleById } from "@/api/article";
@@ -76,6 +74,8 @@ const state = reactive({
     article: {} as Article,
 });
 const route = useRoute();
+const noteHook: any = inject("Notice");
+
 
 const { proxy } = getCurrentInstance() as ComponentInternalInstance;
 let previewDom: any = ref();
@@ -143,7 +143,9 @@ function handleData(data: BaseApiResult) {
         state.articleContent = data.object.content;
         state.article = data.object.article;
     } else {
-        ElMessage.error("文章写的太好，被偷了");
+        noteHook.notification({
+            text: "模块正在调试中，敬请期待...",
+        });
     }
 }
 
@@ -240,10 +242,9 @@ function handleAnchorScroll(anchorTarget: Anchor) {
     width: 100%;
 }
 .article {
-    width: 100%;
-    height: 100%;
+    width: calc(100vw - 314px);
+    height: 100vh;
     overflow: hidden scroll;
-    background-color: var(--bg-primary);
     display: flex;
     .article-content {
         flex: 1;
@@ -273,6 +274,9 @@ function handleAnchorScroll(anchorTarget: Anchor) {
     }
 }
 @media screen and (max-width: 1100px) {
+    .article{
+        width: 100%;
+    }
     .article-anchor {
         display: none;
     }

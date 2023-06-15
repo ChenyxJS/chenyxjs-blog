@@ -9,16 +9,19 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ArticleCard: typeof import('./src/components/ArticleCard.vue')['default']
     BaseIcon: typeof import('./src/components/BaseIcon.vue')['default']
     Copyright: typeof import('./src/components/Copyright.vue')['default']
     CtaButton: typeof import('./src/components/CtaButton.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
-    ElCollapseTransition: typeof import('element-plus/es')['ElCollapseTransition']
+    ElProgress: typeof import('element-plus/es')['ElProgress']
     ElSkeleton: typeof import('element-plus/es')['ElSkeleton']
     ElSkeletonItem: typeof import('element-plus/es')['ElSkeletonItem']
     MenuBtn: typeof import('./src/components/MenuBtn.vue')['default']
     MenuPanel: typeof import('./src/components/MenuPanel.vue')['default']
     MusicCard: typeof import('./src/components/MusicCard.vue')['default']
+    NavPanel: typeof import('./src/components/NavPanel.vue')['default']
+    Notification: typeof import('./src/components/Notification/Notification.vue')['default']
     PageCard: typeof import('./src/components/PageCard.vue')['default']
     PersonCard: typeof import('./src/components/PersonCard.vue')['default']
     ProfileCard: typeof import('./src/components/ProfileCard.vue')['default']

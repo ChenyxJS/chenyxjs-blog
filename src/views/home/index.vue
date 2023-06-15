@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-11 18:41:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-08 03:56:39
+ * @LastEditTime: 2023-06-13 18:36:09
  * @FilePath: /chenyxjs-blog/src/views/home/index.vue
 -->
 <script setup lang="ts">
@@ -20,16 +20,13 @@ const appStore = useAppStroe();
     <div class="home">
         <div class="panel introduction">
             <div class="content">
-                <h3>👋Welcome to my website</h3>
+                <h3>👋欢迎来到我的个人网站</h3>
                 <h1>Call me Chenyx</h1>
                 <h3>
                     <span>And I'm a</span>
                     <vuetyped
                         class="identity"
-                        :strings="[
-                            'Frontend Development Engineer',
-                            'Technical Writer',
-                        ]"
+                        :strings="['前端开发工程师', '技术文章分享者']"
                         :loop="true"
                         :startDelay="300"
                         :typeSpeed="100"
@@ -38,25 +35,10 @@ const appStore = useAppStroe();
                         <div class="typing"></div>
                     </vuetyped>
                 </h3>
-                <p></p>
             </div>
         </div>
         <div class="panel">
-            <div class="title"><span>Wallpaper</span></div>
-            <wallpaper-swiper class="wallpaper-swiper"></wallpaper-swiper>
-            <div class="more flex flex-cc">
-                <cta-button
-                    @click="toWallpaper"
-                    text="More Wallpaper"
-                ></cta-button>
-            </div>
-        </div>
-        <div class="panel" style="height: auto">
-            <div class="title"><span>Blog</span></div>
-            <article-panel></article-panel>
-            <div class="more flex flex-cc">
-                <cta-button @click="toBlog" text="More Blog"></cta-button>
-            </div>
+            <ArticlePanel></ArticlePanel>
         </div>
     </div>
 </template>
@@ -65,51 +47,16 @@ const appStore = useAppStroe();
 .home {
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    background: #1f242d;
-    // scroll-snap-type: y mandatory;
-
     .panel {
         width: 100%;
-        height: 100%;
         margin-bottom: 70px;
-        // scroll-snap-align: start;
-        // scroll-snap-stop: always;
-        .title {
-            font-size: 36px;
-            font-weight: 700;
-            margin-left: 20px;
-            margin-bottom: 40px;
-            position: relative;
-            span {
-                position: relative;
-                left: 20px;
-                top: 5px;
-            }
-        }
-        .title:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: block;
-            border-radius: 50px;
-            background: #409eff;
-            width: 50px;
-            height: 50px;
-            transition: all 0.3s ease;
-        }
-        .more {
-            margin-top: 30px;
-        }
     }
 }
 .home .introduction {
     display: flex;
     align-items: flex-start;
     .content {
-        margin-top: 15%;
+        margin-top: 70px;
         max-width: 100%;
         padding-left: 70px;
         h1 {
@@ -137,17 +84,6 @@ const appStore = useAppStroe();
         }
     }
 }
-.model-panel {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.article-panel {
-    width: 700px;
-}
 
 @media (max-width: 729px) {
     .panel {
@@ -156,7 +92,7 @@ const appStore = useAppStroe();
         flex-direction: column;
     }
     .home .introduction .content {
-        margin-top: 15%;
+        margin-top: 70px;
         width: 100%;
         max-width: 90%;
         padding-left: 20px;
@@ -173,9 +109,6 @@ const appStore = useAppStroe();
         }
         h3:nth-of-type(2) {
             margin-bottom: 20px;
-            span {
-                float: none;
-            }
         }
         p {
             font-size: 14px;

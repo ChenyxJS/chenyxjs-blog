@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-10 01:13:29
+ * @LastEditTime: 2023-06-12 16:55:49
 -->
 <template>
     <div class="project flex flex-column flex-sc">
@@ -115,12 +115,13 @@ const state = reactive({
     height: 100%;
     overflow: scroll;
     overflow-x: hidden;
-    background: #1f242d;
+    // background: #1f242d;
 }
 .git-calendar {
     width: 80%;
     margin: 0 auto;
     margin-top: 20px;
+    background: rgb(#1f242d, 0.6);
     box-shadow: 2px 3px 20px 0 rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     padding: 20px 10px;

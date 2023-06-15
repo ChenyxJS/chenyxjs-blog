@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-08 02:19:44
+ * @LastEditTime: 2023-06-14 19:08:08
  */
 import { Directive, createApp } from "vue";
 import { createPinia } from "pinia";
@@ -41,6 +41,8 @@ import router from "./router";
 import SvgIcon from "@/components/SvgIcon.vue";
 import VueWechatTitle from "vue-wechat-title";
 import vuetyped from "vue3typed";
+import { useNotification } from "@/components/Notification/useNotification";
+
 const pinia = createPinia();
 
 const app = createApp(App);
@@ -51,9 +53,16 @@ Object.keys(directive).forEach((key) => {
     app.directive(key, (directive as { [key: string]: Directive })[key]);
 });
 
-// 注册全局方法
+// 全局注册
+
+// 通知
+const noteHook = useNotification();
+app.provide("Notice", noteHook);
+// markdown预览组件
 app.use(VMdPreview);
+// 网页标题
 app.use(VueWechatTitle);
+// svg图标
 app.component("svg-icon", SvgIcon);
 app.use(router);
 app.use(pinia);

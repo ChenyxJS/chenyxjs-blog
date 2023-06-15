@@ -2,13 +2,13 @@
  * @Author: chenyx
  * @Date: 2023-03-09 17:55:18
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-08 03:50:17
- * @FilePath: /chenyxjs-blog/src/Layout/components/HomeSlider.vue
+ * @LastEditTime: 2023-06-09 17:07:39
+ * @FilePath: /chenyxjs-blog/src/Layout/components/HomeSidebar.vue
 -->
 <template>
     <!-- 简介 -->
-    <div class="slider-item profile-card">
-        <!-- <profile-card></profile-card> -->
+    <div class="sidebar-item profile-card">
+        <profile-card />
     </div>
     <!-- 最新动态 -->
     <div class="slider-item recent-activity">
@@ -16,7 +16,7 @@
         <section>Vue3 + Vite3.0 + Typescript 版本的 Blog 上线了!</section>
     </div>
     <!-- Copyright -->
-    <copyright></copyright>
+    <copyright />
 </template>
 
 <script setup lang="ts">
@@ -25,7 +25,7 @@ import Copyright from "@/components/Copyright.vue";
 </script>
 
 <style lang="scss" scoped>
-.slider-item {
+.sidebar-item {
     padding-bottom: 32px;
     border-bottom: var(--border);
 }

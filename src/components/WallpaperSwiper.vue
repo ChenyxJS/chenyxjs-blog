@@ -35,13 +35,15 @@ function pre() {
 <template>
     <div class="container flex flex-column flex-cc">
         <div class="wallpaper-swiper flex">
-            <base-icon
-                @click="pre"
-                class="button pre-button"
-                icon-name="icon-a-shangyiyehoutui"
-                color="#fff"
-                size="4vw"
-            ></base-icon>
+            <div class="button">
+                <base-icon
+                    @click="pre"
+                    class="pre-button"
+                    icon-name="icon-xiangzuo"
+                    color="#fff"
+                    size="2vw"
+                ></base-icon>
+            </div>
             <div class="swiper-container">
                 <img class="pc-img" src="@/assets/images/pc.png" />
                 <div class="video-warpper">
@@ -57,13 +59,15 @@ function pre() {
                     ></video>
                 </div>
             </div>
-            <base-icon
-                @click="next"
-                class="button next-button"
-                icon-name="icon-a-xiayiyeqianjin"
-                color="#fff"
-                size="4vw"
-            ></base-icon>
+            <div class="button">
+                <base-icon
+                    @click="next"
+                    class="next-button"
+                    icon-name="icon-xiangyou"
+                    color="#fff"
+                    size="2vw"
+                ></base-icon>
+            </div>
         </div>
     </div>
 </template>
@@ -128,6 +132,9 @@ function pre() {
     width: 100%;
 }
 .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 4vw;
     height: 4vw;
     border-radius: 50%;

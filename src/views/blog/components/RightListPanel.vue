@@ -2,11 +2,15 @@
  * @Author: chenyx
  * @Date: 2023-03-23 17:02:55
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-05-22 00:44:20
+ * @LastEditTime: 2023-06-15 12:33:24
  * @FilePath: /chenyxjs-blog/src/views/blog/components/RightListPanel.vue
 -->
 <template>
     <div class="asider-articles">
+        <div class="nav-right_title">
+            掘金前端热点
+            <svg-icon icon-name="hot" icon-size="16"></svg-icon>
+        </div>
         <el-skeleton
             style="width: 100%"
             :loading="state.loading"
