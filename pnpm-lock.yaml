@@ -10,9 +10,6 @@ dependencies:
   element-plus:
     specifier: ^2.3.1
     version: 2.3.6(vue@3.3.4)
-  lottie-web:
-    specifier: ^5.10.2
-    version: 5.12.0
   path:
     specifier: ^0.12.7
     version: 0.12.7
@@ -2519,10 +2516,6 @@ packages:
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: false
-
-  /lottie-web@5.12.0:
-    resolution: {integrity: sha512-tt2oiv0EmXC8J/RF877dVCo93vZBBnww+SO6dldREgHD8EsP97jQ42JRryIRfY+6aVESQsHYNEAYgH25cBFy7A==}
     dev: false
 
   /lower-case@2.0.2:

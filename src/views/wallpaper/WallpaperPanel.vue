@@ -40,8 +40,8 @@ function download(url: string) {
             :key="index"
             class="wallpaper"
         >
-            <div @click="download(item)" class="download-icon"></div>
-            <div @click="play(`video-${index}`)" class="play-icon"></div>
+            <!-- <div @click="download(item)" class="download-icon"></div>
+            <div @click="play(`video-${index}`)" class="play-icon"></div> -->
             <video :id="`video-${index}`" class="video" v-lazy="item"></video>
         </div>
     </div>
@@ -68,32 +68,32 @@ function download(url: string) {
         transition: all 0.5s ease-in-out;
     }
 }
-.download-icon {
-    position: absolute;
-    top: calc(50% - 53px);
-    left: calc(50% - 90px);
-    width: 100px;
-    height: 100px;
-    opacity: 0;
-    background-image: url("@/assets/images/download.png");
-    background-repeat: no-repeat; //不重复拉伸
-    background-size: 100% 100%;
-    transition: all 0.5s ease;
-    z-index: 2;
-}
-.play-icon {
-    position: absolute;
-    top: calc(50% - 50px);
-    left: calc(50% - 10px);
-    width: 100px;
-    height: 100px;
-    opacity: 0;
-    background-image: url("@/assets/images/player.png");
-    background-repeat: no-repeat; //不重复拉伸
-    background-size: 100% 100%;
-    transition: all 0.5s ease;
-    z-index: 2;
-}
+// .download-icon {
+//     position: absolute;
+//     top: calc(50% - 53px);
+//     left: calc(50% - 90px);
+//     width: 100px;
+//     height: 100px;
+//     opacity: 0;
+//     background-image: url("@/assets/images/download.png");
+//     background-repeat: no-repeat; //不重复拉伸
+//     background-size: 100% 100%;
+//     transition: all 0.5s ease;
+//     z-index: 2;
+// }
+// .play-icon {
+//     position: absolute;
+//     top: calc(50% - 50px);
+//     left: calc(50% - 10px);
+//     width: 100px;
+//     height: 100px;
+//     opacity: 0;
+//     background-image: url("@/assets/images/player.png");
+//     background-repeat: no-repeat; //不重复拉伸
+//     background-size: 100% 100%;
+//     transition: all 0.5s ease;
+//     z-index: 2;
+// }
 .wallpaper::after {
     content: "";
     position: absolute;

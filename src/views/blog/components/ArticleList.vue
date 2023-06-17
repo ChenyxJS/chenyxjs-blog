@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import lottie, { AnimationItem } from "lottie-web";
-import lottieNoDataJson from "@/assets/lottie/no-data/no-data.json";
 import { getArticleList } from "@/api/article";
 import { reactive, onMounted, watch, computed } from "vue";
 import { useCategoryStore } from "@/store/modules/category";
@@ -23,7 +21,6 @@ const articleQuery = {
 const state = reactive({
     articleList: [] as Array<Article>,
     showLoading: false,
-    loadingLottie: {} as AnimationItem,
 });
 
 // 标签选择改变时，触发搜索
@@ -69,21 +66,9 @@ function getList() {
         })
         .finally(() => {
             if (state.articleList.length === 0) {
-                initNoDataLottie();
             }
             state.showLoading = false;
         });
-}
-
-function initNoDataLottie() {
-    const noData = document.getElementById("no-data") || new HTMLElement();
-    lottie.loadAnimation({
-        container: noData, // 包含动画的dom元素
-        renderer: "svg", // 渲染出来的是什么格式
-        loop: true, // 循环播放
-        autoplay: true, // 自动播放
-        animationData: lottieNoDataJson, // 动画json的路径
-    });
 }
 </script>
 
