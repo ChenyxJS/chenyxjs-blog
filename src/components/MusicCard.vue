@@ -47,7 +47,7 @@
             </div>
             <audio
                 style="height: 35px; display: none"
-                src="http://file.chenyx.site/music/jay.flac"
+                src="https://file.chenyx.site/music/jay.flac"
                 controls
                 loop
                 ref="singeBox"
