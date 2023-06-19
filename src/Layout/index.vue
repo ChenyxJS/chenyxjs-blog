@@ -1,10 +1,10 @@
 <!--
- * @Descripttion:
- * @version:
- * @Author: Chenyx
+* @Descripttion:
+* @version:
+* @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-15 21:36:38
+ * @LastEditTime: 2023-06-18 00:33:43
 -->
 <template>
     <div class="Layout">
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="main-layout">
-            <div v-show="!appStore.deviceStatus.isMobile" class="slider-layout">
+            <div v-show="!isMobile" class="slider-layout">
                 <blog-sidebar v-if="isShowBlogSidebar" />
                 <home-sidebar v-else />
             </div>
@@ -25,7 +25,7 @@
                 <content />
             </div>
         </div>
-        <div v-if="appStore.deviceStatus.isMobile" class="footer-layout">
+        <div v-if="isMobile" class="footer-layout">
             <footer-panel />
         </div>
     </div>
@@ -71,5 +71,9 @@ watch(
 
 const isShowBlogSidebar = computed(() => {
     return route.path === "/blog" || route.path === "/article" ? true : false;
+});
+
+const isMobile = computed(() => {
+    return appStore.deviceStatus.isMobile
 });
 </script>

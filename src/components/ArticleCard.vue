@@ -2,7 +2,6 @@
 import { Article } from "@/api/article/types";
 import { useCategoryStore } from "@/store/modules/category";
 import { formatDate } from "@/utils";
-import { computed } from "vue";
 import { useRouter } from "vue-router";
 
 // data
@@ -126,6 +125,7 @@ function toArticle() {
             justify-content: space-between;
             color: rgb(161 161 170);
             font-weight: 400;
+            font-size: 12px;
             .left,
             .right {
                 .item {
