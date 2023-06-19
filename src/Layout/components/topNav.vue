@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-13 22:42:18
+ * @LastEditTime: 2023-06-19 09:54:37
 -->
 <template>
     <div class="top-nav">
@@ -34,13 +34,6 @@
                 ></div>
             </div>
             <div class="nav-right flex flex-ce">
-                <div
-                    v-if="isShowNavRight && !appStore.deviceStatus.isMobile"
-                    class="nav-right_title"
-                >
-                    掘金前端热点
-                    <svg-icon icon-name="hot" icon-size="16"></svg-icon>
-                </div>
                 <div v-show="appStore.deviceStatus.isMobile" class="menu-btn">
                     <menu-btn
                         :is-open="isOpenMenu"
@@ -130,6 +123,7 @@ function closeSearchPanel() {
 
 <style lang="scss" scoped>
 .top-nav {
+    width: 100%;
     height: 62px;
     min-height: 62px;
     background: var(--bg-navbar);

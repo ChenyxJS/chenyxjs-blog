@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-13 19:32:11
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-14 14:11:44
+ * @LastEditTime: 2023-06-19 09:59:10
  * @FilePath: /chenyxjs-blog/src/views/home/ArticlePanel.vue
 -->
 <script setup lang="ts">
@@ -82,7 +82,7 @@ function toArticle(article: Article) {
                     <button class="subscribe-btn">订阅</button>
                 </div>
             </div>
-            <div class="card work-card">
+            <!-- <div class="card work-card">
                 <div class="title">
                     <base-icon iconName="icon-gongwenbao" size="14"></base-icon>
                     <span style="margin: 5px">工作经历</span>
@@ -125,7 +125,7 @@ function toArticle(article: Article) {
                         </div>
                     </li>
                 </ol>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

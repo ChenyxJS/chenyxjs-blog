@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-23 17:02:55
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-19 09:06:20
+ * @LastEditTime: 2023-06-19 09:57:08
  * @FilePath: /chenyxjs-blog/src/views/blog/components/RightListPanel.vue
 -->
 
@@ -140,6 +140,7 @@ function go(url: string) {
 .asider-articles {
     width: 300px;
     min-width: 300px;
+    margin-top: 20px;
 
     .asider-article-card {
         width: 100%;

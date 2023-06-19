@@ -4,17 +4,18 @@
 * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-18 00:33:43
+ * @LastEditTime: 2023-06-19 09:53:40
 -->
 <template>
     <div class="Layout">
         <Notification />
         <div v-show="state.showTopNav" class="top-layout">
-            <div class="top-panel">
+            <TopNav></TopNav>
+            <!-- <div class="top-panel">
                 <div style="opacity: 0" />
                 <nav-panel />
                 <div style="opacity: 0" />
-            </div>
+            </div> -->
         </div>
         <div class="main-layout">
             <div v-show="!isMobile" class="slider-layout">
@@ -74,6 +75,6 @@ const isShowBlogSidebar = computed(() => {
 });
 
 const isMobile = computed(() => {
-    return appStore.deviceStatus.isMobile
+    return appStore.deviceStatus.isMobile;
 });
 </script>

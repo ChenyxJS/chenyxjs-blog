@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-01 02:15:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-15 16:33:08
+ * @LastEditTime: 2023-06-19 09:58:12
  * @FilePath: /chenyxjs-blog/src/hooks/menu-hooks.ts
  */
 import { useNotification } from "@/components/Notification/useNotification";
@@ -51,12 +51,12 @@ export const useMenu = () => {
             path: "/links",
             fun: toLinks,
         },
-        // {
-        //     index: 6,
-        //     title: "手绘板",
-        //     path: "/Excalidraw",
-        //     fun: toExcalidraw,
-        // },
+        {
+            index: 6,
+            title: "手绘板",
+            path: "/Excalidraw",
+            fun: toExcalidraw,
+        },
     ];
 
     function toPortal() {
