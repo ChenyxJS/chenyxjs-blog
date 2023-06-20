@@ -9,6 +9,7 @@
     background-repeat: repeat;
     background-position: top;
     user-select: none;
+    overflow-x: hidden;
 }
 .layout::before {
     content: "";
