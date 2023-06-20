@@ -21,6 +21,7 @@
         hsla(0, 0%, 100%, 0.1)
     );
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     cursor: pointer;
 }
 </style>
