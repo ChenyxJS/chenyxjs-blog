@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-19 09:16:22
+ * @LastEditTime: 2023-06-20 12:25:29
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -13,7 +13,6 @@ import { prismjsPlugin } from "vite-plugin-prismjs";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-import vueSetupExtend from "vite-plugin-vue-setup-extend";
 
 const srcPath = path.resolve(__dirname, "src");
 
@@ -50,7 +49,6 @@ export default ({ mode }: ConfigEnv): UserConfig => {
             Components({
                 resolvers: [ElementPlusResolver()],
             }),
-            vueSetupExtend(),
         ],
         resolve: {
             alias: {

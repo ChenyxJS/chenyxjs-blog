@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:39
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-19 00:21:18
+ * @LastEditTime: 2023-06-20 12:21:50
 -->
 <template>
     <div class="blog">
@@ -17,10 +17,14 @@
     </div>
 </template>
 
-<script setup lang="ts" name="Blog">
+<script setup lang="ts">
 import AriticleContent from "./components/ArticleList.vue";
 import RightListPanel from "./components/RightListPanel.vue";
 import { useAppStroe } from "@/store/modules/app";
+
+defineOptions({
+    name: "Blog"
+})
 
 const appStore = useAppStroe();
 
@@ -29,19 +33,20 @@ const appStore = useAppStroe();
 
 <style lang="scss" scoped>
 .blog {
+    position: relative;
     display: flex;
     min-height: var(--main-height);
-    overflow: hidden;
-    // background: #1f242d;
 
     ::-webkit-scrollbar-thumb {
         display: none;
     }
 
     .asider-content {
+        height: fit-content;
+        position: sticky;
+        top: 0;
         transition: all 0.3s ease-out;
         margin-left: 24px;
-        width: 350px;
         min-height: var(--main-height);
     }
 }

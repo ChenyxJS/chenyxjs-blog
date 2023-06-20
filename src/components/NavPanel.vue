@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useMenu } from "@/hooks/menu-hooks";
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
 // data
@@ -8,6 +8,9 @@ const { menu } = useMenu();
 const route = useRoute();
 
 // hook
+onMounted(() => {
+    fuc();
+});
 // 获取当前Nav下标
 const nowNavIndex = computed(() => {
     // 若当前实在文章页直接返回blog标签的下标
@@ -21,26 +24,59 @@ const nowNavIndex = computed(() => {
     return 1;
 });
 // method
+function fuc() {
+    let container = document.getElementById("container");
+    if (container) {
+        container.addEventListener("mousemove", (e: MouseEvent) => {
+            let rect = container?.getBoundingClientRect() as DOMRect;
+            let x = e.clientX - rect.left;
+            let y = e.clientY - rect.top;
+            container?.style.setProperty("--x", x + "px");
+            container?.style.setProperty("--y", y + "px");
+        });
+    }
+}
 </script>
 <template>
-    <ul class="nav-panel">
-        <li
-            :class="[
-                nowNavIndex === item.index ? 'nav-item-active' : '','nav-item'
-            ]"
-            v-for="item in menu"
-            :key="item.index"
-            @click="item.fun"
-        >
-            {{ item.title }}
-        </li>
-        <div
-            class="indicator"
-            :style="{ left: `${nowNavIndex * 38 + 22}px` }"
-        ></div>
-    </ul>
+    <nav id="container">
+        <div class="container"></div>
+        <ul class="nav-panel">
+            <li
+                :class="[
+                    nowNavIndex === item.index ? 'nav-item-active' : '',
+                    'nav-item',
+                ]"
+                v-for="item in menu"
+                :key="item.index"
+                @click="item.fun"
+            >
+                {{ item.title }}
+            </li>
+            <div
+                class="indicator"
+                :style="{ left: `${nowNavIndex * 38 + 22}px` }"
+            ></div>
+        </ul>
+    </nav>
 </template>
 <style lang="scss" scoped>
+nav {
+    position: relative;
+    z-index: 50;
+}
+nav:hover .container {
+    position: absolute;
+    inset: 0;
+    z-index: 9999;
+    border-radius: 9999px;
+    background: radial-gradient(
+        100px circle at var(--x) var(--y),
+        hsla(214, 83%, 59%, 0.15) 0%,
+        transparent 65%
+    );
+    pointer-events: none;
+}
+
 .nav-panel {
     display: inline-flex;
     justify-content: center;
@@ -48,17 +84,14 @@ const nowNavIndex = computed(() => {
     padding: 12px 20px;
     box-shadow: var(--box-border-shadow);
     border-radius: 9999px;
-    background-color: rgba(24, 24, 27, 1);
-    // background: radial-gradient(
-    //     99.69232668565822px circle at 245.5078125px 28px,
-    //     hsla(81, 88%, 80%, 0.07) 0%,
-    //     transparent 65%
-    // );
+    background-image: linear-gradient(to bottom,rgba(24, 24, 27, 1),rgb(43, 43, 44,.7));
     cursor: pointer;
+
     .nav-item {
         padding: 0 5px;
         font-weight: 500;
         color: #fff;
+        transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .nav-item-active {
         color: #409eff;

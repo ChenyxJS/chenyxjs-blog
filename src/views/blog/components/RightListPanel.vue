@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-23 17:02:55
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-19 09:57:08
+ * @LastEditTime: 2023-06-19 15:31:41
  * @FilePath: /chenyxjs-blog/src/views/blog/components/RightListPanel.vue
 -->
 
@@ -56,7 +56,7 @@ function go(url: string) {
 
 <template>
     <div class="asider-articles">
-        <div class="nav-right_title">
+        <div class="asider-title">
             掘金前端热点
             <svg-icon icon-name="hot" icon-size="16"></svg-icon>
         </div>
@@ -139,8 +139,19 @@ function go(url: string) {
 <style lang="scss" scoped>
 .asider-articles {
     width: 300px;
-    min-width: 300px;
     margin-top: 20px;
+    max-height: 100vh;
+    overflow: scroll;
+    position: relative;
+    .asider-title{
+        position: sticky;
+        top: 0;
+        text-align: center;
+        padding: 5px 0;
+        background-color: hsla(0, 0%, 100%, 0.1);
+        backdrop-filter: blur(12px);
+        border-radius: 9999px;
+    }
 
     .asider-article-card {
         width: 100%;

@@ -93,7 +93,7 @@ function getList() {
 <style lang="scss" scoped>
 .article-content {
     flex: 1;
-    padding: 20px;
+    padding: 20px 0;
     .lottie {
         width: 100%;
         height: 100%;

@@ -4,46 +4,10 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-15 16:21:45
+ * @LastEditTime: 2023-06-20 12:18:59
 -->
-<template>
-    <div
-        class="article"
-        v-wechat-title="($route.meta.title = state.article.articleTitle)"
-    >
-        <div v-if="state.loading" class="loading flex flex-cc">
-            <ThreeBallLoading></ThreeBallLoading>
-        </div>
-        <template v-else>
-            <div class="article-content">
-                <v-md-preview
-                    style="overflow: hidden scroll; width: 100%"
-                    v-if="state.articleContent"
-                    :text="state.articleContent"
-                    ref="preview"
-                />
-            </div>
-            <div id="article-anchor" class="article-anchor">
-                <span>
-                    <i class="iconfont icon-kuaijie"></i>
-                    <span style="font-size: 16px; line-height: 16px">目录</span>
-                </span>
-                <div
-                    class="article-anchor_tag"
-                    v-for="anchor in state.anchorList"
-                    :key="anchor.lineIndex"
-                    :anchor="anchor.lineIndex"
-                    :style="{ marginLeft: anchor.indent * 28 + 'px' }"
-                    @click="handleAnchorClick(anchor)"
-                >
-                    {{ anchor.title }}
-                </div>
-            </div>
-        </template>
-    </div>
-</template>
 
-<script setup lang="ts" name="Article">
+<script setup lang="ts">
 import {
     reactive,
     getCurrentInstance,
@@ -53,12 +17,17 @@ import {
     ref,
     watchEffect,
     onUnmounted,
-inject,
+    inject,
 } from "vue";
 import { useRoute } from "vue-router";
 import ThreeBallLoading from "@/components/Loading/ThreeBallLoading.vue";
 import { getArticleById } from "@/api/article";
 import { Article } from "@/api/article/types";
+
+
+defineOptions({
+    name:'Article'
+})
 // data
 interface Anchor {
     title: string;
@@ -76,12 +45,13 @@ const state = reactive({
 const route = useRoute();
 const noteHook: any = inject("Notice");
 
-
 const { proxy } = getCurrentInstance() as ComponentInternalInstance;
 let previewDom: any = ref();
+let scrollDom: any = ref();
 
 onMounted(() => {
     loading();
+    scrollDom = document.getElementById("scrollDom");
 });
 onUnmounted(() => {
     // 清除依赖收集
@@ -154,8 +124,8 @@ async function renderAnchors() {
     // markdown更新完成后渲染目录
     nextTick(() => {
         previewDom = proxy?.$refs.preview;
-        if (!previewDom) return;
-        const anchors = previewDom.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
+        if (!previewDom && !scrollDom) return;
+        const anchors = previewDom.$el.querySelectorAll("h2,h3,h4,h5,h6");
         const titles = Array.from(anchors).filter(
             (title: any) => !!title.innerText.trim()
         );
@@ -186,7 +156,7 @@ function handleAnchorClick(anchor: Anchor) {
     if (heading) {
         previewDom.scrollToTarget({
             target: heading,
-            scrollContainer: previewDom.$el,
+            scrollContainer: scrollDom.$el,
             top: 40,
         });
     }
@@ -198,9 +168,10 @@ function handleAnchorClick(anchor: Anchor) {
  */
 async function scrollListener() {
     await nextTick();
-    const anchors = previewDom.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
-    previewDom?.$el.addEventListener("scroll", (e: any) => {
+    const anchors = previewDom.$el.querySelectorAll("h2,h3,h4,h5,h6");
+    previewDom.$el.addEventListener("scroll", (e: any) => {
         const target = e.target;
+        console.log(target);
         // 获取滚动到的当前元素
         let anchorTarget = {} as Anchor;
         for (let i = 0; i < anchors.length; i++) {
@@ -236,29 +207,69 @@ function handleAnchorScroll(anchorTarget: Anchor) {
     }
 }
 </script>
-
+<template>
+    <div
+        id="scrollDom"
+        class="article"
+        v-wechat-title="($route.meta.title = state.article.articleTitle)"
+    >
+        <div v-if="state.loading" class="loading flex flex-cc">
+            <ThreeBallLoading></ThreeBallLoading>
+        </div>
+        <template v-else>
+            <div id="article-anchor" class="article-anchor">
+                <span>
+                    <i class="iconfont icon-kuaijie"></i>
+                    <span style="font-size: 16px; line-height: 16px">目录</span>
+                </span>
+                <div
+                    class="article-anchor_tag"
+                    v-for="anchor in state.anchorList"
+                    :key="anchor.lineIndex"
+                    :anchor="anchor.lineIndex"
+                    :style="{ marginLeft: anchor.indent * 28 + 'px' }"
+                    @click="handleAnchorClick(anchor)"
+                >
+                    {{ anchor.title }}
+                </div>
+            </div>
+            <div class="article-content">
+                <v-md-preview
+                    style="overflow: hidden; width: 100%"
+                    v-if="state.articleContent"
+                    :text="state.articleContent"
+                    ref="preview"
+                />
+            </div>
+        </template>
+    </div>
+</template>
 <style lang="scss" scoped>
 .loading {
     width: 100%;
 }
 .article {
-    width: calc(100vw - 314px);
-    height: 100vh;
-    overflow: hidden scroll;
     display: flex;
+    position: relative;
+    min-height: 100vh;
+
     .article-content {
         flex: 1;
-        overflow: hidden scroll;
+        overflow: scroll;
         display: flex;
         justify-content: center;
     }
     &-anchor {
-        min-width: 330px;
-        max-width: 330px;
+        min-width: 200px;
+        max-width: 200px;
         max-height: 100%;
         padding: 10px;
         padding-right: 0;
-        overflow: hidden scroll;
+        overflow: scroll;
+        position: sticky;
+        top: 0;
+        height: fit-content;
+        font-size: 12px;
         &_tag {
             color: rgba(235, 235, 235, 0.6);
             cursor: pointer;
@@ -274,7 +285,7 @@ function handleAnchorScroll(anchorTarget: Anchor) {
     }
 }
 @media screen and (max-width: 1100px) {
-    .article{
+    .article {
         width: 100%;
     }
     .article-anchor {

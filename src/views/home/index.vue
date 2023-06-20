@@ -6,14 +6,7 @@
  * @FilePath: /chenyxjs-blog/src/views/home/index.vue
 -->
 <script setup lang="ts">
-import WallpaperSwiper from "@/components/WallpaperSwiper.vue";
-import ArticlePanel from "./ArticlePanel.vue";
-import CtaButton from "@/components/CtaButton.vue";
-import { useAppStroe } from "@/store/modules/app";
-import { useMenu } from "@/hooks/menu-hooks";
-
-const { toWallpaper, toBlog } = useMenu();
-const appStore = useAppStroe();
+import RightPanel from "./RightPanel.vue";
 </script>
 
 <template>
@@ -38,7 +31,7 @@ const appStore = useAppStroe();
             </div>
         </div>
         <div class="panel">
-            <ArticlePanel></ArticlePanel>
+            <RightPanel></RightPanel>
         </div>
     </div>
 </template>

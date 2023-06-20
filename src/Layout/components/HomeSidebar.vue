@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-09 17:55:18
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-09 17:07:39
+ * @LastEditTime: 2023-06-19 11:25:58
  * @FilePath: /chenyxjs-blog/src/Layout/components/HomeSidebar.vue
 -->
 <template>
@@ -11,7 +11,7 @@
         <profile-card />
     </div>
     <!-- 最新动态 -->
-    <div class="slider-item recent-activity">
+    <div class="sidebar-item recent-activity">
         <h4>最近动态</h4>
         <section>Vue3 + Vite3.0 + Typescript 版本的 Blog 上线了!</section>
     </div>

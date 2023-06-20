@@ -2,10 +2,11 @@
  * @Author: chenyx
  * @Date: 2023-04-13 19:32:11
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-19 09:59:10
- * @FilePath: /chenyxjs-blog/src/views/home/ArticlePanel.vue
+ * @LastEditTime: 2023-06-19 20:25:43
+ * @FilePath: /chenyxjs-blog/src/views/home/RightPanel.vue
 -->
 <script setup lang="ts">
+import ProfileCard from "@/components/ProfileCard.vue";
 import BaseIcon from "@/components/BaseIcon.vue";
 import ArticleCard from "@/components/ArticleCard.vue";
 import { getArticleList } from "@/api/article";
@@ -82,6 +83,10 @@ function toArticle(article: Article) {
                     <button class="subscribe-btn">订阅</button>
                 </div>
             </div>
+            <!-- <div>
+                <profile-card />
+            </div> -->
+
             <!-- <div class="card work-card">
                 <div class="title">
                     <base-icon iconName="icon-gongwenbao" size="14"></base-icon>
@@ -132,7 +137,7 @@ function toArticle(article: Article) {
 
 <style lang="scss" scoped>
 .container {
-    padding: 0 60px;
+    padding: 0 30px;
     display: flex;
     position: relative;
     justify-content: space-between;

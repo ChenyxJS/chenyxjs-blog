@@ -11,8 +11,10 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ArticleCard: typeof import('./src/components/ArticleCard.vue')['default']
     BaseIcon: typeof import('./src/components/BaseIcon.vue')['default']
+    BasePanel: typeof import('./src/components/BasePanel.vue')['default']
     Copyright: typeof import('./src/components/Copyright.vue')['default']
     CtaButton: typeof import('./src/components/CtaButton.vue')['default']
+    Dialog: typeof import('./src/components/Dialog/Dialog.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCollapseTransition: typeof import('element-plus/es')['ElCollapseTransition']
     ElProgress: typeof import('element-plus/es')['ElProgress']
