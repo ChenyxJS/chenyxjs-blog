@@ -4,7 +4,7 @@
 * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-20 13:58:52
+ * @LastEditTime: 2023-06-20 15:40:35
 -->
 
 <script setup lang="ts">
@@ -15,11 +15,10 @@ import Content from "./components/Content.vue";
 import HomeSidebar from "./components/HomeSidebar.vue";
 import FooterPanel from "./components/Footer.vue";
 import { useRoute } from "vue-router";
-import { computed, onMounted, reactive, ref, watch } from "vue";
+import { computed, onMounted, reactive, watch } from "vue";
 import { useAppStroe } from "@/store/modules/app";
 import Notification from "@/components/Notification/Notification.vue";
 import { useMenu } from "@/hooks/menu-hooks";
-import { dialogEmits } from "element-plus";
 
 const route = useRoute();
 const appStore = useAppStroe();
@@ -35,6 +34,7 @@ onMounted(() => {
     window.addEventListener("scroll", () => {
         state.top =
             document.documentElement.scrollTop || document.body.scrollTop;
+        console.log(state.top);
     });
 });
 
@@ -67,7 +67,7 @@ function closeNavDialog() {
 </script>
 <template>
     <div class="layout">
-        <div class="layout-container">
+        <div id="main" class="layout-container">
             <Notification />
             <Dialog
                 :isShow="state.showNavDialog"
@@ -99,7 +99,7 @@ function closeNavDialog() {
                     <div style="opacity: 0" />
                 </div>
             </div>
-            <div class="main-layout">
+            <div id="main" class="main-layout">
                 <div v-show="!isMobile && isShowSidebar" class="slider-layout">
                     <home-sidebar />
                 </div>
