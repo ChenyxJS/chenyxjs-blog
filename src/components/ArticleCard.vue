@@ -115,7 +115,10 @@ function toArticle() {
     box-shadow: var(--box-border-shadow);
     cursor: pointer;
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    color: rgba(255, 255, 255, 0.7);
+
     &:hover {
+        color: #fff;
         transform: translateY(-5px);
         .card-info::before {
             opacity: 0.3;
@@ -188,14 +191,13 @@ function toArticle() {
             position: relative;
             z-index: 20;
             width: 100%;
-            color: #fff;
+            letter-spacing: -.025em;
         }
         .desc {
             position: relative;
             z-index: 20;
             display: flex;
             justify-content: space-between;
-            color: rgb(161 161 170);
             font-weight: 400;
             font-size: 12px;
             .left,
