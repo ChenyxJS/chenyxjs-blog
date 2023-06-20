@@ -4,7 +4,7 @@
 * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-20 15:40:35
+ * @LastEditTime: 2023-06-20 17:37:58
 -->
 
 <script setup lang="ts">
@@ -34,7 +34,6 @@ onMounted(() => {
     window.addEventListener("scroll", () => {
         state.top =
             document.documentElement.scrollTop || document.body.scrollTop;
-        console.log(state.top);
     });
 });
 
@@ -100,9 +99,9 @@ function closeNavDialog() {
                 </div>
             </div>
             <div id="main" class="main-layout">
-                <div v-show="!isMobile && isShowSidebar" class="slider-layout">
+                <!-- <div v-show="!isMobile && isShowSidebar" class="slider-layout">
                     <home-sidebar />
-                </div>
+                </div> -->
                 <div class="content-layout">
                     <content />
                 </div>

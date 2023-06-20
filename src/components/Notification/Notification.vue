@@ -43,6 +43,8 @@ const noteHook: any = inject("Notice");
         border-radius: 10px;
         color: hsla(0, 0%, 100%, 0.569);
         backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
         .close {
             position: absolute;
             left: -8px;
