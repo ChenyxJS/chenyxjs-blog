@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-23 17:02:55
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-20 15:18:49
+ * @LastEditTime: 2023-06-20 23:07:07
  * @FilePath: /chenyxjs-blog/src/views/blog/components/RightListPanel.vue
 -->
 
@@ -140,8 +140,8 @@ function go(url: string) {
 .asider-articles {
     width: 300px;
     margin-top: 20px;
-    max-height: 100vh;
-    overflow: scroll;
+    // max-height: 100vh;
+    // overflow: scroll;
     position: relative;
     .asider-title{
         position: sticky;

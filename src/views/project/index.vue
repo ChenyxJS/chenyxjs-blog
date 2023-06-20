@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-12 16:55:49
+ * @LastEditTime: 2023-06-20 23:28:29
 -->
 <template>
     <div class="project flex flex-column flex-sc">
@@ -113,9 +113,6 @@ const state = reactive({
 .project {
     width: 100%;
     height: 100%;
-    overflow: scroll;
-    overflow-x: hidden;
-    // background: #1f242d;
 }
 .git-calendar {
     width: 80%;

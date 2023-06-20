@@ -32,10 +32,7 @@ button {
     border: none;
     box-shadow: none;
 }
-::-webkit-scrollbar {
-    display: none;
-    width: 0 !important;
-}
+
 ::-webkit-scrollbar-thumb {
     border-radius: 3px;
 }

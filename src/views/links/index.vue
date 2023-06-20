@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-14 09:46:40
+ * @LastEditTime: 2023-06-20 23:30:48
 -->
 <template>
     <div class="links flex flex-column flex-sc">
@@ -141,10 +141,7 @@ img {
 .links {
     width: 100%;
     height: 100%;
-    overflow: scroll;
-    overflow-x: hidden;
     margin-bottom: 30px;
-    /* background: #1f242d; */
 }
 .link-section {
     width: 60%;

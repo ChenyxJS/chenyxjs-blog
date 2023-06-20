@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-20 21:43:58
+ * @LastEditTime: 2023-06-20 23:26:36
 -->
 
 <script setup lang="ts" name="Article">
@@ -24,10 +24,9 @@ import ThreeBallLoading from "@/components/Loading/ThreeBallLoading.vue";
 import { getArticleById } from "@/api/article";
 import { Article } from "@/api/article/types";
 
-
 defineOptions({
-    name:'Article'
-})
+    name: "Article",
+});
 // data
 interface Anchor {
     title: string;
@@ -169,9 +168,10 @@ function handleAnchorClick(anchor: Anchor) {
 async function scrollListener() {
     await nextTick();
     const anchors = previewDom.$el.querySelectorAll("h2,h3,h4,h5,h6");
-    previewDom.$el.addEventListener("scroll", (e: any) => {
+    console.log(scrollDom);
+    scrollDom.addEventListener("scroll", (e: any) => {
         const target = e.target;
-        console.log(target);
+        console.log(e);
         // 获取滚动到的当前元素
         let anchorTarget = {} as Anchor;
         for (let i = 0; i < anchors.length; i++) {
@@ -209,7 +209,6 @@ function handleAnchorScroll(anchorTarget: Anchor) {
 </script>
 <template>
     <div
-        id="scrollDom"
         class="article"
         v-wechat-title="($route.meta.title = state.article.articleTitle)"
     >
@@ -233,9 +232,9 @@ function handleAnchorScroll(anchorTarget: Anchor) {
                     {{ anchor.title }}
                 </div>
             </div>
-            <div class="article-content">
+            <div id="scrollDom" class="article-content">
                 <v-md-preview
-                    style="overflow: hidden; width: 100%"
+                    style="width: 100%"
                     v-if="state.articleContent"
                     :text="state.articleContent"
                     ref="preview"
@@ -254,18 +253,16 @@ function handleAnchorScroll(anchorTarget: Anchor) {
     min-height: 100vh;
 
     .article-content {
-        flex: 1;
-        overflow: scroll;
+        flex: 1 1 0%;
+        max-width: 60rem;
         display: flex;
         justify-content: center;
     }
     &-anchor {
         min-width: 200px;
         max-width: 200px;
-        max-height: 100%;
         padding: 10px;
         padding-right: 0;
-        overflow: scroll;
         position: sticky;
         top: 0;
         height: fit-content;
@@ -287,6 +284,9 @@ function handleAnchorScroll(anchorTarget: Anchor) {
 @media screen and (max-width: 1100px) {
     .article {
         width: 100%;
+        .article-content {
+            max-width: 100%;
+        }
     }
     .article-anchor {
         display: none;
