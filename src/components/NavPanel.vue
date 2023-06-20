@@ -52,10 +52,10 @@ function fuc() {
             >
                 {{ item.title }}
             </li>
-            <div
+            <span
                 class="indicator"
                 :style="{ left: `${nowNavIndex * 38 + 22}px` }"
-            ></div>
+            ></span>
         </ul>
     </nav>
 </template>
@@ -107,12 +107,34 @@ nav:hover .container {
     }
     .indicator {
         position: absolute;
-        bottom: -2px;
+        bottom: -1px;
         width: 32px;
-        height: 0;
-        border: 1px solid #409eff;
-        border-radius: 4px;
+        height: 1px;
         transition: all 0.5s ease;
+    }
+    .indicator::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 16px;
+        height: 1px;
+        background-image: linear-gradient(
+            to right,
+            rgba(163, 230, 53, 0),
+            rgba(53, 154, 237, 0.4)
+        );
+    }
+    .indicator::after{
+        content: '';
+        left: 50%;
+        position: absolute;
+        width: 16px;
+        height: 1px;
+        background-image: linear-gradient(
+            to right,
+            rgba(53, 154, 237, 0.4),
+            rgba(163, 230, 53, 0)
+        );
     }
 }
 </style>

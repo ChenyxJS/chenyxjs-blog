@@ -518,9 +518,13 @@ img:hover::after {
         font-size: 30.4px;
     }
     .vuepress-markdown-body div[class*="v-md-pre-wrapper-"] {
-        margin: 13.6px -24px;
-        border-radius: 0;
-    }
+        margin: 0 auto;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -o-border-radius: 6px;
+}
 }
 
 .v-md-plugin-tip p {

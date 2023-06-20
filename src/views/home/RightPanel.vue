@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-13 19:32:11
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-19 20:25:43
+ * @LastEditTime: 2023-06-20 19:31:21
  * @FilePath: /chenyxjs-blog/src/views/home/RightPanel.vue
 -->
 <script setup lang="ts">
@@ -83,10 +83,6 @@ function toArticle(article: Article) {
                     <button class="subscribe-btn">订阅</button>
                 </div>
             </div>
-            <!-- <div>
-                <profile-card />
-            </div> -->
-
             <!-- <div class="card work-card">
                 <div class="title">
                     <base-icon iconName="icon-gongwenbao" size="14"></base-icon>
@@ -158,7 +154,7 @@ function toArticle(article: Article) {
 }
 
 .card {
-    box-shadow: 0 0 0 2px #1f1f23;
+    box-shadow: var(--box-border-shadow);
     border-radius: 20px;
     padding: 20px 15px;
 }
@@ -174,7 +170,7 @@ function toArticle(article: Article) {
             border: 0;
             padding: 0.75rem;
             background-color: rgba($color: #1f1f23, $alpha: 0.2);
-            box-shadow: 0 0 0 1px #303034;
+            box-shadow: var(--box-border-shadow);
         }
         .subscribe-btn {
             width: 55px;
@@ -245,7 +241,7 @@ function toArticle(article: Article) {
     margin-top: 0;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 768px) {
     .container {
         display: flex;
         flex-direction: column;
