@@ -17,8 +17,8 @@
     border-radius: 9999px;
     background-image: linear-gradient(
         to bottom,
-        hsla(0,0%,98%,0),
-        hsla(0, 0%, 100%, 0.1)
+        rgba(24,24,27,.3),
+        rgba(39,39,42,.8)
     );
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);

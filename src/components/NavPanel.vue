@@ -84,8 +84,14 @@ nav:hover .container {
     padding: 12px 20px;
     box-shadow: var(--box-border-shadow);
     border-radius: 9999px;
-    background-image: linear-gradient(to bottom,rgba(24, 24, 27, 1),rgb(43, 43, 44,.7));
+    background-image: linear-gradient(
+        to bottom,
+        rgba(24, 24, 27, 0.7),
+        rgba(39, 39, 42, 0.9)
+    );
     cursor: pointer;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 
     .nav-item {
         padding: 0 5px;

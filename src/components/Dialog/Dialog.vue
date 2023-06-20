@@ -45,11 +45,11 @@ function close() {
 </template>
 <style scoped>
 .mask {
-    position: absolute;
+    position: fixed;
     left: 0;
-    right: 0;
     top: 0;
-    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);

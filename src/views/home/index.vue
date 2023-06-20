@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-11 18:41:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-13 18:36:09
+ * @LastEditTime: 2023-06-20 16:16:46
  * @FilePath: /chenyxjs-blog/src/views/home/index.vue
 -->
 <script setup lang="ts">
@@ -65,6 +65,7 @@ import RightPanel from "./RightPanel.vue";
         }
 
         h3:nth-of-type(2) {
+            line-height: 40px;
             margin-bottom: 20px;
             span {
                 float: left;
@@ -101,6 +102,7 @@ import RightPanel from "./RightPanel.vue";
             overflow: hidden;
         }
         h3:nth-of-type(2) {
+            line-height: 36px;
             margin-bottom: 20px;
         }
         p {
