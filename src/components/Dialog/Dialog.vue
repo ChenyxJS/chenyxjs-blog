@@ -52,6 +52,7 @@ function close() {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     z-index: 99;
 }
 .dialog {
@@ -60,6 +61,7 @@ function close() {
     width: 300px;
     background-color: rgba(66, 65, 65, 0.2);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     box-shadow: var(--box-border-shadow);
     border-radius: 10px;
     padding: 20px;

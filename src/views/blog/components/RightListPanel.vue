@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-23 17:02:55
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-19 15:31:41
+ * @LastEditTime: 2023-06-20 15:18:49
  * @FilePath: /chenyxjs-blog/src/views/blog/components/RightListPanel.vue
 -->
 
@@ -150,6 +150,7 @@ function go(url: string) {
         padding: 5px 0;
         background-color: hsla(0, 0%, 100%, 0.1);
         backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         border-radius: 9999px;
     }
 
