@@ -114,7 +114,9 @@ function toArticle() {
     border-radius: 20px;
     box-shadow: var(--box-border-shadow);
     cursor: pointer;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     &:hover {
+        transform: translateY(-5px);
         .card-info::before {
             opacity: 0.3;
         }
@@ -182,7 +184,7 @@ function toArticle() {
         }
 
         .title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             position: relative;
             z-index: 20;
             width: 100%;
