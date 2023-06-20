@@ -4,10 +4,10 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-20 12:18:59
+ * @LastEditTime: 2023-06-20 21:43:58
 -->
 
-<script setup lang="ts">
+<script setup lang="ts" name="Article">
 import {
     reactive,
     getCurrentInstance,
