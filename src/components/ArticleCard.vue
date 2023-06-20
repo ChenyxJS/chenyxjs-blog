@@ -182,9 +182,10 @@ function toArticle() {
         }
 
         .title {
+            font-size: 1.2rem;
             position: relative;
             z-index: 20;
-            width: 70%;
+            width: 100%;
             color: #fff;
         }
         .desc {
