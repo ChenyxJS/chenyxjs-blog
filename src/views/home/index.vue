@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-11 18:41:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-25 22:25:40
+ * @LastEditTime: 2023-06-25 22:32:25
  * @FilePath: /chenyxjs-blog/src/views/home/index.vue
 -->
 <script setup lang="ts">
@@ -100,8 +100,8 @@ import RightPanel from "./RightPanel.vue";
         flex-direction: column;
     }
     .home .introduction {
+        flex-direction: column-reverse;
         .left {
-            margin-top: 70px;
             width: 100%;
             max-width: 90%;
             padding-left: 20px;
@@ -118,7 +118,10 @@ import RightPanel from "./RightPanel.vue";
         }
         }
         .right {
-            display: none;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 }
