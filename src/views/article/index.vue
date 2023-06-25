@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-20 23:26:36
+ * @LastEditTime: 2023-06-21 17:02:57
 -->
 
 <script setup lang="ts" name="Article">
@@ -216,7 +216,7 @@ function handleAnchorScroll(anchorTarget: Anchor) {
             <ThreeBallLoading></ThreeBallLoading>
         </div>
         <template v-else>
-            <div id="article-anchor" class="article-anchor">
+            <aside id="article-anchor" class="article-anchor">
                 <span>
                     <i class="iconfont icon-kuaijie"></i>
                     <span style="font-size: 16px; line-height: 16px">目录</span>
@@ -231,7 +231,7 @@ function handleAnchorScroll(anchorTarget: Anchor) {
                 >
                     {{ anchor.title }}
                 </div>
-            </div>
+            </aside>
             <div id="scrollDom" class="article-content">
                 <v-md-preview
                     style="width: 100%"
@@ -240,6 +240,44 @@ function handleAnchorScroll(anchorTarget: Anchor) {
                     ref="preview"
                 />
             </div>
+            <aside class="right">
+                <div class="warrper">
+                    <div class="panel">
+                        <button class="item">
+                            <img
+                                class="img"
+                                src="@/assets/images/claps.png"
+                                alt=""
+                            />
+                            <span>11</span>
+                        </button>
+                        <button class="item">
+                            <img
+                                class="img"
+                                src="@/assets/images/heart.png"
+                                alt=""
+                            />
+                            <span>11</span>
+                        </button>
+                        <button class="item">
+                            <img
+                                class="img"
+                                src="@/assets/images/thumbs-up.png"
+                                alt=""
+                            />
+                            <span>11</span>
+                        </button>
+                        <button class="item">
+                            <img
+                                class="img"
+                                src="@/assets/images/fire.png"
+                                alt=""
+                            />
+                            <span>11</span>
+                        </button>
+                    </div>
+                </div>
+            </aside>
         </template>
     </div>
 </template>
@@ -249,8 +287,51 @@ function handleAnchorScroll(anchorTarget: Anchor) {
 }
 .article {
     display: flex;
+    justify-content: space-around;
     position: relative;
     min-height: 100vh;
+
+    .right {
+        position: relative;
+        width: 80px;
+        display: block;
+        .warrper {
+            display: flex;
+            justify-content: flex-end;
+            position: sticky;
+            top: 0.5rem;
+            padding-top: 5rem;
+
+            .panel {
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                height: fit-content;
+                border-radius: 9999px;
+                background-image: linear-gradient(
+                    to bottom,
+                    rgba(39, 39, 42, 0.8),
+                    rgba(9, 9, 11, 0.8)
+                );
+                box-shadow: var(--box-border-shadow);
+                .item {
+                    height: 24px;
+                    aspect-ratio: 1/1;
+                    position: relative;
+                    background-color: transparent;
+                    background-image: none;
+                    .img {
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        inset: 0px;
+                        color: transparent;
+                    }
+                }
+            }
+        }
+    }
 
     .article-content {
         flex: 1 1 0%;
@@ -267,6 +348,7 @@ function handleAnchorScroll(anchorTarget: Anchor) {
         top: 0;
         height: fit-content;
         font-size: 12px;
+        padding-top: 5rem;
         &_tag {
             color: rgba(235, 235, 235, 0.6);
             cursor: pointer;
@@ -276,8 +358,6 @@ function handleAnchorScroll(anchorTarget: Anchor) {
         &_tag:hover,
         .active {
             color: var(--text-link-hover);
-            background-color: rgba(59, 142, 237, 0.2);
-            border-radius: 6px 0 0 6px;
         }
     }
 }
@@ -287,9 +367,12 @@ function handleAnchorScroll(anchorTarget: Anchor) {
         .article-content {
             max-width: 100%;
         }
-    }
-    .article-anchor {
-        display: none;
+        .right {
+            display: none;
+        }
+        .article-anchor {
+            display: none;
+        }
     }
 }
 </style>

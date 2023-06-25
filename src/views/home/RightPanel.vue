@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-13 19:32:11
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-20 19:31:21
+ * @LastEditTime: 2023-06-25 14:46:45
  * @FilePath: /chenyxjs-blog/src/views/home/RightPanel.vue
 -->
 <script setup lang="ts">
@@ -79,7 +79,7 @@ function toArticle(article: Article) {
                     获取我最新发布的内容通知，随时可以取消订阅。
                 </p>
                 <div class="subscribe">
-                    <input type="text" placeholder="你的邮箱" />
+                    <input type="email" name="email" required placeholder="你的邮箱" />
                     <button class="subscribe-btn">订阅</button>
                 </div>
             </div>

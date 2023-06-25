@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-11 19:59:43
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-13 15:23:48
+ * @LastEditTime: 2023-06-21 15:11:23
  * @FilePath: /chenyxjs-blog/src/components/ProfileCard.vue
 -->
 <template>
@@ -39,7 +39,7 @@ function changeCard() {
 .warpper {
     position: relative;
     width: 230px;
-    height: 280px;
+    height: 300px;
     margin-bottom: 32px;
     transition: transform 0.8s;
     transform-style: preserve-3d;

@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-11 18:41:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-20 16:16:46
+ * @LastEditTime: 2023-06-25 14:44:45
  * @FilePath: /chenyxjs-blog/src/views/home/index.vue
 -->
 <script setup lang="ts">
@@ -12,9 +12,9 @@ import RightPanel from "./RightPanel.vue";
 <template>
     <div class="home">
         <div class="panel introduction">
-            <div class="content">
+            <div class="left">
                 <h3>👋欢迎来到我的个人网站</h3>
-                <h1>Call me Chenyx</h1>
+                <h3>Call me Chenyx</h3>
                 <h3>
                     <span>And I'm a</span>
                     <vuetyped
@@ -28,6 +28,13 @@ import RightPanel from "./RightPanel.vue";
                         <div class="typing"></div>
                     </vuetyped>
                 </h3>
+                <p>
+                    我是Chenyx,
+                    我热爱开发，设计，创新，享受生活，以及在未知领域中探索。
+                </p>
+            </div>
+            <div class="right">
+                <profile-card></profile-card>
             </div>
         </div>
         <div class="panel">
@@ -48,17 +55,14 @@ import RightPanel from "./RightPanel.vue";
 .home .introduction {
     display: flex;
     align-items: flex-start;
-    .content {
+    justify-content: space-around;
+    .left {
+        width: 50%;
         margin-top: 70px;
-        max-width: 100%;
         padding-left: 70px;
-        h1 {
-            font-size: 56px;
-            font-weight: 700;
-            margin: -3px 0;
-        }
+        font-size: 1rem;
         h3 {
-            font-size: 32px;
+            font-size: 3rem;
             font-weight: 700;
             margin: -3px 0;
             overflow: hidden;
@@ -66,16 +70,25 @@ import RightPanel from "./RightPanel.vue";
 
         h3:nth-of-type(2) {
             line-height: 40px;
-            margin-bottom: 20px;
             span {
                 float: left;
                 margin-right: 16px;
             }
         }
         p {
+            display: inline-block;
+            vertical-align: top;
+            text-decoration: inherit;
             font-size: 16px;
-            width: 60%;
+            color: rgb(161 161 170);
         }
+    }
+    .right {
+        width: 50%;
+        padding-top: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -85,28 +98,16 @@ import RightPanel from "./RightPanel.vue";
         display: flex;
         flex-direction: column;
     }
-    .home .introduction .content {
-        margin-top: 70px;
-        width: 100%;
-        max-width: 90%;
-        padding-left: 20px;
-        h1 {
-            font-size: 32px;
-            font-weight: 700;
-            margin: -3px 0;
+    .home .introduction {
+        .left {
+            margin-top: 70px;
+            width: 100%;
+            max-width: 90%;
+            padding-left: 20px;
+            width: 100%;
         }
-        h3 {
-            font-size: 20px;
-            font-weight: 1000;
-            margin: -3px 0;
-            overflow: hidden;
-        }
-        h3:nth-of-type(2) {
-            line-height: 36px;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 14px;
+        .right {
+            display: none;
         }
     }
 }
