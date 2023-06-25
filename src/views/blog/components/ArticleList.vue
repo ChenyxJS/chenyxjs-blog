@@ -65,9 +65,8 @@ function getList() {
             }
         })
         .finally(() => {
-            if (state.articleList.length === 0) {
-            }
             state.showLoading = false;
+            console.log(state.showLoading);
         });
 }
 </script>

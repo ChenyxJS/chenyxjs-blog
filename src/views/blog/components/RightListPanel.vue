@@ -31,6 +31,7 @@ onMounted(() => {
         if (data.success) {
             const list = data.object.object.data;
             let arr: JueJinData[] = [];
+            // 这里后端未处理返回的数据，前端自己处理
             list.forEach((item: any) => {
                 arr.push({
                     id: item.article_id,

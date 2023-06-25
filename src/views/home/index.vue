@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-11 18:41:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-25 14:44:45
+ * @LastEditTime: 2023-06-25 22:18:04
  * @FilePath: /chenyxjs-blog/src/views/home/index.vue
 -->
 <script setup lang="ts">
@@ -69,7 +69,7 @@ import RightPanel from "./RightPanel.vue";
         }
 
         h3:nth-of-type(2) {
-            line-height: 40px;
+            line-height: 3rem;
             span {
                 float: left;
                 margin-right: 16px;
