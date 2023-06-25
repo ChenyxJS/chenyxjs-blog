@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-11 18:41:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-25 22:18:04
+ * @LastEditTime: 2023-06-25 22:25:40
  * @FilePath: /chenyxjs-blog/src/views/home/index.vue
 -->
 <script setup lang="ts">
@@ -14,7 +14,7 @@ import RightPanel from "./RightPanel.vue";
         <div class="panel introduction">
             <div class="left">
                 <h3>👋欢迎来到我的个人网站</h3>
-                <h3>Call me Chenyx</h3>
+                <h1>Call me Chenyx</h1>
                 <h3>
                     <span>And I'm a</span>
                     <vuetyped
@@ -69,7 +69,8 @@ import RightPanel from "./RightPanel.vue";
         }
 
         h3:nth-of-type(2) {
-            line-height: 3rem;
+            font-size: 2rem;
+            line-height: 2rem;
             span {
                 float: left;
                 margin-right: 16px;
@@ -105,6 +106,16 @@ import RightPanel from "./RightPanel.vue";
             max-width: 90%;
             padding-left: 20px;
             width: 100%;
+            h3 {
+                font-size: 2rem;
+                font-weight: 700;
+                margin: -3px 0;
+                overflow: hidden;
+            }
+            h3:nth-of-type(2) {
+            font-size: 1.5rem;
+
+        }
         }
         .right {
             display: none;
