@@ -21,7 +21,7 @@ export type NotificationProps = {
     /**
      * @description duration before close. It will not automatically close if set 0
      */
-    duration: number;
+    duration?: number;
     /**
      * @description notification dom id
      */
@@ -46,6 +46,10 @@ export type NotificationProps = {
      * @description initial zIndex
      */
     zIndex?: number;
+    /**
+     * @description auto close
+     */
+    autoClose?: boolean;
     /**
      * @description whether to close the notification automatically
      */

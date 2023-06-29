@@ -13,7 +13,6 @@ const visible = ref(false);
 let timer: (() => void) | undefined = undefined;
 
 onMounted(() => {
-    console.log(props.offset);
     startTimer();
     visible.value = true;
 });
@@ -22,10 +21,11 @@ useEventListener(document, "keydown", onKeydown);
 
 // method
 function startTimer() {
-    if (props.duration > 0) {
+    console.log(props);
+    if (props.autoClose && props.duration! > 0) {
         ({ stop: timer } = useTimeoutFn(() => {
             if (visible.value) close();
-        }, props.duration));
+        }, props.duration!));
     }
 }
 
@@ -37,7 +37,6 @@ function close() {
     visible.value = false;
 }
 function beforeClose() {
-    console.log("beforeClose");
     if (props.onClose !== undefined) props.onClose();
 }
 
@@ -82,7 +81,7 @@ defineExpose({
     gap: 1rem;
     width: 260px;
     z-index: 9999;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
     .notification {
         position: relative;
         background-color: hsla(0, 0%, 100%, 0.1);

@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-01 02:15:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-29 17:49:11
+ * @LastEditTime: 2023-06-29 22:03:01
  * @FilePath: /chenyxjs-blog/src/hooks/menu-hooks.ts
  */
 import router from "@/router";
@@ -69,7 +69,6 @@ export const useMenu = () => {
     function toWallpaper() {
         Notification({
             message: "模块正在调试中，敬请期待...",
-            duration: 3000
         });
         // router.push("/wallpaper");
     }
