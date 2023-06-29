@@ -2,18 +2,13 @@
  * @Author: chenyx
  * @Date: 2023-04-01 02:15:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-20 20:50:18
+ * @LastEditTime: 2023-06-29 17:49:11
  * @FilePath: /chenyxjs-blog/src/hooks/menu-hooks.ts
  */
-import { useNotification } from "@/components/Notification/useNotification";
 import router from "@/router";
-import { inject, onMounted, reactive } from "vue";
+import { Notification } from "@/components/Notification";
 
 export const useMenu = () => {
-    let Notice: any = reactive({});
-    onMounted(() => {
-        Notice = inject("Notice");
-    });
     const menu = [
         {
             index: 0,
@@ -72,9 +67,9 @@ export const useMenu = () => {
         router.push("/blog");
     }
     function toWallpaper() {
-        Notice.notification({
-            text: "模块正在调试中，敬请期待...",
-            isAutoClose: true,
+        Notification({
+            message: "模块正在调试中，敬请期待...",
+            duration: 3000
         });
         // router.push("/wallpaper");
     }

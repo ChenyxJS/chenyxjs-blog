@@ -24,7 +24,7 @@ declare module '@vue/runtime-core' {
     MenuPanel: typeof import('./src/components/MenuPanel.vue')['default']
     MusicCard: typeof import('./src/components/MusicCard.vue')['default']
     NavPanel: typeof import('./src/components/NavPanel.vue')['default']
-    Notification: typeof import('./src/components/Notification/Notification.vue')['default']
+    Notification: typeof import('./src/components/Notification/src/Notification.vue')['default']
     PageCard: typeof import('./src/components/PageCard.vue')['default']
     PersonCard: typeof import('./src/components/PersonCard.vue')['default']
     ProfileCard: typeof import('./src/components/ProfileCard.vue')['default']

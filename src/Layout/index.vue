@@ -4,7 +4,7 @@
 * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-20 22:31:04
+ * @LastEditTime: 2023-06-29 12:12:49
 -->
 
 <script setup lang="ts">
@@ -66,7 +66,7 @@ function closeNavDialog() {
 <template>
     <div class="layout">
         <div id="main" class="layout-bg"></div>
-        <Notification />
+        <!-- <Notification /> -->
         <Dialog
             :isShow="state.showNavDialog"
             title="站内导航"

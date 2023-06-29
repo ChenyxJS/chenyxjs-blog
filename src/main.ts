@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 22:48:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-14 19:08:08
+ * @LastEditTime: 2023-06-29 16:35:52
  */
 import { Directive, createApp } from "vue";
 import { createPinia } from "pinia";
@@ -41,7 +41,6 @@ import router from "./router";
 import SvgIcon from "@/components/SvgIcon.vue";
 import VueWechatTitle from "vue-wechat-title";
 import vuetyped from "vue3typed";
-import { useNotification } from "@/components/Notification/useNotification";
 
 const pinia = createPinia();
 
@@ -54,10 +53,6 @@ Object.keys(directive).forEach((key) => {
 });
 
 // 全局注册
-
-// 通知
-const noteHook = useNotification();
-app.provide("Notice", noteHook);
 // markdown预览组件
 app.use(VMdPreview);
 // 网页标题

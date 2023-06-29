@@ -4,10 +4,10 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-21 17:02:57
+ * @LastEditTime: 2023-06-29 15:53:30
 -->
 
-<script setup lang="ts" name="Article">
+<script setup lang="ts">
 import {
     reactive,
     getCurrentInstance,
@@ -17,7 +17,6 @@ import {
     ref,
     watchEffect,
     onUnmounted,
-    inject,
 } from "vue";
 import { useRoute } from "vue-router";
 import ThreeBallLoading from "@/components/Loading/ThreeBallLoading.vue";
@@ -42,7 +41,6 @@ const state = reactive({
     article: {} as Article,
 });
 const route = useRoute();
-const noteHook: any = inject("Notice");
 
 const { proxy } = getCurrentInstance() as ComponentInternalInstance;
 let previewDom: any = ref();
@@ -112,9 +110,7 @@ function handleData(data: BaseApiResult) {
         state.articleContent = data.object.content;
         state.article = data.object.article;
     } else {
-        noteHook.notification({
-            text: "模块正在调试中，敬请期待...",
-        });
+
     }
 }
 

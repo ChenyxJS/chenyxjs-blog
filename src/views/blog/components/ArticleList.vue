@@ -66,7 +66,6 @@ function getList() {
         })
         .finally(() => {
             state.showLoading = false;
-            console.log(state.showLoading);
         });
 }
 </script>
