@@ -59,7 +59,7 @@ function close() {
     margin: 0 auto;
     margin-top: 50px;
     width: 300px;
-    background-color: rgba(66, 65, 65, 0.2);
+    background-color: rgb(32, 31, 31);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: var(--box-border-shadow);

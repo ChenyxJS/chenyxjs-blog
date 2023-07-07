@@ -6,6 +6,13 @@
   "description": "ChenyxJS-Blog个人博客网站",
   "glyphs": [
     {
+      "icon_id": "6505297",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
       "icon_id": "1325927",
       "name": "点击选择点",
       "font_class": "icon-dian",

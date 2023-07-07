@@ -2,11 +2,10 @@
  * @Author: chenyx
  * @Date: 2023-04-13 19:32:11
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-25 14:46:45
+ * @LastEditTime: 2023-06-30 14:12:03
  * @FilePath: /chenyxjs-blog/src/views/home/RightPanel.vue
 -->
 <script setup lang="ts">
-import ProfileCard from "@/components/ProfileCard.vue";
 import BaseIcon from "@/components/BaseIcon.vue";
 import ArticleCard from "@/components/ArticleCard.vue";
 import { getArticleList } from "@/api/article";
@@ -41,18 +40,6 @@ function getNewArticles() {
     });
 }
 
-function toArticle(article: Article) {
-    router
-        .push({
-            path: "/article",
-            query: {
-                id: article.articleId,
-            },
-        })
-        .then(() => {
-            window.document.title = article.articleTitle;
-        });
-}
 </script>
 
 <template>

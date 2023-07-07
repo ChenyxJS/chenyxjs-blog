@@ -40,8 +40,19 @@ function download(url: string) {
             :key="index"
             class="wallpaper"
         >
-            <!-- <div @click="download(item)" class="download-icon"></div>
-            <div @click="play(`video-${index}`)" class="play-icon"></div> -->
+            <div class="icon-panel">
+                <base-icon
+                    @click="download(item)"
+                    :size="40"
+                    iconName="icon-xiazai"
+                ></base-icon>
+                <base-icon
+                    @click="play(`video-${index}`)"
+                    :size="40"
+                    iconName="icon-zantingbofang"
+                ></base-icon>
+            </div>
+
             <video :id="`video-${index}`" class="video" v-lazy="item"></video>
         </div>
     </div>
@@ -68,32 +79,20 @@ function download(url: string) {
         transition: all 0.5s ease-in-out;
     }
 }
-// .download-icon {
-//     position: absolute;
-//     top: calc(50% - 53px);
-//     left: calc(50% - 90px);
-//     width: 100px;
-//     height: 100px;
-//     opacity: 0;
-//     background-image: url("@/assets/images/download.png");
-//     background-repeat: no-repeat; //不重复拉伸
-//     background-size: 100% 100%;
-//     transition: all 0.5s ease;
-//     z-index: 2;
-// }
-// .play-icon {
-//     position: absolute;
-//     top: calc(50% - 50px);
-//     left: calc(50% - 10px);
-//     width: 100px;
-//     height: 100px;
-//     opacity: 0;
-//     background-image: url("@/assets/images/player.png");
-//     background-repeat: no-repeat; //不重复拉伸
-//     background-size: 100% 100%;
-//     transition: all 0.5s ease;
-//     z-index: 2;
-// }
+.icon-panel {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
 .wallpaper::after {
     content: "";
     position: absolute;
@@ -110,8 +109,7 @@ function download(url: string) {
     .video {
         transform: scale(1.1);
     }
-    .play-icon,
-    .download-icon {
+    .icon-panel {
         opacity: 1;
     }
 }

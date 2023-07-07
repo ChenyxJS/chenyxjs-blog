@@ -4,7 +4,7 @@
 * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-29 12:12:49
+ * @LastEditTime: 2023-07-03 09:48:18
 -->
 
 <script setup lang="ts">
@@ -16,7 +16,6 @@ import FooterPanel from "./components/Footer.vue";
 import { useRoute } from "vue-router";
 import { computed, onMounted, reactive, watch } from "vue";
 import { useAppStroe } from "@/store/modules/app";
-import Notification from "@/components/Notification/Notification.vue";
 import { useMenu } from "@/hooks/menu-hooks";
 
 const route = useRoute();
@@ -103,7 +102,7 @@ function closeNavDialog() {
                     <content />
                 </div>
             </div>
-            <div v-if="isMobile" class="footer-layout">
+            <div class="footer-layout">
                 <footer-panel />
             </div>
         </div>

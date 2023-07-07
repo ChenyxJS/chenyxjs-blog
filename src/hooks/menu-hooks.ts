@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-01 02:15:34
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-29 22:03:01
+ * @LastEditTime: 2023-06-30 11:55:32
  * @FilePath: /chenyxjs-blog/src/hooks/menu-hooks.ts
  */
 import router from "@/router";
@@ -73,7 +73,6 @@ export const useMenu = () => {
         // router.push("/wallpaper");
     }
     function toProject() {
-        // ElMessage.warning("模块正在调试中，敬请期待...");
         router.push("/project");
     }
     function toLinks() {

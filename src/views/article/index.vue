@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-29 15:53:30
+ * @LastEditTime: 2023-07-07 14:23:00
 -->
 
 <script setup lang="ts">
@@ -22,6 +22,7 @@ import { useRoute } from "vue-router";
 import ThreeBallLoading from "@/components/Loading/ThreeBallLoading.vue";
 import { getArticleById } from "@/api/article";
 import { Article } from "@/api/article/types";
+import router from "@/router";
 
 defineOptions({
     name: "Article",
@@ -64,6 +65,7 @@ const stop = watchEffect(() => {
 });
 
 // function
+
 function loading() {
     const rejectPromise = (rejectTime: number): Promise<unknown> => {
         // 指定时间后返回状态失败的promise
@@ -110,7 +112,6 @@ function handleData(data: BaseApiResult) {
         state.articleContent = data.object.content;
         state.article = data.object.article;
     } else {
-
     }
 }
 
@@ -164,10 +165,8 @@ function handleAnchorClick(anchor: Anchor) {
 async function scrollListener() {
     await nextTick();
     const anchors = previewDom.$el.querySelectorAll("h2,h3,h4,h5,h6");
-    console.log(scrollDom);
     scrollDom.addEventListener("scroll", (e: any) => {
         const target = e.target;
-        console.log(e);
         // 获取滚动到的当前元素
         let anchorTarget = {} as Anchor;
         for (let i = 0; i < anchors.length; i++) {
@@ -187,7 +186,7 @@ async function scrollListener() {
  */
 function handleAnchorScroll(anchorTarget: Anchor) {
     const anchorList: HTMLCollectionOf<Element> =
-        document.getElementsByClassName("article-anchor_tag");
+        document.getElementsByClassName("anchor_tag");
     for (let i = 0; i < anchorList.length; i++) {
         if (
             Number(anchorList[i].getAttribute("anchor")) !=
@@ -202,23 +201,31 @@ function handleAnchorScroll(anchorTarget: Anchor) {
         }
     }
 }
+
+function goBack() {
+    router.back();
+}
 </script>
 <template>
+    <div v-if="state.loading" class="loading flex flex-cc">
+        <ThreeBallLoading></ThreeBallLoading>
+    </div>
     <div
+        v-else
         class="article"
         v-wechat-title="($route.meta.title = state.article.articleTitle)"
     >
-        <div v-if="state.loading" class="loading flex flex-cc">
-            <ThreeBallLoading></ThreeBallLoading>
-        </div>
-        <template v-else>
-            <aside id="article-anchor" class="article-anchor">
+        <aside class="left">
+            <a class="return-btn" @click="goBack()">
+                <base-icon iconName="icon-fanhui" size="20px"></base-icon>
+            </a>
+            <div id="anchor" class="anchor">
                 <span>
                     <i class="iconfont icon-kuaijie"></i>
                     <span style="font-size: 16px; line-height: 16px">目录</span>
                 </span>
                 <div
-                    class="article-anchor_tag"
+                    class="tag"
                     v-for="anchor in state.anchorList"
                     :key="anchor.lineIndex"
                     :anchor="anchor.lineIndex"
@@ -227,65 +234,85 @@ function handleAnchorScroll(anchorTarget: Anchor) {
                 >
                     {{ anchor.title }}
                 </div>
-            </aside>
-            <div id="scrollDom" class="article-content">
-                <v-md-preview
-                    style="width: 100%"
-                    v-if="state.articleContent"
-                    :text="state.articleContent"
-                    ref="preview"
-                />
             </div>
-            <aside class="right">
-                <div class="warrper">
-                    <div class="panel">
-                        <button class="item">
-                            <img
-                                class="img"
-                                src="@/assets/images/claps.png"
-                                alt=""
-                            />
-                            <span>11</span>
-                        </button>
-                        <button class="item">
-                            <img
-                                class="img"
-                                src="@/assets/images/heart.png"
-                                alt=""
-                            />
-                            <span>11</span>
-                        </button>
-                        <button class="item">
-                            <img
-                                class="img"
-                                src="@/assets/images/thumbs-up.png"
-                                alt=""
-                            />
-                            <span>11</span>
-                        </button>
-                        <button class="item">
-                            <img
-                                class="img"
-                                src="@/assets/images/fire.png"
-                                alt=""
-                            />
-                            <span>11</span>
-                        </button>
-                    </div>
+        </aside>
+        <div id="scrollDom" class="article-content">
+            <v-md-preview
+                style="width: 100%"
+                v-if="state.articleContent"
+                :text="state.articleContent"
+                ref="preview"
+            />
+        </div>
+        <aside class="right">
+            <div class="warrper">
+                <div id="RightPanel" class="panel">
+                    <button panel-item-index="1" class="item">
+                        <img class="img" src="@/assets/images/claps.png" />
+                        <span class="text">111</span>
+                    </button>
+                    <button panel-item-index="2" class="item">
+                        <img class="img" src="@/assets/images/heart.png" />
+                        <span class="text">121</span>
+                    </button>
+                    <button panel-item-index="3" class="item">
+                        <img class="img" src="@/assets/images/thumbs-up.png" />
+                        <span class="text">41</span>
+                    </button>
+                    <button panel-item-index="4" class="item">
+                        <img class="img" src="@/assets/images/fire.png" />
+                        <span class="text">23</span>
+                    </button>
                 </div>
-            </aside>
-        </template>
+            </div>
+        </aside>
     </div>
 </template>
 <style lang="scss" scoped>
 .loading {
     width: 100%;
+    min-height: 100vh;
 }
 .article {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     position: relative;
     min-height: 100vh;
+    max-width: 100%;
+    .left {
+        position: relative;
+        min-width: 200px;
+        max-width: 200px;
+        padding: 10px;
+        padding-right: 0;
+        .return-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(39 39 42);
+            box-shadow: var(--box-border-shadow);
+            border-radius: 50%;
+        }
+        .anchor {
+            position: sticky;
+            top: 0;
+            height: fit-content;
+            font-size: 12px;
+            padding-top: 5rem;
+            .tag {
+                color: rgba(235, 235, 235, 0.6);
+                cursor: pointer;
+                margin: 7px 0;
+                padding: 6px 6px;
+            }
+            .tag:hover,
+            .active {
+                color: var(--text-link-hover);
+            }
+        }
+    }
 
     .right {
         position: relative;
@@ -299,10 +326,14 @@ function handleAnchorScroll(anchorTarget: Anchor) {
             padding-top: 5rem;
 
             .panel {
-                padding: 10px;
+                padding: 0.2rem;
+                padding-top: 1rem;
+                padding-bottom: 2rem;
                 display: flex;
                 flex-direction: column;
+                align-items: center;
                 gap: 2rem;
+                width: 3rem;
                 height: fit-content;
                 border-radius: 9999px;
                 background-image: linear-gradient(
@@ -311,50 +342,60 @@ function handleAnchorScroll(anchorTarget: Anchor) {
                     rgba(9, 9, 11, 0.8)
                 );
                 box-shadow: var(--box-border-shadow);
+                transition: all 0.3s ease-in-out;
+
                 .item {
                     height: 24px;
                     aspect-ratio: 1/1;
                     position: relative;
                     background-color: transparent;
                     background-image: none;
+                    transition: all 0.3s ease-in-out;
+
                     .img {
                         position: absolute;
+                        max-width: 100%;
                         height: 100%;
-                        width: 100%;
                         inset: 0px;
                         color: transparent;
                     }
+                    .text {
+                        position: absolute;
+                        left: 0;
+                        bottom: -2rem;
+                        width: 100%;
+                        height: 100%;
+                        font-size: 12px;
+                        line-height: 12px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 500;
+                        color: hsla(240, 6%, 90%, 0.25);
+                    }
+                    &:hover {
+                        height: 3rem;
+                    }
+
+                    &:active {
+                        transform: scale(1.4);
+                        transition: all 0.3s ease;
+                    }
+                }
+                .item:hover ~ .item:first-of-type {
+                    height: 2rem;
                 }
             }
         }
     }
 
     .article-content {
-        flex: 1 1 0%;
-        max-width: 60rem;
+        overflow: hidden;
+        position: relative;
+        min-height: 100vh;
+        max-width: 100%;
         display: flex;
         justify-content: center;
-    }
-    &-anchor {
-        min-width: 200px;
-        max-width: 200px;
-        padding: 10px;
-        padding-right: 0;
-        position: sticky;
-        top: 0;
-        height: fit-content;
-        font-size: 12px;
-        padding-top: 5rem;
-        &_tag {
-            color: rgba(235, 235, 235, 0.6);
-            cursor: pointer;
-            margin: 7px 0;
-            padding: 6px 6px;
-        }
-        &_tag:hover,
-        .active {
-            color: var(--text-link-hover);
-        }
     }
 }
 @media screen and (max-width: 1100px) {
@@ -363,10 +404,13 @@ function handleAnchorScroll(anchorTarget: Anchor) {
         .article-content {
             max-width: 100%;
         }
+        .left {
+            display: none;
+        }
         .right {
             display: none;
         }
-        .article-anchor {
+        .anchor {
             display: none;
         }
     }
