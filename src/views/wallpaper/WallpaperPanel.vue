@@ -3,24 +3,15 @@ import { reactive } from "vue";
 
 const state = reactive({
     wallpaperList: [
-        "http://file.chenyx.site/wallpaper/5_15488489005437.mp4",
-        "http://file.chenyx.site/wallpaper/5_15488489005404.mp4",
-        "http://file.chenyx.site/wallpaper/5_15488489005414.mp4",
-        "http://file.chenyx.site/wallpaper/5_15488489004905.mp4",
-        "http://file.chenyx.site/wallpaper/2_15488489005432.mp4",
-        "http://file.chenyx.site/wallpaper/2_15488489005410.mp4",
-        "http://file.chenyx.site/wallpaper/2_15488489005374.mp4",
-        "http://file.chenyx.site/wallpaper/2_15488489005356.mp4",
-        "http://file.chenyx.site/wallpaper/2_15488489005336.mp4",
-        "http://file.chenyx.site/wallpaper/2_15488489005307.mp4",
-        "http://file.chenyx.site/wallpaper/2_15488489005292.mp4",
-        "http://file.chenyx.site/wallpaper/2_15488489005286.mp4",
-        "http://file.chenyx.site/wallpaper/2_15488489005274.mp4",
-        "http://file.chenyx.site/wallpaper/2_15488489005196.mp4",
-        "http://file.chenyx.site/wallpaper/1_15488489005447.mp4",
-        "http://file.chenyx.site/wallpaper/1_15488489005440.mp4",
-        "http://file.chenyx.site/wallpaper/1_15488489005430.mp4",
-        "http://file.chenyx.site/wallpaper/1_15488489005402.mp4",
+        "https://oss.chenyx.site/static/png/chenyx.png",
+        "https://oss.chenyx.site/static/jpg/t014d46a590e4d07543.jpg",
+        "https://oss.chenyx.site/static/jpg/t012492e8ab86f90a3e.jpg",
+        "https://oss.chenyx.site/static/jpg/t013d7f3c427ef61ef4.jpg",
+        "https://oss.chenyx.site/static/png/Chenyx3dText.png",
+        "https://oss.chenyx.site/static/jpg/ba64-fykcppx8320919.jpg",
+        "https://oss.chenyx.site/static/jpg/t0125431d12a54d8874.jpg",
+        "https://oss.chenyx.site/static/png/bizhi1.png",
+        "https://oss.chenyx.site/static/png/bizhi2.png"
     ],
 });
 
@@ -30,7 +21,7 @@ function play(id: string) {
 }
 
 function download(url: string) {
-    // window.open(url);
+    window.open(url);
 }
 </script>
 <template>
@@ -46,14 +37,14 @@ function download(url: string) {
                     :size="40"
                     iconName="icon-xiazai"
                 ></base-icon>
-                <base-icon
+                <!-- <base-icon
                     @click="play(`video-${index}`)"
                     :size="40"
                     iconName="icon-zantingbofang"
-                ></base-icon>
+                ></base-icon> -->
             </div>
-
-            <video :id="`video-${index}`" class="video" v-lazy="item"></video>
+            <img class="video" v-lazy="item" alt="">
+            <!-- <video :id="`video-${index}`" class="video" v-lazy="item"></video> -->
         </div>
     </div>
 </template>
@@ -64,6 +55,7 @@ function download(url: string) {
     margin: 10px 0;
     column-count: 2;
     column-gap: 20px;
+    min-height: 100vh;
 }
 .wallpaper {
     position: relative;
@@ -115,5 +107,11 @@ function download(url: string) {
 }
 .wallpaper:hover::after {
     opacity: 1;
+}
+@media (max-width: 719px) {
+    .wallpaper-panel{
+        column-count: 1;
+        width: 95%;
+    }
 }
 </style>
