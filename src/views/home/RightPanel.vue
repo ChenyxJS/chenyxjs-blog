@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-13 19:32:11
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-30 14:12:03
+ * @LastEditTime: 2023-07-30 15:08:30
  * @FilePath: /chenyxjs-blog/src/views/home/RightPanel.vue
 -->
 <script setup lang="ts">
@@ -12,12 +12,15 @@ import { getArticleList } from "@/api/article";
 import { Article, ArticleQuery } from "@/api/article/types";
 import { OrderType } from "@/utils/globalEnum";
 import { reactive } from "vue";
-import { useRouter } from "vue-router";
+import { isEmail } from "@/utils/check";
+import { Notification } from "@/components/Notification";
+import { subscribe } from "@/api/email/index";
+import { Email } from "@/api/email/types";
 
 // 实例化路由对象
-const router = useRouter();
 const state = reactive({
     newArticleList: [] as Article[],
+    subscribeEmail: "",
 });
 
 // 数据请求
@@ -40,6 +43,30 @@ function getNewArticles() {
     });
 }
 
+function subscribe_click() {
+    // 校验邮箱是否填写
+    if (!isEmail(state.subscribeEmail)) {
+        // 提示
+        Notification({
+            message: "请填写正确的邮箱！",
+        });
+        return;
+    }
+    subscribe({
+        emailUrl: state.subscribeEmail,
+        emailSubscribe: 1,
+    } as Email).then(({ data }) => {
+        if (data.success) {
+            Notification({
+                message: "订阅成功！",
+            });
+        } else {
+            Notification({
+                message: "订阅失败！请稍后重试",
+            });
+        }
+    });
+}
 </script>
 
 <template>
@@ -66,8 +93,16 @@ function getNewArticles() {
                     获取我最新发布的内容通知，随时可以取消订阅。
                 </p>
                 <div class="subscribe">
-                    <input type="email" name="email" required placeholder="你的邮箱" />
-                    <button class="subscribe-btn">订阅</button>
+                    <input
+                        v-model="state.subscribeEmail"
+                        type="email"
+                        name="email"
+                        required
+                        placeholder="你的邮箱"
+                    />
+                    <button class="subscribe-btn" @click="subscribe_click">
+                        订阅
+                    </button>
                 </div>
             </div>
             <!-- <div class="card work-card">

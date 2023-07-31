@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2022-12-28 18:57:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-29 15:51:57
+ * @LastEditTime: 2023-07-30 15:00:32
  * @FilePath: /chenyxjs-blog/vite.config.ts
  */
 import { UserConfig, ConfigEnv, loadEnv } from "vite";
@@ -26,9 +26,9 @@ export default ({ mode }: ConfigEnv): UserConfig => {
             proxy: {
                 [env.VITE_APP_BASE_API]: {
                     // 线上API地址
-                    target: "http://www.chenyx.site:8080",
+                    // target: "http://www.chenyx.site:8080",
                     // 本地API地址
-                    // target: "http://localhost:8080",
+                    target: "http://localhost:8080",
                     rewrite: (path) =>
                         path.replace(
                             new RegExp("^" + env.VITE_APP_BASE_API),
