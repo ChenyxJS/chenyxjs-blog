@@ -11,7 +11,13 @@ const state = reactive({
         "https://oss.chenyx.site/static/jpg/ba64-fykcppx8320919.jpg",
         "https://oss.chenyx.site/static/jpg/t0125431d12a54d8874.jpg",
         "https://oss.chenyx.site/static/png/bizhi1.png",
-        "https://oss.chenyx.site/static/png/bizhi2.png"
+        "https://oss.chenyx.site/static/png/bizhi2.png",
+        "https://oss.chenyx.site/static/jpg/t0153f7a6e7558f8414.jpg",
+        "https://oss.chenyx.site/static/jpg/t0154531e5acb137359.jpg",
+        "https://oss.chenyx.site/static/jpg/t015d4f327880dddb26.jpg",
+        "https://oss.chenyx.site/static/jpg/t01e1a2d6222d272b78.jpg",
+        "https://oss.chenyx.site/static/jpg/t01c3dca97966573c74.jpg",
+        "https://oss.chenyx.site/static/jpg/t01a676f085326404d3.jpg"
     ],
 });
 
@@ -33,7 +39,7 @@ function download(url: string) {
         >
             <div class="icon-panel">
                 <base-icon
-                    @click="download(item)"
+                    v-download="item"
                     :size="40"
                     iconName="icon-xiazai"
                 ></base-icon>
