@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-07-07 14:23:00
+ * @LastEditTime: 2023-08-04 15:41:20
 -->
 
 <script setup lang="ts">
@@ -220,16 +220,19 @@ function goBack() {
                 <base-icon iconName="icon-fanhui" size="20px"></base-icon>
             </a>
             <div id="anchor" class="anchor">
-                <span>
+                <!-- <span>
                     <i class="iconfont icon-kuaijie"></i>
                     <span style="font-size: 16px; line-height: 16px">目录</span>
-                </span>
+                </span> -->
                 <div
                     class="tag"
-                    v-for="anchor in state.anchorList"
+                    v-for="(anchor, index) in state.anchorList"
                     :key="anchor.lineIndex"
                     :anchor="anchor.lineIndex"
-                    :style="{ marginLeft: anchor.indent * 28 + 'px' }"
+                    :style="{
+                        marginLeft: anchor.indent * 28 + 'px',
+                        '--index': index,
+                    }"
                     @click="handleAnchorClick(anchor)"
                 >
                     {{ anchor.title }}
@@ -306,6 +309,9 @@ function goBack() {
                 cursor: pointer;
                 margin: 7px 0;
                 padding: 6px 6px;
+                opacity: 0;
+                animation: show 1s forwards;
+                animation-delay: calc(var(--index) * 0.1s);
             }
             .tag:hover,
             .active {
@@ -396,6 +402,16 @@ function goBack() {
         max-width: 100%;
         display: flex;
         justify-content: center;
+    }
+}
+@keyframes show {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 @media screen and (max-width: 1100px) {

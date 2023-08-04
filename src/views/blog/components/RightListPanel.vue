@@ -2,12 +2,13 @@
  * @Author: chenyx
  * @Date: 2023-03-23 17:02:55
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-21 13:01:33
+ * @LastEditTime: 2023-08-03 15:49:50
  * @FilePath: /chenyxjs-blog/src/views/blog/components/RightListPanel.vue
 -->
 
 <script setup lang="ts">
 import { getJueJinData } from "@/api/juejin";
+import BaseIcon from "@/components/BaseIcon.vue";
 import { onMounted, reactive } from "vue";
 
 type JueJinData = {
@@ -112,22 +113,18 @@ function go(url: string) {
                     </h4>
                     <section>{{ item.des }}</section>
                     <div class="asider-article-card_options">
-                        <p
-                            class="iconfont icon-icon-dian btn"
-                            style="color: #56a6ff"
-                        >
+                        <p class="btn" style="color: #56a6ff">
+                            <BaseIcon icon-name="icon-icon-dian"></BaseIcon>
                             <span>{{ item.view_count }}</span>
                         </p>
-                        <p
-                            class="iconfont icon-dianzan btn"
-                            style="color: #e6a23c"
-                        >
+                        <p class="btn" style="color: #e6a23c">
+                            <BaseIcon icon-name="icon-dianzan"></BaseIcon>
+
                             <span>{{ item.collect_count }}</span>
                         </p>
-                        <p
-                            class="iconfont icon-xiaoxi btn"
-                            style="color: #56a6ff"
-                        >
+                        <p class="btn" style="color: #56a6ff">
+                            <BaseIcon icon-name="icon-xiaoxi"></BaseIcon>
+
                             <span>{{ item.comment_count }}</span>
                         </p>
                     </div>
@@ -138,7 +135,7 @@ function go(url: string) {
 </template>
 
 <style lang="scss" scoped>
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     display: none;
 }
 .asider-articles {
@@ -148,7 +145,7 @@ function go(url: string) {
     overflow: scroll;
     position: relative;
 
-    .asider-title{
+    .asider-title {
         position: sticky;
         top: 0;
         text-align: center;

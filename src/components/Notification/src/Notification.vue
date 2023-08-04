@@ -63,7 +63,7 @@ defineExpose({
     position: fixed;
     top: 15px;
     right: 15px;
-    background-color: hsla(0, 0%, 100%, 0.1);
+    background-color: hsla(0, 0%, 13%, 0.8);
     padding: 20px;
     border: var(--border);
     border-radius: 10px;
