@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-04 15:41:20
+ * @LastEditTime: 2023-08-04 17:14:45
 -->
 
 <script setup lang="ts">
@@ -297,6 +297,10 @@ function goBack() {
             background-color: rgb(39 39 42);
             box-shadow: var(--box-border-shadow);
             border-radius: 50%;
+        }
+        .return-btn:hover{
+            box-shadow: 0 0 0 0px #fff, 0 0 0 1px hsla(0, 14%, 97%, 0.3), 0 10px 15px -3px rgba(48, 48, 49, 0.05),
+        0 4px 6px -4px rgba(46, 46, 47, 0.05), 0 0 #0000;;
         }
         .anchor {
             position: sticky;
