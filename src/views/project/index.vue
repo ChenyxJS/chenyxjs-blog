@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-15 20:40:46
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-25 14:53:43
+ * @LastEditTime: 2023-08-17 09:59:31
 -->
 <template>
     <div class="project flex flex-column flex-sc">
@@ -47,7 +47,7 @@ const state = reactive({
         {
             name: "iHRM人力资源管理",
             desc: "iHRM是一款基于SaaS平台的人力资源管理系统， 企业通过该系统可以完成员工管理、审批管理、考勤管理、社保公积金管理、薪资管理等功能，为企业的人力资源管理提供一站式解决方案。",
-            img: "https://doc.panjingyi.top/blog/202207020048169.jpg",
+            img: "https://oss.chenyx.site/static/jpg/t01a676f085326404d3.jpg",
             tags: [
                 {
                     name: "Vue3",
@@ -63,7 +63,7 @@ const state = reactive({
         {
             name: "小兔鲜儿",
             desc: "该项目实现了电商平台主线业务功能，电商首页、一级分类、二级分类、商品详情、购物车、结算、支付、个人中心、订单管理、订单详情。项目采用前后端分离模式，前台使用了VUE3.0技术栈构建，自己封装的UI组件库，接入了QQ登录，支付宝支付业务，以及前端SKU解决方案，本地线上购物车解决方案。",
-            img: "https://doc.panjingyi.top/blog/202207020048621.jpg",
+            img: "https://oss.chenyx.site/static/jpg/t01c3dca97966573c74.jpg",
             tags: [
                 {
                     name: "Vue3",
@@ -79,7 +79,7 @@ const state = reactive({
         {
             name: "智能看板",
             desc: "智能看板是一个数据可视化项目，通过折线图、K线图、柱状图等图表形式归纳汇总大量数据，以实现更加直观的数据表达效果。学员通过学习该项目，能够掌握数据可视化、异步编程、高性能数据缓存等技术解决方案。",
-            img: "https://doc.panjingyi.top/blog/202207020050313.jpeg",
+            img: "https://oss.chenyx.site/static/jpg/t01e1a2d6222d272b78.jpg",
             tags: [
                 {
                     name: "Java",
@@ -95,7 +95,7 @@ const state = reactive({
         {
             name: "闲云旅游",
             desc: "闲云旅游是一个旅游服务网站，主要功能包括机票酒店预定、目的地景点购票、热门旅游攻略资讯等。项目采用前后端分离模式开发，前台使用Vue技术栈中的服务端渲染框架Nuxt.js开发，让页面效果以超快的方式展示在用户面前，Nuxt还支持页面自动静态化，可大大节省服务器资源。",
-            img: "https://doc.panjingyi.top/blog/202207012315201.jpeg",
+            img: "https://oss.chenyx.site/static/jpg/t015d4f327880dddb26.jpg",
             tags: [
                 {
                     name: "Element Plus",
