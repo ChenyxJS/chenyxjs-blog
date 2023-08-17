@@ -45,7 +45,7 @@ function toArticle() {
         <div class="card-bg">
             <img
                 class="img"
-                src="@/assets/images/article-bg-default.jpg"
+                :src="article.articleImgUrl"
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -55,7 +55,7 @@ function toArticle() {
             class="card-info"
             :style="{
                 '--post-image':
-                    'url(https://cdn.sanity.io/images/i81ys0da/production/644fbedb1cd655191d5f0f6701811815f7fd260f-1200x675.png)',
+                    `url(${article.articleImgUrl})`,
                 '--post-bgcolor': '#123746',
             }"
         >
@@ -73,20 +73,6 @@ function toArticle() {
                             }}
                         </span>
                     </span>
-                    <!-- <span class="item">
-                        <i class="iconfont icon-biaoqian"></i>
-                        <span
-                            v-for="tag in getArticleTags(article)"
-                            :key="tag"
-                            class="tag"
-                        >
-                            {{
-                                categoryStore.category.find((item) => {
-                                    return item.id == tag;
-                                })?.name
-                            }}
-                        </span>
-                    </span> -->
                 </span>
                 <span class="right">
                     <span class="item">

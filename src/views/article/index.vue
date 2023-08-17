@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-04 17:14:45
+ * @LastEditTime: 2023-08-17 11:08:31
 -->
 
 <script setup lang="ts">
@@ -164,7 +164,7 @@ function handleAnchorClick(anchor: Anchor) {
  */
 async function scrollListener() {
     await nextTick();
-    const anchors = previewDom.$el.querySelectorAll("h2,h3,h4,h5,h6");
+    const anchors = previewDom.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
     scrollDom.addEventListener("scroll", (e: any) => {
         const target = e.target;
         // 获取滚动到的当前元素
@@ -220,17 +220,13 @@ function goBack() {
                 <base-icon iconName="icon-fanhui" size="20px"></base-icon>
             </a>
             <div id="anchor" class="anchor">
-                <!-- <span>
-                    <i class="iconfont icon-kuaijie"></i>
-                    <span style="font-size: 16px; line-height: 16px">目录</span>
-                </span> -->
                 <div
                     class="tag"
                     v-for="(anchor, index) in state.anchorList"
                     :key="anchor.lineIndex"
                     :anchor="anchor.lineIndex"
                     :style="{
-                        marginLeft: anchor.indent * 28 + 'px',
+                        marginLeft: anchor.indent * 10 + 'px',
                         '--index': index,
                     }"
                     @click="handleAnchorClick(anchor)"
@@ -240,6 +236,7 @@ function goBack() {
             </div>
         </aside>
         <div id="scrollDom" class="article-content">
+            <img class="head-img" :src="state.article.articleImgUrl" alt="">
             <v-md-preview
                 style="width: 100%"
                 v-if="state.articleContent"
@@ -282,6 +279,7 @@ function goBack() {
     position: relative;
     min-height: 100vh;
     max-width: 100%;
+    margin-top: 20px;
     .left {
         position: relative;
         min-width: 200px;
@@ -406,6 +404,11 @@ function goBack() {
         max-width: 100%;
         display: flex;
         justify-content: center;
+        flex-direction: column;
+        .head-img{
+            width: 90%;
+            margin: 0 auto;
+        }
     }
 }
 @keyframes show {
