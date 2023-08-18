@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-02 20:43:43
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-17 11:08:48
+ * @LastEditTime: 2023-08-18 11:45:17
  * @FilePath: /chenyxjs-blog/src/api/article/types.ts
  */
 export interface Article {
@@ -16,6 +16,9 @@ export interface Article {
     articleLikes: number;
     articleLooks: number;
     articleImgUrl: string;
+    articleHearts: number;
+    articleHots: number;
+    articleClaps:number;
 }
 
 export interface ArticleQuery extends PageQuery {

@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-16 00:50:35
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-27 10:29:39
+ * @LastEditTime: 2023-08-18 14:52:47
  */
 
 /**
@@ -60,6 +60,7 @@ export function debounce(callback: Function, wait: number = 400) {
         }, wait);
     };
 }
+
 
 /**
  * @description: 节流函数

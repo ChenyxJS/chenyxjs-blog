@@ -1,10 +1,10 @@
 /*
  * @Descripttion: request工具类
- * @version: 
+ * @version:
  * @Author: Chenyx
  * @Date: 2022-10-16 21:23:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-04-10 23:49:33
+ * @LastEditTime: 2023-08-18 13:09:29
  */
 import axios from "axios"
 import Qs from "qs"

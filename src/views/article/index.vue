@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-17 11:08:31
+ * @LastEditTime: 2023-08-18 15:01:00
 -->
 
 <script setup lang="ts">
@@ -20,9 +20,11 @@ import {
 } from "vue";
 import { useRoute } from "vue-router";
 import ThreeBallLoading from "@/components/Loading/ThreeBallLoading.vue";
-import { getArticleById } from "@/api/article";
+import { getArticleById, updateArticle } from "@/api/article";
 import { Article } from "@/api/article/types";
 import router from "@/router";
+import { Notification, NotificationProps } from "@/components/Notification";
+import { debounce, throttle } from "@/utils";
 
 defineOptions({
     name: "Article",
@@ -40,6 +42,7 @@ const state = reactive({
     loading: false,
     articleContent: "",
     article: {} as Article,
+    fnc: debounce(update, 3000),
 });
 const route = useRoute();
 
@@ -205,6 +208,47 @@ function handleAnchorScroll(anchorTarget: Anchor) {
 function goBack() {
     router.back();
 }
+
+function update() {
+    const data = {
+        articleId: state.article.articleId,
+        articleLikes: state.article.articleLikes,
+        articleClaps: state.article.articleClaps,
+        articleHearts: state.article.articleHearts,
+        articleHots: state.article.articleHots,
+    } as Article;
+    updateArticle(data)
+        .then(({ data }) => {
+            if (data.success) {
+                state.article = data.object;
+            }
+        })
+        .catch((res) => {
+            Notification({
+                message: "慢点戳，服务器的腿都跑断了",
+                duration: 3000,
+                autoClose: true,
+            } as NotificationProps);
+        });
+}
+
+function likeClick(type: number) {
+    switch (type) {
+        case 0:
+            state.article.articleClaps = ++state.article.articleClaps;
+            break;
+        case 1:
+            state.article.articleHearts = ++state.article.articleHearts;
+            break;
+        case 2:
+            state.article.articleLikes = ++state.article.articleLikes;
+            break;
+        default:
+            state.article.articleHots = ++state.article.articleHots;
+            break;
+    }
+    state.fnc();
+}
 </script>
 <template>
     <div v-if="state.loading" class="loading flex flex-cc">
@@ -236,7 +280,7 @@ function goBack() {
             </div>
         </aside>
         <div id="scrollDom" class="article-content">
-            <img class="head-img" :src="state.article.articleImgUrl" alt="">
+            <img class="head-img" :src="state.article.articleImgUrl" alt="" />
             <v-md-preview
                 style="width: 100%"
                 v-if="state.articleContent"
@@ -247,21 +291,45 @@ function goBack() {
         <aside class="right">
             <div class="warrper">
                 <div id="RightPanel" class="panel">
-                    <button panel-item-index="1" class="item">
+                    <button
+                        @click="likeClick(0)"
+                        panel-item-index="1"
+                        class="item"
+                    >
                         <img class="img" src="@/assets/images/claps.png" />
-                        <span class="text">111</span>
+                        <span class="text">{{
+                            state.article.articleClaps
+                        }}</span>
                     </button>
-                    <button panel-item-index="2" class="item">
+                    <button
+                        @click="likeClick(1)"
+                        panel-item-index="2"
+                        class="item"
+                    >
                         <img class="img" src="@/assets/images/heart.png" />
-                        <span class="text">121</span>
+                        <span class="text">{{
+                            state.article.articleHearts
+                        }}</span>
                     </button>
-                    <button panel-item-index="3" class="item">
+                    <button
+                        @click="likeClick(2)"
+                        panel-item-index="3"
+                        class="item"
+                    >
                         <img class="img" src="@/assets/images/thumbs-up.png" />
-                        <span class="text">41</span>
+                        <span class="text">{{
+                            state.article.articleLikes
+                        }}</span>
                     </button>
-                    <button panel-item-index="4" class="item">
+                    <button
+                        @click="likeClick(3)"
+                        panel-item-index="4"
+                        class="item"
+                    >
                         <img class="img" src="@/assets/images/fire.png" />
-                        <span class="text">23</span>
+                        <span class="text">{{
+                            state.article.articleHots
+                        }}</span>
                     </button>
                 </div>
             </div>
@@ -296,9 +364,10 @@ function goBack() {
             box-shadow: var(--box-border-shadow);
             border-radius: 50%;
         }
-        .return-btn:hover{
-            box-shadow: 0 0 0 0px #fff, 0 0 0 1px hsla(0, 14%, 97%, 0.3), 0 10px 15px -3px rgba(48, 48, 49, 0.05),
-        0 4px 6px -4px rgba(46, 46, 47, 0.05), 0 0 #0000;;
+        .return-btn:hover {
+            box-shadow: 0 0 0 0px #fff, 0 0 0 1px hsla(0, 14%, 97%, 0.3),
+                0 10px 15px -3px rgba(48, 48, 49, 0.05),
+                0 4px 6px -4px rgba(46, 46, 47, 0.05), 0 0 #0000;
         }
         .anchor {
             position: sticky;
@@ -405,7 +474,7 @@ function goBack() {
         display: flex;
         justify-content: center;
         flex-direction: column;
-        .head-img{
+        .head-img {
             width: 90%;
             margin: 0 auto;
         }
