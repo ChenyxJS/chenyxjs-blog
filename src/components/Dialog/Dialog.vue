@@ -1,37 +1,43 @@
 <script setup lang="ts">
+import { computed } from "vue";
 
-const emit = defineEmits(['close'])
-const props = defineProps({
-    id: {
-        type: Number,
-        default: null,
-    },
-    title: {
-        type: String,
-        default: "标题",
-    },
-    isShow: {
-        type: Boolean,
-        default: "标题",
-    },
+type PropsType = {
+    id?: number;
+    title?: string;
+    isShow: boolean;
+    width?: string | number;
+    minWidth: string;
+};
+
+const emit = defineEmits(["close"]);
+const props = withDefaults(defineProps<PropsType>(), {
+    title: "标题",
+    width: 300,
+    minWidth: 300,
 });
-clickListen();
-function clickListen() {
-    window.addEventListener("click", (e: MouseEvent) => {
-        // console.log(e.target.parents("dialog"));
-    });
-}
+const dialogWidth = computed(() => {
+    if (typeof props.width === "number") {
+        return props.width + "px";
+    } else {
+        return props.width + "";
+    }
+});
+
 function close() {
-    emit('close');
+    emit("close");
 }
 </script>
 <template>
     <teleport to="body">
         <div class="mask" v-if="isShow">
-            <div class="dialog">
+            <div
+                class="dialog"
+                :style="{ width: dialogWidth, minWidth: props.minWidth }"
+            >
                 <div class="header">
                     <span>{{ title }}</span>
                     <base-icon
+                        style="cursor: pointer"
                         @click="close"
                         iconName="icon-guanbi1"
                     ></base-icon>
@@ -58,7 +64,6 @@ function close() {
 .dialog {
     margin: 0 auto;
     margin-top: 50px;
-    width: 300px;
     background-color: rgb(32, 31, 31);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);

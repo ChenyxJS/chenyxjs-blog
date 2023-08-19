@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-12 12:57:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-13 15:31:48
+ * @LastEditTime: 2023-08-18 16:47:39
  * @FilePath: /chenyxjs-blog/src/components/PersonCard.vue
 -->
 <template>
@@ -76,7 +76,7 @@ const today = state.dayWords[Math.floor(Math.random() * state.dayWords.length)];
 
 function openDialog(string: string) {
     ElMessageBox.alert(
-        `<img style="width:325px;height:500px" src="http://file.chenyx.site/image/${string}.JPG" />`,
+        `<img style="width:325px;height:500px" src="https://file.chenyx.site/image/${string}.JPG" />`,
         `My ${string}`,
         {
             dangerouslyUseHTMLString: true,

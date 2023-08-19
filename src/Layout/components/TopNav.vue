@@ -4,50 +4,9 @@
  * @Author: Chenyx
  * @Date: 2022-10-12 23:13:30
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-06-19 09:54:37
+ * @LastEditTime: 2023-08-18 16:42:36
 -->
-<template>
-    <div class="top-nav">
-        <div class="top-nav-container">
-            <div class="nav-left">
-                <search-input
-                    class="input"
-                    placeholder="keywords"
-                    :value="searchValue"
-                    @open="openSearchPanel"
-                    @close="closeSearchPanel"
-                ></search-input>
-                <SearchPanel
-                    v-if="!appStore.deviceStatus.isMobile"
-                    :is-show="isShowSearchPanel"
-                    @search="changeKeywords"
-                    class="panel"
-                ></SearchPanel>
-            </div>
-            <div v-show="!appStore.deviceStatus.isMobile" class="nav-options">
-                <a v-for="item in menu" :key="item.index" @click="item.fun"
-                    >{{ item.title }}
-                </a>
-                <div
-                    class="indicator"
-                    :style="{ left: `${nowNavIndex * 38}px` }"
-                ></div>
-            </div>
-            <div class="nav-right flex flex-ce">
-                <div v-show="appStore.deviceStatus.isMobile" class="menu-btn">
-                    <menu-btn
-                        :is-open="isOpenMenu"
-                        @click="openMenu"
-                    ></menu-btn>
-                    <menu-panel
-                        :is-open="isOpenMenu"
-                        @close-menu="closeMenu"
-                    ></menu-panel>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
+
 <script setup lang="ts">
 import { computed, provide, ref, watch } from "vue";
 import { useRoute } from "vue-router";
@@ -120,6 +79,49 @@ function closeSearchPanel() {
     isShowSearchPanel.value = false;
 }
 </script>
+
+<template>
+    <div class="top-nav">
+        <div class="top-nav-container">
+            <div class="nav-left">
+                <search-input
+                    class="input"
+                    placeholder="keywords"
+                    :value="searchValue"
+                    @open="openSearchPanel"
+                    @close="closeSearchPanel"
+                ></search-input>
+                <SearchPanel
+                    v-if="!appStore.deviceStatus.isMobile"
+                    :is-show="isShowSearchPanel"
+                    @search="changeKeywords"
+                    class="panel"
+                ></SearchPanel>
+            </div>
+            <div v-show="!appStore.deviceStatus.isMobile" class="nav-options">
+                <a v-for="item in menu" :key="item.index" @click="item.fun"
+                    >{{ item.title }}
+                </a>
+                <div
+                    class="indicator"
+                    :style="{ left: `${nowNavIndex * 38}px` }"
+                ></div>
+            </div>
+            <div class="nav-right flex flex-ce">
+                <div v-show="appStore.deviceStatus.isMobile" class="menu-btn">
+                    <menu-btn
+                        :is-open="isOpenMenu"
+                        @click="openMenu"
+                    ></menu-btn>
+                    <menu-panel
+                        :is-open="isOpenMenu"
+                        @close-menu="closeMenu"
+                    ></menu-panel>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
 
 <style lang="scss" scoped>
 .top-nav {

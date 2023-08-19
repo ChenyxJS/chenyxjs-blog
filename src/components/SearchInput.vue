@@ -2,21 +2,22 @@
  * @Author: chenyx
  * @Date: 2023-03-11 10:07:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-31 23:00:05
+ * @LastEditTime: 2023-08-19 15:55:43
  * @FilePath: /chenyxjs-blog/src/components/SearchInput.vue
 -->
 <template>
-    <input
-        class="search"
-        :placeholder="props.placeholder"
-        v-model="value"
-        v-focus
-        type="text"
-    />
+    <div @click="open" @keydown.="">
+        <base-icon icon-name="icon-sousuo" size="26"></base-icon>
+        <span style="margin: 0 5px">搜索</span>
+        <span class="search" type="text">
+            {{ placeholder }}
+        </span>
+    </div>
 </template>
 
 <script setup lang="ts">
-import { inject, toRef } from "vue";
+import { inject, onMounted, toRef } from "vue";
+import key from "keymaster";
 const emit = defineEmits(["open", "close"]);
 
 const props = defineProps({
@@ -25,40 +26,29 @@ const props = defineProps({
         default: "",
     },
 });
+onMounted(() => {
+    // 绑定搜索框开启事件
+    key("⌘+k", open);
+});
+
 const value = inject("searchValue", toRef);
-const vFocus = {
-    mounted: (el: HTMLElement) => {
-        // 监听dom获取焦点事件
-        el.addEventListener("focus", () => {
-            el.classList.add("active");
-            // 向父级发送事件通知面板打开
-            emit("open");
-        });
-        // 监听dom失去焦点事件
-        el.addEventListener("blur", () => {
-            el.classList.remove("active");
-            // 判断面板是否向父级发送事件通知面板关闭
-            emit("close");
-        });
-    },
-};
+function open() {
+    emit("open");
+}
 </script>
 
 <style scoped>
 .search {
-    width: 200px;
+    width: 50px;
     height: 32px;
     background: transparent;
     border: var(--border);
     outline: none;
-    padding: 0 8px;
+    padding: 8px;
     color: var(--text-navbar);
     border-radius: 6px;
-    transition: all 0.5s ease;
 }
-.active {
+.search:hover {
     border: 1px solid #009dff;
-    width: 100%;
-    transition: 0.5s ease;
 }
 </style>

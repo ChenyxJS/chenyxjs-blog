@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     CtaButton: typeof import('./src/components/CtaButton.vue')['default']
     Dialog: typeof import('./src/components/Dialog/Dialog.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCollapseTransition: typeof import('element-plus/es')['ElCollapseTransition']
     ElProgress: typeof import('element-plus/es')['ElProgress']
     ElSkeleton: typeof import('element-plus/es')['ElSkeleton']
     ElSkeletonItem: typeof import('element-plus/es')['ElSkeletonItem']

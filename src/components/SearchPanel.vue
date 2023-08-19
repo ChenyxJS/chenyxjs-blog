@@ -2,21 +2,59 @@
  * @Author: chenyx
  * @Date: 2023-03-30 17:15:45
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-03-30 22:50:16
+ * @LastEditTime: 2023-08-19 17:24:05
  * @FilePath: /chenyxjs-blog/src/components/SearchPanel.vue
 -->
+
+<script setup lang="ts">
+import { useHeaderSearchStroe, SearchKey } from "@/store/modules/headerSearch";
+import { onMounted } from "vue";
+import Dialog from "./Dialog/Dialog.vue";
+import key from "keymaster";
+
+const emit = defineEmits(["search", "close"]);
+const props = defineProps({
+    isShow: {
+        type: Boolean,
+        default: false,
+    },
+});
+const headerSearchStore = useHeaderSearchStroe();
+let searchHotList = headerSearchStore.searchHotList as Array<SearchKey>;
+
+onMounted(() => {
+    headerSearchStore.initSearchHistory();
+    // 绑定搜索框关闭事件
+    key("esc", closeDialog);
+});
+function clearHistory() {
+    headerSearchStore.clearSearchHistory();
+}
+
+function search(keywords: string) {
+    emit("search", keywords);
+}
+function closeDialog() {
+    emit("close");
+}
+</script>
+
 <template>
-    <el-collapse-transition>
-        <div class="wrapper" v-show="isShow">
-            <div>
+    <Dialog width="35%" min-width="300px" title="搜索" :is-show="isShow" @close="closeDialog">
+        <template v-slot:content>
+            <div class="wrapper">
                 <div class="search-box">
+                    <form class="search-input" @submit="">
+                        <input
+                            class="input"
+                            type="text"
+                            placeholder="请输入关键词"
+                        />
+                    </form>
                     <div class="history_icon_wrap">
                         <div class="search-hotkey">历史搜索</div>
                         <span @click="clearHistory">
-                            <img
-                                src="https://cloudcache.tencent-cloud.com/qcloud/portal/kit/images/slice/icon-delete.716ad938.svg"
-                                alt=""
-                            />
+                            <base-icon icon-name="icon-shanchu1"></base-icon>
                         </span>
                     </div>
                     <div class="search-keys history">
@@ -48,54 +86,33 @@
                         </span>
                     </div>
                 </div>
-                <!-- <div class="search-box">
-          <div class="search-hotkey">趋势搜索</div>
-          <div class="search-keys">
-            <span
-              @click="search(item.value)"
-              v-for="(item, index) in searchExtendKeys"
-              :key="item.id"
-            >
-              <a>{{ item.value }}</a>
-            </span>
-          </div>
-        </div> -->
             </div>
-        </div>
-    </el-collapse-transition>
+        </template>
+    </Dialog>
 </template>
-
-<script setup lang="ts">
-import { useHeaderSearchStroe, SearchKey } from "@/store/modules/headerSearch";
-import { onMounted } from "vue";
-const emit = defineEmits(["search"]);
-const props = defineProps({
-    isShow: {
-        type: Boolean,
-        default: false,
-    },
-});
-const headerSearchStore = useHeaderSearchStroe();
-let searchHotList = headerSearchStore.searchHotList as Array<SearchKey>;
-
-onMounted(() => {
-    headerSearchStore.initSearchHistory();
-});
-function clearHistory() {
-    headerSearchStore.clearSearchHistory();
-}
-
-function search(keywords: string) {
-    emit("search", keywords);
-}
-</script>
 
 <style lang="scss" scoped>
 .wrapper {
-    width: 294px;
-    background-color: #262f33;
     border-radius: 0 0 4px 4px;
     padding-bottom: 10px;
+}
+.search-input {
+    display: flex;
+    justify-content: center;
+    .input {
+        width: 99%;
+        height: 50px;
+        background: transparent;
+        border: 2px solid #30363d;
+        outline: none;
+        padding: 0 8px;
+        color: var(--text-navbar);
+        border-radius: 6px;
+        transition: all 0.5s ease;
+    }
+    .input:focus {
+        border: 2px solid #009dff;
+    }
 }
 
 .search-hotkey {
@@ -124,7 +141,7 @@ function search(keywords: string) {
     cursor: pointer;
 }
 .history span:hover {
-    color: #0052d9;
+    color: #009dff;
 }
 .history span:hover .delete-icon {
     content: "";
@@ -143,7 +160,7 @@ function search(keywords: string) {
 }
 
 .search-keys span a:hover {
-    color: #0052d9;
+    color: #009dff;
 }
 
 .history_icon_wrap {
