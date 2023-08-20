@@ -2,12 +2,13 @@
  * @Author: chenyx
  * @Date: 2023-04-13 19:32:11
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-17 10:14:55
+ * @LastEditTime: 2023-08-20 22:54:27
  * @FilePath: /chenyxjs-blog/src/views/home/RightPanel.vue
 -->
 <script setup lang="ts">
 import BaseIcon from "@/components/BaseIcon.vue";
 import ArticleCard from "@/components/ArticleCard.vue";
+import IronManModle from "@/components/IronManModle.vue";
 import { getArticleList } from "@/api/article";
 import { Article, ArticleQuery } from "@/api/article/types";
 import { OrderType } from "@/utils/globalEnum";
@@ -149,6 +150,9 @@ function subscribe_click() {
                     </li>
                 </ol>
             </div> -->
+            <div>
+                <iron-man-modle></iron-man-modle>
+            </div>
         </div>
     </div>
 </template>
