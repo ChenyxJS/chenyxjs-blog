@@ -167,7 +167,7 @@ function loop() {
             <div class="loading">
                 <div :style="{ width: state.loadingWidth + '%' }"></div>
             </div>
-            <div style="padding-left: 10px">{{ state.loadingWidth }}%</div>
+            <div style="padding-left: 10px">{{ state.loadingWidth.toFixed(1) }}%</div>
         </div>
     </div>
 </template>
