@@ -9,8 +9,13 @@ import {
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { onMounted, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
+
+const state = reactive({
+    isLoading: true,
+    loadingWidth: 0,
+});
 
 // 拿到渲染dom节点的实例
 const threeRef = ref();
@@ -94,13 +99,19 @@ function loadIronManFile() {
                 if (child.isMesh) {
                     //如果是物体就输出名字
                     console.log(child.name);
-                    // console.log(child)
                 }
             });
         },
         ({ loaded, total }) => {
             let load = Math.abs((loaded / total) * 100);
-            console.log("加载进度：" + load);
+            state.loadingWidth = load;
+
+            if (load >= 100) {
+                setTimeout(() => {
+                    state.isLoading = false;
+                }, 1000);
+            }
+            console.log((loaded / total) * 100 + "% loaded");
         }
     );
 }
@@ -150,11 +161,51 @@ function loop() {
 </script>
 
 <template>
-    <div class="threeRef" ref="threeRef"></div>
+    <div class="container">
+        <div class="threeRef" ref="threeRef"></div>
+        <div class="maskLoading" v-if="state.isLoading">
+            <div class="loading">
+                <div :style="{ width: state.loadingWidth + '%' }"></div>
+            </div>
+            <div style="padding-left: 10px">{{ state.loadingWidth }}%</div>
+        </div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
+.container{
+    width: 100%;
+    position: relative;
+}
 .threeRef {
     width: 100%;
+}
+.maskLoading {
+    width: 100%;
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1111111;
+    color: #fff;
+}
+
+.maskLoading .loading {
+    width: 100%;
+    height: 20px;
+    border: 1px solid #fff;
+    background: #000;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.maskLoading .loading div {
+    background: #fff;
+    height: 20px;
+    width: 0;
+    transition-duration: 500ms;
+    transition-timing-function: ease-in;
 }
 </style>

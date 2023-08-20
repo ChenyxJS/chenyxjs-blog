@@ -34,6 +34,7 @@ declare module '@vue/runtime-core' {
     SearchInput: typeof import('./src/components/SearchInput.vue')['default']
     SearchPanel: typeof import('./src/components/SearchPanel.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon.vue')['default']
+    Test: typeof import('./src/components/test.vue')['default']
     ThreeBallLoading: typeof import('./src/components/Loading/ThreeBallLoading.vue')['default']
     TypewriterText: typeof import('./src/components/TypewriterText.vue')['default']
     WallpaperSwiper: typeof import('./src/components/WallpaperSwiper.vue')['default']
