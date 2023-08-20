@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-11 10:07:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-19 15:55:43
+ * @LastEditTime: 2023-08-20 17:00:52
  * @FilePath: /chenyxjs-blog/src/components/SearchInput.vue
 -->
 <template>
@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, onMounted, toRef } from "vue";
+import { onMounted } from "vue";
 import key from "keymaster";
 const emit = defineEmits(["open", "close"]);
 
@@ -31,7 +31,6 @@ onMounted(() => {
     key("⌘+k", open);
 });
 
-const value = inject("searchValue", toRef);
 function open() {
     emit("open");
 }

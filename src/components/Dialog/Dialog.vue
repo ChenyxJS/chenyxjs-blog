@@ -13,7 +13,7 @@ const emit = defineEmits(["close"]);
 const props = withDefaults(defineProps<PropsType>(), {
     title: "标题",
     width: 300,
-    minWidth: 300,
+    minWidth: "300px",
 });
 const dialogWidth = computed(() => {
     if (typeof props.width === "number") {

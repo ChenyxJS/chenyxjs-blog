@@ -4,7 +4,7 @@
 * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-19 17:11:00
+ * @LastEditTime: 2023-08-20 17:12:43
 -->
 
 <script setup lang="ts">
@@ -13,16 +13,14 @@ import NavPanel from "@/components/NavPanel.vue";
 import BaseIcon from "@/components/BaseIcon.vue";
 import Content from "./components/Content.vue";
 import FooterPanel from "./components/Footer.vue";
-import { useRoute } from "vue-router";
 import { computed, onMounted, provide, reactive, ref, watch } from "vue";
 import { useAppStroe } from "@/store/modules/app";
 import { useMenu } from "@/hooks/menu-hooks";
-import { debounce } from "@/utils";
 import { useHeaderSearchStroe } from "@/store/modules/headerSearch";
 
-const route = useRoute();
 const appStore = useAppStroe();
 const { menu } = useMenu();
+const headerSearchStore = useHeaderSearchStroe();
 
 const state = reactive({
     top: 0,
@@ -30,10 +28,12 @@ const state = reactive({
     showNavDialog: false,
 });
 
-const headerSearchStore = useHeaderSearchStroe();
 let searchValue = ref(headerSearchStore.keywords);
 let isShowSearchPanel = ref(false);
-const change = debounce(headerSearchStore.changeKeywords, 1000);
+const change = (keywords: string) => {
+    headerSearchStore.changeKeywords(keywords);
+    closeSearchPanel();
+};
 provide("searchValue", searchValue);
 
 onMounted(() => {
@@ -69,6 +69,7 @@ function closeNavDialog() {
 
 function changeKeywords(keywords: string) {
     searchValue.value = keywords;
+    change(keywords);
 }
 
 function openSearchPanel() {
@@ -101,7 +102,7 @@ function closeSearchPanel() {
         <div class="layout-container">
             <div v-show="state.showTopNav" class="top-layout">
                 <div class="top-panel">
-                    <div class="top-left" >
+                    <div class="top-left">
                         <search-input
                             class="input"
                             placeholder="⌘ K"
@@ -110,7 +111,7 @@ function closeSearchPanel() {
                             @close="closeSearchPanel"
                         ></search-input>
                         <SearchPanel
-                            :is-show="isShowSearchPanel"
+                            :isShow="isShowSearchPanel"
                             @search="changeKeywords"
                             @close="closeSearchPanel"
                             class="panel"

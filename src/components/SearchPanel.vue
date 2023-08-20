@@ -2,13 +2,13 @@
  * @Author: chenyx
  * @Date: 2023-03-30 17:15:45
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-19 17:24:05
+ * @LastEditTime: 2023-08-20 17:13:44
  * @FilePath: /chenyxjs-blog/src/components/SearchPanel.vue
 -->
 
 <script setup lang="ts">
 import { useHeaderSearchStroe, SearchKey } from "@/store/modules/headerSearch";
-import { onMounted } from "vue";
+import { inject, onMounted, toRef } from "vue";
 import Dialog from "./Dialog/Dialog.vue";
 import key from "keymaster";
 
@@ -21,6 +21,7 @@ const props = defineProps({
 });
 const headerSearchStore = useHeaderSearchStroe();
 let searchHotList = headerSearchStore.searchHotList as Array<SearchKey>;
+const keyValue = inject("searchValue", toRef);
 
 onMounted(() => {
     headerSearchStore.initSearchHistory();
@@ -40,14 +41,24 @@ function closeDialog() {
 </script>
 
 <template>
-    <Dialog width="35%" min-width="300px" title="搜索" :is-show="isShow" @close="closeDialog">
+    <Dialog
+        width="35%"
+        minWidth="300px"
+        title="搜索博客"
+        :isShow="isShow"
+        @close="closeDialog"
+    >
         <template v-slot:content>
             <div class="wrapper">
                 <div class="search-box">
-                    <form class="search-input" @submit="">
+                    <form
+                        class="search-input"
+                        @submit="search(keyValue.toString())"
+                    >
                         <input
                             class="input"
                             type="text"
+                            v-model="keyValue"
                             placeholder="请输入关键词"
                         />
                     </form>
