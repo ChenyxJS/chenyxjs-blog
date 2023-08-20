@@ -4,7 +4,7 @@
  * @Author: Chenyx
  * @Date: 2022-10-23 22:07:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-18 15:01:00
+ * @LastEditTime: 2023-08-20 17:48:49
 -->
 
 <script setup lang="ts">
@@ -124,7 +124,7 @@ async function renderAnchors() {
     nextTick(() => {
         previewDom = proxy?.$refs.preview;
         if (!previewDom && !scrollDom) return;
-        const anchors = previewDom.$el.querySelectorAll("h2,h3,h4,h5,h6");
+        const anchors = previewDom.$el.querySelectorAll("h1,h2,h3,h4,h5,h6");
         const titles = Array.from(anchors).filter(
             (title: any) => !!title.innerText.trim()
         );
@@ -383,6 +383,9 @@ function likeClick(type: number) {
                 opacity: 0;
                 animation: show 1s forwards;
                 animation-delay: calc(var(--index) * 0.1s);
+            }
+            .tag:first-child{
+                color: #fff;
             }
             .tag:hover,
             .active {

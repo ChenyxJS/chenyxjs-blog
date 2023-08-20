@@ -37,6 +37,8 @@ watch(
     { deep: true }
 );
 
+
+
 // 搜索关键词改变时，触发搜索
 watch(
     () => headerSearchStore.keywords,
@@ -72,6 +74,7 @@ function getList() {
 
 <template>
     <div class="article-content">
+
         <div class="article-list">
             <article-card
                 v-silde-in="{ translateY: 100, duration: 1000 }"
@@ -82,7 +85,7 @@ function getList() {
         </div>
         <!-- no-data start -->
         <div v-show="!state.showLoading && showNoData" class="lottie">
-            <div id="no-data"></div>
+            <img style="width: 50%;" src="@/assets/images/no-data.png" alt="">
         </div>
         <!-- no-data end -->
     </div>

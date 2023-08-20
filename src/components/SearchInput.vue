@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-11 10:07:15
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-20 17:00:52
+ * @LastEditTime: 2023-08-20 17:24:17
  * @FilePath: /chenyxjs-blog/src/components/SearchInput.vue
 -->
 <template>
@@ -43,7 +43,7 @@ function open() {
     background: transparent;
     border: var(--border);
     outline: none;
-    padding: 8px;
+    padding: 4px 8px;
     color: var(--text-navbar);
     border-radius: 6px;
 }
