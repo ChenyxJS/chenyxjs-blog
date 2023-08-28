@@ -45,6 +45,9 @@ function close() {
                 <div class="content">
                     <slot name="content"></slot>
                 </div>
+                <div class="footer">
+                    <slot name="footer"></slot>
+                </div>
             </div>
         </div>
     </teleport>
@@ -69,7 +72,6 @@ function close() {
     -webkit-backdrop-filter: blur(12px);
     box-shadow: var(--box-border-shadow);
     border-radius: 10px;
-    padding: 20px;
 }
 
 .header {
@@ -77,11 +79,14 @@ function close() {
     justify-content: space-between;
     font-size: 14px;
     font-weight: bold;
+    padding: 20px 20px 0 20px;
 }
 
 .content {
-    max-height: 300px;
     overflow: auto;
-    margin: 20px 0;
+    padding: 20px;
+}
+.footer {
+    width: 100%;
 }
 </style>

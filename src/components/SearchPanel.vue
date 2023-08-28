@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-30 17:15:45
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-20 17:13:44
+ * @LastEditTime: 2023-08-28 16:38:21
  * @FilePath: /chenyxjs-blog/src/components/SearchPanel.vue
 -->
 
@@ -97,7 +97,22 @@ function closeDialog() {
                         </span>
                     </div>
                 </div>
+
             </div>
+        </template>
+        <template v-slot:footer>
+            <div class="key-tip">
+                    <div class="tip">
+                        <span class="left">esc</span>
+                        <span class="right">关闭</span>
+                    </div>
+                    <div class="tip">
+                        <span class="left">
+                            <base-icon iconName="icon-c181huiche"></base-icon>
+                        </span>
+                        <span class="right">搜索</span>
+                    </div>
+                </div>
         </template>
     </Dialog>
 </template>
@@ -180,6 +195,27 @@ function closeDialog() {
         position: relative;
         top: 12px;
         cursor: pointer;
+    }
+}
+.key-tip {
+    border-top: 1px rgba(84, 84, 84, 0.65) solid;
+    display: flex;
+    justify-content: space-around;
+    color: rgba(235, 235, 235, 0.6);
+    background-color: #000;
+    padding: 10px;
+    padding-top: 5px;
+    border-radius: 0 0 10px 10px;
+    .tip {
+        margin-top: 10px;
+        .left {
+            margin-right: 5px;
+            border-radius: 3px;
+            padding: 1px 3px;
+        }
+        .right {
+            font-size: 12px;
+        }
     }
 }
 </style>

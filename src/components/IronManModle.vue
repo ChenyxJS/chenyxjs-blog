@@ -88,7 +88,7 @@ function setControls() {
     // 控制器
     controls.maxPolarAngle = (0.9 * Math.PI) / 2;
     // 开启缩放
-    controls.enableZoom = true;
+    controls.enableZoom = false;
     // 限制缩放倍数
     // controls.minDistance = 3;
     // controls.maxDistance = 5;
