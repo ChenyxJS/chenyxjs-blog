@@ -2,15 +2,85 @@
  * @Author: chenyx
  * @Date: 2023-04-12 12:57:26
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-18 16:47:39
+ * @LastEditTime: 2023-08-29 17:24:09
  * @FilePath: /chenyxjs-blog/src/components/PersonCard.vue
 -->
+
+<script setup lang="ts">
+import { reactive } from "vue";
+
+const emit = defineEmits(["icon-click"]);
+const state = reactive({
+    //每日一言
+    dayWords: [
+        "等月光落雪地，等枫红染秋季。\n --《手写的从前》",
+        "少年曾有惑，走马平生消尽处，见万事如流。\n --《江湖行》",
+        "焦虑的原因就两条：想同时做很多事，又想立即看到效果。\n --《认知觉醒》",
+        "耐心不是毅力带来的结果，而是具有长远目光的结果。\n --《认知觉醒》",
+        "先用感性能力帮助自己选择，再用理性能力帮助自己思考。\n --《认知觉醒》",
+        "“刻意练习四要素”：定义明确的目标、极度的专注、有效的反馈、在拉伸区练习。\n --《认知觉醒》",
+        "小事听从你的脑，大事听从你的心。\n --《认知觉醒》",
+        "知识的获取不在于多少，而在于是否与自己有关联，以及这种关联有多充分。\n --《认知觉醒》",
+        "复利效应显示了价值积累的普遍规律：前期增长非常缓慢，但到达一个拐点后会飞速增长。\n --《认知觉醒》",
+        "要想有所成就，必须保持耐心，延迟满足。\n --《认知觉醒》",
+        "所谓心智，通俗地说，就是我们看待人和事的态度，以及由此做出的判断与选择。\n --《认知觉醒》",
+        "世上有人在行动，这个人也可能是你。\n --《重返世界尽头的咖啡馆》",
+        "做一个观察者，而不是沉浸其中，不要当局内人。\n --《重返世界尽头的咖啡馆》",
+        "真正的硬通货不是金钱，而是时间。\n --《重返世界尽头的咖啡馆》",
+        "不把精力花在阻碍自身进步的事上，同时在主要的事上多花精力。\n --《重返世界尽头的咖啡馆》",
+        "有时我们会陷入一种定式思维，甘愿接受比我们真正想要的东西稍差一些的选择。\n --《重返世界尽头的咖啡馆》",
+        "当你遇到不知道怎么做的事时，你只需要找到一个能做的人就行了。你可以向他寻求帮助，他演示给你看该怎么做。\n --《重返世界尽头的咖啡馆》",
+        "你的游乐场只属于你自己，不要用别人的梦想去衡量它，要想方设法在里面装满你自己的梦想。\n --《重返世界尽头的咖啡馆》",
+        "从某种角度说，你内心的导航系统会给你提供一个线索，引导你去做对的事。\n --《重返世界尽头的咖啡馆》",
+    ],
+    isShowDialog: false,
+    dialogTitle: "",
+    dialogUrl: "",
+});
+// 随机获取数组中的一项
+const today = state.dayWords[Math.floor(Math.random() * state.dayWords.length)];
+
+function openDialog(string: string) {
+    state.dialogTitle = string;
+    state.dialogUrl = `https://file.chenyx.site/image/${string}.JPG`;
+    state.isShowDialog = true;
+}
+
+function changeCard() {
+    emit("icon-click");
+}
+
+function closeNavDialog() {
+    state.isShowDialog = false;
+}
+</script>
+
 <template>
     <div class="card">
+        <Dialog
+            :isShow="state.isShowDialog"
+            :title="state.dialogTitle"
+            @close="closeNavDialog"
+        >
+            <template v-slot:content>
+                <div
+                    style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    "
+                >
+                    <img
+                        style="aspect-ratio: 375/675;width: 100%;"
+                        :src="state.dialogUrl"
+                    />
+                </div>
+            </template>
+        </Dialog>
         <button @click="changeCard">
             <i
                 class="iconfont icon-chengyuan"
-                style="color: #409eff;cursor: pointer;"
+                style="color: #409eff; cursor: pointer"
             ></i>
         </button>
         <div class="profileimage">
@@ -42,54 +112,6 @@
     </div>
 </template>
 
-<script setup lang="ts">
-import { ElMessageBox } from "element-plus";
-import { reactive } from "vue";
-
-const emit = defineEmits(["icon-click"]);
-const state = reactive({
-    //每日一言
-    dayWords: [
-        "等月光落雪地，等枫红染秋季。\n --《手写的从前》",
-        "少年曾有惑，走马平生消尽处，见万事如流。\n --《江湖行》",
-        "焦虑的原因就两条：想同时做很多事，又想立即看到效果。\n --《认知觉醒》",
-        "耐心不是毅力带来的结果，而是具有长远目光的结果。\n --《认知觉醒》",
-        "先用感性能力帮助自己选择，再用理性能力帮助自己思考。\n --《认知觉醒》",
-        "“刻意练习四要素”：定义明确的目标、极度的专注、有效的反馈、在拉伸区练习。\n --《认知觉醒》",
-        "小事听从你的脑，大事听从你的心。\n --《认知觉醒》",
-        "知识的获取不在于多少，而在于是否与自己有关联，以及这种关联有多充分。\n --《认知觉醒》",
-        "复利效应显示了价值积累的普遍规律：前期增长非常缓慢，但到达一个拐点后会飞速增长。\n --《认知觉醒》",
-        "要想有所成就，必须保持耐心，延迟满足。\n --《认知觉醒》",
-        "所谓心智，通俗地说，就是我们看待人和事的态度，以及由此做出的判断与选择。\n --《认知觉醒》",
-        "世上有人在行动，这个人也可能是你。\n --《重返世界尽头的咖啡馆》",
-        "做一个观察者，而不是沉浸其中，不要当局内人。\n --《重返世界尽头的咖啡馆》",
-        "真正的硬通货不是金钱，而是时间。\n --《重返世界尽头的咖啡馆》",
-        "不把精力花在阻碍自身进步的事上，同时在主要的事上多花精力。\n --《重返世界尽头的咖啡馆》",
-        "有时我们会陷入一种定式思维，甘愿接受比我们真正想要的东西稍差一些的选择。\n --《重返世界尽头的咖啡馆》",
-        "当你遇到不知道怎么做的事时，你只需要找到一个能做的人就行了。你可以向他寻求帮助，他演示给你看该怎么做。\n --《重返世界尽头的咖啡馆》",
-        "你的游乐场只属于你自己，不要用别人的梦想去衡量它，要想方设法在里面装满你自己的梦想。\n --《重返世界尽头的咖啡馆》",
-        "从某种角度说，你内心的导航系统会给你提供一个线索，引导你去做对的事。\n --《重返世界尽头的咖啡馆》",
-    ],
-});
-// 随机获取数组中的一项
-const today = state.dayWords[Math.floor(Math.random() * state.dayWords.length)];
-
-function openDialog(string: string) {
-    ElMessageBox.alert(
-        `<img style="width:325px;height:500px" src="https://file.chenyx.site/image/${string}.JPG" />`,
-        `My ${string}`,
-        {
-            dangerouslyUseHTMLString: true,
-            center: true,
-        }
-    );
-}
-
-function changeCard() {
-    emit("icon-click");
-}
-</script>
-
 <style lang="scss" scoped>
 .card {
     display: flex;
@@ -101,7 +123,6 @@ function changeCard() {
     padding: 10px;
     margin-top: 20px;
     box-shadow: 0 0 0 2px #1f1f23;
-
 }
 
 .profileimage {

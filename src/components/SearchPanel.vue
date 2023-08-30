@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-03-30 17:15:45
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-28 16:38:21
+ * @LastEditTime: 2023-08-29 16:02:08
  * @FilePath: /chenyxjs-blog/src/components/SearchPanel.vue
 -->
 
@@ -56,6 +56,7 @@ function closeDialog() {
                         @submit="search(keyValue.toString())"
                     >
                         <input
+                            v-focus
                             class="input"
                             type="text"
                             v-model="keyValue"

@@ -4,7 +4,7 @@
 * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-20 17:30:00
+ * @LastEditTime: 2023-08-29 16:55:44
 -->
 
 <script setup lang="ts">
@@ -105,7 +105,11 @@ function closeSearchPanel() {
                     <div class="top-left">
                         <search-input
                             class="input"
-                            placeholder="⌘ K"
+                            :placeholder="
+                                headerSearchStore.keywords
+                                    ? headerSearchStore.keywords
+                                    : '⌘ K'
+                            "
                             :value="searchValue"
                             @open="openSearchPanel"
                             @close="closeSearchPanel"
