@@ -2,7 +2,7 @@
  * @Author: chenyx
  * @Date: 2023-04-13 19:32:11
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-20 22:54:27
+ * @LastEditTime: 2023-10-09 14:20:43
  * @FilePath: /chenyxjs-blog/src/views/home/RightPanel.vue
 -->
 <script setup lang="ts">
@@ -150,9 +150,9 @@ function subscribe_click() {
                     </li>
                 </ol>
             </div> -->
-            <div>
+            <!-- <div>
                 <iron-man-modle></iron-man-modle>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
