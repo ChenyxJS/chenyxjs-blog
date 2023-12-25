@@ -2,13 +2,12 @@
  * @Author: chenyx
  * @Date: 2023-04-13 19:32:11
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-10-09 14:20:43
+ * @LastEditTime: 2023-12-25 21:04:35
  * @FilePath: /chenyxjs-blog/src/views/home/RightPanel.vue
 -->
 <script setup lang="ts">
 import BaseIcon from "@/components/BaseIcon.vue";
 import ArticleCard from "@/components/ArticleCard.vue";
-import IronManModle from "@/components/IronManModle.vue";
 import { getArticleList } from "@/api/article";
 import { Article, ArticleQuery } from "@/api/article/types";
 import { OrderType } from "@/utils/globalEnum";
@@ -138,7 +137,7 @@ function subscribe_click() {
                     </li>
                     <li class="work-item">
                         <div class="logo">
-                            <img src="http://jtexplore.com/favicon.ico" />
+                            <img src="http://www.jtexplorer.com/logo.png" />
                         </div>
                         <div class="work-info">
                             <div class="name">山东疆拓科技</div>
@@ -149,9 +148,6 @@ function subscribe_click() {
                         </div>
                     </li>
                 </ol>
-            </div> -->
-            <!-- <div>
-                <iron-man-modle></iron-man-modle>
             </div> -->
         </div>
     </div>

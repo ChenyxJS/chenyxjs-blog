@@ -41,7 +41,7 @@ function toArticle() {
 }
 </script>
 <template>
-    <div class="article-card" @click="toArticle">
+    <div class="article-card"  @click="toArticle">
         <div class="card-bg">
             <img
                 class="img"

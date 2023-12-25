@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     ArticleCard: typeof import('./src/components/ArticleCard.vue')['default']
     BaseIcon: typeof import('./src/components/BaseIcon.vue')['default']
     BasePanel: typeof import('./src/components/BasePanel.vue')['default']
+    ChristmasAnimation: typeof import('./src/components/ChristmasAnimation.vue')['default']
     Copyright: typeof import('./src/components/Copyright.vue')['default']
     CtaButton: typeof import('./src/components/CtaButton.vue')['default']
     Dialog: typeof import('./src/components/Dialog/Dialog.vue')['default']

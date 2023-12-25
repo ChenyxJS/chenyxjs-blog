@@ -4,10 +4,11 @@
 * @Author: Chenyx
  * @Date: 2022-10-12 23:06:25
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-08-29 16:55:44
+ * @LastEditTime: 2023-12-25 13:31:29
 -->
 
 <script setup lang="ts">
+import ChristmasAnimation from "@/components/ChristmasAnimation.vue";
 import Dialog from "@/components/Dialog/Dialog.vue";
 import NavPanel from "@/components/NavPanel.vue";
 import BaseIcon from "@/components/BaseIcon.vue";
@@ -81,6 +82,7 @@ function closeSearchPanel() {
 }
 </script>
 <template>
+    <ChristmasAnimation />
     <div class="layout">
         <div id="main" class="layout-bg"></div>
         <Dialog
